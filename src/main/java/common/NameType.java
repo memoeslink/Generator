@@ -1,0 +1,14 @@
+package common;
+
+public enum NameType {
+    EMPTY,
+    DEFAULT,
+    TEST_CASE,
+    MALE_NAME,
+    FEMALE_NAME,
+    DOUBLE_BARRELLED_MALE_NAME,
+    DOUBLE_BARRELLED_FEMALE_NAME,
+    DOUBLE_MALE_NAME,
+    DOUBLE_FEMALE_NAME,
+    SURNAME,
+}

@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="11a47edb-8b73-4cfb-956c-21db56fc267e" name="Default Changelist" comment="Initial commit.">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_github_encryptorcode_pluralize_1_0_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_xerial_sqlite_jdbc_3_34_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/org_junit_jupiter_junit_jupiter_5_4_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/compiler.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/common/Constant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/common/Database.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/common/DatabaseConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/common/Gender.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/common/Generator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/common/GeneratorManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/common/NameDefiner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/common/NameGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/common/NameGetter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/common/NameType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/common/OccupationDefiner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/common/OccupationGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/common/OccupationGetter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/common/Randomizer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/common/Separator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/common/StringHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/common/TextProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/common/Word.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/common/WordCombination.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/english/NameDefiner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/english/NameGetter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/english/OccupationGetter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/international/NameGetter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/international/OccupationGetter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/spanish/NameDefiner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/spanish/NameGetter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/spanish/OccupationGetter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/generator.sqlite" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/DatabaseConnectionTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/DatabaseTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/NameGeneratorTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/TextProcessorTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/common/Constant.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/common/Database.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/common/DatabaseConnection.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/common/Gender.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/common/Generator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/common/GeneratorManager.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/common/NameDefiner.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/common/NameGenerator$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/common/NameGenerator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/common/NameGetter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/common/NameType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/common/OccupationDefiner.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/common/OccupationGenerator$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/common/OccupationGenerator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/common/OccupationGetter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/common/Separator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/common/StringHelper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/common/TextProcessor.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/common/Word.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/common/WordCombination.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/english/NameGetter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/english/OccupationGetter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/generator.sqlite" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/international/NameGetter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/international/OccupationGetter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/spanish/NameGetter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/spanish/OccupationGetter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/DatabaseConnectionTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/DatabaseTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/NameGeneratorTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/TextProcessorTest.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit5 Test Class" />
+        <option value="Interface" />
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.2.3\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1soeKreay5SiTL4mQog7acscNsi" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\memoe\IdeaProjects\Generator\src\main\java" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="spanish" />
+      <recent name="english" />
+      <recent name="international" />
+      <recent name="common" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\memoe\IdeaProjects\Generator\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.DatabaseTest.countTableRows">
+    <configuration name="DatabaseTest.countCommonNouns" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="compiler" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="DatabaseTest" />
+      <option name="METHOD_NAME" value="countCommonNouns" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DatabaseTest.countTableRows" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="compiler" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="DatabaseTest" />
+      <option name="METHOD_NAME" value="countTableRows" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DatabaseTest.countUsernames" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="compiler" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="DatabaseTest" />
+      <option name="METHOD_NAME" value="countUsernames" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DatabaseTest.selectCommonNoun" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="compiler" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="DatabaseTest" />
+      <option name="METHOD_NAME" value="selectCommonNoun" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DatabaseTest.selectUsername" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="compiler" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="DatabaseTest" />
+      <option name="METHOD_NAME" value="selectUsername" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.DatabaseTest.countTableRows" />
+        <item itemvalue="JUnit.DatabaseTest.selectUsername" />
+        <item itemvalue="JUnit.DatabaseTest.countUsernames" />
+        <item itemvalue="JUnit.DatabaseTest.selectCommonNoun" />
+        <item itemvalue="JUnit.DatabaseTest.countCommonNouns" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="11a47edb-8b73-4cfb-956c-21db56fc267e" name="Default Changelist" comment="" />
+      <created>1621543310090</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1621543310090</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
+    <MESSAGE value="Initial commit." />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial commit." />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="309" y="42" key="#Inspections" timestamp="1621700611015">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="309" y="42" key="#Inspections/0.0.1366.728@0.0.1366.728" timestamp="1621700611015" />
+    <state x="275" y="0" width="816" height="728" key="#Intentions" timestamp="1621647634302">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="0" width="816" height="728" key="#Intentions/0.0.1366.728@0.0.1366.728" timestamp="1621647634302" />
+    <state x="163" y="0" key="#Project_Structure" timestamp="1621617216938">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="163" y="0" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1621617216938" />
+    <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1621638475018">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1621638475003" />
+    <state x="488" y="48" key="#com.intellij.ide.util.MemberChooser" timestamp="1621886225226">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="488" y="48" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1621886225226" />
+    <state x="413" y="140" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1621558669593">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="413" y="140" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1366.728@0.0.1366.728" timestamp="1621558669593" />
+    <state x="404" y="53" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1621607089189">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="404" y="53" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1366.728@0.0.1366.728" timestamp="1621607089189" />
+    <state x="387" y="151" key="#com.intellij.refactoring.encapsulateFields.EncalpsulateFieldsDialog" timestamp="1621700768291">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="387" y="151" key="#com.intellij.refactoring.encapsulateFields.EncalpsulateFieldsDialog/0.0.1366.728@0.0.1366.728" timestamp="1621700768291" />
+    <state x="466" y="229" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1621610579456">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="466" y="229" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1366.728@0.0.1366.728" timestamp="1621610579456" />
+    <state x="164" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1621882489221">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="164" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1621882489221" />
+    <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1621816239061">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1621816239061" />
+    <state width="523" height="438" key="DebuggerActiveHint" timestamp="1621786921100">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="523" height="438" key="DebuggerActiveHint/0.0.1366.728@0.0.1366.728" timestamp="1621786921100" />
+    <state x="484" y="119" key="FileChooserDialogImpl" timestamp="1621879196112">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="484" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1621879196112" />
+    <state width="1323" height="200" key="GridCell.Tab.0.bottom" timestamp="1621879958475">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="200" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1621879958475" />
+    <state width="1323" height="200" key="GridCell.Tab.0.center" timestamp="1621879958474">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="200" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1621879958474" />
+    <state width="1323" height="200" key="GridCell.Tab.0.left" timestamp="1621879958474">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="200" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1621879958474" />
+    <state width="1323" height="200" key="GridCell.Tab.0.right" timestamp="1621879958475">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="200" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1621879958475" />
+    <state width="1323" height="200" key="GridCell.Tab.1.bottom" timestamp="1621879958476">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="200" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1621879958476" />
+    <state width="1323" height="200" key="GridCell.Tab.1.center" timestamp="1621879958475">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="200" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1621879958475" />
+    <state width="1323" height="200" key="GridCell.Tab.1.left" timestamp="1621879958475">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="200" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1621879958475" />
+    <state width="1323" height="200" key="GridCell.Tab.1.right" timestamp="1621879958475">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="200" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1621879958475" />
+    <state x="184" y="0" width="1041" height="728" key="SettingsEditor" timestamp="1621897666813">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="184" y="0" width="1041" height="728" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1621897666813" />
+    <state width="691" height="372" key="XDebugger.FullValuePopup" timestamp="1621637703797">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="691" height="372" key="XDebugger.FullValuePopup/0.0.1366.728@0.0.1366.728" timestamp="1621637703797" />
+    <state x="92" y="92" width="1182" height="544" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1621638876749">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="92" y="92" width="1182" height="544" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1366.728@0.0.1366.728" timestamp="1621638876749" />
+    <state x="92" y="92" width="1182" height="544" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog" timestamp="1621792822387">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="92" y="92" width="1182" height="544" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog/0.0.1366.728@0.0.1366.728" timestamp="1621792822387" />
+    <state x="408" y="256" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1621606767112">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="408" y="256" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1366.728@0.0.1366.728" timestamp="1621606767112" />
+    <state x="447" y="48" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1621714777102">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="447" y="48" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1366.728@0.0.1366.728" timestamp="1621714777102" />
+    <state x="419" y="99" width="865" height="629" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1621816397919">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="419" y="99" width="865" height="629" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1366.728@0.0.1366.728" timestamp="1621816397919" />
+    <state x="390" y="0" width="585" height="728" key="find.popup" timestamp="1621895346744">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="390" y="0" width="585" height="728" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1621895346744" />
+    <state x="383" y="111" key="refactoring.ChangeSignatureDialog" timestamp="1621624349194">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="383" y="111" key="refactoring.ChangeSignatureDialog/0.0.1366.728@0.0.1366.728" timestamp="1621624349194" />
+    <state x="339" y="162" key="run.anything.popup" timestamp="1621633642560">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1621633642560" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1621815374813">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1621815374813" />
+  </component>
+</project>
