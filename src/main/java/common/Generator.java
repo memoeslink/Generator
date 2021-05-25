@@ -12,12 +12,12 @@ public class Generator {
 
     protected Generator(Long seed) {
         this.locale = Locale.ENGLISH;
-        r.bindSeed(seed);
+        this.r = new Randomizer(seed);
     }
 
     protected Generator(Locale locale, Long seed) {
         this.locale = locale != null ? locale : Locale.ENGLISH;
-        r.bindSeed(seed);
+        this.r = new Randomizer(seed);
     }
 
     protected Locale getLocale() {
