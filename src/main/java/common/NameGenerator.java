@@ -47,10 +47,14 @@ public class NameGenerator extends Generator {
                 return getter.with(r).getSurname();
             case DUAL_SURNAME:
                 return getter.with(r).getDualSurname();
-            case SIMPLE_MALE_NAME:
-                return getter.with(r).getSimpleMaleName();
-            case SIMPLE_FEMALE_NAME:
-                return getter.with(r).getSimpleFemaleName();
+            case MALE_SIMPLE_NAME:
+                return getter.with(r).getMaleSimpleName();
+            case FEMALE_SIMPLE_NAME:
+                return getter.with(r).getFemaleSimpleName();
+            case MALE_FULL_NAME:
+                return getter.with(r).getMaleFullName();
+            case FEMALE_FULL_NAME:
+                return getter.with(r).getFemaleFullName();
             case EMPTY:
             default:
                 return getter.getEmptyName();

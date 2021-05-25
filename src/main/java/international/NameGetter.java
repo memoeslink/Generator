@@ -94,23 +94,33 @@ public final class NameGetter extends common.NameGetter implements NameDefiner {
     }
 
     @Override
-    public String getSimpleFemaleName() {
-        return getAnyGetter().getSimpleFemaleName();
+    public String getFemaleSimpleName() {
+        return getAnyGetter().getFemaleSimpleName();
     }
 
     @Override
-    public String getSimpleFemaleName(int forenameId, int surnameId) {
-        return getAnyGetter().getSimpleFemaleName(forenameId, surnameId);
+    public String getFemaleSimpleName(int forenameId, int surnameId) {
+        return getAnyGetter().getFemaleSimpleName(forenameId, surnameId);
     }
 
     @Override
-    public String getSimpleMaleName() {
-        return getAnyGetter().getSimpleMaleName();
+    public String getMaleSimpleName() {
+        return getAnyGetter().getMaleSimpleName();
     }
 
     @Override
-    public String getSimpleMaleName(int forenameId, int surnameId) {
-        return getAnyGetter().getSimpleMaleName(forenameId, surnameId);
+    public String getMaleSimpleName(int forenameId, int surnameId) {
+        return getAnyGetter().getMaleSimpleName(forenameId, surnameId);
+    }
+
+    @Override
+    public String getFemaleFullName() {
+        return getAnyGetter().getFemaleFullName();
+    }
+
+    @Override
+    public String getMaleFullName() {
+        return getAnyGetter().getMaleFullName();
     }
 
     @Override

@@ -40,13 +40,17 @@ public interface NameDefiner {
 
     public String getDualSurname(int startId, int endId);
 
-    public String getSimpleFemaleName();
+    public String getFemaleSimpleName();
 
-    public String getSimpleFemaleName(int forenameId, int surnameId);
+    public String getFemaleSimpleName(int forenameId, int surnameId);
 
-    public String getSimpleMaleName();
+    public String getMaleSimpleName();
 
-    public String getSimpleMaleName(int forenameId, int surnameId);
+    public String getMaleSimpleName(int forenameId, int surnameId);
+
+    public String getFemaleFullName();
+
+    public String getMaleFullName();
 
     public NameGetter with(Randomizer r);
 }

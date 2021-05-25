@@ -107,22 +107,32 @@ public class NameGetter implements NameDefiner {
     }
 
     @Override
-    public String getSimpleFemaleName() {
+    public String getFemaleSimpleName() {
         return Database.DEFAULT_VALUE;
     }
 
     @Override
-    public String getSimpleFemaleName(int forenameId, int surnameId) {
+    public String getFemaleSimpleName(int forenameId, int surnameId) {
         return Database.DEFAULT_VALUE;
     }
 
     @Override
-    public String getSimpleMaleName() {
+    public String getMaleSimpleName() {
         return Database.DEFAULT_VALUE;
     }
 
     @Override
-    public String getSimpleMaleName(int forenameId, int surnameId) {
+    public String getMaleSimpleName(int forenameId, int surnameId) {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getFemaleFullName() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getMaleFullName() {
         return Database.DEFAULT_VALUE;
     }
 

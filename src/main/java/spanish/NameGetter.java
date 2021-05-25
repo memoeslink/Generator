@@ -1,9 +1,7 @@
 package spanish;
 
-import common.Database;
 import common.NameDefiner;
-import common.Randomizer;
-import common.Separator;
+import common.*;
 
 public final class NameGetter extends common.NameGetter implements NameDefiner, spanish.NameDefiner {
 
@@ -96,28 +94,84 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
     }
 
     @Override
-    public String getSimpleFemaleName() {
+    public String getFemaleSimpleName() {
         return getFemaleForename() + Separator.SPACE.getCharacter() + getSurname();
     }
 
     @Override
-    public String getSimpleFemaleName(int forenameId, int surnameId) {
+    public String getFemaleSimpleName(int forenameId, int surnameId) {
         return getFemaleForename(forenameId) + Separator.SPACE.getCharacter() + getSurname(surnameId);
     }
 
     @Override
-    public String getSimpleMaleName() {
+    public String getMaleSimpleName() {
         return getMaleForename() + Separator.SPACE.getCharacter() + getSurname();
     }
 
     @Override
-    public String getSimpleMaleName(int forenameId, int surnameId) {
+    public String getMaleSimpleName(int forenameId, int surnameId) {
         return getMaleForename(forenameId) + Separator.SPACE.getCharacter() + getSurname(surnameId);
+    }
+
+    @Override
+    public String getFemaleFullName() {
+        switch (r.getInt(4)) {
+            case 1:
+                return getFemaleForename() + Separator.SPACE.getCharacter() + getDualSurname();
+            case 2:
+                return getDoubleFemaleForename() + Separator.SPACE.getCharacter() + getDualSurname();
+            case 3:
+                return getFemaleForenames() + Separator.SPACE.getCharacter() + getDualSurname();
+            case 0:
+            default:
+                return getFemaleSimpleName();
+        }
+    }
+
+    @Override
+    public String getMaleFullName() {
+        switch (r.getInt(4)) {
+            case 1:
+                return getMaleForename() + Separator.SPACE.getCharacter() + getDualSurname();
+            case 2:
+                return getDoubleMaleForename() + Separator.SPACE.getCharacter() + getDualSurname();
+            case 3:
+                return getMaleForenames() + Separator.SPACE.getCharacter() + getDualSurname();
+            case 0:
+            default:
+                return getMaleSimpleName();
+        }
     }
 
     @Override
     public NameGetter with(Randomizer r) {
         return new NameGetter(r);
+    }
+
+    @Override
+    public String getForenames(Gender gender) {
+        StringBuilder sb = new StringBuilder();
+        float[] probabilities = {1.0F, 0.8F, 0.125F, 0.05F, 0.0125F};
+
+        for (float probability : probabilities) {
+            if (r.getFloat() >= probability) {
+                if (sb.length() > 0)
+                    sb.append(Separator.SPACE.getCharacter());
+                sb.append(getForename(gender));
+            } else
+                break;
+        }
+        return sb.toString();
+    }
+
+    @Override
+    public String getFemaleForenames() {
+        return getForenames(Gender.FEMININE);
+    }
+
+    @Override
+    public String getMaleForenames() {
+        return getForenames(Gender.MASCULINE);
     }
 
     @Override
