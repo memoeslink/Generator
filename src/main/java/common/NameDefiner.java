@@ -8,29 +8,29 @@ public interface NameDefiner {
 
     public String getTestName();
 
-    public String getFemaleName();
+    public String getFemaleForename();
 
-    public String getFemaleName(int id);
+    public String getFemaleForename(int id);
 
-    public String getMaleName();
+    public String getMaleForename();
 
-    public String getMaleName(int id);
+    public String getMaleForename(int id);
 
-    public String getDoubleBarrelledFemaleName();
+    public String getDoubleBarrelledFemaleForename();
 
-    public String getDoubleBarrelledFemaleName(int startId, int endId);
+    public String getDoubleBarrelledFemaleForename(int startId, int endId);
 
-    public String getDoubleBarrelledMaleName();
+    public String getDoubleBarrelledMaleForename();
 
-    public String getDoubleBarrelledMaleName(int startId, int endId);
+    public String getDoubleBarrelledMaleForename(int startId, int endId);
 
-    public String getDoubleFemaleName();
+    public String getDoubleFemaleForename();
 
-    public String getDoubleFemaleName(int startId, int endId);
+    public String getDoubleFemaleForename(int startId, int endId);
 
-    public String getDoubleMaleName();
+    public String getDoubleMaleForename();
 
-    public String getDoubleMaleName(int startId, int endId);
+    public String getDoubleMaleForename(int startId, int endId);
 
     public String getSurname();
 
@@ -39,6 +39,14 @@ public interface NameDefiner {
     public String getDualSurname();
 
     public String getDualSurname(int startId, int endId);
+
+    public String getSimpleFemaleName();
+
+    public String getSimpleFemaleName(int forenameId, int surnameId);
+
+    public String getSimpleMaleName();
+
+    public String getSimpleMaleName(int forenameId, int surnameId);
 
     public NameGetter with(Randomizer r);
 }

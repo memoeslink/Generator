@@ -27,62 +27,62 @@ public class NameGetter implements NameDefiner {
     }
 
     @Override
-    public String getFemaleName() {
+    public String getFemaleForename() {
         return Database.DEFAULT_VALUE;
     }
 
     @Override
-    public String getFemaleName(int id) {
+    public String getFemaleForename(int id) {
         return Database.DEFAULT_VALUE;
     }
 
     @Override
-    public String getMaleName() {
+    public String getMaleForename() {
         return Database.DEFAULT_VALUE;
     }
 
     @Override
-    public String getMaleName(int id) {
+    public String getMaleForename(int id) {
         return Database.DEFAULT_VALUE;
     }
 
     @Override
-    public String getDoubleBarrelledFemaleName() {
+    public String getDoubleBarrelledFemaleForename() {
         return Database.DEFAULT_VALUE;
     }
 
     @Override
-    public String getDoubleBarrelledFemaleName(int startId, int endId) {
+    public String getDoubleBarrelledFemaleForename(int startId, int endId) {
         return Database.DEFAULT_VALUE;
     }
 
     @Override
-    public String getDoubleBarrelledMaleName() {
+    public String getDoubleBarrelledMaleForename() {
         return Database.DEFAULT_VALUE;
     }
 
     @Override
-    public String getDoubleBarrelledMaleName(int startId, int endId) {
+    public String getDoubleBarrelledMaleForename(int startId, int endId) {
         return Database.DEFAULT_VALUE;
     }
 
     @Override
-    public String getDoubleFemaleName() {
+    public String getDoubleFemaleForename() {
         return Database.DEFAULT_VALUE;
     }
 
     @Override
-    public String getDoubleFemaleName(int startId, int endId) {
+    public String getDoubleFemaleForename(int startId, int endId) {
         return Database.DEFAULT_VALUE;
     }
 
     @Override
-    public String getDoubleMaleName() {
+    public String getDoubleMaleForename() {
         return Database.DEFAULT_VALUE;
     }
 
     @Override
-    public String getDoubleMaleName(int startId, int endId) {
+    public String getDoubleMaleForename(int startId, int endId) {
         return Database.DEFAULT_VALUE;
     }
 
@@ -103,6 +103,26 @@ public class NameGetter implements NameDefiner {
 
     @Override
     public String getDualSurname(int startId, int endId) {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getSimpleFemaleName() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getSimpleFemaleName(int forenameId, int surnameId) {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getSimpleMaleName() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getSimpleMaleName(int forenameId, int surnameId) {
         return Database.DEFAULT_VALUE;
     }
 

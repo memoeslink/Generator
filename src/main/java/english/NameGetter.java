@@ -14,63 +14,63 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
     }
 
     @Override
-    public String getFemaleName() {
-        return getFemaleName(r.getInt(1, Database.countEnglishFemaleNames()));
+    public String getFemaleForename() {
+        return getFemaleForename(r.getInt(1, Database.countEnglishFemaleNames()));
     }
 
     @Override
-    public String getFemaleName(int id) {
+    public String getFemaleForename(int id) {
         return Database.selectEnglishFemaleName(id);
     }
 
     @Override
-    public String getMaleName() {
-        return getMaleName(r.getInt(1, Database.countEnglishMaleNames()));
+    public String getMaleForename() {
+        return getMaleForename(r.getInt(1, Database.countEnglishMaleNames()));
     }
 
     @Override
-    public String getMaleName(int id) {
+    public String getMaleForename(int id) {
         return Database.selectEnglishMaleName(id);
     }
 
     @Override
-    public String getDoubleBarrelledFemaleName() {
-        return getFemaleName() + Separator.HYPHEN.getCharacter() + getFemaleName();
+    public String getDoubleBarrelledFemaleForename() {
+        return getFemaleForename() + Separator.HYPHEN.getCharacter() + getFemaleForename();
     }
 
     @Override
-    public String getDoubleBarrelledFemaleName(int startId, int endId) {
-        return getFemaleName(startId) + Separator.HYPHEN.getCharacter() + getFemaleName(endId);
+    public String getDoubleBarrelledFemaleForename(int startId, int endId) {
+        return getFemaleForename(startId) + Separator.HYPHEN.getCharacter() + getFemaleForename(endId);
     }
 
     @Override
-    public String getDoubleBarrelledMaleName() {
-        return getMaleName() + Separator.HYPHEN.getCharacter() + getMaleName();
+    public String getDoubleBarrelledMaleForename() {
+        return getMaleForename() + Separator.HYPHEN.getCharacter() + getMaleForename();
     }
 
     @Override
-    public String getDoubleBarrelledMaleName(int startId, int endId) {
-        return getMaleName(startId) + Separator.HYPHEN.getCharacter() + getMaleName(endId);
+    public String getDoubleBarrelledMaleForename(int startId, int endId) {
+        return getMaleForename(startId) + Separator.HYPHEN.getCharacter() + getMaleForename(endId);
     }
 
     @Override
-    public String getDoubleFemaleName() {
-        return getFemaleName() + Separator.SPACE.getCharacter() + getFemaleName();
+    public String getDoubleFemaleForename() {
+        return getFemaleForename() + Separator.SPACE.getCharacter() + getFemaleForename();
     }
 
     @Override
-    public String getDoubleFemaleName(int startId, int endId) {
-        return getFemaleName(startId) + Separator.SPACE.getCharacter() + getFemaleName(endId);
+    public String getDoubleFemaleForename(int startId, int endId) {
+        return getFemaleForename(startId) + Separator.SPACE.getCharacter() + getFemaleForename(endId);
     }
 
     @Override
-    public String getDoubleMaleName() {
-        return getMaleName() + Separator.SPACE.getCharacter() + getMaleName();
+    public String getDoubleMaleForename() {
+        return getMaleForename() + Separator.SPACE.getCharacter() + getMaleForename();
     }
 
     @Override
-    public String getDoubleMaleName(int startId, int endId) {
-        return getMaleName(startId) + Separator.SPACE.getCharacter() + getMaleName(endId);
+    public String getDoubleMaleForename(int startId, int endId) {
+        return getMaleForename(startId) + Separator.SPACE.getCharacter() + getMaleForename(endId);
     }
 
     @Override
@@ -94,28 +94,48 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
     }
 
     @Override
+    public String getSimpleFemaleName() {
+        return getFemaleForename() + Separator.SPACE.getCharacter() + getSurname();
+    }
+
+    @Override
+    public String getSimpleFemaleName(int forenameId, int surnameId) {
+        return getFemaleForename(forenameId) + Separator.SPACE.getCharacter() + getSurname(surnameId);
+    }
+
+    @Override
+    public String getSimpleMaleName() {
+        return getMaleForename() + Separator.SPACE.getCharacter() + getSurname();
+    }
+
+    @Override
+    public String getSimpleMaleName(int forenameId, int surnameId) {
+        return getMaleForename(forenameId) + Separator.SPACE.getCharacter() + getSurname(surnameId);
+    }
+
+    @Override
     public NameGetter with(Randomizer r) {
         return new NameGetter(r);
     }
 
     @Override
     public String getFemaleMiddleName() {
-        return getFemaleName();
+        return getFemaleForename();
     }
 
     @Override
     public String getFemaleMiddleName(int id) {
-        return getFemaleName(id);
+        return getFemaleForename(id);
     }
 
     @Override
     public String getMaleMiddleName() {
-        return getMaleName();
+        return getMaleForename();
     }
 
     @Override
     public String getMaleMiddleName(int id) {
-        return getMaleName(id);
+        return getMaleForename(id);
     }
 
     @Override
