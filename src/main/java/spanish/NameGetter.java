@@ -154,7 +154,7 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
         float[] probabilities = {1.0F, 0.8F, 0.125F, 0.05F, 0.0125F};
 
         for (float probability : probabilities) {
-            if (r.getFloat() >= probability) {
+            if (probability >= r.getFloat()) {
                 if (sb.length() > 0)
                     sb.append(Separator.SPACE.getCharacter());
                 sb.append(getForename(gender));
