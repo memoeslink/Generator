@@ -27,4 +27,10 @@ public interface NameDefiner extends common.NameDefiner {
     public String getDoubleSurname();
 
     public String getDoubleSurname(int startId, int endId);
+
+    public String getCompoundSurname();
+
+    public String getCompoundSurname(int id);
+
+    public String getSurnames();
 }

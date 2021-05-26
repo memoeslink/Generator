@@ -117,11 +117,11 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
     public String getFemaleFullName() {
         switch (r.getInt(4)) {
             case 1:
-                return getFemaleForename() + Separator.SPACE.getCharacter() + getDualSurname();
+                return getFemaleForename() + Separator.SPACE.getCharacter() + getSurnames();
             case 2:
-                return getDoubleFemaleForename() + Separator.SPACE.getCharacter() + getDualSurname();
+                return getDoubleFemaleForename() + Separator.SPACE.getCharacter() + getSurnames();
             case 3:
-                return getFemaleForenames() + Separator.SPACE.getCharacter() + getDualSurname();
+                return getFemaleForenames() + Separator.SPACE.getCharacter() + getSurnames();
             case 0:
             default:
                 return getFemaleSimpleName();
@@ -132,11 +132,11 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
     public String getMaleFullName() {
         switch (r.getInt(4)) {
             case 1:
-                return getMaleForename() + Separator.SPACE.getCharacter() + getDualSurname();
+                return getMaleForename() + Separator.SPACE.getCharacter() + getSurnames();
             case 2:
-                return getDoubleMaleForename() + Separator.SPACE.getCharacter() + getDualSurname();
+                return getDoubleMaleForename() + Separator.SPACE.getCharacter() + getSurnames();
             case 3:
-                return getMaleForenames() + Separator.SPACE.getCharacter() + getDualSurname();
+                return getMaleForenames() + Separator.SPACE.getCharacter() + getSurnames();
             case 0:
             default:
                 return getMaleSimpleName();
@@ -182,5 +182,27 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
     @Override
     public String getDoubleSurname(int startId, int endId) {
         return getSurname(startId) + Separator.SPACE.getCharacter() + getSurname(endId);
+    }
+
+    @Override
+    public String getCompoundSurname() {
+        return getCompoundSurname(r.getInt(1, Database.countHispanicCompoundSurnames()));
+    }
+
+    @Override
+    public String getCompoundSurname(int id) {
+        return Database.selectHispanicCompoundSurname(id);
+    }
+
+    @Override
+    public String getSurnames() {
+        switch (r.getInt(100)) {
+            case 0:
+                return getCompoundSurname() + Separator.SPACE.getCharacter() + getSurname();
+            case 1:
+                return getSurname() + Separator.SPACE.getCharacter() + getCompoundSurname();
+            default:
+                return getDualSurname();
+        }
     }
 }

@@ -17,6 +17,7 @@ public class Database {
     public static final String TABLE_ENGLISH_OCCUPATIONS = "EnglishOccupations";
     public static final String TABLE_ENGLISH_PHONETICS = "EnglishPhonetics";
     public static final String TABLE_ENGLISH_SURNAMES = "EnglishSurnames";
+    public static final String TABLE_SPANISH_COMPOUND_SURNAMES = "SpanishCompoundSurnames";
     public static final String TABLE_SPANISH_FEMALE_NAMES = "SpanishFemaleNames";
     public static final String TABLE_SPANISH_MALE_NAMES = "SpanishMaleNames";
     public static final String TABLE_SPANISH_NOUNS = "SpanishNouns";
@@ -163,6 +164,14 @@ public class Database {
 
     public static String selectEnglishSurname(int id) {
         return selectRow("SELECT * FROM " + TABLE_ENGLISH_SURNAMES + " WHERE " + TABLE_ENGLISH_SURNAMES + ID_PREFIX + " = ?", 2, id);
+    }
+
+    public static int countHispanicCompoundSurnames() {
+        return countRows(TABLE_SPANISH_COMPOUND_SURNAMES);
+    }
+
+    public static String selectHispanicCompoundSurname(int id) {
+        return selectRow("SELECT * FROM " + TABLE_SPANISH_COMPOUND_SURNAMES + " WHERE " + TABLE_SPANISH_COMPOUND_SURNAMES + ID_PREFIX + " = ?", 2, id);
     }
 
     public static int countHispanicFemaleNames() {
