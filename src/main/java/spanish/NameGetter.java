@@ -144,6 +144,16 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
     }
 
     @Override
+    public String getUsername() {
+        return Database.selectUsername(r.getInt(1, Database.countUsernames()));
+    }
+
+    @Override
+    public String getCompositeUsername() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
     public NameGetter with(Randomizer r) {
         return new NameGetter(r);
     }

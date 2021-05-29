@@ -52,5 +52,9 @@ public interface NameDefiner {
 
     public String getMaleFullName();
 
+    public String getUsername();
+
+    public String getCompositeUsername();
+
     public NameGetter with(Randomizer r);
 }

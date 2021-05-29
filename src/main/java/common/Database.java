@@ -65,23 +65,20 @@ public class Database {
 
         try {
             statement = connection.prepareStatement(query);
+            int n = 1;
 
-            if (parameters.length > 0) {
-                int n = 1;
-
-                for (Object parameter : parameters) {
-                    if (parameter == null)
-                        statement.setNull(n, 0);
-                    else if (parameter instanceof Integer)
-                        statement.setInt(n, (Integer) parameter);
-                    else if (parameter instanceof String)
-                        statement.setString(n, (String) parameter);
-                    else if (parameter instanceof Boolean)
-                        statement.setBoolean(n, (Boolean) parameter);
-                    else
-                        statement.setNull(n, 0);
-                    n++;
-                }
+            for (Object parameter : parameters) {
+                if (parameter == null)
+                    statement.setNull(n, 0);
+                else if (parameter instanceof Integer)
+                    statement.setInt(n, (Integer) parameter);
+                else if (parameter instanceof String)
+                    statement.setString(n, (String) parameter);
+                else if (parameter instanceof Boolean)
+                    statement.setBoolean(n, (Boolean) parameter);
+                else
+                    statement.setNull(n, 0);
+                n++;
             }
             r = statement.executeQuery();
             return r.getString(column);

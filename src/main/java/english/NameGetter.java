@@ -174,6 +174,16 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
     }
 
     @Override
+    public String getUsername() {
+        return Database.selectUsername(r.getInt(1, Database.countUsernames()));
+    }
+
+    @Override
+    public String getCompositeUsername() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
     public NameGetter with(Randomizer r) {
         return new NameGetter(r);
     }
@@ -200,8 +210,8 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
 
     @Override
     public String getMiddleNameInitial() {
-        return Constant.ENGLISH_UPPERCASE_ALPHABET.charAt(r.getInt(Constant.ENGLISH_UPPERCASE_ALPHABET.length())) +
-                "" + Separator.DOT.getCharacter();
+        return Constant.UPPER_CASE_ALPHABET.charAt(r.getInt(Constant.UPPER_CASE_ALPHABET.length())) +
+                StringHelper.EMPTY + Separator.DOT.getCharacter();
     }
 
     @Override

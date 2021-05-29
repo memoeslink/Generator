@@ -10,7 +10,7 @@ public class Word {
     private Gender gender;
 
     public Word() {
-        this("", false, Gender.UNDEFINED);
+        this(StringHelper.EMPTY, false, Gender.UNDEFINED);
     }
 
     public Word(String word) {
@@ -22,7 +22,7 @@ public class Word {
     }
 
     public Word(String word, boolean plural, Gender gender) {
-        this.word = StringHelper.defaultIfNull("");
+        this.word = StringHelper.defaultIfNull(word);
         this.plural = plural;
         this.gender = gender != null ? gender : Gender.UNDEFINED;
     }
@@ -84,13 +84,13 @@ public class Word {
             return getNeutralForm();
         combination = combination != null ? combination : WordCombination.ONLY_SLASH;
 
-        if (!StringHelper.defaultIfNull(masculineForm).isEmpty() && !StringHelper.defaultIfNull(feminineForm).isEmpty()) {
+        if (!StringHelper.isNullOrEmpty(masculineForm) && !StringHelper.isNullOrEmpty(feminineForm)) {
             String incompleteMasculineForm = StringHelper.removeLastChar(masculineForm);
             String incompleteFeminineForm = StringHelper.removeLastChar(feminineForm);
 
             if (incompleteMasculineForm.equals(incompleteFeminineForm))
                 return masculineForm + combination.getStarter() + feminineForm.charAt(feminineForm.length() - 1) +
-                        (combination.getFinisher() != '\0' ? combination.getFinisher() : "");
+                        (combination.getFinisher() != CharHelper.NULL_CHAR ? combination.getFinisher() : StringHelper.EMPTY);
             return masculineForm + combination.getCombinator() + feminineForm;
         }
         return getNeutralForm();

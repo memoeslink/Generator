@@ -1,0 +1,20 @@
+package common;
+
+public interface NounDefiner {
+
+    public String getEmptyNoun();
+
+    public String getNoun();
+
+    public String getPluralNoun();
+
+    public String getFemaleNoun();
+
+    public String getPluralFemaleNoun();
+
+    public String getMaleNoun();
+
+    public String getPluralMaleNoun();
+
+    public NounDefiner with(Randomizer r);
+}

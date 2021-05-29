@@ -137,6 +137,16 @@ public class NameGetter implements NameDefiner {
     }
 
     @Override
+    public String getUsername() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getCompositeUsername() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
     public NameGetter with(Randomizer r) {
         return new common.NameGetter(r);
     }
