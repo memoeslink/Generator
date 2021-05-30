@@ -124,6 +124,16 @@ public class StringHelper {
         return s.substring(0, n);
     }
 
+    public static String substringAfterLast(final String s, final String separator) {
+        if (isNullOrEmpty(s) || isNullOrEmpty(separator))
+            return s;
+        int n = s.lastIndexOf(separator);
+
+        if (n == DEFAULT_INDEX || n <= s.length() - separator.length())
+            return s;
+        return s.substring(n + 1);
+    }
+
     public static boolean startsWith(String s, String prefix) {
         if (s != null && prefix != null && s.length() >= prefix.length())
             return s.indexOf(prefix) == 0;
