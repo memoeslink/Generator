@@ -81,26 +81,26 @@ public class Pluralizer {
         return String.join(String.valueOf(Separator.SPACE.getCharacter()), words);
     }
 
-    public static Noun pluralize(Noun noun) {
-        if (noun == null || StringHelper.isNullOrBlank(noun.getNoun()))
-            return new Noun();
+    public static Base pluralize(Base base) {
+        if (base == null || StringHelper.isNullOrBlank(base.getBase()))
+            return new Base();
 
-        switch (noun.getArticle()) {
+        switch (base.getArticle()) {
             case MASCULINE_SINGULAR:
             case NEUTER:
-                noun.setArticle(Article.MASCULINE_PLURAL);
+                base.setArticle(Article.MASCULINE_PLURAL);
                 break;
             case FEMININE_SINGULAR:
-                noun.setArticle(Article.FEMININE_PLURAL);
+                base.setArticle(Article.FEMININE_PLURAL);
                 break;
             case INDEFINITE:
             default:
-                noun.setArticle(Article.INDEFINITE);
+                base.setArticle(Article.INDEFINITE);
                 break;
         }
-        noun.setNoun(pluralize(noun.getNoun()));
-        noun.setPlural(true);
-        return noun;
+        base.setBase(pluralize(base.getBase()));
+        base.setPlural(true);
+        return base;
     }
 
     private static String convert(String s) {

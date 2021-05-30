@@ -4,6 +4,7 @@ import java.text.Normalizer;
 
 public class StringHelper {
     public static final String EMPTY = "";
+    public static final int DEFAULT_INDEX = -1;
 
     public static boolean isNullOrEmpty(String s) {
         return s == null || s.length() == 0;
@@ -75,13 +76,13 @@ public class StringHelper {
 
     public static String removeFirst(String s, String regex) {
         if (isNotNullOrEmpty(s))
-            return s.replaceFirst(regex, StringHelper.EMPTY);
+            return s.replaceFirst(regex, EMPTY);
         return s;
     }
 
     public static String remove(String s, String regex) {
         if (isNotNullOrEmpty(s))
-            return s.replaceAll(regex, StringHelper.EMPTY);
+            return s.replaceAll(regex, EMPTY);
         return s;
     }
 
@@ -111,6 +112,16 @@ public class StringHelper {
         else if (s.length() <= n)
             return s;
         return s.substring(s.length() - n);
+    }
+
+    public static String substringBeforeLast(final String s, final String separator) {
+        if (isNullOrEmpty(s) || isNullOrEmpty(separator))
+            return s;
+        int n = s.lastIndexOf(separator);
+
+        if (n == DEFAULT_INDEX)
+            return s;
+        return s.substring(0, n);
     }
 
     public static boolean startsWith(String s, String prefix) {
@@ -145,6 +156,17 @@ public class StringHelper {
 
         for (String occurrence : occurrences) {
             if (s.equals(occurrence)) return true;
+        }
+        return false;
+    }
+
+    public static boolean containsAny(String s, String... affixes) {
+        for (String affix : affixes) {
+            if (s != null && s.contains(affix))
+                return true;
+
+            if (affix == null)
+                return true;
         }
         return false;
     }
@@ -294,7 +316,7 @@ public class StringHelper {
 
                 // Octal escape?
                 if (nextChar >= '0' && nextChar <= '7') {
-                    String code = "" + nextChar;
+                    String code = EMPTY + nextChar;
                     i++;
                     if ((i < st.length() - 1) && st.charAt(i + 1) >= '0'
                             && st.charAt(i + 1) <= '7') {
@@ -342,9 +364,8 @@ public class StringHelper {
                             break;
                         }
 
-                        int code = Integer.parseInt(
-                                "" + st.charAt(i + 2) + st.charAt(i + 3)
-                                        + st.charAt(i + 4) + st.charAt(i + 5), 16);
+                        int code = Integer.parseInt(EMPTY + st.charAt(i + 2) + st.charAt(i + 3) +
+                                st.charAt(i + 4) + st.charAt(i + 5), 16);
                         sb.append(Character.toChars(code));
                         i += 5;
                         continue;

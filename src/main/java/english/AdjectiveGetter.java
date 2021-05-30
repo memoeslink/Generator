@@ -1,7 +1,9 @@
 package english;
 
 import common.AdjectiveDefiner;
+import common.Database;
 import common.Randomizer;
+import io.github.encryptorcode.pluralize.Pluralize;
 
 public final class AdjectiveGetter extends common.AdjectiveGetter implements AdjectiveDefiner {
 
@@ -15,32 +17,36 @@ public final class AdjectiveGetter extends common.AdjectiveGetter implements Adj
 
     @Override
     public String getAdjective() {
-        return super.getAdjective();
+        return Database.selectEnglishAdjective(r.getInt(1, Database.countEnglishAdjectives()));
     }
 
     @Override
     public String getPluralAdjective() {
-        return super.getPluralAdjective();
+        String adjective = getAdjective();
+
+        if (Pluralize.isSingular(adjective))
+            adjective = Pluralize.plural(adjective);
+        return adjective;
     }
 
     @Override
     public String getFemaleAdjective() {
-        return super.getFemaleAdjective();
+        return getAdjective();
     }
 
     @Override
     public String getPluralFemaleAdjective() {
-        return super.getPluralFemaleAdjective();
+        return getPluralAdjective();
     }
 
     @Override
     public String getMaleAdjective() {
-        return super.getMaleAdjective();
+        return getAdjective();
     }
 
     @Override
     public String getPluralMaleAdjective() {
-        return super.getPluralMaleAdjective();
+        return getPluralAdjective();
     }
 
     @Override

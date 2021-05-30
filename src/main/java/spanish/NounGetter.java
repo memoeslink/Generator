@@ -16,37 +16,37 @@ public final class NounGetter extends common.NounGetter implements NounDefiner, 
     @Override
     public String getNoun() {
         Noun noun = getRefinedNoun();
-        return !noun.isPlural() ? noun.getNoun() : getNoun();
+        return !noun.isPlural() ? noun.getBase() : getNoun();
     }
 
     @Override
     public String getPluralNoun() {
         Noun noun = getRefinedNoun();
-        return noun.isPlural() ? noun.getNoun() : Pluralizer.pluralize(noun).getNoun();
+        return noun.isPlural() ? noun.getBase() : Pluralizer.pluralize(noun).getBase();
     }
 
     @Override
     public String getFemaleNoun() {
         Noun noun = getRefinedNoun();
-        return noun.getGender() == Gender.FEMININE && !noun.isPlural() ? noun.getNoun() : getFemaleNoun();
+        return noun.getGender() == Gender.FEMININE && !noun.isPlural() ? noun.getBase() : getFemaleNoun();
     }
 
     @Override
     public String getPluralFemaleNoun() {
         Noun noun = getRefinedNoun();
-        return noun.getGender() == Gender.FEMININE ? (noun.isPlural() ? noun.getNoun() : Pluralizer.pluralize(noun).getNoun()) : getFemaleNoun();
+        return noun.getGender() == Gender.FEMININE ? (noun.isPlural() ? noun.getBase() : Pluralizer.pluralize(noun).getBase()) : getPluralFemaleNoun();
     }
 
     @Override
     public String getMaleNoun() {
         Noun noun = getRefinedNoun();
-        return noun.getGender() == Gender.MASCULINE && !noun.isPlural() ? noun.getNoun() : getMaleNoun();
+        return noun.getGender() == Gender.MASCULINE && !noun.isPlural() ? noun.getBase() : getMaleNoun();
     }
 
     @Override
     public String getPluralMaleNoun() {
         Noun noun = getRefinedNoun();
-        return noun.getGender() == Gender.MASCULINE ? (noun.isPlural() ? noun.getNoun() : Pluralizer.pluralize(noun).getNoun()) : getMaleNoun();
+        return noun.getGender() == Gender.MASCULINE ? (noun.isPlural() ? noun.getBase() : Pluralizer.pluralize(noun).getBase()) : getPluralMaleNoun();
     }
 
     @Override
@@ -56,37 +56,37 @@ public final class NounGetter extends common.NounGetter implements NounDefiner, 
 
     @Override
     public String getNounWithArticle() {
-        return getRefinedNoun().getNounWithArticle();
+        return getRefinedNoun().getBaseWithArticle();
+    }
+
+    @Override
+    public String getNounWithIndefiniteArticle() {
+        return getRefinedNoun().getBaseWithIndefiniteArticle();
     }
 
     @Override
     public String getFemaleNounWithArticle() {
         Noun noun = getRefinedNoun();
-        return getRefinedNoun().getGender() == Gender.FEMININE ? noun.getNounWithArticle() : getFemaleNounWithArticle();
-    }
-
-    @Override
-    public String getMaleNounWithArticle() {
-        Noun noun = getRefinedNoun();
-        return getRefinedNoun().getGender() == Gender.MASCULINE ? noun.getNounWithArticle() : getMaleNounWithArticle();
-    }
-
-    @Override
-    public String getNounWithIndefiniteArticle() {
-        return getRefinedNoun().getNounWithIndefiniteArticle();
+        return getRefinedNoun().getGender() == Gender.FEMININE ? noun.getBaseWithArticle() : getFemaleNounWithArticle();
     }
 
     @Override
     public String getFemaleNounWithIndefiniteArticle() {
         Noun noun = getRefinedNoun();
-        return getRefinedNoun().getGender() == Gender.FEMININE ? noun.getNounWithIndefiniteArticle() :
+        return getRefinedNoun().getGender() == Gender.FEMININE ? noun.getBaseWithIndefiniteArticle() :
                 getFemaleNounWithIndefiniteArticle();
+    }
+
+    @Override
+    public String getMaleNounWithArticle() {
+        Noun noun = getRefinedNoun();
+        return getRefinedNoun().getGender() == Gender.MASCULINE ? noun.getBaseWithArticle() : getMaleNounWithArticle();
     }
 
     @Override
     public String getMaleNounWithIndefiniteArticle() {
         Noun noun = getRefinedNoun();
-        return getRefinedNoun().getGender() == Gender.MASCULINE ? noun.getNounWithIndefiniteArticle() :
+        return getRefinedNoun().getGender() == Gender.MASCULINE ? noun.getBaseWithIndefiniteArticle() :
                 getMaleNounWithIndefiniteArticle();
     }
 

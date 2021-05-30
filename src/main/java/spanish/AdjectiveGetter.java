@@ -1,6 +1,8 @@
 package spanish;
 
 import common.AdjectiveDefiner;
+import common.Database;
+import common.Gender;
 import common.Randomizer;
 
 public final class AdjectiveGetter extends common.AdjectiveGetter implements AdjectiveDefiner, spanish.AdjectiveDefiner {
@@ -15,32 +17,38 @@ public final class AdjectiveGetter extends common.AdjectiveGetter implements Adj
 
     @Override
     public String getAdjective() {
-        return super.getAdjective();
+        Adjective adjective = getRefinedSingularAdjective();
+        return !adjective.isPlural() ? adjective.getBase() : getAdjective();
     }
 
     @Override
     public String getPluralAdjective() {
-        return super.getPluralAdjective();
+        Adjective adjective = getRefinedPluralAdjective();
+        return adjective.isPlural() ? adjective.getBase() : getPluralAdjective();
     }
 
     @Override
     public String getFemaleAdjective() {
-        return super.getFemaleAdjective();
+        Adjective adjective = getRefinedSingularAdjective();
+        return adjective.getGender() == Gender.FEMININE ? adjective.getBase() : getFemaleAdjective();
     }
 
     @Override
     public String getPluralFemaleAdjective() {
-        return super.getPluralFemaleAdjective();
+        Adjective adjective = getRefinedPluralAdjective();
+        return adjective.getGender() == Gender.FEMININE ? adjective.getBase() : getPluralFemaleAdjective();
     }
 
     @Override
     public String getMaleAdjective() {
-        return super.getMaleAdjective();
+        Adjective adjective = getRefinedSingularAdjective();
+        return adjective.getGender() == Gender.MASCULINE ? adjective.getBase() : getMaleAdjective();
     }
 
     @Override
     public String getPluralMaleAdjective() {
-        return super.getPluralMaleAdjective();
+        Adjective adjective = getRefinedPluralAdjective();
+        return adjective.getGender() == Gender.MASCULINE ? adjective.getBase() : getPluralMaleAdjective();
     }
 
     @Override
@@ -49,7 +57,16 @@ public final class AdjectiveGetter extends common.AdjectiveGetter implements Adj
     }
 
     @Override
-    public String getRefinedAdjective() {
-        return null;
+    public Adjective getRefinedSingularAdjective() {
+        Adjective adjective = getRefinedAdjective(Database.selectSpanishSingularAdjective(r.getInt(1, Database.countSpanishSingularAdjectives())));
+        adjective.setPlural(false);
+        return adjective;
+    }
+
+    @Override
+    public Adjective getRefinedPluralAdjective() {
+        Adjective adjective = getRefinedAdjective(Database.selectSpanishPluralAdjective(r.getInt(1, Database.countSpanishPluralAdjectives())));
+        adjective.setPlural(true);
+        return adjective;
     }
 }

@@ -4,13 +4,13 @@ public interface NounDefiner extends common.NounDefiner {
 
     public String getNounWithArticle();
 
-    public String getFemaleNounWithArticle();
-
-    public String getMaleNounWithArticle();
-
     public String getNounWithIndefiniteArticle();
 
+    public String getFemaleNounWithArticle();
+
     public String getFemaleNounWithIndefiniteArticle();
+
+    public String getMaleNounWithArticle();
 
     public String getMaleNounWithIndefiniteArticle();
 
