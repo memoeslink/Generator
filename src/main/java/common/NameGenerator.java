@@ -59,6 +59,8 @@ public class NameGenerator extends Generator {
                 return getter.with(r).getUsername();
             case COMPOSITE_USERNAME:
                 return getter.with(r).getCompositeUsername();
+            case DERIVED_USERNAME:
+                return getter.with(r).getDerivedUsername();
             case EMPTY:
             default:
                 return getter.getEmptyName();

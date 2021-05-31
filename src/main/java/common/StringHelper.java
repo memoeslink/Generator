@@ -52,6 +52,18 @@ public class StringHelper {
         return s;
     }
 
+    public static String joinWithSpace(String a, String b) {
+        a = defaultIfNull(a);
+        b = defaultIfNull(b);
+
+        if (isNotNullOrEmpty(a) && isNullOrEmpty(b))
+            return a;
+
+        if (isNullOrEmpty(a) && isNotNullOrEmpty(b))
+            return b;
+        return a + Separator.SPACE.getCharacter() + b;
+    }
+
     public static String trimToEmpty(String s) {
         return s == null ? EMPTY : s.trim();
     }

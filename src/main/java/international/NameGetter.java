@@ -134,6 +134,11 @@ public final class NameGetter extends common.NameGetter implements NameDefiner {
     }
 
     @Override
+    public String getDerivedUsername() {
+        return getAnyGetter().getCompositeUsername();
+    }
+
+    @Override
     public common.NameGetter with(Randomizer r) {
         return new NameGetter(r);
     }

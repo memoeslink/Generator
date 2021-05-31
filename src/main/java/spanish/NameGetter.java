@@ -187,6 +187,11 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
     }
 
     @Override
+    public String getDerivedUsername() {
+        return getDerivedUsername(Database.selectFamilyName(r.getInt(1, Database.countFamilyNames())), r);
+    }
+
+    @Override
     public NameGetter with(Randomizer r) {
         return new NameGetter(r);
     }

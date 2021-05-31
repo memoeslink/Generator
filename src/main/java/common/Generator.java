@@ -20,15 +20,15 @@ public class Generator {
         this.r = new Randomizer(seed);
     }
 
-    protected Locale getLocale() {
+    public Locale getLocale() {
         return locale;
     }
 
-    protected Randomizer getRandomizer() {
+    public Randomizer getRandomizer() {
         return r;
     }
 
-    protected String getDefaultValue() {
+    public String getDefaultValue() {
         return Database.DEFAULT_VALUE;
     }
 }

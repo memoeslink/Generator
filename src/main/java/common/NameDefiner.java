@@ -1,5 +1,7 @@
 package common;
 
+import english.Constant;
+
 public interface NameDefiner {
 
     public String getEmptyName();
@@ -57,7 +59,7 @@ public interface NameDefiner {
     public String getCompositeUsername();
 
     default String getCompositeUsername(String a, String b, Randomizer r) {
-        String username = (a + Separator.SPACE.getCharacter() + b).trim();
+        String username = StringHelper.joinWithSpace(a, b).trim();
         username = StringHelper.normalize(username);
         r = r != null ? r : new Randomizer();
         int index = -1;
@@ -98,6 +100,20 @@ public interface NameDefiner {
                 username += numbers[r.getInt(0, numbers.length)];
             }
         }
+        return username;
+    }
+
+    public String getDerivedUsername();
+
+    default String getDerivedUsername(String s, Randomizer r) {
+        String username = s;
+        username = StringHelper.normalize(username);
+        username = StringHelper.removeAll(username, "[^a-zA-Z]");
+        username = Getter.with(r).getAChar(Constant.UPPERCASE_ALPHABET) + username;
+
+        if (username.length() > 4)
+            username += username.substring(0, 5);
+        username += r.getInt(0, 101);
         return username;
     }
 
