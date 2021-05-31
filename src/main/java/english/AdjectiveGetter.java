@@ -3,7 +3,6 @@ package english;
 import common.AdjectiveDefiner;
 import common.Database;
 import common.Randomizer;
-import io.github.encryptorcode.pluralize.Pluralize;
 
 public final class AdjectiveGetter extends common.AdjectiveGetter implements AdjectiveDefiner {
 
@@ -22,11 +21,7 @@ public final class AdjectiveGetter extends common.AdjectiveGetter implements Adj
 
     @Override
     public String getPluralAdjective() {
-        String adjective = getAdjective();
-
-        if (Pluralize.isSingular(adjective))
-            adjective = Pluralize.plural(adjective);
-        return adjective;
+        return getAdjective();
     }
 
     @Override

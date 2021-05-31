@@ -180,7 +180,9 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
 
     @Override
     public String getCompositeUsername() {
-        return Database.DEFAULT_VALUE;
+        String adjective = StringHelper.removeAll(new AdjectiveGetter().with(r).getAdjective(), "[^a-zA-Z0-9\\\\s]");
+        String noun = StringHelper.removeAll(new NounGetter().with(r).getNoun(), "[^a-zA-Z0-9\\\\s]");
+        return getCompositeUsername(adjective, noun, r);
     }
 
     @Override

@@ -244,7 +244,7 @@ public class SyllableSeparator {
 
     public String convertToProparoxytone() {
         if (!isParoxytone())
-            return "";
+            return StringHelper.EMPTY;
         List<String> syllables = this.syllables;
         syllables.set(syllables.size() - 3, StringHelper.stripAccents(syllables.get(syllables.size() - 3)));
         syllables.add("es");
@@ -260,6 +260,6 @@ public class SyllableSeparator {
             letters[n] = Normalizer.normalize(accentedLetter, Normalizer.Form.NFC).charAt(0);
         }
         syllables.set(syllables.size() - 3, String.valueOf(letters));
-        return String.join("", syllables);
+        return String.join(StringHelper.EMPTY, syllables);
     }
 }

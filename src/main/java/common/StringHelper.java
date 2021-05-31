@@ -56,9 +56,52 @@ public class StringHelper {
         return s == null ? EMPTY : s.trim();
     }
 
+    public static String normalize(String s) {
+        if (isNotNullOrEmpty(s))
+            return Normalizer.normalize(s, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
+        return s;
+    }
+
     public static String stripAccents(String s) {
         if (isNotNullOrEmpty(s))
             return Normalizer.normalize(s, Normalizer.Form.NFD).replaceAll("[\\p{InCombiningDiacriticalMarks}]", EMPTY);
+        return s;
+    }
+
+    public static String capitalizeFirst(String s) {
+        if (isNullOrEmpty(s))
+            return s;
+
+        if (Character.isLowerCase(s.charAt(0))) {
+            char c = Character.toUpperCase(s.charAt(0));
+
+            if (Character.isLetter(c))
+                return c + s.substring(1);
+        }
+        return s;
+    }
+
+    public static String capitalize(String s) {
+        if (isNullOrEmpty(s))
+            return s;
+        String[] parts = s.split("\\s+");
+
+        for (int n = 0; n < parts.length; n++) {
+            parts[n] = capitalizeFirst(parts[n]);
+        }
+        s = String.join(String.valueOf(Separator.SPACE.getCharacter()), parts);
+        return s;
+    }
+
+    public static String remove(String s, String occurrence) {
+        if (isNotNullOrEmpty(s) && isNotNullOrEmpty(occurrence))
+            return s.replace(occurrence, EMPTY);
+        return s;
+    }
+
+    public static String removeAll(String s, String regex) {
+        if (isNotNullOrEmpty(s) && isNotNullOrEmpty(regex))
+            return s.replaceAll(regex, EMPTY);
         return s;
     }
 
@@ -77,12 +120,6 @@ public class StringHelper {
     public static String removeFirst(String s, String regex) {
         if (isNotNullOrEmpty(s))
             return s.replaceFirst(regex, EMPTY);
-        return s;
-    }
-
-    public static String remove(String s, String regex) {
-        if (isNotNullOrEmpty(s))
-            return s.replaceAll(regex, EMPTY);
         return s;
     }
 
@@ -149,7 +186,7 @@ public class StringHelper {
 
     public static boolean endsWith(String s, String suffix) {
         if (s != null && suffix != null && s.length() >= suffix.length())
-            return s.substring(s.length() - suffix.length()).equals(suffix);
+            return s.endsWith(suffix);
         return suffix == null;
     }
 

@@ -7,6 +7,8 @@ public class GeneratorManager {
     private Long seed;
     private NameGenerator nameGenerator;
     private OccupationGenerator occupationGenerator;
+    private NounGenerator nounGenerator;
+    private AdjectiveGenerator adjectiveGenerator;
 
     public GeneratorManager() {
         this(Locale.ENGLISH, null);
@@ -48,8 +50,18 @@ public class GeneratorManager {
         return occupationGenerator;
     }
 
+    public NounGenerator getNounGenerator() {
+        return nounGenerator;
+    }
+
+    public AdjectiveGenerator getAdjectiveGenerator() {
+        return adjectiveGenerator;
+    }
+
     private void initializeGenerators() {
         nameGenerator = new NameGenerator(locale, seed);
         occupationGenerator = new OccupationGenerator(locale, seed);
+        nounGenerator = new NounGenerator(locale, seed);
+        adjectiveGenerator = new AdjectiveGenerator(locale, seed);
     }
 }

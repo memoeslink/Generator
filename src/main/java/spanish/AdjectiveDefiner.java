@@ -21,7 +21,7 @@ public interface AdjectiveDefiner extends common.AdjectiveDefiner {
             s = StringHelper.substringBeforeLast(s, "o") + "a";
             adjective.setGender(Gender.FEMININE);
         }
-        s = s.replaceFirst("\\s*(A[OQ][S0][CFM][A-Z\\d]{2})", "");
+        s = s.replaceFirst("\\s*(A[OQ][S0][CFM][A-Z\\d]{2})", StringHelper.EMPTY);
         adjective.setBase(s);
         return adjective;
     }
