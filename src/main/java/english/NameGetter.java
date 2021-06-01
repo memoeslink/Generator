@@ -217,7 +217,8 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
 
     @Override
     public String getMiddleNameInitial() {
-        return Getter.with(r).getAChar(Constant.UPPERCASE_ALPHABET) + StringHelper.EMPTY + Separator.DOT.getCharacter();
+        return new ResourceGetter().with(r).getAChar(Constant.UPPERCASE_ALPHABET) + StringHelper.EMPTY +
+                Separator.DOT.getCharacter();
     }
 
     @Override

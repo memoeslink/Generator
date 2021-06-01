@@ -1,14 +1,13 @@
 package common;
 
-public class AdjectiveGetter implements AdjectiveDefiner {
-    protected Randomizer r;
+public class AdjectiveGetter extends Getter implements AdjectiveDefiner {
 
     public AdjectiveGetter() {
-        r = new Randomizer();
+        super();
     }
 
     protected AdjectiveGetter(Randomizer r) {
-        this.r = r != null ? r : new Randomizer();
+        super(r);
     }
 
     @Override

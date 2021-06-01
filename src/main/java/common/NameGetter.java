@@ -1,14 +1,13 @@
 package common;
 
-public class NameGetter implements NameDefiner {
-    protected Randomizer r;
+public class NameGetter extends Getter implements NameDefiner {
 
     public NameGetter() {
-        r = new Randomizer();
+        super();
     }
 
     protected NameGetter(Randomizer r) {
-        this.r = r != null ? r : new Randomizer();
+        super(r);
     }
 
     @Override
@@ -153,6 +152,6 @@ public class NameGetter implements NameDefiner {
 
     @Override
     public NameGetter with(Randomizer r) {
-        return new common.NameGetter(r);
+        return new NameGetter(r);
     }
 }

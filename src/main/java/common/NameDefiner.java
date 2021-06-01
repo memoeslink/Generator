@@ -109,7 +109,7 @@ public interface NameDefiner {
         String username = s;
         username = StringHelper.normalize(username);
         username = StringHelper.removeAll(username, "[^a-zA-Z]");
-        username = Getter.with(r).getAChar(Constant.UPPERCASE_ALPHABET) + username;
+        username = new ResourceGetter().with(r).getAChar(Constant.UPPERCASE_ALPHABET) + username;
 
         if (username.length() > 4)
             username += username.substring(0, 5);

@@ -1,14 +1,13 @@
 package common;
 
-public class NounGetter implements NounDefiner {
-    protected Randomizer r;
+public class NounGetter extends Getter implements NounDefiner {
 
     public NounGetter() {
-        r = new Randomizer();
+        super();
     }
 
     protected NounGetter(Randomizer r) {
-        this.r = r != null ? r : new Randomizer();
+        super(r);
     }
 
     @Override
@@ -48,6 +47,6 @@ public class NounGetter implements NounDefiner {
 
     @Override
     public NounGetter with(Randomizer r) {
-        return new common.NounGetter(r);
+        return new NounGetter(r);
     }
 }

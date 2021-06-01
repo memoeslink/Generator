@@ -1,14 +1,13 @@
 package common;
 
-public class OccupationGetter implements OccupationDefiner {
-    protected Randomizer r;
+public class OccupationGetter extends Getter implements OccupationDefiner {
 
     public OccupationGetter() {
-        r = new Randomizer();
+        super();
     }
 
     protected OccupationGetter(Randomizer r) {
-        this.r = r != null ? r : new Randomizer();
+        super(r);
     }
 
     @Override

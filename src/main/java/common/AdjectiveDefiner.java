@@ -16,5 +16,5 @@ public interface AdjectiveDefiner {
 
     public String getPluralMaleAdjective();
 
-    public AdjectiveDefiner with(Randomizer r);
+    public AdjectiveGetter with(Randomizer r);
 }

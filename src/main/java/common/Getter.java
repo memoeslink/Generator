@@ -1,19 +1,13 @@
 package common;
 
-public final class Getter {
+public abstract class Getter {
     protected Randomizer r;
 
-    private Getter(Randomizer r) {
+    public Getter() {
+        r = new Randomizer();
+    }
+
+    protected Getter(Randomizer r) {
         this.r = r != null ? r : new Randomizer();
-    }
-
-    public char getAChar(String s) {
-        if (StringHelper.isNotNullOrEmpty(s))
-            return s.charAt(r.getInt(s.length()));
-        return CharHelper.NULL_CHAR;
-    }
-
-    public static Getter with(Randomizer r) {
-        return new Getter(r);
     }
 }
