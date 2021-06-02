@@ -160,6 +160,11 @@ public final class NameGetter extends common.NameGetter implements NameDefiner {
     }
 
     @Override
+    public String getAnonymousAnimal() {
+        return getAnyGetter().getAnonymousAnimal();
+    }
+
+    @Override
     public common.NameGetter with(Randomizer r) {
         return new NameGetter(r);
     }

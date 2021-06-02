@@ -119,5 +119,7 @@ public interface NameDefiner {
 
     public String getAnonymousName();
 
+    public String getAnonymousAnimal();
+
     public NameGetter with(Randomizer r);
 }

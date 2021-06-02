@@ -65,6 +65,8 @@ public class NameGenerator extends Generator {
                 return getter.with(r).getDerivedUsername();
             case ANONYMOUS_NAME:
                 return getter.with(r).getAnonymousName();
+            case ANONYMOUS_ANIMAL:
+                return getter.with(r).getAnonymousAnimal();
             case EMPTY:
             default:
                 return getter.getEmptyName();

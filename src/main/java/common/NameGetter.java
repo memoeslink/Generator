@@ -161,6 +161,11 @@ public class NameGetter extends Getter implements NameDefiner {
     }
 
     @Override
+    public String getAnonymousAnimal() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
     public NameGetter with(Randomizer r) {
         return new NameGetter(r);
     }

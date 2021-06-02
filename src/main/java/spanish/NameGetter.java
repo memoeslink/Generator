@@ -236,6 +236,13 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
     }
 
     @Override
+    public String getAnonymousAnimal() {
+        String animal = ResourceGetter.with(r).getString(Constant.ANONYMOUS_ANIMALS);
+        animal = StringHelper.capitalizeFirst(animal);
+        return animal + Separator.SPACE.getCharacter() + (StringHelper.endsWith(animal, "a") ? "anónima" : "anónimo");
+    }
+
+    @Override
     public NameGetter with(Randomizer r) {
         return new NameGetter(r);
     }
