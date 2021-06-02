@@ -1,7 +1,5 @@
 package common;
 
-import english.Constant;
-
 public interface NameDefiner {
 
     public String getEmptyName();
@@ -53,6 +51,8 @@ public interface NameDefiner {
     public String getFemaleFullName();
 
     public String getMaleFullName();
+
+    public String getFullName();
 
     public String getUsername();
 
@@ -109,13 +109,15 @@ public interface NameDefiner {
         String username = s;
         username = StringHelper.normalize(username);
         username = StringHelper.removeAll(username, "[^a-zA-Z]");
-        username = new ResourceGetter().with(r).getAChar(Constant.UPPERCASE_ALPHABET) + username;
 
         if (username.length() > 4)
-            username += username.substring(0, 5);
+            username = username.substring(0, 5);
+        username = ResourceGetter.with(r).getUpperCase() + username;
         username += r.getInt(0, 101);
         return username;
     }
+
+    public String getAnonymousName();
 
     public NameGetter with(Randomizer r);
 }

@@ -10,8 +10,16 @@ public class StringHelper {
         return s == null || s.length() == 0;
     }
 
+    public static boolean isNullOrEmpty(String[] strings) {
+        return strings == null || strings.length == 0;
+    }
+
     public static boolean isNotNullOrEmpty(String s) {
         return !isNullOrEmpty(s);
+    }
+
+    public static boolean isNotNullOrEmpty(String[] strings) {
+        return !isNullOrEmpty(strings);
     }
 
     public static boolean isNullOrBlank(String s) {

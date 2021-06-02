@@ -7,4 +7,5 @@ public class Constant {
     public static final String LETTERS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     public static final String VOWELS = "aeiouAEIOU";
     public static final String CONSONANTS = "bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ";
+    public static final String[] GENERATIONAL_SUFFIX = {"Jr.", "Sr."};
 }

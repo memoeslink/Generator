@@ -4,13 +4,19 @@ import common.NameDefiner;
 import common.*;
 
 public final class NameGetter extends common.NameGetter implements NameDefiner, spanish.NameDefiner {
+    private final NounGetter nounGetter;
+    private final AdjectiveGetter adjectiveGetter;
 
     public NameGetter() {
         super();
+        nounGetter = new NounGetter();
+        adjectiveGetter = new AdjectiveGetter();
     }
 
     private NameGetter(Randomizer r) {
         super(r);
+        nounGetter = new NounGetter().with(r);
+        adjectiveGetter = new AdjectiveGetter().with(r);
     }
 
     @Override
@@ -144,6 +150,18 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
     }
 
     @Override
+    public String getFullName() {
+        switch (r.getInt(2)) {
+            case 0:
+                return getFemaleFullName();
+            case 1:
+                return getMaleFullName();
+            default:
+                return Database.DEFAULT_VALUE;
+        }
+    }
+
+    @Override
     public String getUsername() {
         return Database.selectUsername(r.getInt(1, Database.countUsernames()));
     }
@@ -155,28 +173,28 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
 
         switch (r.getInt(6)) {
             case 0:
-                adjective = new AdjectiveGetter().with(r).getAdjective();
-                noun = new NounGetter().with(r).getNoun();
+                adjective = adjectiveGetter.getAdjective();
+                noun = nounGetter.getNoun();
                 break;
             case 1:
-                adjective = new AdjectiveGetter().with(r).getPluralAdjective();
-                noun = new NounGetter().with(r).getPluralNoun();
+                adjective = adjectiveGetter.getPluralAdjective();
+                noun = nounGetter.getPluralNoun();
                 break;
             case 2:
-                adjective = new AdjectiveGetter().with(r).getFemaleAdjective();
-                noun = new NounGetter().with(r).getFemaleNoun();
+                adjective = adjectiveGetter.getFemaleAdjective();
+                noun = nounGetter.getFemaleNoun();
                 break;
             case 3:
-                adjective = new AdjectiveGetter().with(r).getPluralFemaleAdjective();
-                noun = new NounGetter().with(r).getPluralFemaleNoun();
+                adjective = adjectiveGetter.getPluralFemaleAdjective();
+                noun = nounGetter.getPluralFemaleNoun();
                 break;
             case 4:
-                adjective = new AdjectiveGetter().with(r).getMaleAdjective();
-                noun = new NounGetter().with(r).getMaleNoun();
+                adjective = adjectiveGetter.getMaleAdjective();
+                noun = nounGetter.getMaleNoun();
                 break;
             case 5:
-                adjective = new AdjectiveGetter().with(r).getPluralMaleAdjective();
-                noun = new NounGetter().with(r).getPluralMaleNoun();
+                adjective = adjectiveGetter.getPluralMaleAdjective();
+                noun = nounGetter.getPluralMaleNoun();
                 break;
             default:
                 adjective = Database.DEFAULT_VALUE;
@@ -189,6 +207,32 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
     @Override
     public String getDerivedUsername() {
         return getDerivedUsername(Database.selectFamilyName(r.getInt(1, Database.countFamilyNames())), r);
+    }
+
+    @Override
+    public String getAnonymousName() {
+        String adjective;
+        String noun;
+
+        switch (r.getInt(3)) {
+            case 0:
+                adjective = adjectiveGetter.getAdjective();
+                noun = nounGetter.getNoun();
+                break;
+            case 1:
+                adjective = adjectiveGetter.getFemaleAdjective();
+                noun = nounGetter.getFemaleNoun();
+                break;
+            case 2:
+                adjective = adjectiveGetter.getMaleAdjective();
+                noun = nounGetter.getMaleNoun();
+                break;
+            default:
+                adjective = Database.DEFAULT_VALUE;
+                noun = Database.DEFAULT_VALUE;
+                break;
+        }
+        return StringHelper.joinWithSpace(noun, adjective);
     }
 
     @Override

@@ -4,13 +4,19 @@ import common.NameDefiner;
 import common.*;
 
 public final class NameGetter extends common.NameGetter implements NameDefiner, english.NameDefiner {
+    private final NounGetter nounGetter;
+    private final AdjectiveGetter adjectiveGetter;
 
     public NameGetter() {
         super();
+        nounGetter = new NounGetter();
+        adjectiveGetter = new AdjectiveGetter();
     }
 
     private NameGetter(Randomizer r) {
         super(r);
+        nounGetter = new NounGetter().with(r);
+        adjectiveGetter = new AdjectiveGetter().with(r);
     }
 
     @Override
@@ -115,7 +121,7 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
 
     @Override
     public String getFemaleFullName() {
-        switch (r.getInt(7)) {
+        switch (r.getInt(8)) {
             case 1:
                 return getFemaleForename() + Separator.SPACE.getCharacter() + getDualSurname();
             case 2:
@@ -137,6 +143,8 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
                 return (getFemaleForename() + Separator.SPACE.getCharacter() +
                         getMiddleNameInitial() + Separator.SPACE.getCharacter() +
                         getDualSurname());
+            case 7:
+                return getFemaleName();
             case 0:
             default:
                 return getFemaleSimpleName();
@@ -145,7 +153,7 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
 
     @Override
     public String getMaleFullName() {
-        switch (r.getInt(7)) {
+        switch (r.getInt(8)) {
             case 1:
                 return getMaleForename() + Separator.SPACE.getCharacter() + getDualSurname();
             case 2:
@@ -167,9 +175,23 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
                 return (getMaleForename() + Separator.SPACE.getCharacter() +
                         getMiddleNameInitial() + Separator.SPACE.getCharacter() +
                         getDualSurname());
+            case 7:
+                return getMaleName();
             case 0:
             default:
                 return getFemaleSimpleName();
+        }
+    }
+
+    @Override
+    public String getFullName() {
+        switch (r.getInt(2)) {
+            case 0:
+                return getFemaleFullName();
+            case 1:
+                return getMaleFullName();
+            default:
+                return Database.DEFAULT_VALUE;
         }
     }
 
@@ -180,14 +202,21 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
 
     @Override
     public String getCompositeUsername() {
-        String adjective = StringHelper.removeAll(new AdjectiveGetter().with(r).getAdjective(), "[^a-zA-Z0-9\\\\s]");
-        String noun = StringHelper.removeAll(new NounGetter().with(r).getNoun(), "[^a-zA-Z0-9\\\\s]");
+        String adjective = StringHelper.removeAll(adjectiveGetter.getAdjective(), "[^a-zA-Z0-9\\\\s]");
+        String noun = StringHelper.removeAll(nounGetter.getNoun(), "[^a-zA-Z0-9\\\\s]");
         return getCompositeUsername(adjective, noun, r);
     }
 
     @Override
     public String getDerivedUsername() {
         return getDerivedUsername(Database.selectFamilyName(r.getInt(1, Database.countFamilyNames())), r);
+    }
+
+    @Override
+    public String getAnonymousName() {
+        String adjective = StringHelper.removeAll(adjectiveGetter.getAdjective(), "[^a-zA-Z0-9\\\\s]");
+        String noun = StringHelper.removeAll(nounGetter.getNoun(), "[^a-zA-Z0-9\\\\s]");
+        return StringHelper.joinWithSpace(adjective, noun);
     }
 
     @Override
@@ -217,7 +246,7 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
 
     @Override
     public String getMiddleNameInitial() {
-        return new ResourceGetter().with(r).getAChar(Constant.UPPERCASE_ALPHABET) + StringHelper.EMPTY +
+        return ResourceGetter.with(r).getUpperCase() + StringHelper.EMPTY +
                 Separator.DOT.getCharacter();
     }
 
@@ -229,5 +258,15 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
     @Override
     public String getDoubleBarrelledSurname(int startId, int endId) {
         return getSurname(startId) + Separator.HYPHEN.getCharacter() + getSurname(endId);
+    }
+
+    @Override
+    public String getFemaleName() {
+        return getFemaleFullName() + Separator.SPACE.getCharacter() + getGenerationalSuffix(r);
+    }
+
+    @Override
+    public String getMaleName() {
+        return getMaleFullName() + Separator.SPACE.getCharacter() + getGenerationalSuffix(r);
     }
 }

@@ -136,6 +136,11 @@ public class NameGetter extends Getter implements NameDefiner {
     }
 
     @Override
+    public String getFullName() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
     public String getUsername() {
         return Database.DEFAULT_VALUE;
     }
@@ -147,6 +152,11 @@ public class NameGetter extends Getter implements NameDefiner {
 
     @Override
     public String getDerivedUsername() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getAnonymousName() {
         return Database.DEFAULT_VALUE;
     }
 

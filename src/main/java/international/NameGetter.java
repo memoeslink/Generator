@@ -1,7 +1,9 @@
 package international;
 
+import common.Database;
 import common.NameDefiner;
 import common.Randomizer;
+import common.Separator;
 
 public final class NameGetter extends common.NameGetter implements NameDefiner {
 
@@ -124,6 +126,20 @@ public final class NameGetter extends common.NameGetter implements NameDefiner {
     }
 
     @Override
+    public String getFullName() {
+        switch (r.getInt(3)) {
+            case 1:
+                return getFemaleFullName();
+            case 2:
+                return getMaleFullName();
+            case 0:
+            default:
+                return Database.selectName(r.getInt(1, Database.countNames())) + Separator.SPACE.getCharacter() +
+                        Database.selectFamilyName(r.getInt(1, Database.countFamilyNames()));
+        }
+    }
+
+    @Override
     public String getUsername() {
         return getAnyGetter().getUsername();
     }
@@ -135,7 +151,12 @@ public final class NameGetter extends common.NameGetter implements NameDefiner {
 
     @Override
     public String getDerivedUsername() {
-        return getAnyGetter().getCompositeUsername();
+        return getAnyGetter().getDerivedUsername();
+    }
+
+    @Override
+    public String getAnonymousName() {
+        return getAnyGetter().getAnonymousName();
     }
 
     @Override
