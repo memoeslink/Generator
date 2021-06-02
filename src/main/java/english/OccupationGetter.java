@@ -59,6 +59,29 @@ public final class OccupationGetter extends common.OccupationGetter implements O
     }
 
     @Override
+    public String getJobTitle() {
+        String titleDescriptor = ResourceGetter.with(r).getString(Constant.TITLE_DESCRIPTOR);
+        String titleJob = ResourceGetter.with(r).getString(Constant.TITLE_JOB);
+        String titleLevel = ResourceGetter.with(r).getString(Constant.TITLE_LEVEL);
+        return String.join(String.valueOf(Separator.SPACE.getCharacter()), titleDescriptor, titleLevel, titleJob);
+    }
+
+    @Override
+    public String getFemaleJobTitle() {
+        return getJobTitle();
+    }
+
+    @Override
+    public String getMaleJobTitle() {
+        return getJobTitle();
+    }
+
+    @Override
+    public String getGenderlessJobTitle() {
+        return getJobTitle();
+    }
+
+    @Override
     public OccupationGetter with(Randomizer r) {
         return new OccupationGetter(r);
     }

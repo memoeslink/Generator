@@ -1,0 +1,11 @@
+package common;
+
+public enum OccupationType {
+    ANY,
+    MALE_OCCUPATION,
+    FEMALE_OCCUPATION,
+    GENDERLESS_OCCUPATION,
+    MALE_JOB_TITLE,
+    FEMALE_JOB_TITLE,
+    GENDERLESS_JOB_TITLE
+}

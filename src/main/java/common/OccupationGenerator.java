@@ -12,7 +12,7 @@ public class OccupationGenerator extends Generator {
         super(locale, seed);
     }
 
-    public String getOccupation(Gender gender) {
+    public String getOccupation(OccupationType occupationType) {
         OccupationGetter getter;
 
         if (locale.getLanguage().equals(Locale.ENGLISH.getLanguage()))
@@ -21,18 +21,24 @@ public class OccupationGenerator extends Generator {
             getter = new spanish.OccupationGetter();
         else
             getter = new international.OccupationGetter();
-        gender = gender != null ? gender : Gender.UNDEFINED;
+        occupationType = occupationType != null ? occupationType : OccupationType.ANY;
 
-        switch (gender) {
-            case MASCULINE:
+        switch (occupationType) {
+            case MALE_OCCUPATION:
                 return getter.with(r).getMaleOccupation();
-            case FEMININE:
+            case FEMALE_OCCUPATION:
                 return getter.with(r).getFemaleOccupation();
-            case NEUTRAL:
+            case GENDERLESS_OCCUPATION:
                 return getter.with(r).getGenderlessOccupation();
-            case UNDEFINED:
+            case MALE_JOB_TITLE:
+                return getter.with(r).getMaleJobTitle();
+            case FEMALE_JOB_TITLE:
+                return getter.with(r).getFemaleJobTitle();
+            case GENDERLESS_JOB_TITLE:
+                return getter.with(r).getGenderlessJobTitle();
+            case ANY:
             default:
-                return getter.with(r).getOccupation();
+                return getOccupation(OccupationType.values()[r.getInt(OccupationType.values().length)]);
         }
     }
 

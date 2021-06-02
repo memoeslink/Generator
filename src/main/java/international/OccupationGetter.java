@@ -54,6 +54,26 @@ public final class OccupationGetter extends common.OccupationGetter implements O
     }
 
     @Override
+    public String getJobTitle() {
+        return getAnyGetter().getJobTitle();
+    }
+
+    @Override
+    public String getFemaleJobTitle() {
+        return getAnyGetter().getFemaleJobTitle();
+    }
+
+    @Override
+    public String getMaleJobTitle() {
+        return getAnyGetter().getMaleJobTitle();
+    }
+
+    @Override
+    public String getGenderlessJobTitle() {
+        return getAnyGetter().getGenderlessJobTitle();
+    }
+
+    @Override
     public OccupationGetter with(Randomizer r) {
         return new OccupationGetter(r);
     }

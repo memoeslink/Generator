@@ -18,5 +18,13 @@ public interface OccupationDefiner {
 
     public String getGenderlessOccupation(int id);
 
+    public String getJobTitle();
+
+    public String getFemaleJobTitle();
+
+    public String getMaleJobTitle();
+
+    public String getGenderlessJobTitle();
+
     public OccupationGetter with(Randomizer r);
 }

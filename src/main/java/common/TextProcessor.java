@@ -53,4 +53,37 @@ public class TextProcessor {
         }
         return words;
     }
+
+    public static String joinWords(List<Word> words, Gender gender) {
+        if (words == null || words.size() == 0)
+            return StringHelper.EMPTY;
+        StringBuilder sb = new StringBuilder();
+        gender = gender != null ? gender : Gender.UNDEFINED;
+
+        for (Word word : words) {
+            if (sb.length() > 0)
+                sb.append(Separator.SPACE.getCharacter());
+
+            switch (gender) {
+                case MASCULINE:
+                    sb.append(word.getMasculineForm());
+                    break;
+                case FEMININE:
+                    sb.append(word.getFeminineForm());
+                    break;
+                case NEUTRAL:
+                    sb.append(word.getCombinedForm(WordCombination.ONLY_SLASH));
+                    break;
+                case UNDEFINED:
+                default:
+                    sb.append(word.getWord());
+                    break;
+            }
+        }
+        return sb.toString();
+    }
+
+    public static String genderify(String s, Gender gender) {
+        return TextProcessor.joinWords(TextProcessor.getSeveredWords(s), gender);
+    }
 }
