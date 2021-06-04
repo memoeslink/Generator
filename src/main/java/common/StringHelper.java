@@ -61,10 +61,15 @@ public class StringHelper {
     }
 
     public static String join(String a, String b) {
-        return join("", a, b);
+        return join(EMPTY, a, b);
+    }
+
+    public static String join(char c, String a, String b) {
+        return join(String.valueOf(c), a, b);
     }
 
     public static String join(String separator, String a, String b) {
+        separator = defaultIfNull(separator);
         a = defaultIfNull(a);
         b = defaultIfNull(b);
 
@@ -78,6 +83,40 @@ public class StringHelper {
 
     public static String joinWithSpace(String a, String b) {
         return join(String.valueOf(Separator.SPACE.getCharacter()), a, b);
+    }
+
+    public static String joinWithHyphen(String a, String b) {
+        return join(String.valueOf(Separator.HYPHEN.getCharacter()), a, b);
+    }
+
+    public static String join(String... strings) {
+        return join("", strings);
+    }
+
+    public static String join(char c, String... strings) {
+        return join(String.valueOf(c), strings);
+    }
+
+    public static String join(String separator, String... strings) {
+        StringBuilder sb = new StringBuilder();
+        separator = defaultIfNull(separator);
+
+        for (String s : strings) {
+            if (isNotNullOrEmpty(s)) {
+                if (sb.length() > 0)
+                    sb.append(separator);
+                sb.append(s);
+            }
+        }
+        return sb.toString();
+    }
+
+    public static String joinWithSpace(String... strings) {
+        return join(String.valueOf(Separator.SPACE.getCharacter()), strings);
+    }
+
+    public static String joinWithHyphen(String... strings) {
+        return join(String.valueOf(Separator.HYPHEN.getCharacter()), strings);
     }
 
     public static String trimToEmpty(String s) {
@@ -213,9 +252,9 @@ public class StringHelper {
     }
 
     public static boolean endsWith(String s, char c) {
-        if (s != null && c != '\0' && s.length() > 0)
+        if (s != null && c != CharHelper.NULL_CHAR && s.length() > 0)
             return s.charAt(s.length() - 1) == c;
-        return c == '\0';
+        return c == CharHelper.NULL_CHAR;
     }
 
     public static boolean endsWith(String s, String suffix) {

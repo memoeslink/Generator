@@ -8,9 +8,9 @@ public enum WordCombination {
     VERTICAL_BAR_AND_PARENTHESES('|', '(', ')'),
     VERTICAL_BAR_AND_SQUARE_BRACKETS('|', '[', ']');
 
-    private char combinator;
-    private char starter;
-    private char finisher;
+    private final char combinator;
+    private final char starter;
+    private final char finisher;
 
     private WordCombination(char combinator, char starter, char finisher) {
         this.combinator = combinator;

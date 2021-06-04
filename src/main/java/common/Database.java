@@ -152,7 +152,7 @@ public class Database {
     }
 
     public static String selectEnglishPhoneticScript(String word) {
-        return selectRow("SELECT common.Word, Phonetics FROM " + TABLE_ENGLISH_PHONETICS + " WHERE common.Word = ?", 2, word);
+        return selectRow("SELECT Word, Phonetics FROM " + TABLE_ENGLISH_PHONETICS + " WHERE Word = ?", 2, word);
     }
 
     public static int countEnglishSurnames() {

@@ -47,7 +47,7 @@ public class CharHelper {
     }
 
     public static String getUnicode(char c) {
-        if (c == '\0')
+        if (c == NULL_CHAR)
             return StringHelper.EMPTY;
         return String.format("\\u%04X", (int) c);
     }
