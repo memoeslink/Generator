@@ -54,6 +54,24 @@ public interface NameDefiner {
 
     public String getFullName();
 
+    public String getFemaleDefinedForename();
+
+    public String getFemaleDefinedForename(int type);
+
+    public String getMaleDefinedForename();
+
+    public String getMaleDefinedForename(int type);
+
+    public String getDefinedFamilyName();
+
+    public String getDefinedFamilyName(int type);
+
+    public String getFemaleDefinedFullName();
+
+    public String getMaleDefinedFullName();
+
+    public String getDefinedFullName();
+
     public String getUsername();
 
     public String getCompositeUsername();

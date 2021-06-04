@@ -57,6 +57,18 @@ public class NameGenerator extends Generator {
                 return getter.with(r).getFemaleFullName();
             case FULL_NAME:
                 return getter.with(r).getFullName();
+            case MALE_DEFINED_FORENAME:
+                return getter.with(r).getMaleDefinedForename();
+            case FEMALE_DEFINED_FORENAME:
+                return getter.with(r).getFemaleDefinedForename();
+            case DEFINED_FAMILY_NAME:
+                return getter.with(r).getDefinedFamilyName();
+            case MALE_DEFINED_FULL_NAME:
+                return getter.with(r).getMaleDefinedFullName();
+            case FEMALE_DEFINED_FULL_NAME:
+                return getter.with(r).getFemaleDefinedFullName();
+            case DEFINED_FULL_NAME:
+                return getter.with(r).getDefinedFullName();
             case USERNAME:
                 return getter.with(r).getUsername();
             case COMPOSITE_USERNAME:

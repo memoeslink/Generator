@@ -196,6 +196,51 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
     }
 
     @Override
+    public String getFemaleDefinedForename() {
+        return new international.NameGetter().with(r).getFemaleDefinedForename();
+    }
+
+    @Override
+    public String getFemaleDefinedForename(int type) {
+        return new international.NameGetter().with(r).getFemaleDefinedForename(type);
+    }
+
+    @Override
+    public String getMaleDefinedForename() {
+        return new international.NameGetter().with(r).getMaleDefinedForename();
+    }
+
+    @Override
+    public String getMaleDefinedForename(int type) {
+        return new international.NameGetter().with(r).getMaleDefinedForename(type);
+    }
+
+    @Override
+    public String getDefinedFamilyName() {
+        return new international.NameGetter().with(r).getDefinedFamilyName();
+    }
+
+    @Override
+    public String getDefinedFamilyName(int type) {
+        return new international.NameGetter().with(r).getDefinedFamilyName(type);
+    }
+
+    @Override
+    public String getFemaleDefinedFullName() {
+        return new international.NameGetter().with(r).getFemaleDefinedFullName();
+    }
+
+    @Override
+    public String getMaleDefinedFullName() {
+        return new international.NameGetter().with(r).getMaleDefinedFullName();
+    }
+
+    @Override
+    public String getDefinedFullName() {
+        return new international.NameGetter().with(r).getDefinedFullName();
+    }
+
+    @Override
     public String getUsername() {
         return Database.selectUsername(r.getInt(1, Database.countUsernames()));
     }

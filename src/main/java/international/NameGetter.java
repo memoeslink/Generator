@@ -1,11 +1,9 @@
 package international;
 
-import common.Database;
 import common.NameDefiner;
-import common.Randomizer;
-import common.Separator;
+import common.*;
 
-public final class NameGetter extends common.NameGetter implements NameDefiner {
+public final class NameGetter extends common.NameGetter implements NameDefiner, international.NameDefiner {
 
     public NameGetter() {
         super();
@@ -136,6 +134,64 @@ public final class NameGetter extends common.NameGetter implements NameDefiner {
             default:
                 return Database.selectName(r.getInt(1, Database.countNames())) + Separator.SPACE.getCharacter() +
                         Database.selectFamilyName(r.getInt(1, Database.countFamilyNames()));
+        }
+    }
+
+    @Override
+    public String getFemaleDefinedForename() {
+        return TextProcessor.feminize(getDefinedForename(r));
+    }
+
+    @Override
+    public String getFemaleDefinedForename(int type) {
+        return TextProcessor.feminize(getDefinedForename(type, r));
+    }
+
+    @Override
+    public String getMaleDefinedForename() {
+        return getDefinedForename(r);
+    }
+
+    @Override
+    public String getMaleDefinedForename(int type) {
+        return getDefinedForename(type, r);
+    }
+
+    @Override
+    public String getDefinedFamilyName() {
+        int type = r.getInt(Constant.GENERATED_FAMILY_NAME_SUFFIX.length);
+        return getDefinedFamilyName(type);
+    }
+
+    @Override
+    public String getDefinedFamilyName(int type) {
+        type = IntegerHelper.defaultIndex(Constant.GENERATED_FAMILY_NAME_SUFFIX.length, type);
+        return StringHelper.capitalizeFirst(ResourceGetter.with(r).getString(Constant.GENERATED_NAME_START[type]) +
+                ResourceGetter.with(r).getString(Constant.GENERATED_NAME_MIDDLE[type]) +
+                ResourceGetter.with(r).getString(Constant.GENERATED_FAMILY_NAME_SUFFIX[type]));
+    }
+
+    @Override
+    public String getFemaleDefinedFullName() {
+        int type = r.getInt(Constant.GENERATED_FAMILY_NAME_SUFFIX.length);
+        return getFemaleDefinedForename(type) + Separator.SPACE.getCharacter() + getDefinedFamilyName(type);
+    }
+
+    @Override
+    public String getMaleDefinedFullName() {
+        int type = r.getInt(Constant.GENERATED_FAMILY_NAME_SUFFIX.length);
+        return getMaleDefinedForename(type) + Separator.SPACE.getCharacter() + getDefinedFamilyName(type);
+    }
+
+    @Override
+    public String getDefinedFullName() {
+        switch (r.getInt(2)) {
+            case 0:
+                return getFemaleDefinedFullName();
+            case 1:
+                return getMaleDefinedFullName();
+            default:
+                return Database.DEFAULT_VALUE;
         }
     }
 

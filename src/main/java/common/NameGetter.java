@@ -141,6 +141,51 @@ public class NameGetter extends Getter implements NameDefiner {
     }
 
     @Override
+    public String getFemaleDefinedForename() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getFemaleDefinedForename(int type) {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getMaleDefinedForename() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getMaleDefinedForename(int type) {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getDefinedFamilyName() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getDefinedFamilyName(int type) {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getFemaleDefinedFullName() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getMaleDefinedFullName() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getDefinedFullName() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
     public String getUsername() {
         return Database.DEFAULT_VALUE;
     }

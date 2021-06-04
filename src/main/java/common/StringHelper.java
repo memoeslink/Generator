@@ -4,7 +4,6 @@ import java.text.Normalizer;
 
 public class StringHelper {
     public static final String EMPTY = "";
-    public static final int DEFAULT_INDEX = -1;
 
     public static boolean isNullOrEmpty(String s) {
         return s == null || s.length() == 0;
@@ -223,7 +222,7 @@ public class StringHelper {
             return s;
         int n = s.lastIndexOf(separator);
 
-        if (n == DEFAULT_INDEX)
+        if (n == IntegerHelper.DEFAULT_INDEX)
             return s;
         return s.substring(0, n);
     }
@@ -233,7 +232,7 @@ public class StringHelper {
             return s;
         int n = s.lastIndexOf(separator);
 
-        if (n == DEFAULT_INDEX || n <= s.length() - separator.length())
+        if (n == IntegerHelper.DEFAULT_INDEX || n <= s.length() - separator.length())
             return s;
         return s.substring(n + 1);
     }
