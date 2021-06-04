@@ -220,14 +220,14 @@ public class SyllableSeparator {
         if (getSyllables().size() == 0)
             return false;
         return StringHelper.hasAny(syllables.get(syllables.size() - 1), 'á', 'é', 'í', 'ó', 'ú') ==
-                StringHelper.endsWithAny(syllables.get(syllables.size() - 1), "n", "s");
+                StringHelper.endsWithAny(syllables.get(syllables.size() - 1), 'n', 's');
     }
 
     public boolean isParoxytone() {
         if (getSyllables().size() < 2)
             return false;
         return StringHelper.hasAny(syllables.get(syllables.size() - 2), 'á', 'é', 'í', 'ó', 'ú') ==
-                !StringHelper.endsWithAny(syllables.get(syllables.size() - 1), "n", "s");
+                !StringHelper.endsWithAny(syllables.get(syllables.size() - 1), 'n', 's');
     }
 
     public boolean isProparoxytone() {

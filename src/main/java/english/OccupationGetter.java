@@ -24,38 +24,32 @@ public final class OccupationGetter extends common.OccupationGetter implements O
 
     @Override
     public String getFemaleOccupation() {
-        Word occupation = TextProcessor.getFirstSeveredWord(getOccupation());
-        return occupation.getFeminineForm();
+        return TextProcessor.genderify(getOccupation(), Gender.FEMININE);
     }
 
     @Override
     public String getFemaleOccupation(int id) {
-        Word occupation = TextProcessor.getFirstSeveredWord(getOccupation(id));
-        return occupation.getFeminineForm();
+        return TextProcessor.genderify(getOccupation(id), Gender.FEMININE);
     }
 
     @Override
     public String getMaleOccupation() {
-        Word occupation = TextProcessor.getFirstSeveredWord(getOccupation());
-        return occupation.getMasculineForm();
+        return TextProcessor.genderify(getOccupation(), Gender.MASCULINE);
     }
 
     @Override
     public String getMaleOccupation(int id) {
-        Word occupation = TextProcessor.getFirstSeveredWord(getOccupation(id));
-        return occupation.getMasculineForm();
+        return TextProcessor.genderify(getOccupation(id), Gender.MASCULINE);
     }
 
     @Override
     public String getGenderlessOccupation() {
-        Word occupation = TextProcessor.getFirstSeveredWord(getOccupation());
-        return occupation.getCombinedForm(WordCombination.ONLY_SLASH);
+        return TextProcessor.genderify(getOccupation(), Gender.UNDEFINED);
     }
 
     @Override
     public String getGenderlessOccupation(int id) {
-        Word occupation = TextProcessor.getFirstSeveredWord(getOccupation(id));
-        return occupation.getCombinedForm(WordCombination.ONLY_SLASH);
+        return TextProcessor.genderify(getOccupation(id), Gender.UNDEFINED);
     }
 
     @Override
@@ -79,6 +73,32 @@ public final class OccupationGetter extends common.OccupationGetter implements O
     @Override
     public String getGenderlessJobTitle() {
         return getJobTitle();
+    }
+
+    @Override
+    public String getFantasyClass() {
+        String fantasyClass = ResourceGetter.with(r).getString(Constant.CLASSES);
+        fantasyClass = StringHelper.capitalizeFirst(fantasyClass);
+        int level = r.getInt(1, 99);
+        return String.format("LVL %d %s", level, fantasyClass);
+    }
+
+    @Override
+    public String getFemaleFantasyClass() {
+        String fantasyClass = getFantasyClass();
+        return TextProcessor.genderify(fantasyClass, Gender.FEMININE);
+    }
+
+    @Override
+    public String getMaleFantasyClass() {
+        String fantasyClass = getFantasyClass();
+        return TextProcessor.genderify(fantasyClass, Gender.MASCULINE);
+    }
+
+    @Override
+    public String getGenderlessFantasyClass() {
+        String fantasyClass = getFantasyClass();
+        return TextProcessor.genderify(fantasyClass, Gender.UNDEFINED);
     }
 
     @Override

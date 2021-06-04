@@ -112,8 +112,8 @@ public class Pluralizer {
         if (PLURAL_EXCEPTIONS.containsKey(s)) //Exceptions
             return PLURAL_EXCEPTIONS.get(s);
 
-        if (StringHelper.endsWithAny(s, "a", "e", "i", "o", "u", "á", "é", "í", "ó", "ú")) //Words ending with vowel
-            return s + "s";
+        if (StringHelper.endsWithAny(s, 'a', 'e', 'i', 'o', 'u', 'á', 'é', 'í', 'ó', 'ú')) //Words ending with vowel
+            return s + 's';
 
         if (StringHelper.endsWithAny(s, "ás", "és", "ís", "ós", "ús", "án", "én", "ín", "ón", "ún")) //Consonant-ending oxytones with acute accent
             return StringHelper.left(s, s.length() - 2) + StringHelper.stripAccents(StringHelper.right(s, 2)) + "es";

@@ -1,5 +1,7 @@
 package common;
 
+import english.Constant;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -39,10 +41,10 @@ public class TextProcessor {
                 String ending = StringHelper.defaultIfNull(m.group(3), StringHelper.defaultIfNull(m.group(4)));
 
                 if (!ending.isEmpty()) {
-                    word.setFeminineForm(StringHelper.removeLastChar(m.group(1)) + ending);
+                    word.setFeminineForm(feminize(m.group(1), ending));
                     break assignation;
                 }
-                word.setFeminineForm(StringHelper.defaultIfBlank(m.group(5)));
+                word.setFeminineForm(m.group(5));
             }
             word.setGender(Gender.NEUTRAL);
             words.add(word);
@@ -67,23 +69,66 @@ public class TextProcessor {
             switch (gender) {
                 case MASCULINE:
                     sb.append(word.getMasculineForm());
-                    break;
                 case FEMININE:
                     sb.append(word.getFeminineForm());
-                    break;
                 case NEUTRAL:
-                    sb.append(word.getCombinedForm(WordCombination.ONLY_SLASH));
-                    break;
+                    sb.append(word.getNeutralForm());
                 case UNDEFINED:
                 default:
                     sb.append(word.getWord());
-                    break;
             }
         }
         return sb.toString();
     }
 
+    public static String feminize(String s) {
+        return feminize(s, "a");
+    }
+
+    public static String feminize(String s, String ending) {
+        if (StringHelper.isOnlyLetters(s) && StringHelper.endsWithAny(s, Constant.VOWELS.toCharArray()))
+            return StringHelper.join(StringHelper.removeLastChar(s), ending);
+        return StringHelper.join(s, ending);
+    }
+
     public static String genderify(String s, Gender gender) {
-        return TextProcessor.joinWords(TextProcessor.getSeveredWords(s), gender);
+        return genderify(s, gender, WordCombination.ONLY_SLASH);
+    }
+
+    public static String genderify(String s, Gender gender, WordCombination combination) {
+        if (StringHelper.isNullOrBlank(s))
+            return s;
+        StringBuilder sb = new StringBuilder();
+        gender = gender != null ? gender : Gender.UNDEFINED;
+        combination = combination != null ? combination : WordCombination.SLASH_AND_SQUARE_BRACKETS;
+        Matcher m = COMBINED_WORDS_PATTERN.matcher(s);
+
+        while (m.find()) {
+            switch (gender) {
+                case MASCULINE:
+                    m.appendReplacement(sb, m.group(1));
+                    break;
+                case FEMININE:
+                    String ending = StringHelper.defaultIfNull(m.group(3), StringHelper.defaultIfNull(m.group(4)));
+
+                    if (!ending.isEmpty())
+                        m.appendReplacement(sb, feminize(m.group(1), ending));
+                    else
+                        m.appendReplacement(sb, m.group(5));
+                    break;
+                case NEUTRAL:
+                    m.appendReplacement(sb, getFirstSeveredWord(m.group(0)).getNeutralForm());
+                    break;
+                case UNDEFINED:
+                default:
+                    if (combination == WordCombination.SLASH_AND_SQUARE_BRACKETS)
+                        m.appendReplacement(sb, m.group(0));
+                    else
+                        m.appendReplacement(sb, getFirstSeveredWord(m.group(0)).getCombinedForm(combination));
+                    break;
+            }
+        }
+        m.appendTail(sb);
+        return sb.toString();
     }
 }

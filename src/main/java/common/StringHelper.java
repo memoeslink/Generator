@@ -60,7 +60,11 @@ public class StringHelper {
         return s;
     }
 
-    public static String joinWithSpace(String a, String b) {
+    public static String join(String a, String b) {
+        return join("", a, b);
+    }
+
+    public static String join(String separator, String a, String b) {
         a = defaultIfNull(a);
         b = defaultIfNull(b);
 
@@ -69,7 +73,11 @@ public class StringHelper {
 
         if (isNullOrEmpty(a) && isNotNullOrEmpty(b))
             return b;
-        return a + Separator.SPACE.getCharacter() + b;
+        return a + separator + b;
+    }
+
+    public static String joinWithSpace(String a, String b) {
+        return join(String.valueOf(Separator.SPACE.getCharacter()), a, b);
     }
 
     public static String trimToEmpty(String s) {
@@ -78,7 +86,7 @@ public class StringHelper {
 
     public static String normalize(String s) {
         if (isNotNullOrEmpty(s))
-            return Normalizer.normalize(s, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
+            return Normalizer.normalize(s, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", EMPTY);
         return s;
     }
 
@@ -204,10 +212,23 @@ public class StringHelper {
         return false;
     }
 
+    public static boolean endsWith(String s, char c) {
+        if (s != null && c != '\0' && s.length() > 0)
+            return s.charAt(s.length() - 1) == c;
+        return c == '\0';
+    }
+
     public static boolean endsWith(String s, String suffix) {
         if (s != null && suffix != null && s.length() >= suffix.length())
             return s.endsWith(suffix);
         return suffix == null;
+    }
+
+    public static boolean endsWithAny(String s, char... characters) {
+        for (char c : characters) {
+            if (endsWith(s, c)) return true;
+        }
+        return false;
     }
 
     public static boolean endsWithAny(String s, String... suffixes) {
@@ -231,9 +252,7 @@ public class StringHelper {
         for (String affix : affixes) {
             if (s != null && s.contains(affix))
                 return true;
-
-            if (affix == null)
-                return true;
+            return affix == null;
         }
         return false;
     }
@@ -280,7 +299,7 @@ public class StringHelper {
         return false;
     }
 
-    public static boolean hasDefaultVowel(String s) {
+    public static boolean hasRegisteredVowel(String s) {
         if (isNullOrBlank(s))
             return false;
 

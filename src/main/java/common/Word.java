@@ -85,11 +85,11 @@ public class Word {
         combination = combination != null ? combination : WordCombination.ONLY_SLASH;
 
         if (!StringHelper.isNullOrEmpty(masculineForm) && !StringHelper.isNullOrEmpty(feminineForm)) {
-            String incompleteMasculineForm = StringHelper.removeLastChar(masculineForm);
-            String incompleteFeminineForm = StringHelper.removeLastChar(feminineForm);
+            String cutMasculineForm = StringHelper.removeLastChar(masculineForm);
+            String cutFeminineForm = StringHelper.removeLastChar(feminineForm);
 
-            if (incompleteMasculineForm.equals(incompleteFeminineForm))
-                return masculineForm + combination.getStarter() + feminineForm.charAt(feminineForm.length() - 1) +
+            if (cutMasculineForm.equals(cutFeminineForm) || (cutMasculineForm = masculineForm).equals(cutFeminineForm))
+                return cutMasculineForm + combination.getStarter() + feminineForm.charAt(feminineForm.length() - 1) +
                         (combination.getFinisher() != CharHelper.NULL_CHAR ? combination.getFinisher() : StringHelper.EMPTY);
             return masculineForm + combination.getCombinator() + feminineForm;
         }
