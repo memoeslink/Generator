@@ -1,6 +1,38 @@
 package international;
 
+import common.WeightedChar;
+
 public class Constant {
+    public static final char[] LOWERCASE_ENDING_CONSONANTS = {'l', 'm', 'n', 'r', 's', 't', 'z'};
+    public static final WeightedChar[] WEIGHTED_CONSONANTS = {
+            new WeightedChar('b', 0.25D),
+            new WeightedChar('c', 0.3D),
+            new WeightedChar('d', 0.25D),
+            new WeightedChar('f', 0.25D),
+            new WeightedChar('g', 0.225D),
+            new WeightedChar('h', 0.075D),
+            new WeightedChar('j', 0.225D),
+            new WeightedChar('k', 0.075D),
+            new WeightedChar('l', 0.3D),
+            new WeightedChar('m', 0.3D),
+            new WeightedChar('n', 0.3D),
+            new WeightedChar('p', 0.25D),
+            new WeightedChar('q', 0.05D),
+            new WeightedChar('r', 0.3D),
+            new WeightedChar('s', 0.4D),
+            new WeightedChar('t', 0.3D),
+            new WeightedChar('v', 0.075D),
+            new WeightedChar('w', 0.05D),
+            new WeightedChar('x', 0.05D),
+            new WeightedChar('y', 0.075D),
+            new WeightedChar('z', 0.075D),
+    };
+    public static final String[] MIDDLE_CONSONANTS = {"bd", "bn", "bs", "bst", "cc", "ct", "dj", "ds", "gn", "lbr", "lf", "lm", "lp", "ls", "lt", "ltr", "mb", "mn", "mp", "ms", "nc", "nch", "nd", "ndr", "nf", "nfl", "nfr", "ng", "nj", "nk", "nl", "nm", "nn", "nr", "ns", "nsf", "nt", "ntr", "nv", "nz", "pc", "ps", "pt", "rb", "rc", "rd", "rg", "rj", "rl", "rm", "rn", "rp", "rr", "rs", "rt", "sb", "sc", "scr", "sf", "sfr", "sl", "sn", "sp", "ss", "st", "str", "xc", "xm", "xp", "xpr", "xt", "xtr"};
+    public static final String[] ENDING_CONSONANTS = {"ng", "nn", "nt", "rn", "rsk", "rst", "rg", "st", "th", "tt"};
+    public static final String[] CONSONANT_PAIRS = {"bl", "br", "ch", "cl", "cr", "dl", "dr", "fl", "fr", "gl", "gr", "kh", "kl", "kr", "ll", "pl", "pr", "rh", "sh", "tl", "tr", "vl", "vr"};
+    public static final String[] ANY_CONSONANT_PAIRS = {"bl", "br", "by", "ch", "cl", "cr", "cy", "dr", "dw", "fl", "fn", "fr", "fy", "gh", "gl", "gn", "gr", "gw", "gy", "hl", "hw", "hy", "kn", "kr", "ky", "ly", "ny", "ph", "pr", "ps", "py", "rh", "ry", "sc", "my", "sh", "sk", "sl", "sm", "sn", "sp", "sq", "st", "sw", "sy", "pl", "tp", "tr", "tw", "ty", "vy", "wh", "wl", "th", "vl", "wr", "wy", "yb", "yc", "yd", "yf", "yh", "yl", "ym", "yn", "yp", "yr", "ys", "yt", "yv", "yw"};
+    public static final String[] VOWEL_PAIRS = {"ae", "ai", "ao", "au", "ea", "ei", "eo", "eu", "ia", "ie", "io", "iu", "oa", "oe", "oi", "ou", "ua", "ue", "ui", "uo", "æ", "œ"};
+    public static final String[] STARTING_CONSONANTS = {"bh", "bj", "bl", "br", "by", "cc", "ch", "ck", "cl", "cn", "cr", "ct", "cy", "cz", "dd", "dh", "dm", "dn", "dr", "dw", "dy", "dz", "fl", "fr", "gh", "gl", "gm", "gn", "gr", "gs", "gw", "gy", "hj", "hl", "hm", "hn", "hr", "hs", "hw", "hy", "jd", "js", "jy", "kh", "kj", "kl", "kn", "kr", "kw", "ky", "ld", "lh", "lj", "ll", "lm", "ls", "lt", "lv", "ly", "mb", "mc", "ml", "mn", "mp", "mr", "my", "nc", "nd", "ng", "nn", "ns", "nt", "ny", "pf", "ph", "pl", "pr", "ps", "py", "rd", "rh", "rl", "rn", "rr", "rs", "rt", "rv", "rw", "ry", "sc", "sh", "sj", "sk", "sl", "sm", "sn", "sp", "sq", "sr", "ss", "st", "sv", "sw", "sy", "sz", "tc", "th", "tj", "tl", "tr", "ts", "tt", "tw", "ty", "tz", "vh", "vl", "vr", "vt", "vy", "wh", "wr", "ws", "wy", "xy", "yc", "yd", "yf", "yg", "yk", "yl", "ym", "yn", "ys", "yt", "yv", "yw", "zh", "zr", "zs", "zw", "zy"};
     public static final String[][] GENERATED_NAME_START = {
             {"a", "an", "as", "bra", "ce", "cen", "den", "e", "el", "en", "ghal", "gra", "i", "in", "is", "ka", "kan", "ken", "kha", "kra", "li", "me", "o", "os", "ren", "rha", "se", "sen", "te", "tra", "u", "ul", "un", "ze", "æ"},
             {"a", "a", "a", "a", "a", "ae", "ae", "ae", "ba", "ba", "ba", "be", "be", "be", "bi", "bi", "bi", "bla", "ble", "bli", "blo", "blu", "bo", "bo", "bo", "bra", "bre", "bri", "bro", "bru", "bu", "bu", "bu", "ca", "ca", "ca", "ce", "ce", "ce", "cha", "che", "chi", "cho", "chu", "ci", "ci", "ci", "cla", "cle", "cli", "clo", "clu", "co", "co", "co", "cra", "cre", "cri", "cro", "cru", "cu", "cu", "cu", "da", "da", "da", "de", "de", "de", "di", "di", "di", "dla", "dle", "dli", "dlo", "dlu", "do", "do", "do", "dra", "dre", "dri", "dro", "dru", "du", "du", "du", "e", "e", "e", "e", "e", "fa", "fa", "fa", "fe", "fe", "fe", "fi", "fi", "fi", "fla", "fle", "fli", "flo", "flu", "fo", "fo", "fo", "fra", "fre", "fri", "fro", "fru", "fu", "fu", "fu", "ga", "ga", "ga", "ge", "ge", "ge", "gi", "gi", "gi", "gla", "gle", "gli", "glo", "glu", "go", "go", "go", "gra", "gre", "gri", "gro", "gru", "gu", "gu", "gu", "gue", "gui", "güe", "güi", "ha", "he", "hi", "ho", "hu", "i", "i", "i", "i", "i", "ja", "ja", "ja", "je", "je", "je", "ji", "ji", "ji", "jo", "jo", "jo", "ju", "ju", "ju", "ka", "ka", "ke", "ke", "ki", "ki", "ko", "ko", "ku", "ku", "la", "la", "la", "le", "le", "le", "li", "li", "li", "li", "lla", "lle", "lli", "llo", "llu", "lo", "lo", "lo", "lu", "lu", "lu", "ma", "ma", "ma", "me", "me", "me", "mi", "mi", "mi", "mo", "mo", "mo", "mu", "mu", "mu", "na", "na", "na", "ne", "ne", "ne", "ni", "ni", "ni", "no", "no", "no", "nu", "nu", "nu", "o", "o", "o", "o", "o", "ou", "ou", "ou", "pa", "pa", "pa", "pe", "pe", "pe", "pi", "pi", "pi", "pla", "ple", "pli", "plo", "plu", "po", "po", "po", "pra", "pre", "pri", "pro", "pru", "pu", "pu", "pu", "que", "qui", "ra", "ra", "ra", "re", "re", "re", "ri", "ri", "ri", "ro", "ro", "ro", "ru", "ru", "ru", "sa", "sa", "sa", "se", "se", "se", "sha", "she", "shi", "sho", "shu", "si", "si", "si", "so", "so", "so", "su", "su", "su", "ta", "ta", "ta", "te", "te", "te", "ti", "ti", "ti", "tla", "tle", "tli", "tlo", "tlu", "to", "to", "to", "tra", "tre", "tri", "tro", "tru", "tu", "tu", "tu", "u", "u", "u", "u", "u", "va", "va", "va", "ve", "ve", "ve", "vi", "vi", "vi", "vo", "vo", "vo", "vu", "vu", "vu", "wa", "wa", "we", "we", "wi", "wi", "wo", "wo", "wu", "wu", "xa", "xe", "xi", "xo", "xu", "ya", "ya", "ye", "ye", "yi", "yi", "yo", "yo", "yu", "yu", "za", "za", "ze", "ze", "zi", "zi", "zo", "zo", "zu", "zu"},

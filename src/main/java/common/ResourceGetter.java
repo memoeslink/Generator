@@ -13,6 +13,12 @@ public class ResourceGetter {
             ResourceGetter.r = r != null ? r : new Randomizer();
     }
 
+    public static char getChar(char[] chars) {
+        if (chars != null && chars.length > 0)
+            return chars[r.getInt(chars.length)];
+        return CharHelper.NULL_CHAR;
+    }
+
     public static char getChar(String s) {
         if (StringHelper.isNotNullOrEmpty(s))
             return s.charAt(r.getInt(s.length()));

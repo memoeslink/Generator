@@ -1,6 +1,5 @@
 package english;
 
-import common.Database;
 import common.Randomizer;
 import common.ResourceGetter;
 
@@ -21,14 +20,8 @@ public interface NameDefiner extends common.NameDefiner {
     public String getDoubleBarrelledSurname(int startId, int endId);
 
     default String getGenerationalSuffix(Randomizer r) {
-        switch (r.getInt(2)) {
-            case 0:
-                return ResourceGetter.with(r).getString(common.Constant.ROMAN_NUMERALS);
-            case 1:
-                return ResourceGetter.with(r).getString(english.Constant.GENERATIONAL_SUFFIX);
-            default:
-                return Database.DEFAULT_VALUE;
-        }
+        return r.getBoolean() ? ResourceGetter.with(r).getString(common.Constant.ROMAN_NUMERALS) :
+                ResourceGetter.with(r).getString(english.Constant.GENERATIONAL_SUFFIX);
     }
 
     public String getFemaleName();

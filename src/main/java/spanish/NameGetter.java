@@ -151,14 +151,7 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
 
     @Override
     public String getFullName() {
-        switch (r.getInt(2)) {
-            case 0:
-                return getFemaleFullName();
-            case 1:
-                return getMaleFullName();
-            default:
-                return Database.DEFAULT_VALUE;
-        }
+        return r.getBoolean() ? getMaleFullName() : getFemaleFullName();
     }
 
     @Override
@@ -204,6 +197,36 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
     @Override
     public String getDefinedFullName() {
         return new international.NameGetter().with(r).getDefinedFullName();
+    }
+
+    @Override
+    public String getMaleIterativeForename() {
+        return new international.NameGetter().with(r).getMaleIterativeForename();
+    }
+
+    @Override
+    public String getFemaleIterativeForename() {
+        return new international.NameGetter().with(r).getFemaleIterativeForename();
+    }
+
+    @Override
+    public String getIterativeFamilyName() {
+        return new international.NameGetter().with(r).getIterativeFamilyName();
+    }
+
+    @Override
+    public String getFemaleIterativeFullName() {
+        return new international.NameGetter().with(r).getFemaleIterativeFullName();
+    }
+
+    @Override
+    public String getMaleIterativeFullName() {
+        return new international.NameGetter().with(r).getMaleIterativeFullName();
+    }
+
+    @Override
+    public String getIterativeFullName() {
+        return new international.NameGetter().with(r).getIterativeFullName();
     }
 
     @Override

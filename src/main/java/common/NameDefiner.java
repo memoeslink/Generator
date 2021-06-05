@@ -72,6 +72,18 @@ public interface NameDefiner {
 
     public String getDefinedFullName();
 
+    public String getMaleIterativeForename();
+
+    public String getFemaleIterativeForename();
+
+    public String getIterativeFamilyName();
+
+    public String getFemaleIterativeFullName();
+
+    public String getMaleIterativeFullName();
+
+    public String getIterativeFullName();
+
     public String getUsername();
 
     public String getCompositeUsername();

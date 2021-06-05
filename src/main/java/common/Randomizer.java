@@ -112,4 +112,21 @@ public class Randomizer {
         }
         return numbers;
     }
+
+    public char chooseOnWeight(WeightedChar[] weightedChars) {
+        weightedChars = weightedChars != null ? weightedChars : new WeightedChar[]{};
+        double completeWeight = 0.0D;
+
+        for (WeightedChar c : weightedChars)
+            completeWeight += c.getWeight();
+        double r = Math.random() * completeWeight;
+        double weight = 0.0D;
+
+        for (WeightedChar c : weightedChars) {
+            weight += c.getWeight();
+
+            if (weight > 0.0D && weight >= r) return c.getValue();
+        }
+        return new WeightedChar().getValue();
+    }
 }
