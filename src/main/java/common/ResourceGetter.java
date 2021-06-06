@@ -25,6 +25,10 @@ public class ResourceGetter {
         return CharHelper.NULL_CHAR;
     }
 
+    public static String getString(String s) {
+        return String.valueOf(getChar(s));
+    }
+
     public static String getString(String[] strings) {
         if (StringHelper.isNotNullOrEmpty(strings))
             return strings[r.getInt(strings.length)];
