@@ -75,8 +75,8 @@ public class CharHelper {
     public boolean isCharDisplayableInFont(char c) {
         if (c == NULL_CHAR || Character.isWhitespace(c))
             return false;
-        Graphics g = new BufferedImage(10, 10, BufferedImage.TYPE_INT_RGB).getGraphics();
-        Font font = new Font(g.getFont().toString(), 0, 12);
+        Graphics g = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB).getGraphics();
+        Font font = new Font(g.getFont().toString(), Font.PLAIN, 5);
         g.dispose();
         return font.canDisplay(c);
     }
