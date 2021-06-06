@@ -25,7 +25,7 @@ public class ResourceGetter {
         return CharHelper.NULL_CHAR;
     }
 
-    public static String getString(String s) {
+    public static String getSplitString(String s) {
         if (StringHelper.isNotNullOrBlank(s)) {
             String[] parts = s.split("¶[ ]*");
             return parts[r.getInt(parts.length)];

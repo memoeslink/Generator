@@ -77,7 +77,7 @@ public final class OccupationGetter extends common.OccupationGetter implements O
 
     @Override
     public String getFantasyClass() {
-        String fantasyClass = ResourceGetter.with(r).getString(Constant.CLASSES);
+        String fantasyClass = ResourceGetter.with(r).getSplitString(Constant.CLASSES);
         fantasyClass = StringHelper.capitalizeFirst(fantasyClass);
         int level = r.getInt(1, 99);
         return String.format("LVL %d %s", level, fantasyClass);
