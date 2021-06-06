@@ -1,5 +1,8 @@
 package common;
 
+import java.awt.*;
+import java.awt.image.BufferedImage;
+
 public class CharHelper {
     public static final char NULL_CHAR = '\0';
 
@@ -60,6 +63,26 @@ public class CharHelper {
         if (c == NULL_CHAR)
             return false;
         return Character.isSpaceChar(c);
+    }
+
+    public boolean isPrintable(char c) {
+        Character.UnicodeBlock block = Character.UnicodeBlock.of(c);
+        return (!Character.isISOControl(c)) &&
+                block != null &&
+                block != Character.UnicodeBlock.SPECIALS;
+    }
+
+    public boolean isCharDisplayableInFont(char c) {
+        if (c == NULL_CHAR || Character.isWhitespace(c))
+            return false;
+        Graphics g = new BufferedImage(10, 10, BufferedImage.TYPE_INT_RGB).getGraphics();
+        Font font = new Font(g.getFont().toString(), 0, 12);
+        g.dispose();
+        return font.canDisplay(c);
+    }
+
+    public boolean isGlyphDisplayable(char c) {
+        return isPrintable(c) && isCharDisplayableInFont(c);
     }
 
     public static String getUnicode(char c) {
