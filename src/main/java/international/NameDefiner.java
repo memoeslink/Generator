@@ -45,4 +45,48 @@ public interface NameDefiner extends common.NameDefiner {
             sb.append(ResourceGetter.with(r).getChar(Constant.LOWERCASE_ENDING_CONSONANTS));
         return StringHelper.capitalizeFirst(sb.toString());
     }
+
+    default String getPatternName(Randomizer r) {
+        String namePattern = Constant.NAME_PATTERNS[r.getInt(0, Constant.NAME_PATTERNS.length)];
+        StringBuilder sb = new StringBuilder();
+
+        if (r.getBoolean())
+            namePattern = namePattern.replace('e', 'ɘ');
+
+        if (r.getBoolean())
+            namePattern = namePattern.replace('k', 'q');
+
+        for (char c : namePattern.toCharArray()) {
+            switch (c) {
+                case 'c':
+                    sb.append(ResourceGetter.with(r).getChar(english.Constant.LOWERCASE_CONSONANTS));
+                    break;
+                case 'e':
+                    sb.append(ResourceGetter.with(r).getChar(Constant.LOWERCASE_ENDING_CONSONANTS));
+                    break;
+                case 'ɘ':
+                    sb.append(ResourceGetter.with(r).getString(Constant.ENDING_CONSONANTS));
+                    break;
+                case 'k':
+                    sb.append(ResourceGetter.with(r).getString(Constant.CONSONANT_PAIRS));
+                    break;
+                case 'm':
+                    sb.append(ResourceGetter.with(r).getString(Constant.MIDDLE_CONSONANTS));
+                    break;
+                case 'q':
+                    sb.append(ResourceGetter.with(r).getString(Constant.STARTING_CONSONANTS));
+                    break;
+                case 'v':
+                    sb.append(ResourceGetter.with(r).getChar(english.Constant.LOWERCASE_VOWELS));
+                    break;
+                case 'w':
+                    sb.append(ResourceGetter.with(r).getString(Constant.VOWEL_PAIRS));
+                    break;
+                case ' ':
+                    sb.append(' ');
+                    break;
+            }
+        }
+        return StringHelper.capitalize(sb.toString());
+    }
 }

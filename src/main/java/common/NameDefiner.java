@@ -84,6 +84,18 @@ public interface NameDefiner {
 
     public String getIterativeFullName();
 
+    public String getMalePatternForename();
+
+    public String getFemalePatternForename();
+
+    public String getPatternFamilyName();
+
+    public String getFemalePatternFullName();
+
+    public String getMalePatternFullName();
+
+    public String getPatternFullName();
+
     public String getUsername();
 
     public String getCompositeUsername();

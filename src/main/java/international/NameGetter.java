@@ -219,6 +219,36 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
     }
 
     @Override
+    public String getMalePatternForename() {
+        return getPatternName(r);
+    }
+
+    @Override
+    public String getFemalePatternForename() {
+        return TextProcessor.feminize(getPatternName(r), "ia");
+    }
+
+    @Override
+    public String getPatternFamilyName() {
+        return StringHelper.weld(getPatternName(r), ResourceGetter.with(r).getString(Constant.FAMILY_NAME_SUFFIX));
+    }
+
+    @Override
+    public String getFemalePatternFullName() {
+        return getFemalePatternForename() + Separator.SPACE.getCharacter() + getPatternFamilyName();
+    }
+
+    @Override
+    public String getMalePatternFullName() {
+        return getMalePatternForename() + Separator.SPACE.getCharacter() + getPatternFamilyName();
+    }
+
+    @Override
+    public String getPatternFullName() {
+        return r.getBoolean() ? getMalePatternFullName() : getFemalePatternFullName();
+    }
+
+    @Override
     public String getUsername() {
         return getAnyGetter().getUsername();
     }

@@ -127,7 +127,7 @@ public class Pluralizer {
         if (syllableSeparator.isProparoxytone() || StringHelper.endsWith(s, "s")) //Proparoxytones or invariable words
             return s;
 
-        if ((StringHelper.getLastChar(s).equals("n") && !StringHelper.hasAny(s, 'á', 'é', 'í', 'ó', 'ú'))) //Unaccented paroxytones
+        if ((StringHelper.getEnd(s).equals("n") && !StringHelper.hasAny(s, 'á', 'é', 'í', 'ó', 'ú'))) //Unaccented paroxytones
             return syllableSeparator.convertToProparoxytone();
         return s + "es";
     }

@@ -89,7 +89,7 @@ public class StringHelper {
     }
 
     public static String join(String... strings) {
-        return join("", strings);
+        return join(EMPTY, strings);
     }
 
     public static String join(char c, String... strings) {
@@ -116,6 +116,24 @@ public class StringHelper {
 
     public static String joinWithHyphen(String... strings) {
         return join(String.valueOf(Separator.HYPHEN.getCharacter()), strings);
+    }
+
+    public static String weld(String a, String b) {
+        if (isNullOrEmpty(a) || isNullOrEmpty(b))
+            return EMPTY;
+        char ending = getLastChar(a);
+        char start = getFirstChar(b);
+        boolean vowel = false;
+
+        if (ending == start)
+            return removeLastChar(a) + b;
+
+        if (!Character.isLetter(ending) || !Character.isLetter(start))
+            return a + b;
+
+        if ((vowel = CharHelper.isVowel(ending)) ^ CharHelper.isVowel(start))
+            return a + b;
+        return vowel ? (a + removeFirstChar(b)) : (removeLastChar(a) + b);
     }
 
     public static String trimToEmpty(String s) {
@@ -189,13 +207,25 @@ public class StringHelper {
         return s;
     }
 
-    public static String getFirstChar(String s) {
+    public static char getFirstChar(String s) {
+        if (isNotNullOrEmpty(s))
+            return s.charAt(0);
+        return CharHelper.NULL_CHAR;
+    }
+
+    public static char getLastChar(String s) {
+        if (isNotNullOrEmpty(s))
+            return s.charAt(s.length() - 1);
+        return CharHelper.NULL_CHAR;
+    }
+
+    public static String getStart(String s) {
         if (isNotNullOrEmpty(s))
             return String.valueOf(s.charAt(0));
         return s;
     }
 
-    public static String getLastChar(String s) {
+    public static String getEnd(String s) {
         if (isNotNullOrEmpty(s))
             return String.valueOf(s.charAt(s.length() - 1));
         return s;

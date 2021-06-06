@@ -264,6 +264,36 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
     }
 
     @Override
+    public String getMalePatternForename() {
+        return new international.NameGetter().with(r).getMalePatternForename();
+    }
+
+    @Override
+    public String getFemalePatternForename() {
+        return new international.NameGetter().with(r).getFemalePatternForename();
+    }
+
+    @Override
+    public String getPatternFamilyName() {
+        return new international.NameGetter().with(r).getPatternFamilyName();
+    }
+
+    @Override
+    public String getFemalePatternFullName() {
+        return new international.NameGetter().with(r).getFemalePatternFullName();
+    }
+
+    @Override
+    public String getMalePatternFullName() {
+        return new international.NameGetter().with(r).getMalePatternFullName();
+    }
+
+    @Override
+    public String getPatternFullName() {
+        return new international.NameGetter().with(r).getPatternFullName();
+    }
+
+    @Override
     public String getUsername() {
         return Database.selectUsername(r.getInt(1, Database.countUsernames()));
     }
@@ -320,8 +350,7 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
 
     @Override
     public String getMiddleNameInitial() {
-        return ResourceGetter.with(r).getUpperCase() + StringHelper.EMPTY +
-                Separator.DOT.getCharacter();
+        return ResourceGetter.with(r).getUpperCase() + StringHelper.EMPTY + Separator.DOT.getCharacter();
     }
 
     @Override
