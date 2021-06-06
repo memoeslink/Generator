@@ -44,7 +44,8 @@ public class CharHelper {
     public static boolean isVowel(char c) {
         if (c == NULL_CHAR)
             return false;
-        return StringHelper.stripAccents(english.Constant.VOWELS).indexOf(c) != -1;
+        String s = StringHelper.stripAccents(String.valueOf(c));
+        return english.Constant.VOWELS.contains(s);
     }
 
     public static boolean isDefaultVowel(char c) {
@@ -53,10 +54,29 @@ public class CharHelper {
         return Constant.VOWELS.indexOf(c) != -1;
     }
 
+    public static boolean isAccentedConsonant(char c) {
+        if (c == NULL_CHAR)
+            return false;
+        String s = StringHelper.stripAccents(String.valueOf(c));
+        return english.Constant.CONSONANTS.contains(s) && !s.equals(String.valueOf(c));
+    }
+
+    public static boolean isNonClusterConsonant(char c) {
+        if (c == NULL_CHAR)
+            return false;
+        c = Character.toLowerCase(c);
+
+        for (char consonant : international.Constant.LOWERCASE_NON_CLUSTER_CONSONANTS) {
+            if (c == consonant) return false;
+        }
+        return false;
+    }
+
     public static boolean isConsonant(char c) {
         if (c == NULL_CHAR)
             return false;
-        return StringHelper.stripAccents(english.Constant.CONSONANTS).indexOf(c) != 1;
+        String s = StringHelper.stripAccents(String.valueOf(c));
+        return english.Constant.CONSONANTS.contains(s);
     }
 
     public static boolean isSpace(char c) {

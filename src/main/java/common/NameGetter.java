@@ -246,6 +246,51 @@ public class NameGetter extends Getter implements NameDefiner {
     }
 
     @Override
+    public String getMaleFrequencyForename() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getMaleFrequencyForename(int type) {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getFemaleFrequencyForename() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getFemaleFrequencyForename(int type) {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getFrequencyFamilyName() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getFrequencyFamilyName(int type) {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getFemaleFrequencyFullName() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getMaleFrequencyFullName() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getFrequencyFullName() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
     public String getUsername() {
         return Database.DEFAULT_VALUE;
     }

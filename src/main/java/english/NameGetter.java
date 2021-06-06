@@ -294,6 +294,51 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
     }
 
     @Override
+    public String getMaleFrequencyForename() {
+        return new international.NameGetter().with(r).getMaleFrequencyForename();
+    }
+
+    @Override
+    public String getMaleFrequencyForename(int type) {
+        return new international.NameGetter().with(r).getMaleFrequencyForename(type);
+    }
+
+    @Override
+    public String getFemaleFrequencyForename() {
+        return new international.NameGetter().with(r).getFemaleFrequencyForename();
+    }
+
+    @Override
+    public String getFemaleFrequencyForename(int type) {
+        return new international.NameGetter().with(r).getFemaleFrequencyForename();
+    }
+
+    @Override
+    public String getFrequencyFamilyName() {
+        return new international.NameGetter().with(r).getFrequencyFamilyName();
+    }
+
+    @Override
+    public String getFrequencyFamilyName(int type) {
+        return new international.NameGetter().with(r).getFrequencyFamilyName(type);
+    }
+
+    @Override
+    public String getFemaleFrequencyFullName() {
+        return new international.NameGetter().with(r).getFemaleFrequencyFullName();
+    }
+
+    @Override
+    public String getMaleFrequencyFullName() {
+        return new international.NameGetter().with(r).getMaleFrequencyFullName();
+    }
+
+    @Override
+    public String getFrequencyFullName() {
+        return new international.NameGetter().with(r).getFrequencyFullName();
+    }
+
+    @Override
     public String getUsername() {
         return Database.selectUsername(r.getInt(1, Database.countUsernames()));
     }

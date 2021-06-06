@@ -249,6 +249,55 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
     }
 
     @Override
+    public String getMaleFrequencyForename() {
+        int type = r.getInt(Constant.WEIGHTED_LETTERS.length);
+        return getMaleFrequencyForename(type);
+    }
+
+    @Override
+    public String getMaleFrequencyForename(int type) {
+        return getFrequencyName(Constant.WEIGHTED_LETTERS[type], r.getInt(3, 8), r);
+    }
+
+    @Override
+    public String getFemaleFrequencyForename() {
+        return TextProcessor.feminize(getMaleFrequencyForename());
+    }
+
+    @Override
+    public String getFemaleFrequencyForename(int type) {
+        return TextProcessor.feminize(getMaleFrequencyForename(type));
+    }
+
+    @Override
+    public String getFrequencyFamilyName() {
+        int type = r.getInt(Constant.WEIGHTED_LETTERS.length);
+        return getFrequencyFamilyName(type);
+    }
+
+    @Override
+    public String getFrequencyFamilyName(int type) {
+        return getFrequencyName(Constant.WEIGHTED_LETTERS[type], r.getInt(2, 11), r);
+    }
+
+    @Override
+    public String getFemaleFrequencyFullName() {
+        int type = r.getInt(Constant.WEIGHTED_LETTERS.length);
+        return getFemaleFrequencyForename(type) + Separator.SPACE.getCharacter() + getFrequencyFamilyName(type);
+    }
+
+    @Override
+    public String getMaleFrequencyFullName() {
+        int type = r.getInt(Constant.WEIGHTED_LETTERS.length);
+        return getMaleFrequencyForename(type) + Separator.SPACE.getCharacter() + getFrequencyFamilyName(type);
+    }
+
+    @Override
+    public String getFrequencyFullName() {
+        return r.getBoolean() ? getMaleFrequencyFullName() : getFemaleFrequencyFullName();
+    }
+
+    @Override
     public String getUsername() {
         return getAnyGetter().getUsername();
     }

@@ -96,6 +96,24 @@ public interface NameDefiner {
 
     public String getPatternFullName();
 
+    public String getMaleFrequencyForename();
+
+    public String getMaleFrequencyForename(int type);
+
+    public String getFemaleFrequencyForename();
+
+    public String getFemaleFrequencyForename(int type);
+
+    public String getFrequencyFamilyName();
+
+    public String getFrequencyFamilyName(int type);
+
+    public String getFemaleFrequencyFullName();
+
+    public String getMaleFrequencyFullName();
+
+    public String getFrequencyFullName();
+
     public String getUsername();
 
     public String getCompositeUsername();

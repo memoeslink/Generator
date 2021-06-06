@@ -99,6 +99,18 @@ public class NameGenerator extends Generator {
                 return getter.with(r).getCompositeUsername();
             case DERIVED_USERNAME:
                 return getter.with(r).getDerivedUsername();
+            case MALE_FREQUENCY_FORENAME:
+                return getter.with(r).getMaleFrequencyForename();
+            case FEMALE_FREQUENCY_FORENAME:
+                return getter.with(r).getFemaleFrequencyForename();
+            case FREQUENCY_FAMILY_NAME:
+                return getter.with(r).getFrequencyFamilyName();
+            case MALE_FREQUENCY_FULL_NAME:
+                return getter.with(r).getMaleFrequencyFullName();
+            case FEMALE_FREQUENCY_FULL_NAME:
+                return getter.with(r).getFemaleFrequencyFullName();
+            case FREQUENCY_FULL_NAME:
+                return getter.with(r).getFrequencyFullName();
             case ANONYMOUS_NAME:
                 return getter.with(r).getAnonymousName();
             case ANONYMOUS_ANIMAL:
