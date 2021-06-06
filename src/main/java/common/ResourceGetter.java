@@ -36,10 +36,10 @@ public class ResourceGetter {
     }
 
     public static String getSplitString(String s) {
-        if (StringHelper.isNotNullOrBlank(s)) {
-            String[] parts = s.split("¶[ ]*");
+        String[] parts = StringHelper.splitByParagraphMark(s);
+
+        if (parts.length > 0)
             return parts[r.getInt(parts.length)];
-        }
         return StringHelper.EMPTY;
     }
 

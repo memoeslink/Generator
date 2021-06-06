@@ -3,6 +3,22 @@ package common;
 public class CharHelper {
     public static final char NULL_CHAR = '\0';
 
+    public static boolean isNull(char c) {
+        return c == NULL_CHAR;
+    }
+
+    public static char defaultIfNull(char c) {
+        if (c == NULL_CHAR)
+            return Character.SPACE_SEPARATOR;
+        else return c;
+    }
+
+    public static char defaultIfNull(char c, char defaultValue) {
+        if (c == NULL_CHAR)
+            return defaultIfNull(defaultValue);
+        return c;
+    }
+
     public static boolean equalsAny(char c, char... chars) {
         for (char character : chars) {
             if (c == character) return true;

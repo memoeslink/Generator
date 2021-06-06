@@ -1,6 +1,8 @@
 package common;
 
 import java.text.Normalizer;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StringHelper {
     public static final String EMPTY = "";
@@ -57,6 +59,39 @@ public class StringHelper {
         if (s == null || s.isBlank())
             return defaultValue == null ? EMPTY : defaultValue;
         return s;
+    }
+
+    public static List<String> split(String s, char delimiter) {
+        StringBuilder sb = new StringBuilder();
+        ArrayList<String> parts = new ArrayList<>();
+        parts.ensureCapacity(s.length() / 5);
+        char[] chars = s.toCharArray();
+
+        for (char c : chars) {
+            if (c == delimiter) {
+                parts.add(sb.toString());
+                sb.delete(0, sb.length());
+            } else
+                sb.append(c);
+        }
+
+        if (sb.length() > 0)
+            parts.add(sb.toString());
+        return parts;
+    }
+
+    public static List<String> splitBySpace(String s) {
+        return split(s, Separator.SPACE.getCharacter());
+    }
+
+    public static List<String> splitByHyphen(String s) {
+        return split(s, Separator.HYPHEN.getCharacter());
+    }
+
+    public static String[] splitByParagraphMark(String s) {
+        if (StringHelper.isNotNullOrEmpty(s))
+            return s.split("¶[ ]*");
+        return new String[]{};
     }
 
     public static String join(String a, String b) {
@@ -123,7 +158,7 @@ public class StringHelper {
             return EMPTY;
         char ending = getLastChar(a);
         char start = getFirstChar(b);
-        boolean vowel = false;
+        boolean vowel;
 
         if (ending == start)
             return removeLastChar(a) + b;
