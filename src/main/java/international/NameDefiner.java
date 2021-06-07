@@ -90,8 +90,8 @@ public interface NameDefiner extends common.NameDefiner {
     default String getFrequencyName(WeightedChar[] letters, int length, Randomizer r) {
         String s;
         StringBuilder sb = new StringBuilder();
-        char previousChar;
-        char currentChar = r.chooseOnWeight(letters);
+        char previousChar = '\0';
+        char currentChar;
         boolean sameType = false;
         boolean allowed;
         boolean equal;
@@ -104,33 +104,30 @@ public interface NameDefiner extends common.NameDefiner {
         length = IntegerHelper.defaultInt(length, 1, 9999);
 
         for (int n = 0; n < length; n++) {
-            if (sb.length() >= 1) {
-                previousChar = sb.charAt(sb.length() - 1);
+            if (sameType) {
+                do {
+                    currentChar = r.chooseOnWeight(letters);
+                    allowed = true;
 
-                if (sameType) {
-                    do {
-                        currentChar = r.chooseOnWeight(letters);
-                        allowed = true;
-
-                        if (previousChar == currentChar) {
-                            equal = true;
-                            allowed = r.getBoolean();
-                        } else
-                            equal = false;
-                    }
-                    while ((vowel = CharHelper.isUnaccentedVowel(previousChar)) != CharHelper.isUnaccentedVowel(currentChar) ||
-                            ((!vowel || n == length - 1) && CharHelper.isAccentedConsonant(currentChar)) ||
-                            (equal && CharHelper.isNonClusterConsonant(currentChar)) || !allowed);
-                } else {
-                    do {
-                        currentChar = r.chooseOnWeight(letters);
-                    }
-                    while ((vowel = CharHelper.isUnaccentedVowel(previousChar)) == (anotherVowel = CharHelper.isUnaccentedVowel(currentChar)) ||
-                            ((!vowel || n == length - 1) && CharHelper.isAccentedConsonant(currentChar)) ||
-                            (CharHelper.isAccentedConsonant(currentChar) && !anotherVowel));
+                    if (previousChar == currentChar) {
+                        equal = true;
+                        allowed = r.getBoolean();
+                    } else
+                        equal = false;
                 }
+                while ((vowel = CharHelper.isUnaccentedVowel(previousChar)) != CharHelper.isUnaccentedVowel(currentChar) ||
+                        ((!vowel || n == length - 1) && CharHelper.isAccentedConsonant(currentChar)) ||
+                        (equal && CharHelper.isNonClusterConsonant(currentChar)) || !allowed);
+            } else {
+                do {
+                    currentChar = r.chooseOnWeight(letters);
+                }
+                while ((vowel = CharHelper.isUnaccentedVowel(previousChar)) == (anotherVowel = CharHelper.isUnaccentedVowel(currentChar)) ||
+                        ((!vowel || n == length - 1) && CharHelper.isAccentedConsonant(currentChar)) ||
+                        (CharHelper.isAccentedConsonant(currentChar) && !anotherVowel));
             }
             sb.append(currentChar);
+            previousChar = sb.charAt(sb.length() - 1);
 
             if (r.getFloat() <= approvalRate[count] && !CharHelper.isAccentedConsonant(currentChar)) {
                 count++;
