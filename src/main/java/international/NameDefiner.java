@@ -90,7 +90,7 @@ public interface NameDefiner extends common.NameDefiner {
     default String getFrequencyName(WeightedChar[] letters, int length, Randomizer r) {
         String s;
         StringBuilder sb = new StringBuilder();
-        char previousChar = '\0';
+        char previousChar = r.chooseOnWeight(letters);
         char currentChar;
         boolean sameType = false;
         boolean allowed;
@@ -115,7 +115,7 @@ public interface NameDefiner extends common.NameDefiner {
                     } else
                         equal = false;
                 }
-                while ((vowel = CharHelper.isUnaccentedVowel(previousChar)) != CharHelper.isUnaccentedVowel(currentChar) ||
+                while ((vowel = CharHelper.isUnaccentedVowel(previousChar)) ^ CharHelper.isUnaccentedVowel(currentChar) ||
                         ((!vowel || n == length - 1) && CharHelper.isAccentedConsonant(currentChar)) ||
                         (equal && CharHelper.isNonClusterConsonant(currentChar)) || !allowed);
             } else {
