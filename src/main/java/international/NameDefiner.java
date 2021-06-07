@@ -96,7 +96,7 @@ public interface NameDefiner extends common.NameDefiner {
         boolean allowed;
         boolean equal;
         boolean vowel, anotherVowel;
-        float[] approvalRate = {0.5F, 0.125F, 0.0F};
+        float[] approvalRate = {0.5F, 0.125F, 0F};
         int count = 0;
 
         if (letters == null || letters.length == 0)
