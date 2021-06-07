@@ -57,8 +57,9 @@ public class CharHelper {
     public static boolean isAccentedConsonant(char c) {
         if (c == NULL_CHAR)
             return false;
-        String s = StringHelper.stripAccents(String.valueOf(c));
-        return english.Constant.CONSONANTS.contains(s) && !s.equals(String.valueOf(c));
+        String originalChar = String.valueOf(c);
+        String modifiedChar = StringHelper.stripAccents(originalChar);
+        return english.Constant.CONSONANTS.contains(modifiedChar) && !originalChar.equals(modifiedChar);
     }
 
     public static boolean isNonClusterConsonant(char c) {

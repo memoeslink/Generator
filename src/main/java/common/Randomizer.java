@@ -5,6 +5,7 @@ import java.util.*;
 public class Randomizer {
     private Long seed;
     private Random r;
+    private static HashMap<Integer, Double> hashMap = new HashMap<>();
 
     public Randomizer() {
         bindSeed(null);
@@ -115,17 +116,21 @@ public class Randomizer {
 
     public char chooseOnWeight(WeightedChar[] weightedChars) {
         weightedChars = weightedChars != null ? weightedChars : new WeightedChar[]{};
-        double completeWeight = 0.0D;
+        double completeWeight = hashMap.getOrDefault(Arrays.hashCode(weightedChars), 0.0D);
 
-        for (WeightedChar c : weightedChars)
-            completeWeight += c.getWeight();
-        double r = Math.random() * completeWeight;
+        if (completeWeight == 0.0D) {
+            for (WeightedChar c : weightedChars) {
+                completeWeight += c.getWeight();
+            }
+            hashMap.put(Arrays.hashCode(weightedChars), completeWeight);
+        }
+        double probability = getDouble() * completeWeight;
         double weight = 0.0D;
 
         for (WeightedChar c : weightedChars) {
             weight += c.getWeight();
 
-            if (weight > 0.0D && weight >= r) return c.getValue();
+            if (weight > 0.0D && weight >= probability) return c.getValue();
         }
         return new WeightedChar().getValue();
     }
