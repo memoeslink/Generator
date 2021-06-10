@@ -6,17 +6,20 @@ import common.*;
 public final class NameGetter extends common.NameGetter implements NameDefiner, english.NameDefiner {
     private final NounGetter nounGetter;
     private final AdjectiveGetter adjectiveGetter;
+    private final international.NameGetter nameGetter;
 
     public NameGetter() {
         super();
         nounGetter = new NounGetter();
         adjectiveGetter = new AdjectiveGetter();
+        nameGetter = new international.NameGetter();
     }
 
-    private NameGetter(Randomizer r) {
+    public NameGetter(Randomizer r) {
         super(r);
-        nounGetter = new NounGetter().with(r);
-        adjectiveGetter = new AdjectiveGetter().with(r);
+        nounGetter = new NounGetter(r);
+        adjectiveGetter = new AdjectiveGetter(r);
+        nameGetter = new international.NameGetter(r);
     }
 
     @Override
@@ -190,152 +193,197 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
 
     @Override
     public String getFemaleDefinedForename() {
-        return new international.NameGetter().with(r).getFemaleDefinedForename();
+        return nameGetter.getFemaleDefinedForename();
     }
 
     @Override
     public String getFemaleDefinedForename(int type) {
-        return new international.NameGetter().with(r).getFemaleDefinedForename(type);
+        return nameGetter.getFemaleDefinedForename(type);
     }
 
     @Override
     public String getMaleDefinedForename() {
-        return new international.NameGetter().with(r).getMaleDefinedForename();
+        return nameGetter.getMaleDefinedForename();
     }
 
     @Override
     public String getMaleDefinedForename(int type) {
-        return new international.NameGetter().with(r).getMaleDefinedForename(type);
+        return nameGetter.getMaleDefinedForename(type);
     }
 
     @Override
     public String getDefinedFamilyName() {
-        return new international.NameGetter().with(r).getDefinedFamilyName();
+        return nameGetter.getDefinedFamilyName();
     }
 
     @Override
     public String getDefinedFamilyName(int type) {
-        return new international.NameGetter().with(r).getDefinedFamilyName(type);
+        return nameGetter.getDefinedFamilyName(type);
     }
 
     @Override
     public String getFemaleDefinedFullName() {
-        return new international.NameGetter().with(r).getFemaleDefinedFullName();
+        return nameGetter.getFemaleDefinedFullName();
     }
 
     @Override
     public String getMaleDefinedFullName() {
-        return new international.NameGetter().with(r).getMaleDefinedFullName();
+        return nameGetter.getMaleDefinedFullName();
     }
 
     @Override
     public String getDefinedFullName() {
-        return new international.NameGetter().with(r).getDefinedFullName();
+        return nameGetter.getDefinedFullName();
     }
 
     @Override
     public String getMaleIterativeForename() {
-        return new international.NameGetter().with(r).getMaleIterativeForename();
+        return nameGetter.getMaleIterativeForename();
     }
 
     @Override
     public String getFemaleIterativeForename() {
-        return new international.NameGetter().with(r).getFemaleIterativeForename();
+        return nameGetter.getFemaleIterativeForename();
     }
 
     @Override
     public String getIterativeFamilyName() {
-        return new international.NameGetter().with(r).getIterativeFamilyName();
+        return nameGetter.getIterativeFamilyName();
     }
 
     @Override
     public String getFemaleIterativeFullName() {
-        return new international.NameGetter().with(r).getFemaleIterativeFullName();
+        return nameGetter.getFemaleIterativeFullName();
     }
 
     @Override
     public String getMaleIterativeFullName() {
-        return new international.NameGetter().with(r).getMaleIterativeFullName();
+        return nameGetter.getMaleIterativeFullName();
     }
 
     @Override
     public String getIterativeFullName() {
-        return new international.NameGetter().with(r).getIterativeFullName();
+        return nameGetter.getIterativeFullName();
     }
 
     @Override
     public String getMalePatternForename() {
-        return new international.NameGetter().with(r).getMalePatternForename();
+        return nameGetter.getMalePatternForename();
     }
 
     @Override
     public String getFemalePatternForename() {
-        return new international.NameGetter().with(r).getFemalePatternForename();
+        return nameGetter.getFemalePatternForename();
     }
 
     @Override
     public String getPatternFamilyName() {
-        return new international.NameGetter().with(r).getPatternFamilyName();
+        return nameGetter.getPatternFamilyName();
     }
 
     @Override
     public String getFemalePatternFullName() {
-        return new international.NameGetter().with(r).getFemalePatternFullName();
+        return nameGetter.getFemalePatternFullName();
     }
 
     @Override
     public String getMalePatternFullName() {
-        return new international.NameGetter().with(r).getMalePatternFullName();
+        return nameGetter.getMalePatternFullName();
     }
 
     @Override
     public String getPatternFullName() {
-        return new international.NameGetter().with(r).getPatternFullName();
+        return nameGetter.getPatternFullName();
     }
 
     @Override
     public String getMaleFrequencyForename() {
-        return new international.NameGetter().with(r).getMaleFrequencyForename();
+        return nameGetter.getMaleFrequencyForename();
     }
 
     @Override
     public String getMaleFrequencyForename(int type) {
-        return new international.NameGetter().with(r).getMaleFrequencyForename(type);
+        return nameGetter.getMaleFrequencyForename(type);
     }
 
     @Override
     public String getFemaleFrequencyForename() {
-        return new international.NameGetter().with(r).getFemaleFrequencyForename();
+        return nameGetter.getFemaleFrequencyForename();
     }
 
     @Override
     public String getFemaleFrequencyForename(int type) {
-        return new international.NameGetter().with(r).getFemaleFrequencyForename();
+        return nameGetter.getFemaleFrequencyForename();
     }
 
     @Override
     public String getFrequencyFamilyName() {
-        return new international.NameGetter().with(r).getFrequencyFamilyName();
+        return nameGetter.getFrequencyFamilyName();
     }
 
     @Override
     public String getFrequencyFamilyName(int type) {
-        return new international.NameGetter().with(r).getFrequencyFamilyName(type);
+        return nameGetter.getFrequencyFamilyName(type);
     }
 
     @Override
     public String getFemaleFrequencyFullName() {
-        return new international.NameGetter().with(r).getFemaleFrequencyFullName();
+        return nameGetter.getFemaleFrequencyFullName();
     }
 
     @Override
     public String getMaleFrequencyFullName() {
-        return new international.NameGetter().with(r).getMaleFrequencyFullName();
+        return nameGetter.getMaleFrequencyFullName();
     }
 
     @Override
     public String getFrequencyFullName() {
-        return new international.NameGetter().with(r).getFrequencyFullName();
+        return nameGetter.getFrequencyFullName();
+    }
+
+    @Override
+    public String getMalePredefinedForename() {
+        return nameGetter.getMalePredefinedForename();
+    }
+
+    @Override
+    public String getMalePredefinedForename(int type) {
+        return nameGetter.getMalePredefinedForename(type);
+    }
+
+    @Override
+    public String getFemalePredefinedForename() {
+        return nameGetter.getFemalePredefinedForename();
+    }
+
+    @Override
+    public String getFemalePredefinedForename(int type) {
+        return nameGetter.getFemalePredefinedForename(type);
+    }
+
+    @Override
+    public String getPredefinedFamilyName() {
+        return nameGetter.getPredefinedFamilyName();
+    }
+
+    @Override
+    public String getPredefinedFamilyName(int type) {
+        return nameGetter.getPredefinedFamilyName(type);
+    }
+
+    @Override
+    public String getFemalePredefinedFullName() {
+        return nameGetter.getFemalePredefinedFullName();
+    }
+
+    @Override
+    public String getMalePredefinedFullName() {
+        return nameGetter.getMalePredefinedFullName();
+    }
+
+    @Override
+    public String getPredefinedFullName() {
+        return nameGetter.getPredefinedFullName();
     }
 
     @Override
@@ -366,11 +414,6 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
     public String getAnonymousAnimal() {
         return "Anonymous" + Separator.SPACE.getCharacter() +
                 StringHelper.capitalize(ResourceGetter.with(r).getString(Constant.ANONYMOUS_ANIMALS));
-    }
-
-    @Override
-    public NameGetter with(Randomizer r) {
-        return new NameGetter(r);
     }
 
     @Override

@@ -10,7 +10,7 @@ public interface NameDefiner extends common.NameDefiner {
     }
 
     default String getDefinedForename(int type, Randomizer r) {
-        type = IntegerHelper.defaultIndex(Constant.GENERATED_NAME_START.length, type);
+        type = IntegerHelper.defaultIndex(type, Constant.GENERATED_NAME_START.length);
         return StringHelper.capitalizeFirst(ResourceGetter.with(r).getString(Constant.GENERATED_NAME_START[type]) +
                 ResourceGetter.with(r).getString(Constant.GENERATED_NAME_MIDDLE[type]) +
                 ResourceGetter.with(r).getString(Constant.GENERATED_NAME_ENDING[type]));
@@ -79,6 +79,11 @@ public interface NameDefiner extends common.NameDefiner {
                 case 'w':
                     sb.append(ResourceGetter.with(r).getString(Constant.VOWEL_PAIRS));
                     break;
+                case '?':
+                    if (r.getBoolean())
+                        sb.append(ResourceGetter.with(r).getChar(english.Constant.LOWERCASE_CONSONANTS));
+                    else
+                        sb.append(ResourceGetter.with(r).getChar(english.Constant.LOWERCASE_VOWELS));
                 case ' ':
                     sb.append(' ');
                     break;

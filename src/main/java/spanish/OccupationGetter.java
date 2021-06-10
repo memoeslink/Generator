@@ -8,7 +8,7 @@ public final class OccupationGetter extends common.OccupationGetter implements O
         super();
     }
 
-    private OccupationGetter(Randomizer r) {
+    public OccupationGetter(Randomizer r) {
         super(r);
     }
 
@@ -105,10 +105,5 @@ public final class OccupationGetter extends common.OccupationGetter implements O
     public String getGenderlessFantasyClass() {
         String fantasyClass = getFantasyClass();
         return TextProcessor.genderify(fantasyClass, Gender.UNDEFINED);
-    }
-
-    @Override
-    public OccupationGetter with(Randomizer r) {
-        return new OccupationGetter(r);
     }
 }

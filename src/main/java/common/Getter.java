@@ -3,7 +3,7 @@ package common;
 public abstract class Getter {
     protected Randomizer r;
 
-    public Getter() {
+    protected Getter() {
         r = new Randomizer();
     }
 

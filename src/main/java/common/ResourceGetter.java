@@ -1,11 +1,15 @@
 package common;
 
+import java.io.*;
+import java.util.HashMap;
+
 public class ResourceGetter {
     private static Randomizer r;
+    private static final HashMap<String, Integer> countRegistry = new HashMap<>();
+    private static final String RESOURCES_PATH = "src/main/resources/%s";
 
     static {
         r = new Randomizer();
-        int[] a = new int[]{};
     }
 
     private ResourceGetter(Randomizer r) {
@@ -41,6 +45,56 @@ public class ResourceGetter {
         if (parts.length > 0)
             return parts[r.getInt(parts.length)];
         return StringHelper.EMPTY;
+    }
+
+    public static String getLineFromFile(String filename) {
+        String s = StringHelper.EMPTY;
+        File file = new File(String.format(RESOURCES_PATH, filename));
+
+        if (file.exists()) {
+            FileInputStream is;
+
+            try {
+                is = new FileInputStream(file);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+                return s;
+            }
+            InputStreamReader isr = new InputStreamReader(is);
+            BufferedReader br = new BufferedReader(isr);
+            LineNumberReader lnr = new LineNumberReader(br);
+            Integer lineCount = 0;
+
+            if (countRegistry.containsKey(filename))
+                lineCount = countRegistry.get(filename);
+            else {
+                try {
+                    lnr.skip(Long.MAX_VALUE);
+                    lineCount = lnr.getLineNumber() + 1;
+                    countRegistry.put(filename, lineCount);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                new Person.PersonBuilder().setForename("").setGender(Gender.FEMININE).build();
+            }
+
+            if (lineCount != null && lineCount > 0) {
+                try {
+                    is.getChannel().position(0);
+
+                    for (int x = 0, limit = r.getInt(1, lineCount); x < limit; x++) {
+                        s = br.readLine();
+                    }
+                    br.close();
+                    lnr.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            br = null;
+            lnr = null;
+        }
+        return s;
     }
 
     public static char getLetter() {

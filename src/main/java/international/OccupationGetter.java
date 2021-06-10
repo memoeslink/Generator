@@ -9,7 +9,7 @@ public final class OccupationGetter extends common.OccupationGetter implements O
         super();
     }
 
-    private OccupationGetter(Randomizer r) {
+    public OccupationGetter(Randomizer r) {
         super(r);
     }
 
@@ -93,18 +93,13 @@ public final class OccupationGetter extends common.OccupationGetter implements O
         return getAnyGetter().getGenderlessFantasyClass();
     }
 
-    @Override
-    public OccupationGetter with(Randomizer r) {
-        return new OccupationGetter(r);
-    }
-
     public common.OccupationGetter getAnyGetter() {
         switch (r.getInt(2)) {
             case 0:
-                return new english.OccupationGetter().with(r);
+                return new english.OccupationGetter(r);
             case 1:
-                return new spanish.OccupationGetter().with(r);
+                return new spanish.OccupationGetter(r);
         }
-        return new common.OccupationGetter().with(r);
+        return new common.OccupationGetter(r);
     }
 }

@@ -16,32 +16,32 @@ public class OccupationGenerator extends Generator {
         OccupationGetter getter;
 
         if (locale.getLanguage().equals(Locale.ENGLISH.getLanguage()))
-            getter = new english.OccupationGetter();
+            getter = new english.OccupationGetter(r);
         else if (locale.getLanguage().equals("es"))
-            getter = new spanish.OccupationGetter();
+            getter = new spanish.OccupationGetter(r);
         else
-            getter = new international.OccupationGetter();
+            getter = new international.OccupationGetter(r);
         occupationType = occupationType != null ? occupationType : OccupationType.ANY;
 
         switch (occupationType) {
             case MALE_OCCUPATION:
-                return getter.with(r).getMaleOccupation();
+                return getter.getMaleOccupation();
             case FEMALE_OCCUPATION:
-                return getter.with(r).getFemaleOccupation();
+                return getter.getFemaleOccupation();
             case GENDERLESS_OCCUPATION:
-                return getter.with(r).getGenderlessOccupation();
+                return getter.getGenderlessOccupation();
             case MALE_JOB_TITLE:
-                return getter.with(r).getMaleJobTitle();
+                return getter.getMaleJobTitle();
             case FEMALE_JOB_TITLE:
-                return getter.with(r).getFemaleJobTitle();
+                return getter.getFemaleJobTitle();
             case GENDERLESS_JOB_TITLE:
-                return getter.with(r).getGenderlessJobTitle();
+                return getter.getGenderlessJobTitle();
             case MALE_FANTASY_CLASS:
-                return getter.with(r).getMaleFantasyClass();
+                return getter.getMaleFantasyClass();
             case FEMALE_FANTASY_CLASS:
-                return getter.with(r).getFemaleFantasyClass();
+                return getter.getFemaleFantasyClass();
             case GENDERLESS_FANTASY_CLASS:
-                return getter.with(r).getGenderlessFantasyClass();
+                return getter.getGenderlessFantasyClass();
             case ANY:
             default:
                 return getOccupation(OccupationType.values()[r.getInt(OccupationType.values().length)]);

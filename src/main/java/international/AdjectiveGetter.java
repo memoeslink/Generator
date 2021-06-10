@@ -9,7 +9,7 @@ public final class AdjectiveGetter extends common.AdjectiveGetter implements Adj
         super();
     }
 
-    private AdjectiveGetter(Randomizer r) {
+    public AdjectiveGetter(Randomizer r) {
         super(r);
     }
 
@@ -43,18 +43,13 @@ public final class AdjectiveGetter extends common.AdjectiveGetter implements Adj
         return getAnyGetter().getPluralMaleAdjective();
     }
 
-    @Override
-    public AdjectiveGetter with(Randomizer r) {
-        return new AdjectiveGetter(r);
-    }
-
     public common.AdjectiveGetter getAnyGetter() {
         switch (r.getInt(2)) {
             case 0:
-                return new english.AdjectiveGetter().with(r);
+                return new english.AdjectiveGetter(r);
             case 1:
-                return new spanish.AdjectiveGetter().with(r);
+                return new spanish.AdjectiveGetter(r);
         }
-        return new common.AdjectiveGetter().with(r);
+        return new common.AdjectiveGetter(r);
     }
 }

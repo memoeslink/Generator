@@ -6,7 +6,7 @@ public class NounGetter extends Getter implements NounDefiner {
         super();
     }
 
-    protected NounGetter(Randomizer r) {
+    public NounGetter(Randomizer r) {
         super(r);
     }
 
@@ -43,10 +43,5 @@ public class NounGetter extends Getter implements NounDefiner {
     @Override
     public String getPluralMaleNoun() {
         return Database.DEFAULT_VALUE;
-    }
-
-    @Override
-    public NounGetter with(Randomizer r) {
-        return new NounGetter(r);
     }
 }

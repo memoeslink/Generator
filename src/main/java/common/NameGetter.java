@@ -6,7 +6,7 @@ public class NameGetter extends Getter implements NameDefiner {
         super();
     }
 
-    protected NameGetter(Randomizer r) {
+    public NameGetter(Randomizer r) {
         super(r);
     }
 
@@ -291,6 +291,51 @@ public class NameGetter extends Getter implements NameDefiner {
     }
 
     @Override
+    public String getMalePredefinedForename() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getMalePredefinedForename(int type) {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getFemalePredefinedForename() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getFemalePredefinedForename(int type) {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getPredefinedFamilyName() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getPredefinedFamilyName(int type) {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getFemalePredefinedFullName() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getMalePredefinedFullName() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getPredefinedFullName() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
     public String getUsername() {
         return Database.DEFAULT_VALUE;
     }
@@ -313,10 +358,5 @@ public class NameGetter extends Getter implements NameDefiner {
     @Override
     public String getAnonymousAnimal() {
         return Database.DEFAULT_VALUE;
-    }
-
-    @Override
-    public NameGetter with(Randomizer r) {
-        return new NameGetter(r);
     }
 }

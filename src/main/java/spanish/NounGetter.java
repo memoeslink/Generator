@@ -9,7 +9,7 @@ public final class NounGetter extends common.NounGetter implements NounDefiner, 
         super();
     }
 
-    private NounGetter(Randomizer r) {
+    public NounGetter(Randomizer r) {
         super(r);
     }
 
@@ -47,11 +47,6 @@ public final class NounGetter extends common.NounGetter implements NounDefiner, 
     public String getPluralMaleNoun() {
         Noun noun = getRefinedNoun();
         return noun.getGender() == Gender.MASCULINE ? (noun.isPlural() ? noun.getBase() : Pluralizer.pluralize(noun).getBase()) : getPluralMaleNoun();
-    }
-
-    @Override
-    public NounGetter with(Randomizer r) {
-        return new NounGetter(r);
     }
 
     @Override
@@ -105,5 +100,10 @@ public final class NounGetter extends common.NounGetter implements NounDefiner, 
             }
         }
         return new Noun(Article.INDEFINITE, noun);
+    }
+
+    @Override
+    public NounGetter with(Randomizer r) {
+        return new NounGetter(r);
     }
 }

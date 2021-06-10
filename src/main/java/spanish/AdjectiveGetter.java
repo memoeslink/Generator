@@ -11,7 +11,7 @@ public final class AdjectiveGetter extends common.AdjectiveGetter implements Adj
         super();
     }
 
-    private AdjectiveGetter(Randomizer r) {
+    public AdjectiveGetter(Randomizer r) {
         super(r);
     }
 
@@ -49,11 +49,6 @@ public final class AdjectiveGetter extends common.AdjectiveGetter implements Adj
     public String getPluralMaleAdjective() {
         Adjective adjective = getRefinedPluralAdjective();
         return adjective.getGender() == Gender.MASCULINE ? adjective.getBase() : getPluralMaleAdjective();
-    }
-
-    @Override
-    public AdjectiveGetter with(Randomizer r) {
-        return new AdjectiveGetter(r);
     }
 
     @Override

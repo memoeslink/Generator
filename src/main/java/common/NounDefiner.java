@@ -15,6 +15,4 @@ public interface NounDefiner {
     public String getMaleNoun();
 
     public String getPluralMaleNoun();
-
-    public NounGetter with(Randomizer r);
 }

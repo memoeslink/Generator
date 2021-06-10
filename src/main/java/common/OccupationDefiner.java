@@ -33,6 +33,4 @@ public interface OccupationDefiner {
     public String getMaleFantasyClass();
 
     public String getGenderlessFantasyClass();
-
-    public OccupationGetter with(Randomizer r);
 }

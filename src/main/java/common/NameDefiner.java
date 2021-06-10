@@ -114,6 +114,24 @@ public interface NameDefiner {
 
     public String getFrequencyFullName();
 
+    public String getMalePredefinedForename();
+
+    public String getMalePredefinedForename(int type);
+
+    public String getFemalePredefinedForename();
+
+    public String getFemalePredefinedForename(int type);
+
+    public String getPredefinedFamilyName();
+
+    public String getPredefinedFamilyName(int type);
+
+    public String getFemalePredefinedFullName();
+
+    public String getMalePredefinedFullName();
+
+    public String getPredefinedFullName();
+
     public String getUsername();
 
     public String getCompositeUsername();
@@ -180,6 +198,4 @@ public interface NameDefiner {
     public String getAnonymousName();
 
     public String getAnonymousAnimal();
-
-    public NameGetter with(Randomizer r);
 }

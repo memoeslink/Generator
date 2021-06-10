@@ -17,30 +17,30 @@ public class AdjectiveGenerator extends Generator {
 
         if ((locale.getLanguage().isEmpty() && locale.getCountry().isEmpty()) ||
                 locale.getLanguage().equals("xx") || locale.getCountry().equals("XX"))
-            getter = new international.AdjectiveGetter();
+            getter = new international.AdjectiveGetter(r);
         else if (locale.getLanguage().equals(Locale.ENGLISH.getLanguage()))
-            getter = new english.AdjectiveGetter();
+            getter = new english.AdjectiveGetter(r);
         else if (locale.getLanguage().equals("es"))
-            getter = new spanish.AdjectiveGetter();
+            getter = new spanish.AdjectiveGetter(r);
         else
-            getter = new international.AdjectiveGetter();
+            getter = new international.AdjectiveGetter(r);
         form = form != null ? form : Form.UNDEFINED;
 
         switch (form) {
             case SINGULAR:
             case SINGULAR_NEUTER:
-                return getter.with(r).getAdjective();
+                return getter.getAdjective();
             case PLURAL:
             case PLURAL_NEUTER:
-                return getter.with(r).getPluralAdjective();
+                return getter.getPluralAdjective();
             case SINGULAR_MASCULINE:
-                return getter.with(r).getMaleAdjective();
+                return getter.getMaleAdjective();
             case PLURAL_MASCULINE:
-                return getter.with(r).getPluralMaleAdjective();
+                return getter.getPluralMaleAdjective();
             case SINGULAR_FEMININE:
-                return getter.with(r).getFemaleAdjective();
+                return getter.getFemaleAdjective();
             case PLURAL_FEMININE:
-                return getter.with(r).getPluralFemaleAdjective();
+                return getter.getPluralFemaleAdjective();
             case UNDEFINED:
             default:
                 return getAdjective(Form.values()[r.getInt(Form.values().length)]);

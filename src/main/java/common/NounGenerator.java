@@ -17,30 +17,30 @@ public class NounGenerator extends Generator {
 
         if ((locale.getLanguage().isEmpty() && locale.getCountry().isEmpty()) ||
                 locale.getLanguage().equals("xx") || locale.getCountry().equals("XX"))
-            getter = new international.NounGetter();
+            getter = new international.NounGetter(r);
         else if (locale.getLanguage().equals(Locale.ENGLISH.getLanguage()))
-            getter = new english.NounGetter();
+            getter = new english.NounGetter(r);
         else if (locale.getLanguage().equals("es"))
-            getter = new spanish.NounGetter();
+            getter = new spanish.NounGetter(r);
         else
-            getter = new international.NounGetter();
+            getter = new international.NounGetter(r);
         form = form != null ? form : Form.UNDEFINED;
 
         switch (form) {
             case SINGULAR:
             case SINGULAR_NEUTER:
-                return getter.with(r).getNoun();
+                return getter.getNoun();
             case PLURAL:
             case PLURAL_NEUTER:
-                return getter.with(r).getPluralNoun();
+                return getter.getPluralNoun();
             case SINGULAR_MASCULINE:
-                return getter.with(r).getMaleNoun();
+                return getter.getMaleNoun();
             case PLURAL_MASCULINE:
-                return getter.with(r).getPluralMaleNoun();
+                return getter.getPluralMaleNoun();
             case SINGULAR_FEMININE:
-                return getter.with(r).getFemaleNoun();
+                return getter.getFemaleNoun();
             case PLURAL_FEMININE:
-                return getter.with(r).getPluralFemaleNoun();
+                return getter.getPluralFemaleNoun();
             case UNDEFINED:
             default:
                 return getNoun(Form.values()[r.getInt(Form.values().length)]);

@@ -10,10 +10,10 @@ public enum Article {
     FEMININE_PLURAL("las", "unas", Gender.FEMININE, true),
     NEUTER("lo", "uno", Gender.NEUTRAL, false);
 
-    private String article;
-    private String indefiniteArticle;
-    private Gender gender;
-    private boolean plural;
+    private final String article;
+    private final String indefiniteArticle;
+    private final Gender gender;
+    private final boolean plural;
 
     private Article(String article, String indefiniteArticle, Gender gender, boolean plural) {
         this.article = article;

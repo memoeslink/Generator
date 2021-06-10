@@ -10,7 +10,7 @@ public final class AdjectiveGetter extends common.AdjectiveGetter implements Adj
         super();
     }
 
-    private AdjectiveGetter(Randomizer r) {
+    public AdjectiveGetter(Randomizer r) {
         super(r);
     }
 
@@ -42,10 +42,5 @@ public final class AdjectiveGetter extends common.AdjectiveGetter implements Adj
     @Override
     public String getPluralMaleAdjective() {
         return getPluralAdjective();
-    }
-
-    @Override
-    public AdjectiveGetter with(Randomizer r) {
-        return new AdjectiveGetter(r);
     }
 }

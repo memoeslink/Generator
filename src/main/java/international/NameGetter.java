@@ -9,7 +9,7 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
         super();
     }
 
-    private NameGetter(Randomizer r) {
+    public NameGetter(Randomizer r) {
         super(r);
     }
 
@@ -165,7 +165,7 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
 
     @Override
     public String getDefinedFamilyName(int type) {
-        type = IntegerHelper.defaultIndex(Constant.GENERATED_FAMILY_NAME_SUFFIX.length, type);
+        type = IntegerHelper.defaultIndex(type, Constant.GENERATED_FAMILY_NAME_SUFFIX.length);
         return StringHelper.capitalizeFirst(ResourceGetter.with(r).getString(Constant.GENERATED_NAME_START[type]) +
                 ResourceGetter.with(r).getString(Constant.GENERATED_NAME_MIDDLE[type]) +
                 ResourceGetter.with(r).getString(Constant.GENERATED_FAMILY_NAME_SUFFIX[type]));
@@ -322,18 +322,13 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
         return getAnyGetter().getAnonymousAnimal();
     }
 
-    @Override
-    public common.NameGetter with(Randomizer r) {
-        return new NameGetter(r);
-    }
-
     public common.NameGetter getAnyGetter() {
         switch (r.getInt(2)) {
             case 0:
-                return new english.NameGetter().with(r);
+                return new english.NameGetter(r);
             case 1:
-                return new spanish.NameGetter().with(r);
+                return new spanish.NameGetter(r);
         }
-        return new common.NameGetter().with(r);
+        return new common.NameGetter(r);
     }
 }

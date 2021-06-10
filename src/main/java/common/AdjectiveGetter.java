@@ -6,7 +6,7 @@ public class AdjectiveGetter extends Getter implements AdjectiveDefiner {
         super();
     }
 
-    protected AdjectiveGetter(Randomizer r) {
+    public AdjectiveGetter(Randomizer r) {
         super(r);
     }
 
@@ -43,10 +43,5 @@ public class AdjectiveGetter extends Getter implements AdjectiveDefiner {
     @Override
     public String getPluralMaleAdjective() {
         return Database.DEFAULT_VALUE;
-    }
-
-    @Override
-    public AdjectiveGetter with(Randomizer r) {
-        return new AdjectiveGetter(r);
     }
 }

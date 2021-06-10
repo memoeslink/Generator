@@ -212,6 +212,29 @@ public class StringHelper {
         return s;
     }
 
+    public static String reverse(String s) {
+        if (isNullOrEmpty(s))
+            return s;
+        StringBuilder sb = new StringBuilder();
+        sb.append(s);
+        sb.reverse();
+        return sb.toString();
+    }
+
+    public static String substring(String s, int startIndex, int endIndex) {
+        if (isNullOrEmpty(s))
+            return s;
+
+        if (startIndex < 0)
+            startIndex = s.length() + startIndex;
+        startIndex = IntegerHelper.defaultInt(startIndex, 0, s.length());
+
+        if (endIndex < 0)
+            endIndex = s.length() + endIndex;
+        endIndex = IntegerHelper.defaultInt(endIndex, startIndex, s.length());
+        return s.substring(startIndex, endIndex);
+    }
+
     public static String remove(String s, String occurrence) {
         if (isNotNullOrEmpty(s) && isNotNullOrEmpty(occurrence))
             return s.replace(occurrence, EMPTY);

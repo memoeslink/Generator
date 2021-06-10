@@ -11,7 +11,7 @@ public final class NounGetter extends common.NounGetter implements NounDefiner {
         super();
     }
 
-    private NounGetter(Randomizer r) {
+    public NounGetter(Randomizer r) {
         super(r);
     }
 
@@ -47,10 +47,5 @@ public final class NounGetter extends common.NounGetter implements NounDefiner {
     @Override
     public String getPluralMaleNoun() {
         return getPluralNoun();
-    }
-
-    @Override
-    public NounGetter with(Randomizer r) {
-        return new NounGetter(r);
     }
 }

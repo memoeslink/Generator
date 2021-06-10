@@ -8,12 +8,9 @@ public class IntegerHelper {
         return min <= n && n <= max;
     }
 
-    public static int defaultIndex(int length, int position) {
-        if (length < 0 || position < 0)
-            return DEFAULT_INDEX;
-
-        if (position <= length - 1)
-            return position;
+    public static int defaultIndex(int index, int length) {
+        if (index >= INITIAL_INDEX && index <= length - 1)
+            return index;
         return INITIAL_INDEX;
     }
 
@@ -31,7 +28,7 @@ public class IntegerHelper {
 
     public static int defaultInt(int n, int min, int max) {
         if (min > max)
-            return INITIAL_INDEX;
+            return 0;
 
         if (isBetween(n, min, max))
             return n;

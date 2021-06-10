@@ -6,7 +6,7 @@ public class OccupationGetter extends Getter implements OccupationDefiner {
         super();
     }
 
-    protected OccupationGetter(Randomizer r) {
+    public OccupationGetter(Randomizer r) {
         super(r);
     }
 
@@ -88,10 +88,5 @@ public class OccupationGetter extends Getter implements OccupationDefiner {
     @Override
     public String getGenderlessFantasyClass() {
         return Database.DEFAULT_VALUE;
-    }
-
-    @Override
-    public OccupationGetter with(Randomizer r) {
-        return new OccupationGetter(r);
     }
 }

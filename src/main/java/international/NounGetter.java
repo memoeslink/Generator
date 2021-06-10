@@ -9,7 +9,7 @@ public final class NounGetter extends common.NounGetter implements NounDefiner {
         super();
     }
 
-    private NounGetter(Randomizer r) {
+    public NounGetter(Randomizer r) {
         super(r);
     }
 
@@ -43,18 +43,13 @@ public final class NounGetter extends common.NounGetter implements NounDefiner {
         return getAnyGetter().getPluralMaleNoun();
     }
 
-    @Override
-    public NounGetter with(Randomizer r) {
-        return new NounGetter(r);
-    }
-
     public common.NounGetter getAnyGetter() {
         switch (r.getInt(2)) {
             case 0:
-                return new english.NounGetter().with(r);
+                return new english.NounGetter(r);
             case 1:
-                return new spanish.NounGetter().with(r);
+                return new spanish.NounGetter(r);
         }
-        return new common.NounGetter().with(r);
+        return new common.NounGetter(r);
     }
 }

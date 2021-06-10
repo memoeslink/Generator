@@ -29,7 +29,7 @@ public class Database {
     public static final String TABLE_NAMES = "Names";
     public static final String TABLE_NOUNS = "Nouns";
     public static final String TABLE_USERNAMES = "Usernames";
-    private static HashMap<String, Integer> hashMap = new HashMap<>();
+    private static final HashMap<String, Integer> tableCountRegistry = new HashMap<>();
     private static Connection connection;
 
     static {
@@ -46,12 +46,12 @@ public class Database {
         if (count != DEFAULT_INDEX)
             return count;
         count = Integer.parseInt(selectRow(query, 1));
-        hashMap.put(table, count);
+        tableCountRegistry.put(table, count);
         return count;
     }
 
     private static int getIntValue(String key) {
-        Integer value = hashMap.get(key);
+        Integer value = tableCountRegistry.get(key);
 
         if (value != null)
             return value;
