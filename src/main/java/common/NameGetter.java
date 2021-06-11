@@ -1,5 +1,7 @@
 package common;
 
+import international.Shaper;
+
 public class NameGetter extends Getter implements NameDefiner {
 
     public NameGetter() {
@@ -296,7 +298,7 @@ public class NameGetter extends Getter implements NameDefiner {
     }
 
     @Override
-    public String getMalePredefinedForename(int type) {
+    public String getMalePredefinedForename(Shaper shaper) {
         return Database.DEFAULT_VALUE;
     }
 
@@ -306,7 +308,7 @@ public class NameGetter extends Getter implements NameDefiner {
     }
 
     @Override
-    public String getFemalePredefinedForename(int type) {
+    public String getFemalePredefinedForename(Shaper shaper) {
         return Database.DEFAULT_VALUE;
     }
 
@@ -316,7 +318,7 @@ public class NameGetter extends Getter implements NameDefiner {
     }
 
     @Override
-    public String getPredefinedFamilyName(int type) {
+    public String getPredefinedFamilyName(Shaper shaper) {
         return Database.DEFAULT_VALUE;
     }
 

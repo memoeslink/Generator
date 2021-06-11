@@ -2,6 +2,7 @@ package spanish;
 
 import common.NameDefiner;
 import common.*;
+import international.Shaper;
 
 public final class NameGetter extends common.NameGetter implements NameDefiner, spanish.NameDefiner {
     private final NounGetter nounGetter;
@@ -203,13 +204,13 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
     }
 
     @Override
-    public String getMaleIterativeForename() {
-        return nameGetter.getMaleIterativeForename();
+    public String getFemaleIterativeForename() {
+        return nameGetter.getFemaleIterativeForename();
     }
 
     @Override
-    public String getFemaleIterativeForename() {
-        return nameGetter.getFemaleIterativeForename();
+    public String getMaleIterativeForename() {
+        return nameGetter.getMaleIterativeForename();
     }
 
     @Override
@@ -233,13 +234,13 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
     }
 
     @Override
-    public String getMalePatternForename() {
-        return nameGetter.getMalePatternForename();
+    public String getFemalePatternForename() {
+        return nameGetter.getFemalePatternForename();
     }
 
     @Override
-    public String getFemalePatternForename() {
-        return nameGetter.getFemalePatternForename();
+    public String getMalePatternForename() {
+        return nameGetter.getMalePatternForename();
     }
 
     @Override
@@ -263,16 +264,6 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
     }
 
     @Override
-    public String getMaleFrequencyForename() {
-        return nameGetter.getMaleFrequencyForename();
-    }
-
-    @Override
-    public String getMaleFrequencyForename(int type) {
-        return nameGetter.getMaleFrequencyForename(type);
-    }
-
-    @Override
     public String getFemaleFrequencyForename() {
         return nameGetter.getFemaleFrequencyForename();
     }
@@ -280,6 +271,16 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
     @Override
     public String getFemaleFrequencyForename(int type) {
         return nameGetter.getFemaleFrequencyForename(type);
+    }
+
+    @Override
+    public String getMaleFrequencyForename() {
+        return nameGetter.getMaleFrequencyForename();
+    }
+
+    @Override
+    public String getMaleFrequencyForename(int type) {
+        return nameGetter.getMaleFrequencyForename(type);
     }
 
     @Override
@@ -308,23 +309,23 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
     }
 
     @Override
-    public String getMalePredefinedForename() {
-        return nameGetter.getMalePredefinedForename();
-    }
-
-    @Override
-    public String getMalePredefinedForename(int type) {
-        return nameGetter.getMalePredefinedForename(type);
-    }
-
-    @Override
     public String getFemalePredefinedForename() {
         return nameGetter.getFemalePredefinedForename();
     }
 
     @Override
-    public String getFemalePredefinedForename(int type) {
-        return nameGetter.getFemalePredefinedForename(type);
+    public String getFemalePredefinedForename(Shaper shaper) {
+        return nameGetter.getFemalePredefinedForename(shaper);
+    }
+
+    @Override
+    public String getMalePredefinedForename() {
+        return nameGetter.getMalePredefinedForename();
+    }
+
+    @Override
+    public String getMalePredefinedForename(Shaper shaper) {
+        return nameGetter.getMalePredefinedForename(shaper);
     }
 
     @Override
@@ -333,8 +334,8 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
     }
 
     @Override
-    public String getPredefinedFamilyName(int type) {
-        return nameGetter.getPredefinedFamilyName(type);
+    public String getPredefinedFamilyName(Shaper shaper) {
+        return nameGetter.getPredefinedFamilyName(shaper);
     }
 
     @Override

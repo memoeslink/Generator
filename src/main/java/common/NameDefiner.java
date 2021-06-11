@@ -1,5 +1,7 @@
 package common;
 
+import international.Shaper;
+
 public interface NameDefiner {
 
     public String getEmptyName();
@@ -72,9 +74,9 @@ public interface NameDefiner {
 
     public String getDefinedFullName();
 
-    public String getMaleIterativeForename();
-
     public String getFemaleIterativeForename();
+
+    public String getMaleIterativeForename();
 
     public String getIterativeFamilyName();
 
@@ -84,9 +86,9 @@ public interface NameDefiner {
 
     public String getIterativeFullName();
 
-    public String getMalePatternForename();
-
     public String getFemalePatternForename();
+
+    public String getMalePatternForename();
 
     public String getPatternFamilyName();
 
@@ -96,13 +98,13 @@ public interface NameDefiner {
 
     public String getPatternFullName();
 
-    public String getMaleFrequencyForename();
-
-    public String getMaleFrequencyForename(int type);
-
     public String getFemaleFrequencyForename();
 
     public String getFemaleFrequencyForename(int type);
+
+    public String getMaleFrequencyForename();
+
+    public String getMaleFrequencyForename(int type);
 
     public String getFrequencyFamilyName();
 
@@ -114,17 +116,17 @@ public interface NameDefiner {
 
     public String getFrequencyFullName();
 
-    public String getMalePredefinedForename();
-
-    public String getMalePredefinedForename(int type);
-
     public String getFemalePredefinedForename();
 
-    public String getFemalePredefinedForename(int type);
+    public String getFemalePredefinedForename(Shaper shaper);
+
+    public String getMalePredefinedForename();
+
+    public String getMalePredefinedForename(Shaper shaper);
 
     public String getPredefinedFamilyName();
 
-    public String getPredefinedFamilyName(int type);
+    public String getPredefinedFamilyName(Shaper shaper);
 
     public String getFemalePredefinedFullName();
 

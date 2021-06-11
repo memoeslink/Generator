@@ -19,17 +19,13 @@ public interface NameDefiner extends common.NameDefiner {
     default String getIterativeName(int iterations, Randomizer r) {
         StringBuilder sb = new StringBuilder();
         iterations = IntegerHelper.defaultInt(iterations, 1, 100);
-        float probability = r.getFloat();
-
-        //Decide whether the name will start with vowel
-        if (r.getInt(3) == 0)
-            probability = 1.1F;
+        float probability = r.getBoolean() ? 1.1F : 0.0F; //Decide whether the name will start with vowel or consonant
 
         //Add consonants with vowel
         for (int i = 1; i <= iterations; i++) {
-            if (probability <= 0.7F || iterations == 1)
+            if (probability <= 0.7F)
                 sb.append(r.chooseOnWeight(Constant.WEIGHTED_CONSONANTS));
-            else if (probability <= 0.85F && iterations > 1)
+            else if (probability <= 0.85F)
                 sb.append(ResourceGetter.with(r).getString(Constant.MIDDLE_CONSONANTS));
             else if (probability <= 1.0F)
                 sb.append(ResourceGetter.with(r).getString(Constant.CONSONANT_PAIRS));
@@ -147,5 +143,29 @@ public interface NameDefiner extends common.NameDefiner {
         if (!StringHelper.hasVowel(s))
             s = getFrequencyName(letters, length, r);
         return StringHelper.capitalizeFirst(s);
+    }
+
+    default String getPredefinedName(String letters, int length, Randomizer r) {
+        String name = StringHelper.EMPTY;
+
+        if (StringHelper.isNotNullOrEmpty(letters)) {
+            length = IntegerHelper.defaultInt(length, 0, letters.length());
+            int firstMark = r.getInt(0, letters.length()), secondMark;
+
+            if (firstMark + length - 1 > letters.length()) {
+                secondMark = firstMark;
+                firstMark = secondMark - length + 1;
+            } else
+                secondMark = firstMark + length - 1;
+            name = StringHelper.substring(letters, firstMark, secondMark + 1);
+
+            if (!StringHelper.hasVowel(name))
+                name = getPredefinedName(letters, length, r);
+            else {
+                name = r.getBoolean() ? StringHelper.reverse(name) : name;
+                name = StringHelper.capitalizeFirst(name);
+            }
+        }
+        return name;
     }
 }

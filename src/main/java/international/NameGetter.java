@@ -189,13 +189,13 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
     }
 
     @Override
-    public String getMaleIterativeForename() {
-        return getIterativeName(r.getInt(1, 5), r);
+    public String getFemaleIterativeForename() {
+        return TextProcessor.feminize(getIterativeName(r.getInt(1, 5), r));
     }
 
     @Override
-    public String getFemaleIterativeForename() {
-        return TextProcessor.feminize(getIterativeName(r.getInt(1, 5), r));
+    public String getMaleIterativeForename() {
+        return getIterativeName(r.getInt(1, 5), r);
     }
 
     @Override
@@ -219,13 +219,13 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
     }
 
     @Override
-    public String getMalePatternForename() {
-        return getPatternName(r);
+    public String getFemalePatternForename() {
+        return TextProcessor.feminize(getPatternName(r), "ia");
     }
 
     @Override
-    public String getFemalePatternForename() {
-        return TextProcessor.feminize(getPatternName(r), "ia");
+    public String getMalePatternForename() {
+        return getPatternName(r);
     }
 
     @Override
@@ -249,6 +249,16 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
     }
 
     @Override
+    public String getFemaleFrequencyForename() {
+        return TextProcessor.feminize(getMaleFrequencyForename());
+    }
+
+    @Override
+    public String getFemaleFrequencyForename(int type) {
+        return TextProcessor.feminize(getMaleFrequencyForename(type));
+    }
+
+    @Override
     public String getMaleFrequencyForename() {
         int type = r.getInt(Constant.WEIGHTED_LETTERS.length);
         return getMaleFrequencyForename(type);
@@ -257,16 +267,6 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
     @Override
     public String getMaleFrequencyForename(int type) {
         return getFrequencyName(Constant.WEIGHTED_LETTERS[type], r.getInt(3, 8), r);
-    }
-
-    @Override
-    public String getFemaleFrequencyForename() {
-        return TextProcessor.feminize(getMaleFrequencyForename());
-    }
-
-    @Override
-    public String getFemaleFrequencyForename(int type) {
-        return TextProcessor.feminize(getMaleFrequencyForename(type));
     }
 
     @Override
@@ -295,6 +295,53 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
     @Override
     public String getFrequencyFullName() {
         return r.getBoolean() ? getMaleFrequencyFullName() : getFemaleFrequencyFullName();
+    }
+
+    @Override
+    public String getFemalePredefinedForename() {
+        return null;
+    }
+
+    @Override
+    public String getFemalePredefinedForename(Shaper shaper) {
+        return null;
+    }
+
+    @Override
+    public String getMalePredefinedForename() {
+        Shaper shaper = Shaper.values()[r.getInt(Shaper.values().length)];
+        return getMalePredefinedForename(shaper);
+    }
+
+    @Override
+    public String getMalePredefinedForename(Shaper shaper) {
+        shaper = shaper != null ? shaper : Shaper.SPANISH;
+        return getPredefinedName(shaper.getShape(), r.getInt(3, 8), r);
+    }
+
+    @Override
+    public String getPredefinedFamilyName() {
+        return null;
+    }
+
+    @Override
+    public String getPredefinedFamilyName(Shaper shaper) {
+        return null;
+    }
+
+    @Override
+    public String getFemalePredefinedFullName() {
+        return null;
+    }
+
+    @Override
+    public String getMalePredefinedFullName() {
+        return null;
+    }
+
+    @Override
+    public String getPredefinedFullName() {
+        return null;
     }
 
     @Override
