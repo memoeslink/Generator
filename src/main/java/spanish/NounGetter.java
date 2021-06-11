@@ -101,9 +101,4 @@ public final class NounGetter extends common.NounGetter implements NounDefiner, 
         }
         return new Noun(Article.INDEFINITE, noun);
     }
-
-    @Override
-    public NounGetter with(Randomizer r) {
-        return new NounGetter(r);
-    }
 }
