@@ -35,7 +35,7 @@ public class TextProcessor extends common.TextProcessor {
                     article = IndefiniteArticle.get(word);
 
                 if (matcher.group(1).charAt(0) == 'A')
-                    article = "A";
+                    article = StringHelper.capitalizeFirst(article);
                 matcher.appendReplacement(sb, article + matcher.group(2) + matcher.group(3));
             }
             matcher.appendTail(sb);
