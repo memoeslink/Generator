@@ -220,7 +220,8 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
 
     @Override
     public String getFemalePatternForename() {
-        return TextProcessor.feminize(getPatternName(r), "ia");
+        String ending = ResourceGetter.with(r).getString(Constant.FEMALE_NAME_SUFFIX);
+        return TextProcessor.feminize(getPatternName(r), ending);
     }
 
     @Override
@@ -298,50 +299,54 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
     }
 
     @Override
-    public String getFemalePredefinedForename() {
-        return null;
+    public String getFemalePreformedForename() {
+        return TextProcessor.feminize(getMalePreformedForename());
     }
 
     @Override
-    public String getFemalePredefinedForename(Shaper shaper) {
-        return null;
+    public String getFemalePreformedForename(Shaper shaper) {
+        return TextProcessor.feminize(getMalePreformedForename(shaper));
     }
 
     @Override
-    public String getMalePredefinedForename() {
+    public String getMalePreformedForename() {
         Shaper shaper = Shaper.values()[r.getInt(Shaper.values().length)];
-        return getMalePredefinedForename(shaper);
+        return getMalePreformedForename(shaper);
     }
 
     @Override
-    public String getMalePredefinedForename(Shaper shaper) {
-        shaper = shaper != null ? shaper : Shaper.SPANISH;
-        return getPredefinedName(shaper.getShape(), r.getInt(3, 8), r);
+    public String getMalePreformedForename(Shaper shaper) {
+        shaper = shaper != null ? shaper : Shaper.DEFAULT;
+        return getPreformedName(shaper.getShape(), r.getInt(3, 8), r);
     }
 
     @Override
-    public String getPredefinedFamilyName() {
-        return null;
+    public String getPreformedFamilyName() {
+        Shaper shaper = Shaper.values()[r.getInt(Shaper.values().length)];
+        return getPreformedFamilyName(shaper);
     }
 
     @Override
-    public String getPredefinedFamilyName(Shaper shaper) {
-        return null;
+    public String getPreformedFamilyName(Shaper shaper) {
+        shaper = shaper != null ? shaper : Shaper.DEFAULT;
+        return getPreformedName(shaper.getShape(), r.getInt(3, 4), r);
     }
 
     @Override
-    public String getFemalePredefinedFullName() {
-        return null;
+    public String getFemalePreformedFullName() {
+        Shaper shaper = Shaper.values()[r.getInt(Shaper.values().length)];
+        return getFemalePreformedForename(shaper) + Separator.SPACE.getCharacter() + getPreformedFamilyName(shaper);
     }
 
     @Override
-    public String getMalePredefinedFullName() {
-        return null;
+    public String getMalePreformedFullName() {
+        Shaper shaper = Shaper.values()[r.getInt(Shaper.values().length)];
+        return getMalePreformedForename(shaper) + Separator.SPACE.getCharacter() + getPreformedFamilyName(shaper);
     }
 
     @Override
-    public String getPredefinedFullName() {
-        return null;
+    public String getPreformedFullName() {
+        return r.getBoolean() ? getMalePreformedFullName() : getFemalePreformedFullName();
     }
 
     @Override

@@ -19,7 +19,7 @@ public interface NameDefiner extends common.NameDefiner {
     default String getIterativeName(int iterations, Randomizer r) {
         StringBuilder sb = new StringBuilder();
         iterations = IntegerHelper.defaultInt(iterations, 1, 100);
-        float probability = r.getBoolean() ? 1.1F : 0.0F; //Decide whether the name will start with vowel or consonant
+        float probability = r.getBoolean() ? 1.1F : 0.F; //Decide whether the name will start with vowel or consonant
 
         //Add consonants with vowel
         for (int i = 1; i <= iterations; i++) {
@@ -34,7 +34,7 @@ public interface NameDefiner extends common.NameDefiner {
         }
 
         //Decide whether the name will end with consonant
-        if (r.getInt(4) == 0)
+        if (r.getInt(4) == 0 || sb.length() == 1)
             sb.append(ResourceGetter.with(r).getChar(Constant.LOWERCASE_ENDING_CONSONANTS));
         return StringHelper.capitalizeFirst(sb.toString());
     }
@@ -63,6 +63,9 @@ public interface NameDefiner extends common.NameDefiner {
                 case 'k':
                     sb.append(ResourceGetter.with(r).getString(Constant.CONSONANT_PAIRS));
                     break;
+                case 'ɔ':
+                    sb.append(ResourceGetter.with(r).getString(Constant.EXTENDED_CONSONANT_PAIRS));
+                    break;
                 case 'm':
                     sb.append(ResourceGetter.with(r).getString(Constant.MIDDLE_CONSONANTS));
                     break;
@@ -80,6 +83,7 @@ public interface NameDefiner extends common.NameDefiner {
                         sb.append(ResourceGetter.with(r).getChar(english.Constant.LOWERCASE_CONSONANTS));
                     else
                         sb.append(ResourceGetter.with(r).getChar(english.Constant.LOWERCASE_VOWELS));
+                    break;
                 case ' ':
                     sb.append(' ');
                     break;
@@ -145,7 +149,7 @@ public interface NameDefiner extends common.NameDefiner {
         return StringHelper.capitalizeFirst(s);
     }
 
-    default String getPredefinedName(String letters, int length, Randomizer r) {
+    default String getPreformedName(String letters, int length, Randomizer r) {
         String name = StringHelper.EMPTY;
 
         if (StringHelper.isNotNullOrEmpty(letters)) {
@@ -160,7 +164,7 @@ public interface NameDefiner extends common.NameDefiner {
             name = StringHelper.substring(letters, firstMark, secondMark + 1);
 
             if (!StringHelper.hasVowel(name))
-                name = getPredefinedName(letters, length, r);
+                name = getPreformedName(letters, length, r);
             else {
                 name = r.getBoolean() ? StringHelper.reverse(name) : name;
                 name = StringHelper.capitalizeFirst(name);

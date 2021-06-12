@@ -115,6 +115,18 @@ public class NameGenerator extends Generator {
                 return getter.getAnonymousName();
             case ANONYMOUS_ANIMAL:
                 return getter.getAnonymousAnimal();
+            case MALE_PREFORMED_FORENAME:
+                return getter.getMalePreformedForename();
+            case FEMALE_PREFORMED_FORENAME:
+                return getter.getFemalePreformedForename();
+            case PREFORMED_FAMILY_NAME:
+                return getter.getPreformedFamilyName();
+            case MALE_PREFORMED_FULL_NAME:
+                return getter.getMalePreformedFullName();
+            case FEMALE_PREFORMED_FULL_NAME:
+                return getter.getFemalePreformedFullName();
+            case PREFORMED_FULL_NAME:
+                return getter.getPreformedFullName();
             case EMPTY:
             default:
                 return getter.getEmptyName();

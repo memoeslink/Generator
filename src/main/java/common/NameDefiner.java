@@ -116,23 +116,23 @@ public interface NameDefiner {
 
     public String getFrequencyFullName();
 
-    public String getFemalePredefinedForename();
+    public String getFemalePreformedForename();
 
-    public String getFemalePredefinedForename(Shaper shaper);
+    public String getFemalePreformedForename(Shaper shaper);
 
-    public String getMalePredefinedForename();
+    public String getMalePreformedForename();
 
-    public String getMalePredefinedForename(Shaper shaper);
+    public String getMalePreformedForename(Shaper shaper);
 
-    public String getPredefinedFamilyName();
+    public String getPreformedFamilyName();
 
-    public String getPredefinedFamilyName(Shaper shaper);
+    public String getPreformedFamilyName(Shaper shaper);
 
-    public String getFemalePredefinedFullName();
+    public String getFemalePreformedFullName();
 
-    public String getMalePredefinedFullName();
+    public String getMalePreformedFullName();
 
-    public String getPredefinedFullName();
+    public String getPreformedFullName();
 
     public String getUsername();
 

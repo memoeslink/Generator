@@ -343,48 +343,48 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
     }
 
     @Override
-    public String getFemalePredefinedForename() {
-        return nameGetter.getFemalePredefinedForename();
+    public String getFemalePreformedForename() {
+        return nameGetter.getFemalePreformedForename();
     }
 
     @Override
-    public String getFemalePredefinedForename(Shaper shaper) {
-        return nameGetter.getFemalePredefinedForename(shaper);
+    public String getFemalePreformedForename(Shaper shaper) {
+        return nameGetter.getFemalePreformedForename(shaper);
     }
 
     @Override
-    public String getMalePredefinedForename() {
-        return nameGetter.getMalePredefinedForename();
+    public String getMalePreformedForename() {
+        return nameGetter.getMalePreformedForename();
     }
 
     @Override
-    public String getMalePredefinedForename(Shaper shaper) {
-        return nameGetter.getMalePredefinedForename(shaper);
+    public String getMalePreformedForename(Shaper shaper) {
+        return nameGetter.getMalePreformedForename(shaper);
     }
 
     @Override
-    public String getPredefinedFamilyName() {
-        return nameGetter.getPredefinedFamilyName();
+    public String getPreformedFamilyName() {
+        return nameGetter.getPreformedFamilyName();
     }
 
     @Override
-    public String getPredefinedFamilyName(Shaper shaper) {
-        return nameGetter.getPredefinedFamilyName(shaper);
+    public String getPreformedFamilyName(Shaper shaper) {
+        return nameGetter.getPreformedFamilyName(shaper);
     }
 
     @Override
-    public String getFemalePredefinedFullName() {
-        return nameGetter.getFemalePredefinedFullName();
+    public String getFemalePreformedFullName() {
+        return nameGetter.getFemalePreformedFullName();
     }
 
     @Override
-    public String getMalePredefinedFullName() {
-        return nameGetter.getMalePredefinedFullName();
+    public String getMalePreformedFullName() {
+        return nameGetter.getMalePreformedFullName();
     }
 
     @Override
-    public String getPredefinedFullName() {
-        return nameGetter.getPredefinedFullName();
+    public String getPreformedFullName() {
+        return nameGetter.getPreformedFullName();
     }
 
     @Override
