@@ -13,7 +13,7 @@ public class DatabaseConnection {
         try {
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection("jdbc:sqlite::resource:" + DATABASE_NAME);
-            System.out.println("common.Database " + StringHelper.defaultIfBlank(DATABASE_NAME, Database.DEFAULT_VALUE) + " was successfully connected.");
+            System.out.println("Database " + StringHelper.defaultIfBlank(DATABASE_NAME, Database.DEFAULT_VALUE) + " was successfully connected.");
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
