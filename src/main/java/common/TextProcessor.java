@@ -84,7 +84,10 @@ public class TextProcessor {
     }
 
     public static String feminize(String s, String ending) {
-        if (StringHelper.isNotOnlyLetters(s))
+        if (StringHelper.isNotOnlyLetters(s) || StringHelper.isNotOnlyLetters(ending))
+            return s;
+
+        if (StringHelper.endsWith(s, ending))
             return s;
 
         if (StringHelper.endsWithAny(s, english.Constant.VOWELS.toCharArray()))
@@ -97,7 +100,13 @@ public class TextProcessor {
     }
 
     public static String feminizeOnVowelEnd(String s, String ending) {
-        if (StringHelper.isOnlyLetters(s) && StringHelper.endsWithAny(s, english.Constant.VOWELS.toCharArray()))
+        if (StringHelper.isNotOnlyLetters(s) || StringHelper.isNotOnlyLetters(ending))
+            return s;
+
+        if (StringHelper.endsWith(s, ending))
+            return s;
+
+        if (StringHelper.endsWithAny(s, english.Constant.VOWELS.toCharArray()))
             return StringHelper.join(StringHelper.removeLastChar(s), ending);
         return s;
     }
@@ -107,7 +116,10 @@ public class TextProcessor {
     }
 
     public static String feminizeWhen(String s, String ending, String... occurrences) {
-        if (StringHelper.isNotOnlyLetters(s))
+        if (StringHelper.isNotOnlyLetters(s) || StringHelper.isNotOnlyLetters(ending))
+            return s;
+
+        if (StringHelper.endsWith(s, ending))
             return s;
 
         for (String occurrence : occurrences) {
