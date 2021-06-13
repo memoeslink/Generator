@@ -354,6 +354,36 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
     }
 
     @Override
+    public String getFemaleMarkovForename() {
+        return nameGetter.getFemaleMarkovForename();
+    }
+
+    @Override
+    public String getMaleMarkovForename() {
+        return nameGetter.getMaleMarkovForename();
+    }
+
+    @Override
+    public String getMarkovFamilyName() {
+        return nameGetter.getMarkovFamilyName();
+    }
+
+    @Override
+    public String getFemaleMarkovFullName() {
+        return nameGetter.getFemaleMarkovFullName();
+    }
+
+    @Override
+    public String getMaleMarkovFullName() {
+        return nameGetter.getMaleMarkovFullName();
+    }
+
+    @Override
+    public String getMarkovFullName() {
+        return nameGetter.getMarkovFullName();
+    }
+
+    @Override
     public String getUsername() {
         return Database.selectUsername(r.getInt(1, Database.countUsernames()));
     }

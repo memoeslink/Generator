@@ -338,6 +338,36 @@ public class NameGetter extends Getter implements NameDefiner {
     }
 
     @Override
+    public String getFemaleMarkovForename() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getMaleMarkovForename() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getMarkovFamilyName() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getFemaleMarkovFullName() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getMaleMarkovFullName() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getMarkovFullName() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
     public String getUsername() {
         return Database.DEFAULT_VALUE;
     }

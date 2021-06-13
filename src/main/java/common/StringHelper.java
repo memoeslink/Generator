@@ -235,6 +235,15 @@ public class StringHelper {
         return s.substring(startIndex, endIndex);
     }
 
+    public static String replaceLast(String s, String occurrence, String replacement) {
+        if (isNullOrEmpty(s))
+            return s;
+        int lastIndex = s.lastIndexOf(occurrence);
+        if (lastIndex < 0) return s;
+        String tail = s.substring(lastIndex).replaceFirst(occurrence, replacement);
+        return s.substring(0, lastIndex) + tail;
+    }
+
     public static String remove(String s, String occurrence) {
         if (isNotNullOrEmpty(s) && isNotNullOrEmpty(occurrence))
             return s.replace(occurrence, EMPTY);
@@ -262,6 +271,22 @@ public class StringHelper {
     public static String removeFirst(String s, String regex) {
         if (isNotNullOrEmpty(s))
             return s.replaceFirst(regex, EMPTY);
+        return s;
+    }
+
+    public static String removeLast(String s, String occurrence) {
+        return replaceLast(s, occurrence, EMPTY);
+    }
+
+    public static String removeStart(String s, String prefix) {
+        if (startsWith(s, prefix))
+            return s.substring(prefix.length());
+        return s;
+    }
+
+    public static String removeEnd(String s, String suffix) {
+        if (endsWith(s, suffix))
+            return s.substring(0, s.length() - suffix.length());
         return s;
     }
 
@@ -325,8 +350,14 @@ public class StringHelper {
         return s.substring(n + 1);
     }
 
+    public static boolean startsWith(String s, char c) {
+        if (isNotNullOrEmpty(s) && c != CharHelper.NULL_CHAR)
+            return s.charAt(0) == c;
+        return c == CharHelper.NULL_CHAR;
+    }
+
     public static boolean startsWith(String s, String prefix) {
-        if (s != null && prefix != null && s.length() >= prefix.length())
+        if (isNotNullOrEmpty(s) && isNotNullOrEmpty(prefix) && s.length() >= prefix.length())
             return s.indexOf(prefix) == 0;
         return prefix == null;
     }
@@ -339,13 +370,13 @@ public class StringHelper {
     }
 
     public static boolean endsWith(String s, char c) {
-        if (s != null && c != CharHelper.NULL_CHAR && s.length() > 0)
+        if (isNotNullOrEmpty(s) && c != CharHelper.NULL_CHAR)
             return s.charAt(s.length() - 1) == c;
         return c == CharHelper.NULL_CHAR;
     }
 
     public static boolean endsWith(String s, String suffix) {
-        if (s != null && suffix != null && s.length() >= suffix.length())
+        if (isNotNullOrEmpty(s) && isNotNullOrEmpty(suffix) && s.length() >= suffix.length())
             return s.endsWith(suffix);
         return suffix == null;
     }
@@ -481,6 +512,10 @@ public class StringHelper {
         return true;
     }
 
+    public static boolean isNotOnlyLetters(String s) {
+        return !isOnlyLetters(s);
+    }
+
     public static boolean isAllUpperCase(String s) {
         if (isNullOrBlank(s))
             return false;
@@ -491,6 +526,10 @@ public class StringHelper {
         return true;
     }
 
+    public static boolean isNotAllUpperCase(String s) {
+        return !isAllUpperCase(s);
+    }
+
     public static boolean isAllLowerCase(String s) {
         if (isNullOrBlank(s))
             return false;
@@ -499,6 +538,10 @@ public class StringHelper {
             if (!Character.isLetter(c) || !Character.isLowerCase(c)) return false;
         }
         return true;
+    }
+
+    public static boolean isNotAllLowerCase(String s) {
+        return !isAllLowerCase(s);
     }
 
     /**

@@ -134,6 +134,18 @@ public interface NameDefiner {
 
     public String getPreformedFullName();
 
+    public String getFemaleMarkovForename();
+
+    public String getMaleMarkovForename();
+
+    public String getMarkovFamilyName();
+
+    public String getFemaleMarkovFullName();
+
+    public String getMaleMarkovFullName();
+
+    public String getMarkovFullName();
+
     public String getUsername();
 
     public String getCompositeUsername();

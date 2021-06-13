@@ -93,12 +93,6 @@ public class NameGenerator extends Generator {
                 return getter.getFemalePatternFullName();
             case PATTERN_FULL_NAME:
                 return getter.getPatternFullName();
-            case USERNAME:
-                return getter.getUsername();
-            case COMPOSITE_USERNAME:
-                return getter.getCompositeUsername();
-            case DERIVED_USERNAME:
-                return getter.getDerivedUsername();
             case MALE_FREQUENCY_FORENAME:
                 return getter.getMaleFrequencyForename();
             case FEMALE_FREQUENCY_FORENAME:
@@ -111,10 +105,6 @@ public class NameGenerator extends Generator {
                 return getter.getFemaleFrequencyFullName();
             case FREQUENCY_FULL_NAME:
                 return getter.getFrequencyFullName();
-            case ANONYMOUS_NAME:
-                return getter.getAnonymousName();
-            case ANONYMOUS_ANIMAL:
-                return getter.getAnonymousAnimal();
             case MALE_PREFORMED_FORENAME:
                 return getter.getMalePreformedForename();
             case FEMALE_PREFORMED_FORENAME:
@@ -127,6 +117,28 @@ public class NameGenerator extends Generator {
                 return getter.getFemalePreformedFullName();
             case PREFORMED_FULL_NAME:
                 return getter.getPreformedFullName();
+            case MALE_MARKOV_FORENAME:
+                return getter.getMaleMarkovForename();
+            case FEMALE_MARKOV_FORENAME:
+                return getter.getFemaleMarkovForename();
+            case MARKOV_FAMILY_NAME:
+                return getter.getMarkovFamilyName();
+            case MALE_MARKOV_FULL_NAME:
+                return getter.getMaleMarkovFullName();
+            case FEMALE_MARKOV_FULL_NAME:
+                return getter.getFemaleMarkovFullName();
+            case MARKOV_FULL_NAME:
+                return getter.getMarkovFullName();
+            case USERNAME:
+                return getter.getUsername();
+            case COMPOSITE_USERNAME:
+                return getter.getCompositeUsername();
+            case DERIVED_USERNAME:
+                return getter.getDerivedUsername();
+            case ANONYMOUS_NAME:
+                return getter.getAnonymousName();
+            case ANONYMOUS_ANIMAL:
+                return getter.getAnonymousAnimal();
             case EMPTY:
             default:
                 return getter.getEmptyName();

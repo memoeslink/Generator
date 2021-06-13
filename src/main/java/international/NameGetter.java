@@ -251,12 +251,12 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
 
     @Override
     public String getFemaleFrequencyForename() {
-        return TextProcessor.feminize(getMaleFrequencyForename());
+        return TextProcessor.feminizeWhen(getMaleFrequencyForename(), "a", "e", "o");
     }
 
     @Override
     public String getFemaleFrequencyForename(int type) {
-        return TextProcessor.feminize(getMaleFrequencyForename(type));
+        return TextProcessor.feminizeWhen(getMaleFrequencyForename(type), "a", "e", "o");
     }
 
     @Override
@@ -347,6 +347,37 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
     @Override
     public String getPreformedFullName() {
         return r.getBoolean() ? getMalePreformedFullName() : getFemalePreformedFullName();
+    }
+
+    @Override
+    public String getFemaleMarkovForename() {
+        String ending = ResourceGetter.with(r).getString(Constant.FEMALE_NAME_SUFFIX);
+        return TextProcessor.feminizeOnVowelEnd(getMarkovName(3, 10, r), ending);
+    }
+
+    @Override
+    public String getMaleMarkovForename() {
+        return getMarkovName(3, 10, r);
+    }
+
+    @Override
+    public String getMarkovFamilyName() {
+        return getMarkovName(3, 8, r);
+    }
+
+    @Override
+    public String getFemaleMarkovFullName() {
+        return getFemaleMarkovForename() + Separator.SPACE.getCharacter() + getMarkovFamilyName();
+    }
+
+    @Override
+    public String getMaleMarkovFullName() {
+        return getMaleMarkovForename() + Separator.SPACE.getCharacter() + getMarkovFamilyName();
+    }
+
+    @Override
+    public String getMarkovFullName() {
+        return r.getBoolean() ? getMaleMarkovFullName() : getFemaleMarkovFullName();
     }
 
     @Override

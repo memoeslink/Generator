@@ -1,7 +1,5 @@
 package common;
 
-import english.Constant;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -86,9 +84,37 @@ public class TextProcessor {
     }
 
     public static String feminize(String s, String ending) {
-        if (StringHelper.isOnlyLetters(s) && StringHelper.endsWithAny(s, Constant.VOWELS.toCharArray()))
+        if (StringHelper.isNotOnlyLetters(s))
+            return s;
+
+        if (StringHelper.endsWithAny(s, english.Constant.VOWELS.toCharArray()))
             return StringHelper.join(StringHelper.removeLastChar(s), ending);
         return StringHelper.join(s, ending);
+    }
+
+    public static String feminizeOnVowelEnd(String s) {
+        return feminizeOnVowelEnd(s, "a");
+    }
+
+    public static String feminizeOnVowelEnd(String s, String ending) {
+        if (StringHelper.isOnlyLetters(s) && StringHelper.endsWithAny(s, english.Constant.VOWELS.toCharArray()))
+            return StringHelper.join(StringHelper.removeLastChar(s), ending);
+        return s;
+    }
+
+    public static String feminizeWithDefaultWhen(String s, String... occurrences) {
+        return feminizeWhen(s, "a", occurrences);
+    }
+
+    public static String feminizeWhen(String s, String ending, String... occurrences) {
+        if (StringHelper.isNotOnlyLetters(s))
+            return s;
+
+        for (String occurrence : occurrences) {
+            if (StringHelper.endsWith(s, occurrence))
+                return StringHelper.removeEnd(s, occurrence) + ending;
+        }
+        return s;
     }
 
     public static String genderify(String s, Gender gender) {

@@ -75,7 +75,6 @@ public class ResourceGetter {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                new Person.PersonBuilder().setForename("").setGender(Gender.FEMININE).build();
             }
 
             if (lineCount != null && lineCount > 0) {

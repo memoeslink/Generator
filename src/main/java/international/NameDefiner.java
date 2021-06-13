@@ -172,4 +172,16 @@ public interface NameDefiner extends common.NameDefiner {
         }
         return name;
     }
+
+    default String getMarkovName(int minLength, int maxLength, Randomizer r) {
+        minLength = IntegerHelper.defaultMinInt(minLength, 1);
+        maxLength = IntegerHelper.defaultInt(maxLength, minLength, 9999);
+        NameGen nameGen;
+
+        if (r.getSeed() == 0L)
+            nameGen = new NameGen(minLength, maxLength);
+        else
+            nameGen = new NameGen(minLength, maxLength, r.getSeed());
+        return StringHelper.capitalizeFirst(nameGen.getName());
+    }
 }
