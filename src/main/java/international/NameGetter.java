@@ -251,12 +251,12 @@ public final class NameGetter extends common.NameGetter implements NameDefiner, 
 
     @Override
     public String getFemaleFrequencyForename() {
-        return TextProcessor.feminizeWhen(getMaleFrequencyForename(), "a", "e", "o");
+        return TextProcessor.feminizeWithDefaultWhen(getMaleFrequencyForename(), "e", "o");
     }
 
     @Override
     public String getFemaleFrequencyForename(int type) {
-        return TextProcessor.feminizeWhen(getMaleFrequencyForename(type), "a", "e", "o");
+        return TextProcessor.feminizeWithDefaultWhen(getMaleFrequencyForename(type), "e", "o");
     }
 
     @Override
