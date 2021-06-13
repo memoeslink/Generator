@@ -15,7 +15,9 @@ public class OccupationGenerator extends Generator {
     public String getOccupation(OccupationType occupationType) {
         OccupationGetter getter;
 
-        if (locale.getLanguage().equals(Locale.ENGLISH.getLanguage()))
+        if (StringHelper.isNullOrEmpty(locale.getLanguage()))
+            getter = new international.OccupationGetter(r);
+        else if (locale.getLanguage().equals("en"))
             getter = new english.OccupationGetter(r);
         else if (locale.getLanguage().equals("es"))
             getter = new spanish.OccupationGetter(r);

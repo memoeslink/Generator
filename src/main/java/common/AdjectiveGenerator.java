@@ -15,10 +15,10 @@ public class AdjectiveGenerator extends Generator {
     public String getAdjective(Form form) {
         AdjectiveGetter getter;
 
-        if ((locale.getLanguage().isEmpty() && locale.getCountry().isEmpty()) ||
+        if (StringHelper.isNullOrEmpty(locale.getLanguage()) || StringHelper.isNullOrEmpty(locale.getCountry()) ||
                 locale.getLanguage().equals("xx") || locale.getCountry().equals("XX"))
             getter = new international.AdjectiveGetter(r);
-        else if (locale.getLanguage().equals(Locale.ENGLISH.getLanguage()))
+        else if (locale.getLanguage().equals("en"))
             getter = new english.AdjectiveGetter(r);
         else if (locale.getLanguage().equals("es"))
             getter = new spanish.AdjectiveGetter(r);

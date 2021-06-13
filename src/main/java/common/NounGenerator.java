@@ -15,10 +15,10 @@ public class NounGenerator extends Generator {
     public String getNoun(Form form) {
         NounGetter getter;
 
-        if ((locale.getLanguage().isEmpty() && locale.getCountry().isEmpty()) ||
+        if (StringHelper.isNullOrEmpty(locale.getLanguage()) || StringHelper.isNullOrEmpty(locale.getCountry()) ||
                 locale.getLanguage().equals("xx") || locale.getCountry().equals("XX"))
             getter = new international.NounGetter(r);
-        else if (locale.getLanguage().equals(Locale.ENGLISH.getLanguage()))
+        else if (locale.getLanguage().equals("en"))
             getter = new english.NounGetter(r);
         else if (locale.getLanguage().equals("es"))
             getter = new spanish.NounGetter(r);

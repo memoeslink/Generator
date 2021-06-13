@@ -15,15 +15,48 @@ public class NameGenerator extends Generator {
     public String getName(NameType nameType) {
         NameGetter getter;
 
-        if ((locale.getLanguage().isEmpty() && locale.getCountry().isEmpty()) ||
+        if (StringHelper.isNullOrEmpty(locale.getLanguage()) || StringHelper.isNullOrEmpty(locale.getCountry()) ||
                 locale.getLanguage().equals("xx") || locale.getCountry().equals("XX"))
             getter = new international.NameGetter(r);
-        else if (locale.getLanguage().equals(Locale.ENGLISH.getLanguage()))
-            getter = new english.NameGetter(r);
-        else if (locale.getLanguage().equals("es"))
-            getter = new spanish.NameGetter(r);
-        else
-            getter = new international.NameGetter(r);
+        else {
+            switch (locale.getLanguage()) {
+                case "ar":
+                    getter = new arabic.NameGetter(r);
+                    break;
+                case "de":
+                    getter = new german.NameGetter(r);
+                    break;
+                case "en":
+                    getter = new english.NameGetter(r);
+                    break;
+                case "es":
+                    getter = new spanish.NameGetter(r);
+                    break;
+                case "fr":
+                    getter = new french.NameGetter(r);
+                    break;
+                case "it":
+                    getter = new italian.NameGetter(r);
+                    break;
+                case "hi":
+                    getter = new hindi.NameGetter(r);
+                    break;
+                case "ja":
+                    getter = new japanese.NameGetter(r);
+                    break;
+                case "pt":
+                    getter = new portuguese.NameGetter(r);
+                    break;
+                case "ru":
+                    getter = new russian.NameGetter(r);
+                    break;
+                case "xx":
+                case StringHelper.EMPTY:
+                default:
+                    getter = new international.NameGetter(r);
+                    break;
+            }
+        }
         nameType = nameType != null ? nameType : NameType.EMPTY;
 
         switch (nameType) {

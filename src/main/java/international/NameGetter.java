@@ -405,11 +405,27 @@ public final class NameGetter extends common.NameGetter implements common.NameDe
     }
 
     public common.NameGetter getAnyGetter() {
-        switch (r.getInt(2)) {
-            case 0:
+        switch (ResourceGetter.with(r).getString(common.Constant.SUPPORTED_LOCALES)) {
+            case "ar":
+                return new arabic.NameGetter(r);
+            case "de":
+                return new german.NameGetter(r);
+            case "en":
                 return new english.NameGetter(r);
-            case 1:
+            case "es":
                 return new spanish.NameGetter(r);
+            case "fr":
+                return new french.NameGetter(r);
+            case "it":
+                return new italian.NameGetter(r);
+            case "hi":
+                return new hindi.NameGetter(r);
+            case "ja":
+                return new japanese.NameGetter(r);
+            case "pt":
+                return new portuguese.NameGetter(r);
+            case "ru":
+                return new russian.NameGetter(r);
         }
         return new common.NameGetter(r);
     }
