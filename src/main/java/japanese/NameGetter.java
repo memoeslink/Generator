@@ -1,189 +1,132 @@
-package english;
+package japanese;
 
-import common.*;
+import common.Database;
+import common.Randomizer;
+import common.ResourceGetter;
+import common.Separator;
 import international.Shaper;
 
-public final class NameGetter extends common.NameGetter implements common.NameDefiner, english.NameDefiner {
-    private final NounGetter nounGetter;
-    private final AdjectiveGetter adjectiveGetter;
+public class NameGetter extends common.NameGetter implements japanese.NameDefiner {
     private final international.NameGetter nameGetter;
 
     public NameGetter() {
         super();
-        nounGetter = new NounGetter();
-        adjectiveGetter = new AdjectiveGetter();
         nameGetter = new international.NameGetter();
     }
 
     public NameGetter(Randomizer r) {
         super(r);
-        nounGetter = new NounGetter(r);
-        adjectiveGetter = new AdjectiveGetter(r);
         nameGetter = new international.NameGetter(r);
     }
 
     @Override
     public String getFemaleForename() {
-        return getFemaleForename(r.getInt(1, Database.countEnglishFemaleNames()));
+        return ResourceGetter.with(r).getString(Constant.FEMALE_FORENAMES);
     }
 
     @Override
     public String getFemaleForename(int id) {
-        return Database.selectEnglishFemaleName(id);
+        return ResourceGetter.with(r).getString(Constant.MALE_FORENAMES, id);
     }
 
     @Override
     public String getMaleForename() {
-        return getMaleForename(r.getInt(1, Database.countEnglishMaleNames()));
+        return ResourceGetter.with(r).getString(Constant.MALE_FORENAMES);
     }
 
     @Override
     public String getMaleForename(int id) {
-        return Database.selectEnglishMaleName(id);
+        return ResourceGetter.with(r).getString(Constant.MALE_FORENAMES, id);
     }
 
     @Override
     public String getDoubleBarrelledFemaleForename() {
-        return getFemaleForename() + Separator.HYPHEN.getCharacter() + getFemaleForename();
+        return Database.DEFAULT_VALUE;
     }
 
     @Override
     public String getDoubleBarrelledFemaleForename(int startId, int endId) {
-        return getFemaleForename(startId) + Separator.HYPHEN.getCharacter() + getFemaleForename(endId);
+        return Database.DEFAULT_VALUE;
     }
 
     @Override
     public String getDoubleBarrelledMaleForename() {
-        return getMaleForename() + Separator.HYPHEN.getCharacter() + getMaleForename();
+        return Database.DEFAULT_VALUE;
     }
 
     @Override
     public String getDoubleBarrelledMaleForename(int startId, int endId) {
-        return getMaleForename(startId) + Separator.HYPHEN.getCharacter() + getMaleForename(endId);
+        return Database.DEFAULT_VALUE;
     }
 
     @Override
     public String getDoubleFemaleForename() {
-        return getFemaleForename() + Separator.SPACE.getCharacter() + getFemaleForename();
+        return Database.DEFAULT_VALUE;
     }
 
     @Override
     public String getDoubleFemaleForename(int startId, int endId) {
-        return getFemaleForename(startId) + Separator.SPACE.getCharacter() + getFemaleForename(endId);
+        return Database.DEFAULT_VALUE;
     }
 
     @Override
     public String getDoubleMaleForename() {
-        return getMaleForename() + Separator.SPACE.getCharacter() + getMaleForename();
+        return Database.DEFAULT_VALUE;
     }
 
     @Override
     public String getDoubleMaleForename(int startId, int endId) {
-        return getMaleForename(startId) + Separator.SPACE.getCharacter() + getMaleForename(endId);
+        return Database.DEFAULT_VALUE;
     }
 
     @Override
     public String getSurname() {
-        return getSurname(r.getInt(1, Database.countEnglishSurnames()));
+        return ResourceGetter.with(r).getString(Constant.SURNAMES);
     }
 
     @Override
     public String getSurname(int id) {
-        return Database.selectEnglishSurname(id);
+        return ResourceGetter.with(r).getString(Constant.SURNAMES, id);
     }
 
     @Override
     public String getDualSurname() {
-        return getDoubleBarrelledSurname();
+        return Database.DEFAULT_VALUE;
     }
 
     @Override
     public String getDualSurname(int startId, int endId) {
-        return getDoubleBarrelledSurname(startId, endId);
+        return Database.DEFAULT_VALUE;
     }
 
     @Override
     public String getFemaleSimpleName() {
-        return getFemaleForename() + Separator.SPACE.getCharacter() + getSurname();
+        return getSurname() + Separator.SPACE.getCharacter() + getFemaleForename();
     }
 
     @Override
     public String getFemaleSimpleName(int forenameId, int surnameId) {
-        return getFemaleForename(forenameId) + Separator.SPACE.getCharacter() + getSurname(surnameId);
+        return getSurname(forenameId) + Separator.SPACE.getCharacter() + getFemaleForename(surnameId);
     }
 
     @Override
     public String getMaleSimpleName() {
-        return getMaleForename() + Separator.SPACE.getCharacter() + getSurname();
+        return getSurname() + Separator.SPACE.getCharacter() + getMaleForename();
     }
 
     @Override
     public String getMaleSimpleName(int forenameId, int surnameId) {
-        return getMaleForename(forenameId) + Separator.SPACE.getCharacter() + getSurname(surnameId);
+        return getSurname(forenameId) + Separator.SPACE.getCharacter() + getMaleForename(surnameId);
     }
 
     @Override
     public String getFemaleFullName() {
-        switch (r.getInt(8)) {
-            case 1:
-                return getFemaleForename() + Separator.SPACE.getCharacter() + getDualSurname();
-            case 2:
-                return (getDoubleBarrelledFemaleForename() + Separator.SPACE.getCharacter() +
-                        getSurname());
-            case 3:
-                return (getFemaleForename() + Separator.SPACE.getCharacter() +
-                        getFemaleMiddleName() + Separator.SPACE.getCharacter() +
-                        getSurname());
-            case 4:
-                return (getFemaleForename() + Separator.SPACE.getCharacter() +
-                        getMiddleNameInitial() + Separator.SPACE.getCharacter() +
-                        getSurname());
-            case 5:
-                return (getFemaleForename() + Separator.SPACE.getCharacter() +
-                        getFemaleMiddleName() + Separator.SPACE.getCharacter() +
-                        getDualSurname());
-            case 6:
-                return (getFemaleForename() + Separator.SPACE.getCharacter() +
-                        getMiddleNameInitial() + Separator.SPACE.getCharacter() +
-                        getDualSurname());
-            case 7:
-                return getFemaleName();
-            case 0:
-            default:
-                return getFemaleSimpleName();
-        }
+        return getFemaleSimpleName();
     }
 
     @Override
     public String getMaleFullName() {
-        switch (r.getInt(8)) {
-            case 1:
-                return getMaleForename() + Separator.SPACE.getCharacter() + getDualSurname();
-            case 2:
-                return (getDoubleBarrelledMaleForename() + Separator.SPACE.getCharacter() +
-                        getSurname());
-            case 3:
-                return (getMaleForename() + Separator.SPACE.getCharacter() +
-                        getMaleMiddleName() + Separator.SPACE.getCharacter() +
-                        getSurname());
-            case 4:
-                return (getMaleForename() + Separator.SPACE.getCharacter() +
-                        getMiddleNameInitial() + Separator.SPACE.getCharacter() +
-                        getSurname());
-            case 5:
-                return (getMaleForename() + Separator.SPACE.getCharacter() +
-                        getMaleMiddleName() + Separator.SPACE.getCharacter() +
-                        getDualSurname());
-            case 6:
-                return (getMaleForename() + Separator.SPACE.getCharacter() +
-                        getMiddleNameInitial() + Separator.SPACE.getCharacter() +
-                        getDualSurname());
-            case 7:
-                return getMaleName();
-            case 0:
-            default:
-                return getFemaleSimpleName();
-        }
+        return getMaleSimpleName();
     }
 
     @Override
@@ -303,7 +246,7 @@ public final class NameGetter extends common.NameGetter implements common.NameDe
 
     @Override
     public String getFemaleFrequencyForename(int type) {
-        return nameGetter.getFemaleFrequencyForename();
+        return nameGetter.getFemaleFrequencyForename(type);
     }
 
     @Override
@@ -423,71 +366,43 @@ public final class NameGetter extends common.NameGetter implements common.NameDe
 
     @Override
     public String getCompositeUsername() {
-        String adjective = StringHelper.removeAll(adjectiveGetter.getAdjective(), "[^a-zA-Z0-9\\\\s]");
-        String noun = StringHelper.removeAll(nounGetter.getNoun(), "[^a-zA-Z0-9\\\\s]");
-        return getCompositeUsername(adjective, noun, r);
+        return nameGetter.getCompositeUsername();
     }
 
     @Override
     public String getDerivedUsername() {
-        return getDerivedUsername(Database.selectFamilyName(r.getInt(1, Database.countFamilyNames())), r);
+        return nameGetter.getDerivedUsername();
     }
 
     @Override
     public String getAnonymousName() {
-        String adjective = StringHelper.removeAll(adjectiveGetter.getAdjective(), "[^a-zA-Z0-9\\\\s]");
-        String noun = StringHelper.removeAll(nounGetter.getNoun(), "[^a-zA-Z0-9\\\\s]");
-        return StringHelper.joinWithSpace(adjective, noun);
+        return nameGetter.getAnonymousName();
     }
 
     @Override
     public String getAnonymousAnimal() {
-        return "Anonymous" + Separator.SPACE.getCharacter() +
-                StringHelper.capitalize(ResourceGetter.with(r).getString(Constant.ANONYMOUS_ANIMALS));
+        return nameGetter.getAnonymousAnimal();
     }
 
     @Override
-    public String getFemaleMiddleName() {
-        return getFemaleForename();
+    public String getFemaleForenameSuffix() {
+        return Separator.HYPHEN.getCharacter() +
+                ResourceGetter.with(r).getString(Constant.FEMALE_FORENAME_SUFFIXES);
     }
 
     @Override
-    public String getFemaleMiddleName(int id) {
-        return getFemaleForename(id);
+    public String getMaleForenameSuffix() {
+        return Separator.HYPHEN.getCharacter() +
+                ResourceGetter.with(r).getString(Constant.MALE_FORENAME_SUFFIXES);
     }
 
     @Override
-    public String getMaleMiddleName() {
-        return getMaleForename();
+    public String getFemaleForenameWithSuffix() {
+        return getFemaleForename() + getFemaleForenameSuffix();
     }
 
     @Override
-    public String getMaleMiddleName(int id) {
-        return getMaleForename(id);
-    }
-
-    @Override
-    public String getMiddleNameInitial() {
-        return ResourceGetter.with(r).getUpperCase() + StringHelper.EMPTY + Separator.DOT.getCharacter();
-    }
-
-    @Override
-    public String getDoubleBarrelledSurname() {
-        return getSurname() + Separator.HYPHEN.getCharacter() + getSurname();
-    }
-
-    @Override
-    public String getDoubleBarrelledSurname(int startId, int endId) {
-        return getSurname(startId) + Separator.HYPHEN.getCharacter() + getSurname(endId);
-    }
-
-    @Override
-    public String getFemaleName() {
-        return getFemaleFullName() + Separator.SPACE.getCharacter() + getGenerationalSuffix(r);
-    }
-
-    @Override
-    public String getMaleName() {
-        return getMaleFullName() + Separator.SPACE.getCharacter() + getGenerationalSuffix(r);
+    public String getMaleForenameWithSuffix() {
+        return getMaleForename() + getMaleForenameSuffix();
     }
 }

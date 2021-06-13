@@ -1,10 +1,9 @@
 package spanish;
 
-import common.NameDefiner;
 import common.*;
 import international.Shaper;
 
-public final class NameGetter extends common.NameGetter implements NameDefiner, spanish.NameDefiner {
+public final class NameGetter extends common.NameGetter implements common.NameDefiner, spanish.NameDefiner {
     private final NounGetter nounGetter;
     private final AdjectiveGetter adjectiveGetter;
     private final international.NameGetter nameGetter;

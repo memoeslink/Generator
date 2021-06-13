@@ -1,9 +1,8 @@
 package international;
 
-import common.NameDefiner;
 import common.*;
 
-public final class NameGetter extends common.NameGetter implements NameDefiner, international.NameDefiner {
+public final class NameGetter extends common.NameGetter implements common.NameDefiner, international.NameDefiner {
 
     public NameGetter() {
         super();

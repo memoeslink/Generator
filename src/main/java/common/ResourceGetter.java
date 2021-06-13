@@ -18,14 +18,26 @@ public class ResourceGetter {
     }
 
     public static char getChar(char[] chars) {
-        if (chars != null && chars.length > 0)
-            return chars[r.getInt(chars.length)];
+        return getChar(chars, r.getInt(chars.length));
+    }
+
+    public static char getChar(char[] chars, int index) {
+        if (chars != null && chars.length > 0) {
+            index = IntegerHelper.defaultIndex(index, chars.length);
+            return chars[index];
+        }
         return CharHelper.NULL_CHAR;
     }
 
     public static char getChar(String s) {
-        if (StringHelper.isNotNullOrEmpty(s))
-            return s.charAt(r.getInt(s.length()));
+        return getChar(s, r.getInt(s.length()));
+    }
+
+    public static char getChar(String s, int index) {
+        if (StringHelper.isNotNullOrEmpty(s)) {
+            index = IntegerHelper.defaultIndex(index, s.length());
+            return s.charAt(index);
+        }
         return CharHelper.NULL_CHAR;
     }
 
@@ -33,9 +45,19 @@ public class ResourceGetter {
         return String.valueOf(getChar(s));
     }
 
+    public static String getString(String s, int index) {
+        return String.valueOf(getChar(s, index));
+    }
+
     public static String getString(String[] strings) {
-        if (StringHelper.isNotNullOrEmpty(strings))
-            return strings[r.getInt(strings.length)];
+        return getString(strings, r.getInt(strings.length));
+    }
+
+    public static String getString(String[] strings, int index) {
+        if (StringHelper.isNotNullOrEmpty(strings)) {
+            index = IntegerHelper.defaultIndex(index, strings.length);
+            return strings[index];
+        }
         return StringHelper.EMPTY;
     }
 
@@ -44,6 +66,16 @@ public class ResourceGetter {
 
         if (parts.length > 0)
             return parts[r.getInt(parts.length)];
+        return StringHelper.EMPTY;
+    }
+
+    public static String getSplitString(String s, int index) {
+        String[] parts = StringHelper.splitByParagraphMark(s);
+
+        if (parts.length > 0) {
+            index = IntegerHelper.defaultIndex(index, parts.length);
+            return parts[index];
+        }
         return StringHelper.EMPTY;
     }
 
