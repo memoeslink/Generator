@@ -1,6 +1,8 @@
 package common;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -9,6 +11,8 @@ public class TextProcessor {
     private static final String WORD_REGEX = "\\p{L}+";
     private static final String COMBINED_WORDS_REGEX = "(\\p{L}+)(\\[(\\p{L})\\]|\\((\\p{L})\\)|[\\|\\/\\-](\\p{L}+))?";
     private static final Pattern COMBINED_WORDS_PATTERN = Pattern.compile(COMBINED_WORDS_REGEX);
+    private static final String EXTENDED_COMBINED_WORDS_REGEX = "\\[[\\^]{0,2}[\\p{L}\\s'ªº∅]*(\\[[\\p{L}\\s'ªº∅]*(,[\\p{L}\\s'ªº∅]*)?\\])?[\\p{L}\\s'ªº∅]*\\]";
+    private static final Pattern EXTENDED_COMBINED_WORDS_PATTERN = Pattern.compile(EXTENDED_COMBINED_WORDS_REGEX);
 
     public static Word getFirstSeveredWord(String s) {
         List<Word> words = severWords(s, 1);
@@ -168,5 +172,69 @@ public class TextProcessor {
         }
         m.appendTail(sb);
         return sb.toString();
+    }
+
+    public TextComponent genderifyStr(String s, Gender gender) {
+        gender = gender != null ? gender : Gender.UNDEFINED;
+        TextComponent component = new TextComponent();
+        component.setText(s);
+        Matcher matcher = EXTENDED_COMBINED_WORDS_PATTERN.matcher(s);
+        StringBuffer sb = new StringBuffer();
+
+        while (matcher.find()) {
+            String replacement;
+            String substring = StringHelper.substring(matcher.group(), 1, matcher.group().length() - 1);
+            boolean capitalized = !substring.equals(substring = StringHelper.removeStart(substring, "^"));
+            boolean fullyCapitalized = capitalized && !substring.equals(substring = StringHelper.removeStart(substring, "^"));
+            String prefix = StringHelper.substringBefore(substring, "[");
+            String suffix = StringHelper.substringAfter(substring, "]");
+            substring = StringHelper.substringBetween(substring, "[", "]");
+            List<String> items = Arrays.asList(substring.split(",\\s*"));
+            boolean shortened = false;
+
+            if (StringHelper.isNotNullOrEmpty(substring) && StringHelper.isNotNullOrBlank(suffix)) {
+                List<String> sortedItems = new ArrayList<>(items);
+
+                Collections.sort(sortedItems, (item, otherItem) -> {
+                    if (item.length() > otherItem.length())
+                        return 1;
+                    else
+                        return item.compareTo(otherItem);
+                });
+
+                if (sortedItems.size() >= 2) {
+                    if (sortedItems.get(0).length() <= 1 && sortedItems.get(sortedItems.size() - 1).length() <= 1)
+                        shortened = true;
+                }
+            }
+
+            if (items.size() == 0)
+                replacement = prefix + suffix;
+            else if (items.size() == 1)
+                replacement = prefix + items.get(0) + suffix;
+            else if (gender == Gender.UNDEFINED || gender == Gender.NEUTRAL) {
+                if (shortened)
+                    replacement = prefix + items.get(0) + "(" + StringHelper.join(items.subList(1, items.size()), ", ") + ")";
+                else {
+                    for (int n = 0; n < items.size(); n++) {
+                        items.set(n, prefix + items.get(n) + suffix);
+                    }
+                    replacement = StringHelper.join(items, "/");
+                }
+            } else
+                replacement = prefix + (gender == Gender.MASCULINE ? items.get(0) : items.get(1)) + suffix;
+
+            if (fullyCapitalized)
+                replacement = StringHelper.capitalize(replacement);
+            else if (capitalized)
+                replacement = StringHelper.capitalizeFirst(replacement);
+            matcher.appendReplacement(sb, replacement);
+        }
+        matcher.appendTail(sb);
+
+        if (StringHelper.isNotNullOrBlank(sb.toString()))
+            component.setText(sb.toString());
+        component.setHegemonicGender(gender);
+        return component;
     }
 }

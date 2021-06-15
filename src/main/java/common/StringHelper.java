@@ -127,8 +127,20 @@ public class StringHelper {
         return join(EMPTY, strings);
     }
 
+    public static String join(List<String> strings) {
+        if (strings == null)
+            return null;
+        return join(strings.toArray(new String[0]));
+    }
+
     public static String join(char c, String... strings) {
         return join(String.valueOf(c), strings);
+    }
+
+    public static String join(List<String> strings, char c) {
+        if (strings == null)
+            return null;
+        return join(String.valueOf(c), strings.toArray(new String[0]));
     }
 
     public static String join(String separator, String... strings) {
@@ -145,12 +157,30 @@ public class StringHelper {
         return sb.toString();
     }
 
+    public static String join(List<String> strings, String separator) {
+        if (strings == null)
+            return null;
+        return join(separator, strings.toArray(new String[0]));
+    }
+
     public static String joinWithSpace(String... strings) {
         return join(String.valueOf(Separator.SPACE.getCharacter()), strings);
     }
 
+    public static String joinWithSpace(List<String> strings) {
+        if (strings == null)
+            return null;
+        return join(String.valueOf(Separator.SPACE.getCharacter()), strings.toArray(new String[0]));
+    }
+
     public static String joinWithHyphen(String... strings) {
         return join(String.valueOf(Separator.HYPHEN.getCharacter()), strings);
+    }
+
+    public static String joinWithHyphen(List<String> strings) {
+        if (strings == null)
+            return null;
+        return join(String.valueOf(Separator.HYPHEN.getCharacter()), strings.toArray(new String[0]));
     }
 
     public static String weld(String a, String b) {
@@ -233,6 +263,44 @@ public class StringHelper {
             endIndex = s.length() + endIndex;
         endIndex = IntegerHelper.defaultInt(endIndex, startIndex, s.length());
         return s.substring(startIndex, endIndex);
+    }
+
+    public static String substringBefore(String s, String separator) {
+        if (isNullOrEmpty(s) || separator == null)
+            return s;
+
+        if (separator.isEmpty())
+            return EMPTY;
+        final int index = s.indexOf(separator);
+
+        if (index == IntegerHelper.INDEX_NOT_FOUND)
+            return s;
+        return s.substring(0, index);
+    }
+
+    public static String substringBetween(String s, String open, String close) {
+        int start = s.indexOf(open);
+
+        if (start != IntegerHelper.INDEX_NOT_FOUND) {
+            final int end = s.indexOf(close, start + open.length());
+
+            if (end != IntegerHelper.INDEX_NOT_FOUND)
+                return s.substring(start + open.length(), end);
+        }
+        return null;
+    }
+
+    public static String substringAfter(String s, String separator) {
+        if (isNullOrEmpty(s))
+            return s;
+
+        if (separator == null)
+            return EMPTY;
+        final int index = s.indexOf(separator);
+
+        if (index == IntegerHelper.INDEX_NOT_FOUND)
+            return EMPTY;
+        return s.substring(index + separator.length());
     }
 
     public static String replaceLast(String s, String occurrence, String replacement) {
@@ -335,7 +403,7 @@ public class StringHelper {
             return s;
         int n = s.lastIndexOf(separator);
 
-        if (n == IntegerHelper.DEFAULT_INDEX)
+        if (n == IntegerHelper.INDEX_NOT_FOUND)
             return s;
         return s.substring(0, n);
     }
@@ -345,7 +413,7 @@ public class StringHelper {
             return s;
         int n = s.lastIndexOf(separator);
 
-        if (n == IntegerHelper.DEFAULT_INDEX || n <= s.length() - separator.length())
+        if (n == IntegerHelper.INDEX_NOT_FOUND || n <= s.length() - separator.length())
             return s;
         return s.substring(n + 1);
     }

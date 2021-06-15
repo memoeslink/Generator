@@ -1,7 +1,7 @@
 package common;
 
 public class IntegerHelper {
-    public static final int DEFAULT_INDEX = -1;
+    public static final int INDEX_NOT_FOUND = -1;
     public static final int INITIAL_INDEX = 0;
 
     public static boolean isBetween(int n, int min, int max) {

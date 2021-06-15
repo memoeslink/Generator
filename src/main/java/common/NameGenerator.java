@@ -32,6 +32,9 @@ public class NameGenerator extends Generator {
                 case "es":
                     getter = new spanish.NameGetter(r);
                     break;
+                case "es-MX":
+                    getter = new spanish.mexico.NameGetter(r);
+                    break;
                 case "fr":
                     getter = new french.NameGetter(r);
                     break;
