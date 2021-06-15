@@ -8,11 +8,16 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TextProcessor {
-    private static final String WORD_REGEX = "\\p{L}+";
-    private static final String COMBINED_WORDS_REGEX = "(\\p{L}+)(\\[(\\p{L})\\]|\\((\\p{L})\\)|[\\|\\/\\-](\\p{L}+))?";
-    private static final Pattern COMBINED_WORDS_PATTERN = Pattern.compile(COMBINED_WORDS_REGEX);
-    private static final String EXTENDED_COMBINED_WORDS_REGEX = "\\[[\\^]{0,2}[\\p{L}\\s'ªº∅]*(\\[[\\p{L}\\s'ªº∅]*(,[\\p{L}\\s'ªº∅]*)?\\])?[\\p{L}\\s'ªº∅]*\\]";
-    private static final Pattern EXTENDED_COMBINED_WORDS_PATTERN = Pattern.compile(EXTENDED_COMBINED_WORDS_REGEX);
+    public static final String WORD_REGEX = "\\p{L}+";
+    public static final Pattern WORD_PATTERN = Pattern.compile(WORD_REGEX);
+    public static final String COMBINED_WORDS_REGEX = "(\\p{L}+)(\\[(\\p{L})\\]|\\((\\p{L})\\)|[\\|\\/\\-](\\p{L}+))?";
+    public static final Pattern COMBINED_WORDS_PATTERN = Pattern.compile(COMBINED_WORDS_REGEX);
+    public static final String EXTENDED_WORD_REGEX = "\\[[\\^]{0,2}[\\p{L}\\s'ªº∅]*(\\[[\\p{L}\\s'ªº∅]*(,[\\p{L}\\s'ªº∅]*)?\\])?[\\p{L}\\s'ªº∅]*\\]";
+    public static final Pattern EXTENDED_WORD_PATTERN = Pattern.compile(EXTENDED_WORD_REGEX);
+    public static final String ROMAN_NUMERAL_REGEX = "(^|\\s+)M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})($|\\s+)";
+    public static final Pattern ROMAN_NUMERAL_PATTERN = Pattern.compile(ROMAN_NUMERAL_REGEX);
+    public static final String LATIN_OR_SPACE_REGEX = "[\\p{L}\\s]+";
+    public static final Pattern LATIN_OR_SPACE_PATTERN = Pattern.compile(LATIN_OR_SPACE_REGEX);
 
     public static Word getFirstSeveredWord(String s) {
         List<Word> words = severWords(s, 1);
@@ -174,11 +179,11 @@ public class TextProcessor {
         return sb.toString();
     }
 
-    public TextComponent genderifyStr(String s, Gender gender) {
+    public static TextComponent genderifyStr(String s, Gender gender) {
         gender = gender != null ? gender : Gender.UNDEFINED;
         TextComponent component = new TextComponent();
         component.setText(s);
-        Matcher matcher = EXTENDED_COMBINED_WORDS_PATTERN.matcher(s);
+        Matcher matcher = EXTENDED_WORD_PATTERN.matcher(s);
         StringBuffer sb = new StringBuffer();
 
         while (matcher.find()) {
@@ -236,5 +241,20 @@ public class TextProcessor {
             component.setText(sb.toString());
         component.setHegemonicGender(gender);
         return component;
+    }
+
+    public static String demonize(String s, String defaultName) {
+        if (StringHelper.isNullOrBlank(s))
+            return s;
+        s = ROMAN_NUMERAL_PATTERN.matcher(s).replaceAll(String.valueOf(Separator.SPACE.getCharacter())).trim();
+
+        if (StringHelper.isOnlyAlphaSpace(s) || LATIN_OR_SPACE_PATTERN.matcher(s).matches()) {
+        } else
+            s = defaultName;
+        s = s.toLowerCase();
+        s = StringHelper.normalize(s);
+        s = StringHelper.reverse(s);
+        s = StringHelper.capitalize(s);
+        return s;
     }
 }

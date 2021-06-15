@@ -31,6 +31,12 @@ public class StringHelper {
         return !isNullOrBlank(s);
     }
 
+    public static int indexOf(String s, char c) {
+        if (isNullOrEmpty(s))
+            return IntegerHelper.INDEX_NOT_FOUND;
+        return s.indexOf(c);
+    }
+
     public static String defaultIfNull(String s) {
         return s == null ? EMPTY : s;
     }
@@ -242,6 +248,31 @@ public class StringHelper {
         return s;
     }
 
+    public static String uncapitalizeFirst(String s) {
+        if (isNullOrEmpty(s))
+            return s;
+
+        if (Character.isUpperCase(s.charAt(0))) {
+            char c = Character.toLowerCase(s.charAt(0));
+
+            if (Character.isLetter(c))
+                return c + s.substring(1);
+        }
+        return s;
+    }
+
+    public static String uncapitalize(String s) {
+        if (isNullOrEmpty(s))
+            return s;
+        String[] parts = s.split("\\s+");
+
+        for (int n = 0; n < parts.length; n++) {
+            parts[n] = uncapitalizeFirst(parts[n]);
+        }
+        s = String.join(String.valueOf(Separator.SPACE.getCharacter()), parts);
+        return s;
+    }
+
     public static String reverse(String s) {
         if (isNullOrEmpty(s))
             return s;
@@ -279,6 +310,8 @@ public class StringHelper {
     }
 
     public static String substringBetween(String s, String open, String close) {
+        if (isNullOrEmpty(s) || isNullOrEmpty(open) || isNullOrEmpty(close))
+            return null;
         int start = s.indexOf(open);
 
         if (start != IntegerHelper.INDEX_NOT_FOUND) {
@@ -568,6 +601,17 @@ public class StringHelper {
             if (CharHelper.isSpace(c)) return true;
         }
         return false;
+    }
+
+    public static boolean isOnlyAlphaSpace(String s) {
+        if (s == null)
+            return false;
+
+        for (char c : s.toCharArray()) {
+            if (c != Separator.SPACE.getCharacter() && !Character.isLetter(c))
+                return false;
+        }
+        return true;
     }
 
     public static boolean isOnlyLetters(String s) {
