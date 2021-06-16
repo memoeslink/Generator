@@ -140,34 +140,6 @@ public class ResourceGetter {
         return getChar(english.Constant.LOWERCASE_ALPHABET);
     }
 
-    public static String getGibberish(int minLength) {
-        minLength = IntegerHelper.defaultMinInt(minLength, 1);
-        int length = r.getInt(minLength, 13);
-        int spaceIndex = 0;
-        int index = 0;
-        StringBuilder sb = new StringBuilder(length);
-        boolean defined = false;
-
-        for (int i = 0; i < length; i++) {
-            if (!defined) {
-                if (r.getBoolean())
-                    spaceIndex = r.getInt(0, 7) + r.getInt(0, 6) + 1;
-                else
-                    spaceIndex = r.getInt(1, 12);
-                index = 0;
-                defined = true;
-            }
-            sb.append(getChar(Constant.ACCENTED_LETTERS));
-            index++;
-
-            if (index >= spaceIndex && i < length - 1) {
-                sb.append(Separator.SPACE.getCharacter());
-                defined = false;
-            }
-        }
-        return sb.toString();
-    }
-
     public static ResourceGetter with(Randomizer r) {
         return new ResourceGetter(r);
     }

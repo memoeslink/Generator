@@ -151,9 +151,9 @@ public interface NameDefiner {
     public String getCompositeUsername();
 
     default String getCompositeUsername(String a, String b, Randomizer r) {
+        r = r != null ? r : new Randomizer();
         String username = StringHelper.joinWithSpace(a, b).trim();
         username = StringHelper.normalize(username);
-        r = r != null ? r : new Randomizer();
         int index = -1;
 
         //Separate words with characters or using camel case
@@ -198,6 +198,7 @@ public interface NameDefiner {
     public String getDerivedUsername();
 
     default String getDerivedUsername(String s, Randomizer r) {
+        r = r != null ? r : new Randomizer();
         String username = s;
         username = StringHelper.normalize(username);
         username = StringHelper.removeAll(username, "[^a-zA-Z]");

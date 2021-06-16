@@ -257,4 +257,18 @@ public class TextProcessor {
         s = StringHelper.capitalize(s);
         return s;
     }
+
+    public static String turnIntoGibberish(String s) {
+        if (StringHelper.isNullOrEmpty(s))
+            return s;
+        StringBuilder sb = new StringBuilder();
+
+        for (char c : s.toCharArray()) {
+            if (Character.isSpaceChar(c))
+                sb.append(Separator.SPACE.getCharacter());
+            else
+                sb.append(ResourceGetter.getChar(Constant.ACCENTED_LETTERS));
+        }
+        return sb.toString();
+    }
 }

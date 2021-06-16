@@ -5,20 +5,23 @@ import common.*;
 public interface NameDefiner extends common.NameDefiner {
 
     default String getDefinedForename(Randomizer r) {
+        r = r != null ? r : new Randomizer();
         int type = r.getInt(Constant.GENERATED_NAME_START.length);
         return getDefinedForename(type, r);
     }
 
     default String getDefinedForename(int type, Randomizer r) {
         type = IntegerHelper.defaultIndex(type, Constant.GENERATED_NAME_START.length);
+        r = r != null ? r : new Randomizer();
         return StringHelper.capitalizeFirst(ResourceGetter.with(r).getString(Constant.GENERATED_NAME_START[type]) +
                 ResourceGetter.with(r).getString(Constant.GENERATED_NAME_MIDDLE[type]) +
                 ResourceGetter.with(r).getString(Constant.GENERATED_NAME_ENDING[type]));
     }
 
     default String getIterativeName(int iterations, Randomizer r) {
-        StringBuilder sb = new StringBuilder();
         iterations = IntegerHelper.defaultInt(iterations, 1, 100);
+        r = r != null ? r : new Randomizer();
+        StringBuilder sb = new StringBuilder();
         float probability = r.getBoolean() ? 1.1F : 0.F; //Decide whether the name will start with vowel or consonant
 
         //Add consonants with vowel
@@ -40,6 +43,7 @@ public interface NameDefiner extends common.NameDefiner {
     }
 
     default String getPatternName(Randomizer r) {
+        r = r != null ? r : new Randomizer();
         String namePattern = Constant.NAME_PATTERNS[r.getInt(0, Constant.NAME_PATTERNS.length)];
         StringBuilder sb = new StringBuilder();
 
@@ -93,6 +97,8 @@ public interface NameDefiner extends common.NameDefiner {
     }
 
     default String getFrequencyName(WeightedChar[] letters, int length, Randomizer r) {
+        length = IntegerHelper.defaultInt(length, 1, 9999);
+        r = r != null ? r : new Randomizer();
         String s;
         StringBuilder sb = new StringBuilder();
         char previousChar = r.chooseOnWeight(letters);
@@ -106,7 +112,6 @@ public interface NameDefiner extends common.NameDefiner {
 
         if (letters == null || letters.length == 0)
             letters = Constant.ENGLISH_WEIGHTED_LETTERS;
-        length = IntegerHelper.defaultInt(length, 1, 9999);
 
         for (int n = 0; n < length; n++) {
             if (sameType) {
@@ -150,10 +155,11 @@ public interface NameDefiner extends common.NameDefiner {
     }
 
     default String getPreformedName(String letters, int length, Randomizer r) {
+        length = IntegerHelper.defaultInt(length, 0, letters.length());
+        r = r != null ? r : new Randomizer();
         String name = StringHelper.EMPTY;
 
         if (StringHelper.isNotNullOrEmpty(letters)) {
-            length = IntegerHelper.defaultInt(length, 0, letters.length());
             int firstMark = r.getInt(0, letters.length()), secondMark;
 
             if (firstMark + length - 1 > letters.length()) {
@@ -176,6 +182,7 @@ public interface NameDefiner extends common.NameDefiner {
     default String getMarkovName(int minLength, int maxLength, Randomizer r) {
         minLength = IntegerHelper.defaultMinInt(minLength, 1);
         maxLength = IntegerHelper.defaultInt(maxLength, minLength, 9999);
+        r = r != null ? r : new Randomizer();
         NameGen nameGen;
 
         if (r.getSeed() == 0L)

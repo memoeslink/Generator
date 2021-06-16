@@ -86,14 +86,14 @@ public class CharHelper {
         return Character.isSpaceChar(c);
     }
 
-    public boolean isPrintable(char c) {
+    public static boolean isPrintable(char c) {
         Character.UnicodeBlock block = Character.UnicodeBlock.of(c);
         return (!Character.isISOControl(c)) &&
                 block != null &&
                 block != Character.UnicodeBlock.SPECIALS;
     }
 
-    public boolean isCharDisplayableInFont(char c) {
+    public static boolean isCharDisplayableInFont(char c) {
         if (c == NULL_CHAR || Character.isWhitespace(c))
             return false;
         Graphics g = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB).getGraphics();
@@ -102,7 +102,7 @@ public class CharHelper {
         return font.canDisplay(c);
     }
 
-    public boolean isGlyphDisplayable(char c) {
+    public static boolean isGlyphDisplayable(char c) {
         return isPrintable(c) && isCharDisplayableInFont(c);
     }
 
@@ -110,5 +110,10 @@ public class CharHelper {
         if (c == NULL_CHAR)
             return StringHelper.EMPTY;
         return String.format("\\u%04X", (int) c);
+    }
+
+    public static char getHexDigit(int value) {
+        value = IntegerHelper.defaultMinInt(value, 0);
+        return Integer.toHexString(value % 16).charAt(0);
     }
 }

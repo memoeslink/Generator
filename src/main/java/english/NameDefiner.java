@@ -20,6 +20,7 @@ public interface NameDefiner extends common.NameDefiner {
     public String getDoubleBarrelledSurname(int startId, int endId);
 
     default String getGenerationalSuffix(Randomizer r) {
+        r = r != null ? r : new Randomizer();
         return r.getBoolean() ? ResourceGetter.with(r).getString(common.Constant.ROMAN_NUMERALS) :
                 ResourceGetter.with(r).getString(english.Constant.GENERATIONAL_SUFFIX);
     }

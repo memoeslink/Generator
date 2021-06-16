@@ -9,6 +9,7 @@ public class GeneratorManager {
     private OccupationGenerator occupationGenerator;
     private NounGenerator nounGenerator;
     private AdjectiveGenerator adjectiveGenerator;
+    private DateTimeGenerator dateTimeGenerator;
 
     public GeneratorManager() {
         this(Locale.ENGLISH, null);
@@ -63,5 +64,6 @@ public class GeneratorManager {
         occupationGenerator = new OccupationGenerator(locale, seed);
         nounGenerator = new NounGenerator(locale, seed);
         adjectiveGenerator = new AdjectiveGenerator(locale, seed);
+        dateTimeGenerator = new DateTimeGenerator(locale, seed);
     }
 }
