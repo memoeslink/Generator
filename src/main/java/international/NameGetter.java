@@ -73,6 +73,21 @@ public final class NameGetter extends common.NameGetter implements common.NameDe
     }
 
     @Override
+    public String getGivenName() {
+        return getAnyGetter().getGivenName();
+    }
+
+    @Override
+    public String getFemaleGivenName() {
+        return getAnyGetter().getFemaleGivenName();
+    }
+
+    @Override
+    public String getMaleGivenName() {
+        return getAnyGetter().getMaleGivenName();
+    }
+
+    @Override
     public String getSurname() {
         return getAnyGetter().getSurname();
     }
@@ -113,16 +128,6 @@ public final class NameGetter extends common.NameGetter implements common.NameDe
     }
 
     @Override
-    public String getFemaleFullName() {
-        return getAnyGetter().getFemaleFullName();
-    }
-
-    @Override
-    public String getMaleFullName() {
-        return getAnyGetter().getMaleFullName();
-    }
-
-    @Override
     public String getFullName() {
         switch (r.getInt(3)) {
             case 1:
@@ -134,6 +139,16 @@ public final class NameGetter extends common.NameGetter implements common.NameDe
                 return Database.selectName(r.getInt(1, Database.countNames())) + Separator.SPACE.getCharacter() +
                         Database.selectFamilyName(r.getInt(1, Database.countFamilyNames()));
         }
+    }
+
+    @Override
+    public String getFemaleFullName() {
+        return getAnyGetter().getFemaleFullName();
+    }
+
+    @Override
+    public String getMaleFullName() {
+        return getAnyGetter().getMaleFullName();
     }
 
     @Override

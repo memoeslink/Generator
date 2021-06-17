@@ -34,6 +34,12 @@ public interface NameDefiner {
 
     public String getDoubleMaleForename(int startId, int endId);
 
+    public String getGivenName();
+
+    public String getFemaleGivenName();
+
+    public String getMaleGivenName();
+
     public String getSurname();
 
     public String getSurname(int id);
@@ -50,11 +56,11 @@ public interface NameDefiner {
 
     public String getMaleSimpleName(int forenameId, int surnameId);
 
+    public String getFullName();
+
     public String getFemaleFullName();
 
     public String getMaleFullName();
-
-    public String getFullName();
 
     public String getFemaleDefinedForename();
 

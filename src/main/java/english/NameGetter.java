@@ -83,6 +83,41 @@ public final class NameGetter extends common.NameGetter implements common.NameDe
     }
 
     @Override
+    public String getGivenName() {
+        return r.getBoolean() ? getMaleGivenName() : getFemaleGivenName();
+    }
+
+    @Override
+    public String getFemaleGivenName() {
+        switch (r.getInt(4)) {
+            case 1:
+                return getDoubleBarrelledFemaleForename();
+            case 2:
+                return getFemaleForename() + Separator.SPACE.getCharacter() + getFemaleMiddleName();
+            case 3:
+                return getFemaleForename() + Separator.SPACE.getCharacter() + getMiddleNameInitial();
+            case 0:
+            default:
+                return getFemaleForename();
+        }
+    }
+
+    @Override
+    public String getMaleGivenName() {
+        switch (r.getInt(4)) {
+            case 1:
+                return getDoubleBarrelledMaleForename();
+            case 2:
+                return getMaleForename() + Separator.SPACE.getCharacter() + getMaleMiddleName();
+            case 3:
+                return getMaleForename() + Separator.SPACE.getCharacter() + getMiddleNameInitial();
+            case 0:
+            default:
+                return getMaleForename();
+        }
+    }
+
+    @Override
     public String getSurname() {
         return getSurname(r.getInt(1, Database.countEnglishSurnames()));
     }
@@ -120,6 +155,11 @@ public final class NameGetter extends common.NameGetter implements common.NameDe
     @Override
     public String getMaleSimpleName(int forenameId, int surnameId) {
         return getMaleForename(forenameId) + Separator.SPACE.getCharacter() + getSurname(surnameId);
+    }
+
+    @Override
+    public String getFullName() {
+        return r.getBoolean() ? getMaleFullName() : getFemaleFullName();
     }
 
     @Override
@@ -184,11 +224,6 @@ public final class NameGetter extends common.NameGetter implements common.NameDe
             default:
                 return getFemaleSimpleName();
         }
-    }
-
-    @Override
-    public String getFullName() {
-        return r.getBoolean() ? getMaleFullName() : getFemaleFullName();
     }
 
     @Override

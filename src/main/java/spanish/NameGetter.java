@@ -83,6 +83,37 @@ public final class NameGetter extends common.NameGetter implements common.NameDe
     }
 
     @Override
+    public String getGivenName() {
+        return r.getBoolean() ? getMaleGivenName() : getFemaleGivenName();
+    }
+
+    @Override
+    public String getFemaleGivenName() {
+        switch (r.getInt(3)) {
+            case 1:
+                return getDoubleFemaleForename();
+            case 2:
+                return getFemaleForenames();
+            case 0:
+            default:
+                return getFemaleForename();
+        }
+    }
+
+    @Override
+    public String getMaleGivenName() {
+        switch (r.getInt(3)) {
+            case 1:
+                return getDoubleMaleForename();
+            case 2:
+                return getMaleForenames();
+            case 0:
+            default:
+                return getMaleForename();
+        }
+    }
+
+    @Override
     public String getSurname() {
         return getSurname(r.getInt(1, Database.countHispanicSurnames()));
     }
@@ -123,6 +154,11 @@ public final class NameGetter extends common.NameGetter implements common.NameDe
     }
 
     @Override
+    public String getFullName() {
+        return r.getBoolean() ? getMaleFullName() : getFemaleFullName();
+    }
+
+    @Override
     public String getFemaleFullName() {
         switch (r.getInt(4)) {
             case 1:
@@ -150,11 +186,6 @@ public final class NameGetter extends common.NameGetter implements common.NameDe
             default:
                 return getMaleSimpleName();
         }
-    }
-
-    @Override
-    public String getFullName() {
-        return r.getBoolean() ? getMaleFullName() : getFemaleFullName();
     }
 
     @Override

@@ -6,7 +6,7 @@ import common.ResourceGetter;
 import common.Separator;
 import international.Shaper;
 
-public class NameGetter extends common.NameGetter implements japanese.NameDefiner {
+public class NameGetter extends common.NameGetter implements common.NameDefiner, japanese.NameDefiner {
     private final international.NameGetter nameGetter;
 
     public NameGetter() {
@@ -80,6 +80,21 @@ public class NameGetter extends common.NameGetter implements japanese.NameDefine
     }
 
     @Override
+    public String getGivenName() {
+        return r.getBoolean() ? getMaleGivenName() : getFemaleGivenName();
+    }
+
+    @Override
+    public String getFemaleGivenName() {
+        return getFemaleForename();
+    }
+
+    @Override
+    public String getMaleGivenName() {
+        return getFemaleForename();
+    }
+
+    @Override
     public String getSurname() {
         return ResourceGetter.with(r).getString(Constant.SURNAMES);
     }
@@ -120,6 +135,11 @@ public class NameGetter extends common.NameGetter implements japanese.NameDefine
     }
 
     @Override
+    public String getFullName() {
+        return r.getBoolean() ? getMaleFullName() : getFemaleFullName();
+    }
+
+    @Override
     public String getFemaleFullName() {
         return getFemaleSimpleName();
     }
@@ -127,11 +147,6 @@ public class NameGetter extends common.NameGetter implements japanese.NameDefine
     @Override
     public String getMaleFullName() {
         return getMaleSimpleName();
-    }
-
-    @Override
-    public String getFullName() {
-        return r.getBoolean() ? getMaleFullName() : getFemaleFullName();
     }
 
     @Override

@@ -10,6 +10,7 @@ public class GeneratorManager {
     private NounGenerator nounGenerator;
     private AdjectiveGenerator adjectiveGenerator;
     private DateTimeGenerator dateTimeGenerator;
+    private PersonGenerator personGenerator;
 
     public GeneratorManager() {
         this(Locale.ENGLISH, null);
@@ -59,11 +60,20 @@ public class GeneratorManager {
         return adjectiveGenerator;
     }
 
+    public DateTimeGenerator getDateTimeGenerator() {
+        return dateTimeGenerator;
+    }
+
+    public PersonGenerator getPersonGenerator() {
+        return personGenerator;
+    }
+
     private void initializeGenerators() {
         nameGenerator = new NameGenerator(locale, seed);
         occupationGenerator = new OccupationGenerator(locale, seed);
         nounGenerator = new NounGenerator(locale, seed);
         adjectiveGenerator = new AdjectiveGenerator(locale, seed);
         dateTimeGenerator = new DateTimeGenerator(locale, seed);
+        personGenerator = new PersonGenerator(locale, seed);
     }
 }
