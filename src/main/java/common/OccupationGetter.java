@@ -89,4 +89,34 @@ public class OccupationGetter extends Getter implements OccupationDefiner {
     public String getGenderlessFantasyClass() {
         return Database.DEFAULT_VALUE;
     }
+
+    @Override
+    public String getFemaleHonorific() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getMaleHonorific() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getGenderlessHonorific() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getFemaleRoyalTitle() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getMaleRoyalTitle() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getGenderlessRoyalTitle() {
+        return Database.DEFAULT_VALUE;
+    }
 }

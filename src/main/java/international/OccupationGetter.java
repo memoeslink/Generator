@@ -93,6 +93,36 @@ public final class OccupationGetter extends common.OccupationGetter implements O
         return getAnyGetter().getGenderlessFantasyClass();
     }
 
+    @Override
+    public String getFemaleHonorific() {
+        return getAnyGetter().getFemaleHonorific();
+    }
+
+    @Override
+    public String getMaleHonorific() {
+        return getAnyGetter().getMaleHonorific();
+    }
+
+    @Override
+    public String getGenderlessHonorific() {
+        return getAnyGetter().getGenderlessHonorific();
+    }
+
+    @Override
+    public String getFemaleRoyalTitle() {
+        return getAnyGetter().getFemaleRoyalTitle();
+    }
+
+    @Override
+    public String getMaleRoyalTitle() {
+        return getAnyGetter().getMaleRoyalTitle();
+    }
+
+    @Override
+    public String getGenderlessRoyalTitle() {
+        return getAnyGetter().getGenderlessRoyalTitle();
+    }
+
     public common.OccupationGetter getAnyGetter() {
         switch (r.getInt(2)) {
             case 0:

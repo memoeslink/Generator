@@ -106,4 +106,39 @@ public final class OccupationGetter extends common.OccupationGetter implements O
         String fantasyClass = getFantasyClass();
         return TextProcessor.genderify(fantasyClass, Gender.UNDEFINED);
     }
+
+    public String getFemaleHonorific() {
+        String honorific = ResourceGetter.with(r).getString(Constant.HONORIFICS);
+        return english.TextProcessor.genderifyStr(honorific, Gender.FEMININE).getText();
+    }
+
+    @Override
+    public String getMaleHonorific() {
+        String honorific = ResourceGetter.with(r).getString(Constant.HONORIFICS);
+        return english.TextProcessor.genderifyStr(honorific, Gender.MASCULINE).getText();
+    }
+
+    @Override
+    public String getGenderlessHonorific() {
+        String honorific = ResourceGetter.with(r).getString(Constant.HONORIFICS);
+        return english.TextProcessor.genderifyStr(honorific, Gender.UNDEFINED).getText();
+    }
+
+    @Override
+    public String getFemaleRoyalTitle() {
+        String honorific = ResourceGetter.with(r).getString(Constant.ROYAL_TITLES);
+        return english.TextProcessor.genderifyStr(honorific, Gender.FEMININE).getText();
+    }
+
+    @Override
+    public String getMaleRoyalTitle() {
+        String honorific = ResourceGetter.with(r).getString(Constant.ROYAL_TITLES);
+        return english.TextProcessor.genderifyStr(honorific, Gender.MASCULINE).getText();
+    }
+
+    @Override
+    public String getGenderlessRoyalTitle() {
+        String honorific = ResourceGetter.with(r).getString(Constant.ROYAL_TITLES);
+        return english.TextProcessor.genderifyStr(honorific, Gender.UNDEFINED).getText();
+    }
 }

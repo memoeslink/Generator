@@ -33,4 +33,16 @@ public interface OccupationDefiner {
     public String getMaleFantasyClass();
 
     public String getGenderlessFantasyClass();
+
+    public String getFemaleHonorific();
+
+    public String getMaleHonorific();
+
+    public String getGenderlessHonorific();
+
+    public String getFemaleRoyalTitle();
+
+    public String getMaleRoyalTitle();
+
+    public String getGenderlessRoyalTitle();
 }
