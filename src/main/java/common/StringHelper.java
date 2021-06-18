@@ -557,6 +557,15 @@ public class StringHelper {
         return false;
     }
 
+    public static boolean equalsIgnoreCase(String a, String b) {
+        if (a == b)
+            return true;
+
+        if (a == null || b == null)
+            return false;
+        return a.toLowerCase().equals(b.toLowerCase());
+    }
+
     public static boolean equalsAny(String s, String... occurrences) {
         if (s == null)
             return false;
