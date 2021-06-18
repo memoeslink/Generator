@@ -169,7 +169,8 @@ public interface NameDefiner {
             username = StringHelper.remove(username, String.valueOf(Separator.SPACE.getCharacter()));
         } else {
             index = r.getInt(Separator.values().length - 2);
-            username = username.replace(String.valueOf(Separator.SPACE.getCharacter()), String.valueOf(Separator.values()[index].getCharacter()));
+            username = StringHelper.replace(username, String.valueOf(Separator.SPACE.getCharacter()),
+                    String.valueOf(Separator.values()[index].getCharacter()));
         }
 
         //Append number, if required

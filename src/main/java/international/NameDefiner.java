@@ -48,10 +48,10 @@ public interface NameDefiner extends common.NameDefiner {
         StringBuilder sb = new StringBuilder();
 
         if (r.getBoolean())
-            namePattern = namePattern.replace('e', 'ɘ');
+            namePattern = StringHelper.replace(namePattern, 'e', 'ɘ');
 
         if (r.getBoolean())
-            namePattern = namePattern.replace('k', 'q');
+            namePattern = StringHelper.replace(namePattern, 'k', 'q');
 
         for (char c : namePattern.toCharArray()) {
             switch (c) {

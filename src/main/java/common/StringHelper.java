@@ -340,6 +340,10 @@ public class StringHelper {
         return s.substring(index + separator.length());
     }
 
+    public static String replace(String s, char occurrence, char replacement) {
+        return replace(s, String.valueOf(occurrence), String.valueOf(replacement));
+    }
+
     public static String replace(String s, String occurrence, String replacement) {
         if (isNullOrEmpty(s))
             return s;
