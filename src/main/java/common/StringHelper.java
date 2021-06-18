@@ -397,7 +397,14 @@ public class StringHelper {
 
     public static String remove(String s, String occurrence) {
         if (isNotNullOrEmpty(s) && isNotNullOrEmpty(occurrence))
-            return s.replace(occurrence, EMPTY);
+            return replace(s, occurrence, EMPTY);
+        return s;
+    }
+
+    public static String removeEach(String s, String... occurrences) {
+        for (String occurrence : occurrences) {
+            s = remove(s, occurrence);
+        }
         return s;
     }
 
