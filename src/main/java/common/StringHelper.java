@@ -383,6 +383,18 @@ public class StringHelper {
         return s.substring(0, lastIndex) + tail;
     }
 
+    public static String replaceEach(String s, String[] occurrences, String replacements[]) {
+        if (isNullOrEmpty(s) || occurrences == null || replacements == null)
+            return s;
+
+        for (int n = 0; n < occurrences.length && n < replacements.length; n++) {
+            if (isNullOrEmpty(occurrences[n]) || replacements[n] == null)
+                continue;
+            s = replace(s, occurrences[n], replacements[n]);
+        }
+        return s;
+    }
+
     public static String remove(String s, String occurrence) {
         if (isNotNullOrEmpty(s) && isNotNullOrEmpty(occurrence))
             return s.replace(occurrence, EMPTY);
