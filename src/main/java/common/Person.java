@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 public class Person {
     private long id;
+    private String fullName;
     private String forename;
     private String surname;
     private NameType nameType;
@@ -20,8 +21,9 @@ public class Person {
     public Person() {
     }
 
-    private Person(long id, String forename, String surname, NameType nameType, Gender gender, String nickname, String username, String generationalSuffix, String japaneseHonorific, String postNominalLetters, String address, String email, LocalDate birthdate) {
+    private Person(long id, String fullName, String forename, String surname, NameType nameType, Gender gender, String nickname, String username, String generationalSuffix, String japaneseHonorific, String postNominalLetters, String address, String email, LocalDate birthdate) {
         this.id = id;
+        this.fullName = fullName;
         this.forename = forename;
         this.surname = surname;
         this.nameType = nameType;
@@ -38,6 +40,7 @@ public class Person {
 
     public static class PersonBuilder {
         private long id;
+        private String fullName;
         private String forename;
         private String surname;
         private NameType nameType;
@@ -56,6 +59,11 @@ public class Person {
 
         public PersonBuilder setId(long id) {
             this.id = id;
+            return this;
+        }
+
+        public PersonBuilder setFullName(String fullName) {
+            this.fullName = fullName;
             return this;
         }
 
@@ -120,7 +128,7 @@ public class Person {
         }
 
         public Person build() {
-            return new Person(id, forename, surname, nameType, gender, nickname, username, generationalSuffix, japaneseHonorific, postNominalLetters, address, email, birthdate);
+            return new Person(id, fullName, forename, surname, nameType, gender, nickname, username, generationalSuffix, japaneseHonorific, postNominalLetters, address, email, birthdate);
         }
     }
 
@@ -130,6 +138,14 @@ public class Person {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getForename() {
