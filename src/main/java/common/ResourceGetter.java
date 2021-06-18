@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 public class ResourceGetter {
     private static Randomizer r;
-    private static final HashMap<String, Integer> countRegistry = new HashMap<>();
+    private static final HashMap<String, Integer> COUNT_REGISTRY = new HashMap<>();
     private static final String RESOURCES_PATH = "src/main/resources/%s";
 
     static {
@@ -97,13 +97,13 @@ public class ResourceGetter {
             LineNumberReader lnr = new LineNumberReader(br);
             Integer lineCount = 0;
 
-            if (countRegistry.containsKey(filename))
-                lineCount = countRegistry.get(filename);
+            if (COUNT_REGISTRY.containsKey(filename))
+                lineCount = COUNT_REGISTRY.get(filename);
             else {
                 try {
                     lnr.skip(Long.MAX_VALUE);
                     lineCount = lnr.getLineNumber() + 1;
-                    countRegistry.put(filename, lineCount);
+                    COUNT_REGISTRY.put(filename, lineCount);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
