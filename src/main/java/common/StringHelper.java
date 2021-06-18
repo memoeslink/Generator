@@ -366,7 +366,7 @@ public class StringHelper {
         return s;
     }
 
-    private static String replaceOnce(String s, String occurrence, String replacement) {
+    public static String replaceOnce(String s, String occurrence, String replacement) {
         int index = indexOf(s, occurrence);
 
         if (index == -1)
