@@ -69,6 +69,10 @@ public class GeneratorManager {
         return personGenerator;
     }
 
+    public StringGenerator getStringGenerator() {
+        return stringGenerator;
+    }
+
     private void initializeGenerators() {
         nameGenerator = new NameGenerator(locale, seed);
         occupationGenerator = new OccupationGenerator(locale, seed);
