@@ -32,9 +32,13 @@ public class StringHelper {
     }
 
     public static int indexOf(String s, char c) {
+        return indexOf(s, String.valueOf(c));
+    }
+
+    public static int indexOf(String s, String occurrence) {
         if (isNullOrEmpty(s))
             return IntegerHelper.INDEX_NOT_FOUND;
-        return s.indexOf(c);
+        return s.indexOf(occurrence);
     }
 
     public static String defaultIfNull(String s) {
@@ -334,6 +338,40 @@ public class StringHelper {
         if (index == IntegerHelper.INDEX_NOT_FOUND)
             return EMPTY;
         return s.substring(index + separator.length());
+    }
+
+    public static String replace(String s, String occurrence, String replacement) {
+        if (isNullOrEmpty(s))
+            return s;
+        int i = 0;
+
+        if ((i = s.indexOf(occurrence, i)) >= 0) {
+            char[] strChars = s.toCharArray();
+            char[] replacementChars = replacement.toCharArray();
+            int occurrenceLength = occurrence.length();
+            StringBuilder sb = new StringBuilder(strChars.length);
+            sb.append(strChars, 0, i).append(replacementChars);
+            i += occurrenceLength;
+            int j = i;
+
+            while ((i = s.indexOf(occurrence, i)) > 0) {
+                sb.append(strChars, j, i - j).append(replacementChars);
+                i += occurrenceLength;
+                j = i;
+            }
+            sb.append(strChars, j, strChars.length - j);
+            s = sb.toString();
+            sb.setLength(0);
+        }
+        return s;
+    }
+
+    private static String replaceOnce(String s, String occurrence, String replacement) {
+        int index = indexOf(s, occurrence);
+
+        if (index == -1)
+            return s;
+        return s.substring(0, index).concat(replacement).concat(s.substring(index + occurrence.length()));
     }
 
     public static String replaceLast(String s, String occurrence, String replacement) {

@@ -11,6 +11,7 @@ public class GeneratorManager {
     private AdjectiveGenerator adjectiveGenerator;
     private DateTimeGenerator dateTimeGenerator;
     private PersonGenerator personGenerator;
+    private StringGenerator stringGenerator;
 
     public GeneratorManager() {
         this(Locale.ENGLISH, null);
@@ -75,5 +76,6 @@ public class GeneratorManager {
         adjectiveGenerator = new AdjectiveGenerator(locale, seed);
         dateTimeGenerator = new DateTimeGenerator(locale, seed);
         personGenerator = new PersonGenerator(locale, seed);
+        stringGenerator = new StringGenerator(locale, seed);
     }
 }
