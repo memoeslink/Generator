@@ -20,7 +20,7 @@ public class Randomizer {
     }
 
     public void bindSeed(Long seed) {
-        this.seed = seed != null ? seed : 0L;
+        this.seed = seed;
 
         if (seed != null)
             r = new Random(seed);
