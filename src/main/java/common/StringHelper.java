@@ -99,7 +99,7 @@ public class StringHelper {
     }
 
     public static String[] splitByParagraphMark(String s) {
-        if (StringHelper.isNotNullOrEmpty(s))
+        if (isNotNullOrEmpty(s))
             return s.split("¶[ ]*");
         return new String[]{};
     }
