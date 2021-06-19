@@ -387,6 +387,12 @@ public class StringHelper {
         return s.substring(0, index).concat(replacement).concat(s.substring(index + occurrence.length()));
     }
 
+    public static String replaceFirst(String s, String regex, String replacement) {
+        if (isNotNullOrEmpty(s) && replacement != null)
+            return s.replaceFirst(regex, replacement);
+        return s;
+    }
+
     public static String replaceLast(String s, String occurrence, String replacement) {
         if (isNullOrEmpty(s))
             return s;
@@ -408,6 +414,12 @@ public class StringHelper {
         return s;
     }
 
+    public static String replaceAll(String s, String regex, String replacement) {
+        if (isNotNullOrEmpty(s) && replacement != null)
+            return s.replaceAll(regex, replacement);
+        return s;
+    }
+
     public static String remove(String s, String occurrence) {
         if (isNotNullOrEmpty(s) && isNotNullOrEmpty(occurrence))
             return replace(s, occurrence, EMPTY);
@@ -415,8 +427,12 @@ public class StringHelper {
     }
 
     public static String removeEach(String s, String... occurrences) {
+        if (isNullOrEmpty(s) || occurrences.length == 0)
+            return s;
+
         for (String occurrence : occurrences) {
-            s = remove(s, occurrence);
+            if (isNotNullOrEmpty(occurrence))
+                s = replace(s, occurrence, EMPTY);
         }
         return s;
     }
