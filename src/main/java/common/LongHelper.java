@@ -2,7 +2,7 @@ package common;
 
 public class LongHelper {
 
-    public Long getSeed(String s) {
+    public static Long getSeed(String s) {
         if (StringHelper.isNullOrEmpty(s))
             return null;
         long hash = 0;
