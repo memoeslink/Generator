@@ -47,11 +47,12 @@ public class PersonGenerator extends Generator {
             name = parts.get(0);
             japaneseHonorific = parts.get(1);
         }
-        Gender tempGender = gender != Gender.UNDEFINED ? gender : Gender.NEUTRAL;
+        Gender tempGender = gender == Gender.UNDEFINED || gender == Gender.NEUTRAL ?
+                (r.getBoolean() ? Gender.MASCULINE : Gender.FEMININE) : gender;
         OccupationType occupationType;
 
         do {
-            occupationType = OccupationType.values()[OccupationType.values().length];
+            occupationType = OccupationType.values()[r.getInt(OccupationType.values().length)];
         } while (occupationType.getGender() != tempGender);
         String occupation = occupationGenerator.getOccupation(occupationType);
         String postNominalLetters = ResourceGetter.with(r).getString(Constant.POST_NOMINAL_LETTERS);

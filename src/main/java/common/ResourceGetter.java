@@ -13,7 +13,7 @@ public class ResourceGetter {
     }
 
     private ResourceGetter(Randomizer r) {
-        if (r == null || !r.getSeed().equals(ResourceGetter.r.getSeed()))
+        if (r == null | ResourceGetter.r == null || !r.getSeed().equals(ResourceGetter.r.getSeed()))
             ResourceGetter.r = r != null ? r : new Randomizer();
     }
 
