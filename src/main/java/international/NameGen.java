@@ -7,6 +7,8 @@
 
 package international;
 
+import common.StringHelper;
+
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Random;
@@ -146,7 +148,7 @@ public class NameGen {
      */
     public void addName(String name) {
         // Sanitize the string.
-        name = name.replaceAll("\\s+", "").toLowerCase();
+        name = StringHelper.removeAll(name, "\\s+").toLowerCase();
 
         // Update the beginning state.
         beginState.addNext(states.get(name.charAt(0)));
@@ -169,7 +171,7 @@ public class NameGen {
      */
     public void removeName(String name) {
         // Sanitize the string.
-        name = name.replaceAll("\\s+", "").toLowerCase();
+        name = StringHelper.removeAll(name, "\\s+").toLowerCase();
 
         // For every char except the last, tell the corresponding state which
         // char should be reset.
@@ -190,7 +192,7 @@ public class NameGen {
     public String getName() {
         // Pick an initial character.
         CharState curState = beginState.next();
-        String retStr = "" + curState.getChar();
+        String retStr = StringHelper.EMPTY + curState.getChar();
 
         // For each remaining spot in the desired name do:
         for (int i = rand.nextInt(max - min) + min; i > 1; i--) {
@@ -208,12 +210,11 @@ public class NameGen {
      * @return the string
      */
     public String toString() {
-        String retStr = "";
+        String retStr = StringHelper.EMPTY;
 
         for (CharState state : states.values()) {
             retStr += state.toString();
         }
-
         return retStr;
     }
 
@@ -321,7 +322,7 @@ public class NameGen {
          * @return the string
          */
         public String toString() {
-            StringBuilder retStr = new StringBuilder("" + curChar + ":\n   ");
+            StringBuilder retStr = new StringBuilder(StringHelper.EMPTY + curChar + ":\n   ");
 
             for (CharState state : nexts.keySet()) {
                 retStr.append("[").append(state.getChar()).append(":").append(nexts.get(state)).append("]");
