@@ -13,7 +13,7 @@ public class Person {
     private String username;
     private String generationalSuffix;
     private String japaneseHonorific;
-    private String honoraryTitle;
+    private String occupation;
     private String postNominalLetters;
     private String address;
     private String email;
@@ -22,7 +22,7 @@ public class Person {
     public Person() {
     }
 
-    private Person(long id, String fullName, String forename, String surname, NameType nameType, Gender gender, String nickname, String username, String generationalSuffix, String japaneseHonorific, String honoraryTitle, String postNominalLetters, String address, String email, LocalDate birthdate) {
+    private Person(long id, String fullName, String forename, String surname, NameType nameType, Gender gender, String nickname, String username, String generationalSuffix, String japaneseHonorific, String occupation, String postNominalLetters, String address, String email, LocalDate birthdate) {
         this.id = id;
         this.fullName = fullName;
         this.forename = forename;
@@ -33,7 +33,7 @@ public class Person {
         this.username = username;
         this.generationalSuffix = generationalSuffix;
         this.japaneseHonorific = japaneseHonorific;
-        this.honoraryTitle = honoraryTitle;
+        this.occupation = occupation;
         this.postNominalLetters = postNominalLetters;
         this.address = address;
         this.email = email;
@@ -51,7 +51,7 @@ public class Person {
         private String username;
         private String generationalSuffix;
         private String japaneseHonorific;
-        private String honoraryTitle;
+        private String occupation;
         private String postNominalLetters;
         private String address;
         private String email;
@@ -110,8 +110,8 @@ public class Person {
             return this;
         }
 
-        public PersonBuilder setHonoraryTitle(String honoraryTitle) {
-            this.honoraryTitle = honoraryTitle;
+        public PersonBuilder setOccupation(String occupation) {
+            this.occupation = occupation;
             return this;
         }
 
@@ -136,7 +136,7 @@ public class Person {
         }
 
         public Person build() {
-            return new Person(id, fullName, forename, surname, nameType, gender, nickname, username, generationalSuffix, japaneseHonorific, honoraryTitle, postNominalLetters, address, email, birthdate);
+            return new Person(id, fullName, forename, surname, nameType, gender, nickname, username, generationalSuffix, japaneseHonorific, occupation, postNominalLetters, address, email, birthdate);
         }
     }
 
@@ -220,12 +220,12 @@ public class Person {
         this.japaneseHonorific = japaneseHonorific;
     }
 
-    public String getHonoraryTitle() {
-        return honoraryTitle;
+    public String getOccupation() {
+        return occupation;
     }
 
-    public void setHonoraryTitle(String honoraryTitle) {
-        this.honoraryTitle = honoraryTitle;
+    public void setOccupation(String occupation) {
+        this.occupation = occupation;
     }
 
     public String getPostNominalLetters() {
