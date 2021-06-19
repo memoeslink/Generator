@@ -7,16 +7,15 @@ public class Generator {
     protected Randomizer r;
 
     protected Generator() {
-        this(null);
+        this(null, null);
     }
 
     protected Generator(Long seed) {
-        this.locale = Locale.ENGLISH;
-        this.r = new Randomizer(seed);
+        this(null, seed);
     }
 
     protected Generator(Locale locale, Long seed) {
-        this.locale = locale != null ? locale : Locale.ENGLISH;
+        this.locale = locale != null ? locale : new Locale("xx");
         this.r = new Randomizer(seed);
     }
 
