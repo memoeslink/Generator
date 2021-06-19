@@ -286,6 +286,15 @@ public class StringHelper {
         return sb.toString();
     }
 
+    public static String mask(String s) {
+        if (isNullOrEmpty(s))
+            return s;
+
+        if (s.length() > 4)
+            return s.replaceAll(".(?=.{4})", "*");
+        return s.replaceAll(".", "*");
+    }
+
     public static String substring(String s, int startIndex, int endIndex) {
         if (isNullOrEmpty(s))
             return s;
