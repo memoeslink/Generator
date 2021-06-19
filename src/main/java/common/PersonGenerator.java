@@ -5,16 +5,22 @@ import java.util.List;
 import java.util.Locale;
 
 public class PersonGenerator extends Generator {
-    GeneratorManager generatorManager;
+    NameGenerator nameGenerator;
+    OccupationGenerator occupationGenerator;
+    DateTimeGenerator dateTimeGenerator;
 
     public PersonGenerator() {
         super();
-        generatorManager = new GeneratorManager(new Locale("xx"));
+        nameGenerator = new NameGenerator(new Locale("xx"), null);
+        occupationGenerator = new OccupationGenerator(new Locale("xx"), null);
+        dateTimeGenerator = new DateTimeGenerator(new Locale("xx"), null);
     }
 
     public PersonGenerator(Locale locale, Long seed) {
         super(locale, seed);
-        generatorManager = new GeneratorManager(locale, seed);
+        nameGenerator = new NameGenerator(locale, seed);
+        occupationGenerator = new OccupationGenerator(locale, seed);
+        dateTimeGenerator = new DateTimeGenerator(locale, seed);
     }
 
     public Person getPerson(Gender gender) {
@@ -23,15 +29,15 @@ public class PersonGenerator extends Generator {
 
         switch (gender) {
             case MASCULINE:
-                name = new GeneratorManager(new Locale("xx")).getNameGenerator().getName(NameType.MALE_FULL_NAME);
+                name = nameGenerator.getName(NameType.MALE_FULL_NAME);
                 break;
             case FEMININE:
-                name = new GeneratorManager(new Locale("xx")).getNameGenerator().getName(NameType.FEMALE_FULL_NAME);
+                name = nameGenerator.getName(NameType.FEMALE_FULL_NAME);
                 break;
             case NEUTRAL:
             case UNDEFINED:
             default:
-                name = new GeneratorManager(new Locale("xx")).getNameGenerator().getName(NameType.FULL_NAME);
+                name = nameGenerator.getName(NameType.FULL_NAME);
                 break;
         }
         String japaneseHonorific = StringHelper.EMPTY;
@@ -47,9 +53,9 @@ public class PersonGenerator extends Generator {
         do {
             occupationType = OccupationType.values()[OccupationType.values().length];
         } while (occupationType.getGender() != tempGender);
-        String occupation = generatorManager.getOccupationGenerator().getOccupation(occupationType);
+        String occupation = occupationGenerator.getOccupation(occupationType);
         String postNominalLetters = ResourceGetter.with(r).getString(Constant.POST_NOMINAL_LETTERS);
-        LocalDate birthdate = generatorManager.getDateTimeGenerator().getDate();
+        LocalDate birthdate = dateTimeGenerator.getDate();
 
         switch (r.getInt(4)) {
             case 0:
