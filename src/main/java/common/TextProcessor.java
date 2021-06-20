@@ -156,6 +156,10 @@ public class TextProcessor {
                     m.appendReplacement(sb, m.group(1));
                     break;
                 case FEMININE:
+                    if (StringHelper.isNullOrEmpty(m.group(2))) {
+                        m.appendReplacement(sb, m.group(1));
+                        continue;
+                    }
                     String ending = StringHelper.defaultIfNull(m.group(3), StringHelper.defaultIfNull(m.group(4)));
 
                     if (!ending.isEmpty())
