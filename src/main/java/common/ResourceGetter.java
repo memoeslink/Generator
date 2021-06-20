@@ -13,8 +13,17 @@ public class ResourceGetter {
     }
 
     private ResourceGetter(Randomizer r) {
-        if (r == null || ResourceGetter.r == null || !r.getSeed().equals(ResourceGetter.r.getSeed()))
+        validation:
+        {
+            if (r != null && ResourceGetter.r != null) {
+                if (r.getSeed() == null && ResourceGetter.r.getSeed() == null)
+                    break validation;
+
+                if (r.getSeed().equals(ResourceGetter.r.getSeed()))
+                    break validation;
+            }
             ResourceGetter.r = r != null ? r : new Randomizer();
+        }
     }
 
     public static char getChar(char[] chars) {
