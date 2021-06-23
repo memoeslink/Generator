@@ -16,7 +16,7 @@ public class TextComponent {
         id = -1;
         uniqueId = null;
         tag = null;
-        text = "";
+        text = StringHelper.EMPTY;
         hegemonicGender = null;
         nullified = false;
     }
