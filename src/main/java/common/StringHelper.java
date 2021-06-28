@@ -1,5 +1,6 @@
 package common;
 
+import java.io.File;
 import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
@@ -167,6 +168,10 @@ public class StringHelper {
 
     public static String joinWithHyphen(String a, String b) {
         return join(String.valueOf(Separator.HYPHEN.getCharacter()), a, b);
+    }
+
+    public static String joinWithFileSeparator(String a, String b) {
+        return join(File.separator, a, b);
     }
 
     public static String join(String... strings) {
