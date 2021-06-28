@@ -71,6 +71,42 @@ public class StringHelper {
         return s;
     }
 
+    public static String prependToNonNull(String s, String prefix) {
+        if (s == null || prefix == null)
+            return s;
+        return prefix + s;
+    }
+
+    public static String prependToNonNullOrEmpty(String s, String prefix) {
+        if (isNullOrEmpty(s) || prefix == null)
+            return s;
+        return prefix + s;
+    }
+
+    public static String prependToNonNullOrBlank(String s, String prefix) {
+        if (isNullOrBlank(s) || prefix == null)
+            return s;
+        return prefix + s;
+    }
+
+    public static String appendToNonNull(String s, String suffix) {
+        if (s == null || suffix == null)
+            return s;
+        return s + suffix;
+    }
+
+    public static String appendToNonNullOrEmpty(String s, String suffix) {
+        if (isNullOrEmpty(s) || suffix == null)
+            return s;
+        return s + suffix;
+    }
+
+    public static String appendToNonNullOrBlank(String s, String suffix) {
+        if (isNullOrBlank(s) || suffix == null)
+            return s;
+        return s + suffix;
+    }
+
     public static List<String> split(String s, char delimiter) {
         StringBuilder sb = new StringBuilder();
         ArrayList<String> parts = new ArrayList<>();
