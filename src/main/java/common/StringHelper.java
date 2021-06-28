@@ -234,6 +234,16 @@ public class StringHelper {
         return join(String.valueOf(Separator.HYPHEN.getCharacter()), strings.toArray(new String[0]));
     }
 
+    public static String joinWithFileSeparator(String... strings) {
+        return join(File.separator, strings);
+    }
+
+    public static String joinWithFileSeparator(List<String> strings) {
+        if (strings == null)
+            return null;
+        return join(File.separator, strings.toArray(new String[0]));
+    }
+
     public static String weld(String a, String b) {
         if (isNullOrEmpty(a) || isNullOrEmpty(b))
             return EMPTY;
