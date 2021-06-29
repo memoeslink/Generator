@@ -72,40 +72,58 @@ public class StringHelper {
         return s;
     }
 
-    public static String prependToNonNull(String s, String prefix) {
+    public static String prependIfNotNull(String s, String prefix) {
         if (s == null || prefix == null)
-            return s;
+            return null;
         return prefix + s;
     }
 
-    public static String prependToNonNullOrEmpty(String s, String prefix) {
+    public static String prependIfNotEmpty(String s, String prefix) {
         if (isNullOrEmpty(s) || prefix == null)
             return s;
         return prefix + s;
     }
 
-    public static String prependToNonNullOrBlank(String s, String prefix) {
+    public static String prependIfNotBlank(String s, String prefix) {
         if (isNullOrBlank(s) || prefix == null)
             return s;
         return prefix + s;
     }
 
-    public static String appendToNonNull(String s, String suffix) {
+    public static String appendIfNotNull(String s, String suffix) {
         if (s == null || suffix == null)
             return s;
         return s + suffix;
     }
 
-    public static String appendToNonNullOrEmpty(String s, String suffix) {
+    public static String appendIfNotEmpty(String s, String suffix) {
         if (isNullOrEmpty(s) || suffix == null)
             return s;
         return s + suffix;
     }
 
-    public static String appendToNonNullOrBlank(String s, String suffix) {
+    public static String appendIfNotBlank(String s, String suffix) {
         if (isNullOrBlank(s) || suffix == null)
             return s;
         return s + suffix;
+    }
+
+    public static String affixIfNotNull(String s, String prefix, String suffix) {
+        if (s == null)
+            return null;
+        return StringHelper.defaultIfNull(prefix) + s + StringHelper.defaultIfNull(suffix);
+    }
+
+    public static String affixIfNotEmpty(String s, String prefix, String suffix) {
+        if (isNullOrEmpty(s))
+            return s;
+        return StringHelper.defaultIfNull(prefix) + s + StringHelper.defaultIfNull(suffix);
+    }
+
+    public static String affixIfNotBlank(String s, String prefix, String suffix) {
+        if (isNullOrBlank(s))
+            return s;
+        return StringHelper.defaultIfNull(prefix) + s + StringHelper.defaultIfNull(suffix);
     }
 
     public static List<String> split(String s, char delimiter) {
