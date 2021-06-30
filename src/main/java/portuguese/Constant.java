@@ -743,7 +743,7 @@ public class Constant {
             "Monforte",
             "Monjardim",
             "Monsanto",
-            "Mont\\'Alverne",
+            "Mont'Alverne",
             "Monte",
             "Monteiro",
             "Montenegro",
