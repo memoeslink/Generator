@@ -12,7 +12,7 @@ public class TextProcessor {
     public static final Pattern WORD_PATTERN = Pattern.compile(WORD_REGEX);
     public static final String COMBINED_WORDS_REGEX = "(\\p{L}+)(\\[(\\p{L})\\]|\\((\\p{L})\\)|[\\|\\/\\-](\\p{L}+))?";
     public static final Pattern COMBINED_WORDS_PATTERN = Pattern.compile(COMBINED_WORDS_REGEX);
-    public static final String EXTENDED_WORD_REGEX = "\\[[\\^]{0,2}[\\p{L}\\s'ªº∅]*(\\[[\\p{L}\\s'ªº∅]*(,[\\p{L}\\s'ªº∅]*)?\\])?[\\p{L}\\s'ªº∅]*\\]";
+    public static final String EXTENDED_WORD_REGEX = "\\[[\\^]{0,2}[\\w\\p{L}\\s'ªº∅]*(\\[[\\w\\p{L}\\s'ªº∅]*(,[\\w\\p{L}\\s'ªº∅]*)?\\])?\\w\\p{L}\\s'ªº∅]*\\]";
     public static final Pattern EXTENDED_WORD_PATTERN = Pattern.compile(EXTENDED_WORD_REGEX);
     public static final String ROMAN_NUMERAL_REGEX = "(^|\\s+)M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})($|\\s+)";
     public static final Pattern ROMAN_NUMERAL_PATTERN = Pattern.compile(ROMAN_NUMERAL_REGEX);
