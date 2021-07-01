@@ -15,21 +15,17 @@ public class ResourceGetter {
     private ResourceGetter(Randomizer r) {
         validation:
         {
-            if (r == null || ResourceGetter.r == null) {
-                ResourceGetter.r = r != null ? r : new Randomizer();
-                break validation;
+            if (r != null && ResourceGetter.r != null) {
+                if (r.getSeed() == null && ResourceGetter.r.getSeed() == null)
+                    break validation;
+
+                if (r.getSeed() == null ^ ResourceGetter.r.getSeed() == null)
+                    ResourceGetter.r = new Randomizer(r.getSeed());
+
+                if (r.getSeed().equals(ResourceGetter.r.getSeed()))
+                    break validation;
             }
-
-            if (r.getSeed() == null && ResourceGetter.r.getSeed() == null)
-                break validation;
-
-            if (r.getSeed() == null ^ ResourceGetter.r.getSeed() == null) {
-                ResourceGetter.r = new Randomizer(r.getSeed());
-                break validation;
-            }
-
-            if (!r.getSeed().equals(ResourceGetter.r.getSeed()))
-                ResourceGetter.r = r;
+            ResourceGetter.r = r != null ? r : new Randomizer();
         }
     }
 
