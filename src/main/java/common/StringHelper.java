@@ -111,19 +111,19 @@ public class StringHelper {
     public static String affixIfNotNull(String s, String prefix, String suffix) {
         if (s == null)
             return null;
-        return StringHelper.defaultIfNull(prefix) + s + StringHelper.defaultIfNull(suffix);
+        return defaultIfNull(prefix) + s + defaultIfNull(suffix);
     }
 
     public static String affixIfNotEmpty(String s, String prefix, String suffix) {
         if (isNullOrEmpty(s))
             return s;
-        return StringHelper.defaultIfNull(prefix) + s + StringHelper.defaultIfNull(suffix);
+        return defaultIfNull(prefix) + s + defaultIfNull(suffix);
     }
 
     public static String affixIfNotBlank(String s, String prefix, String suffix) {
         if (isNullOrBlank(s))
             return s;
-        return StringHelper.defaultIfNull(prefix) + s + StringHelper.defaultIfNull(suffix);
+        return defaultIfNull(prefix) + s + defaultIfNull(suffix);
     }
 
     public static List<String> split(String s, char delimiter) {
@@ -522,6 +522,10 @@ public class StringHelper {
         if (isNotNullOrEmpty(s))
             s = s.substring(0, s.length() - 1);
         return s;
+    }
+
+    public static String removeOnce(String s, String occurrence) {
+        return replaceOnce(s, occurrence, EMPTY);
     }
 
     public static String removeFirst(String s, String regex) {
