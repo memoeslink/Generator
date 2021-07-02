@@ -15,7 +15,7 @@ public class NameGenerator extends Generator {
     public String getName(NameType nameType) {
         NameGetter getter;
 
-        if (StringHelper.isNullOrEmpty(locale.getLanguage()) || StringHelper.isNullOrEmpty(locale.getCountry()) ||
+        if (StringHelper.isNullOrEmpty(locale.getLanguage()) ||
                 locale.getLanguage().equals("xx") || locale.getCountry().equals("XX"))
             getter = new international.NameGetter(r);
         else {
