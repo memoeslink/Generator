@@ -429,6 +429,8 @@ public final class NameGetter extends common.NameGetter implements common.NameDe
                 return new english.NameGetter(r);
             case "es":
                 return new spanish.NameGetter(r);
+            case "es_MX":
+                return new spanish.mexico.NameGetter(r);
             case "fr":
                 return new french.NameGetter(r);
             case "it":
