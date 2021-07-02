@@ -456,19 +456,23 @@ public class StringHelper {
         return s.substring(0, index).concat(replacement).concat(s.substring(index + occurrence.length()));
     }
 
-    public static String replaceFirst(String s, String regex, String replacement) {
-        if (isNotNullOrEmpty(s) && replacement != null)
-            return s.replaceFirst(regex, replacement);
-        return s;
-    }
-
-    public static String replaceLast(String s, String occurrence, String replacement) {
+    public static String replaceFinal(String s, String occurrence, String replacement) {
         if (isNullOrEmpty(s))
             return s;
         int lastIndex = s.lastIndexOf(occurrence);
         if (lastIndex < 0) return s;
         String tail = s.substring(lastIndex).replaceFirst(occurrence, replacement);
         return s.substring(0, lastIndex) + tail;
+    }
+
+    public static String replaceFirst(String s, String regex, String replacement) {
+        if (isNotNullOrEmpty(s) && replacement != null)
+            return s.replaceFirst(regex, replacement);
+        return s;
+    }
+
+    public static String replaceLast(String s, String regex, String replacement) {
+        return s.replaceFirst("(?s)(.*)" + regex, "$1" + replacement);
     }
 
     public static String replaceEach(String s, String[] occurrences, String replacements[]) {
@@ -528,14 +532,16 @@ public class StringHelper {
         return replaceOnce(s, occurrence, EMPTY);
     }
 
-    public static String removeFirst(String s, String regex) {
-        if (isNotNullOrEmpty(s))
-            return s.replaceFirst(regex, EMPTY);
-        return s;
+    public static String removeFinal(String s, String occurrence) {
+        return replaceFinal(s, occurrence, EMPTY);
     }
 
-    public static String removeLast(String s, String occurrence) {
-        return replaceLast(s, occurrence, EMPTY);
+    public static String removeFirst(String s, String regex) {
+        return replaceFirst(s, regex, EMPTY);
+    }
+
+    public static String removeLast(String s, String regex) {
+        return replaceLast(s, regex, EMPTY);
     }
 
     public static String removeStart(String s, String prefix) {
