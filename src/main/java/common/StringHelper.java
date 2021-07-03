@@ -678,10 +678,12 @@ public class StringHelper {
     }
 
     public static boolean containsAny(String s, String... affixes) {
+        if (isNullOrEmpty(s) || isNullOrEmpty(affixes))
+            return false;
+
         for (String affix : affixes) {
-            if (s != null && s.contains(affix))
+            if (affix != null && s.contains(affix))
                 return true;
-            return affix == null;
         }
         return false;
     }
