@@ -83,26 +83,7 @@ public class PersonGenerator extends Generator {
 
     public Person getAnonymousPerson(Gender gender) {
         gender = gender != null ? gender : Gender.UNDEFINED;
-        String username;
-
-        switch (r.getInt(5)) {
-            case 1:
-                username = nameGenerator.getName(NameType.COMPOSITE_USERNAME);
-                break;
-            case 2:
-                username = nameGenerator.getName(NameType.DERIVED_USERNAME);
-                break;
-            case 3:
-                username = nameGenerator.getName(NameType.ANONYMOUS_NAME);
-                break;
-            case 4:
-                username = nameGenerator.getName(NameType.ANONYMOUS_ANIMAL);
-                break;
-            case 0:
-            default:
-                username = nameGenerator.getName(NameType.USERNAME);
-                break;
-        }
+        String username = nameGenerator.getUsername();
         LocalDate birthdate = dateTimeGenerator.getHumanDate();
 
         return new Person.PersonBuilder()

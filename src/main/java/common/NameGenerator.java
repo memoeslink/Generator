@@ -181,6 +181,22 @@ public class NameGenerator extends Generator {
         }
     }
 
+    public String getUsername() {
+        switch (r.getInt(5)) {
+            case 1:
+                return getName(NameType.COMPOSITE_USERNAME);
+            case 2:
+                return getName(NameType.DERIVED_USERNAME);
+            case 3:
+                return getName(NameType.ANONYMOUS_NAME);
+            case 4:
+                return getName(NameType.ANONYMOUS_ANIMAL);
+            case 0:
+            default:
+                return getName(NameType.USERNAME);
+        }
+    }
+
     public static String getDefaultName() {
         return Constant.DEFAULT_NAME;
     }
