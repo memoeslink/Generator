@@ -72,6 +72,12 @@ public class Randomizer {
         return r.nextLong();
     }
 
+    public long getLong(long n) {
+        if (n < 1L)
+            n = 1L;
+        return (long) (r.nextDouble() * n);
+    }
+
     public int getGaussianInt(int standardDeviation, int mean, int constraint) {
         int value;
         int tries = 999;
