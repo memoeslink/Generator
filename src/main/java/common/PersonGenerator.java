@@ -56,7 +56,7 @@ public class PersonGenerator extends Generator {
         } while (occupationType.getGender() != tempGender);
         String occupation = occupationGenerator.getOccupation(occupationType);
         String postNominalLetters = ResourceGetter.with(r).getString(Constant.POST_NOMINAL_LETTERS);
-        LocalDate birthdate = dateTimeGenerator.getDate();
+        LocalDate birthdate = dateTimeGenerator.getHumanDate();
 
         switch (r.getInt(4)) {
             case 0:
@@ -77,6 +77,37 @@ public class PersonGenerator extends Generator {
                 .setJapaneseHonorific(japaneseHonorific)
                 .setOccupation(occupation)
                 .setPostNominalLetters(postNominalLetters)
+                .setBirthdate(birthdate)
+                .build();
+    }
+
+    public Person getAnonymousPerson(Gender gender) {
+        gender = gender != null ? gender : Gender.UNDEFINED;
+        String username;
+
+        switch (r.getInt(5)) {
+            case 1:
+                username = nameGenerator.getName(NameType.COMPOSITE_USERNAME);
+                break;
+            case 2:
+                username = nameGenerator.getName(NameType.DERIVED_USERNAME);
+                break;
+            case 3:
+                username = nameGenerator.getName(NameType.ANONYMOUS_NAME);
+                break;
+            case 4:
+                username = nameGenerator.getName(NameType.ANONYMOUS_ANIMAL);
+                break;
+            case 0:
+            default:
+                username = nameGenerator.getName(NameType.USERNAME);
+                break;
+        }
+        LocalDate birthdate = dateTimeGenerator.getHumanDate();
+
+        return new Person.PersonBuilder()
+                .setUsername(username)
+                .setGender(gender)
                 .setBirthdate(birthdate)
                 .build();
     }
