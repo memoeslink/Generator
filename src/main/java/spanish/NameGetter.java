@@ -29,7 +29,8 @@ public final class NameGetter extends common.NameGetter implements common.NameDe
 
     @Override
     public String getFemaleForename(int id) {
-        return Database.selectHispanicFemaleName(id);
+        String name = Database.selectHispanicFemaleName(id);
+        return TextProcessor.removeNameStart(name);
     }
 
     @Override
@@ -39,7 +40,8 @@ public final class NameGetter extends common.NameGetter implements common.NameDe
 
     @Override
     public String getMaleForename(int id) {
-        return Database.selectHispanicMaleName(id);
+        String name = Database.selectHispanicMaleName(id);
+        return TextProcessor.removeNameStart(name);
     }
 
     @Override
