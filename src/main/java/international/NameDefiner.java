@@ -185,7 +185,7 @@ public interface NameDefiner extends common.NameDefiner {
         r = r != null ? r : new Randomizer();
         NameGen nameGen;
 
-        if (r.getSeed() == 0L)
+        if (r.getSeed() == null)
             nameGen = new NameGen(minLength, maxLength);
         else
             nameGen = new NameGen(minLength, maxLength, r.getSeed());
