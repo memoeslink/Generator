@@ -51,7 +51,7 @@ public class CharHelper {
     public static boolean isDefaultVowel(char c) {
         if (c == NULL_CHAR)
             return false;
-        return Constant.VOWELS.indexOf(c) != -1;
+        return Constant.ACCENTED_VOWELS.indexOf(c) != -1;
     }
 
     public static boolean isAccentedConsonant(char c) {
