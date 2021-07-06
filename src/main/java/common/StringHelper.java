@@ -735,7 +735,7 @@ public class StringHelper {
             return false;
 
         for (char c : s.toCharArray()) {
-            if (CharHelper.isDefaultVowel(c)) return true;
+            if (CharHelper.isRegisteredVowel(c)) return true;
         }
         return false;
     }

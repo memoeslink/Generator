@@ -35,12 +35,6 @@ public class CharHelper {
         return Character.isLetter(c);
     }
 
-    public static boolean isUnaccentedVowel(char c) {
-        if (c == NULL_CHAR)
-            return false;
-        return english.Constant.VOWELS.indexOf(c) != -1;
-    }
-
     public static boolean isVowel(char c) {
         if (c == NULL_CHAR)
             return false;
@@ -48,10 +42,23 @@ public class CharHelper {
         return english.Constant.VOWELS.contains(s);
     }
 
-    public static boolean isDefaultVowel(char c) {
+    public static boolean isUnaccentedVowel(char c) {
+        if (c == NULL_CHAR)
+            return false;
+        return english.Constant.VOWELS.indexOf(c) != -1;
+    }
+
+    public static boolean isRegisteredVowel(char c) {
         if (c == NULL_CHAR)
             return false;
         return Constant.ACCENTED_VOWELS.indexOf(c) != -1;
+    }
+
+    public static boolean isConsonant(char c) {
+        if (c == NULL_CHAR)
+            return false;
+        String s = StringHelper.stripAccents(String.valueOf(c));
+        return english.Constant.CONSONANTS.contains(s);
     }
 
     public static boolean isAccentedConsonant(char c) {
@@ -71,13 +78,6 @@ public class CharHelper {
             if (c == consonant) return false;
         }
         return false;
-    }
-
-    public static boolean isConsonant(char c) {
-        if (c == NULL_CHAR)
-            return false;
-        String s = StringHelper.stripAccents(String.valueOf(c));
-        return english.Constant.CONSONANTS.contains(s);
     }
 
     public static boolean isSpace(char c) {
