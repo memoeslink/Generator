@@ -201,7 +201,7 @@ public class TextProcessor {
             List<String> items = Arrays.asList(substring.split(",\\s*"));
             boolean shortened = false;
 
-            if (StringHelper.isNotNullOrEmpty(substring) && StringHelper.isNotNullOrBlank(suffix)) {
+            if (StringHelper.isNotNullOrEmpty(substring) && StringHelper.isNullOrBlank(suffix)) {
                 List<String> sortedItems = new ArrayList<>(items);
 
                 Collections.sort(sortedItems, (item, otherItem) -> {
