@@ -34,4 +34,28 @@ public class IntegerHelper {
             return n;
         return n < min ? min : max;
     }
+
+    public int tryParseInt(String s, int defaultValue) {
+        try {
+            return Integer.parseInt(s);
+        } catch (NumberFormatException e) {
+            return defaultValue;
+        }
+    }
+
+    public int parseIntOrZero(String s) {
+        try {
+            return Integer.parseInt(s);
+        } catch (NumberFormatException e) {
+            return 0;
+        }
+    }
+
+    public Integer parseIntOrNull(String s) {
+        try {
+            return Integer.valueOf(s);
+        } catch (NumberFormatException e) {
+            return null;
+        }
+    }
 }
