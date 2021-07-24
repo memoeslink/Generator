@@ -8,8 +8,8 @@ public enum Gender {
     FEMININE(2, "♀", "⚨", "⚩", "⁇", "⍰", "�", "□", "?"),
     NEUTRAL(0, "⚲", "⚪", "⁇", "⍰", "�", "□", "?");
 
-    private int value;
-    private String[] glyphs;
+    private final int value;
+    private final String[] glyphs;
     private static final HashMap<Integer, Gender> lookup = new HashMap<>();
 
     static {
@@ -32,6 +32,6 @@ public enum Gender {
     }
 
     public static Gender get(int value) {
-        return lookup.get(value);
+        return lookup.getOrDefault(value, Gender.UNDEFINED);
     }
 }
