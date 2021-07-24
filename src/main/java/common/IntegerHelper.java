@@ -44,11 +44,7 @@ public class IntegerHelper {
     }
 
     public int parseIntOrZero(String s) {
-        try {
-            return Integer.parseInt(s);
-        } catch (NumberFormatException e) {
-            return 0;
-        }
+        return tryParseInt(s, 0);
     }
 
     public Integer parseIntOrNull(String s) {
