@@ -13,17 +13,7 @@ public class NounGenerator extends Generator {
     }
 
     public String getNoun(Form form) {
-        NounGetter getter;
-
-        if (StringHelper.isNullOrEmpty(locale.getLanguage()) ||
-                locale.getLanguage().equals("xx") || locale.getCountry().equals("XX"))
-            getter = new international.NounGetter(r);
-        else if (locale.getLanguage().equals("en"))
-            getter = new english.NounGetter(r);
-        else if (locale.getLanguage().equals("es"))
-            getter = new spanish.NounGetter(r);
-        else
-            getter = new international.NounGetter(r);
+        NounGetter getter = getGetter();
         form = form != null ? form : Form.UNDEFINED;
 
         switch (form) {
@@ -47,7 +37,68 @@ public class NounGenerator extends Generator {
         }
     }
 
+    public String getNounWithArticle(Form form) {
+        NounGetter getter = getGetter();
+        form = form != null ? form : Form.UNDEFINED;
+
+        switch (form) {
+            case SINGULAR:
+            case SINGULAR_NEUTER:
+                return getter.getNounWithArticle();
+            case PLURAL:
+            case PLURAL_NEUTER:
+                return getter.getPluralNounWithArticle();
+            case SINGULAR_MASCULINE:
+                return getter.getMaleNounWithArticle();
+            case PLURAL_MASCULINE:
+                return getter.getPluralMaleNounWithArticle();
+            case SINGULAR_FEMININE:
+                return getter.getFemaleNounWithArticle();
+            case PLURAL_FEMININE:
+                return getter.getPluralFemaleNounWithArticle();
+            case UNDEFINED:
+            default:
+                return getNounWithArticle(Form.values()[r.getInt(Form.values().length)]);
+        }
+    }
+
+    public String getNounWithIndefiniteArticle(Form form) {
+        NounGetter getter = getGetter();
+        form = form != null ? form : Form.UNDEFINED;
+
+        switch (form) {
+            case SINGULAR:
+            case SINGULAR_NEUTER:
+                return getter.getNounWithIndefiniteArticle();
+            case PLURAL:
+            case PLURAL_NEUTER:
+                return getter.getPluralNounWithIndefiniteArticle();
+            case SINGULAR_MASCULINE:
+                return getter.getMaleNounWithIndefiniteArticle();
+            case PLURAL_MASCULINE:
+                return getter.getPluralMaleNounWithIndefiniteArticle();
+            case SINGULAR_FEMININE:
+                return getter.getFemaleNounWithIndefiniteArticle();
+            case PLURAL_FEMININE:
+                return getter.getPluralFemaleNounWithIndefiniteArticle();
+            case UNDEFINED:
+            default:
+                return getNounWithIndefiniteArticle(Form.values()[r.getInt(Form.values().length)]);
+        }
+    }
+
     public static String getDefaultName() {
         return Constant.DEFAULT_NAME;
+    }
+
+    private NounGetter getGetter() {
+        if (StringHelper.isNullOrEmpty(locale.getLanguage()) ||
+                locale.getLanguage().equals("xx") || locale.getCountry().equals("XX"))
+            return new international.NounGetter(r);
+        else if (locale.getLanguage().equals("en"))
+            return new english.NounGetter(r);
+        else if (locale.getLanguage().equals("es"))
+            return new spanish.NounGetter(r);
+        return new international.NounGetter(r);
     }
 }

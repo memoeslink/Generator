@@ -22,31 +22,27 @@ public final class NounGetter extends common.NounGetter implements NounDefiner, 
     @Override
     public String getPluralNoun() {
         Noun noun = getRefinedNoun();
-        return noun.isPlural() ? noun.getBase() : Pluralizer.pluralize(noun).getBase();
+        return noun.isPlural() ? noun.getBase() : getPluralNoun();
     }
 
     @Override
     public String getFemaleNoun() {
-        Noun noun = getRefinedNoun();
-        return noun.getGender() == Gender.FEMININE && !noun.isPlural() ? noun.getBase() : getFemaleNoun();
+        return getRefinedFemaleNoun().getBase();
     }
 
     @Override
     public String getPluralFemaleNoun() {
-        Noun noun = getRefinedNoun();
-        return noun.getGender() == Gender.FEMININE ? (noun.isPlural() ? noun.getBase() : Pluralizer.pluralize(noun).getBase()) : getPluralFemaleNoun();
+        return getRefinedPluralFemaleNoun().getBase();
     }
 
     @Override
     public String getMaleNoun() {
-        Noun noun = getRefinedNoun();
-        return noun.getGender() == Gender.MASCULINE && !noun.isPlural() ? noun.getBase() : getMaleNoun();
+        return getRefinedMaleNoun().getBase();
     }
 
     @Override
     public String getPluralMaleNoun() {
-        Noun noun = getRefinedNoun();
-        return noun.getGender() == Gender.MASCULINE ? (noun.isPlural() ? noun.getBase() : Pluralizer.pluralize(noun).getBase()) : getPluralMaleNoun();
+        return getRefinedPluralMaleNoun().getBase();
     }
 
     @Override
@@ -55,34 +51,58 @@ public final class NounGetter extends common.NounGetter implements NounDefiner, 
     }
 
     @Override
+    public String getPluralNounWithArticle() {
+        return getRefinedPluralNoun().getBaseWithArticle();
+    }
+
+    @Override
+    public String getFemaleNounWithArticle() {
+        return getRefinedFemaleNoun().getBaseWithArticle();
+    }
+
+    @Override
+    public String getPluralFemaleNounWithArticle() {
+        return getRefinedPluralFemaleNoun().getBaseWithArticle();
+    }
+
+    @Override
+    public String getMaleNounWithArticle() {
+        return getRefinedMaleNoun().getBaseWithArticle();
+    }
+
+    @Override
+    public String getPluralMaleNounWithArticle() {
+        return getRefinedPluralMaleNoun().getBaseWithArticle();
+    }
+
+    @Override
     public String getNounWithIndefiniteArticle() {
         return getRefinedNoun().getBaseWithIndefiniteArticle();
     }
 
     @Override
-    public String getFemaleNounWithArticle() {
-        Noun noun = getRefinedNoun();
-        return getRefinedNoun().getGender() == Gender.FEMININE ? noun.getBaseWithArticle() : getFemaleNounWithArticle();
+    public String getPluralNounWithIndefiniteArticle() {
+        return getRefinedPluralNoun().getBaseWithIndefiniteArticle();
     }
 
     @Override
     public String getFemaleNounWithIndefiniteArticle() {
-        Noun noun = getRefinedNoun();
-        return getRefinedNoun().getGender() == Gender.FEMININE ? noun.getBaseWithIndefiniteArticle() :
-                getFemaleNounWithIndefiniteArticle();
+        return getRefinedFemaleNoun().getBaseWithIndefiniteArticle();
     }
 
     @Override
-    public String getMaleNounWithArticle() {
-        Noun noun = getRefinedNoun();
-        return getRefinedNoun().getGender() == Gender.MASCULINE ? noun.getBaseWithArticle() : getMaleNounWithArticle();
+    public String getPluralFemaleNounWithIndefiniteArticle() {
+        return getRefinedPluralFemaleNoun().getBaseWithIndefiniteArticle();
     }
 
     @Override
     public String getMaleNounWithIndefiniteArticle() {
-        Noun noun = getRefinedNoun();
-        return getRefinedNoun().getGender() == Gender.MASCULINE ? noun.getBaseWithIndefiniteArticle() :
-                getMaleNounWithIndefiniteArticle();
+        return getRefinedMaleNoun().getBaseWithIndefiniteArticle();
+    }
+
+    @Override
+    public String getPluralMaleNounWithIndefiniteArticle() {
+        return getRefinedPluralMaleNoun().getBaseWithIndefiniteArticle();
     }
 
     @Override
@@ -100,5 +120,40 @@ public final class NounGetter extends common.NounGetter implements NounDefiner, 
             }
         }
         return new Noun(Article.INDEFINITE, noun);
+    }
+
+    @Override
+    public Noun getRefinedPluralNoun() {
+        Noun noun = getRefinedNoun();
+
+        if (!noun.isPlural()) {
+            noun.setBase(Pluralizer.pluralize(noun).getBase());
+            noun.setPlural(true);
+        }
+        return noun;
+    }
+
+    @Override
+    public Noun getRefinedFemaleNoun() {
+        Noun noun = getRefinedNoun();
+        return noun.getGender() == Gender.FEMININE && !noun.isPlural() ? noun : getRefinedFemaleNoun();
+    }
+
+    @Override
+    public Noun getRefinedPluralFemaleNoun() {
+        Noun noun = getRefinedPluralNoun();
+        return noun.getGender() == Gender.FEMININE && noun.isPlural() ? noun : getRefinedPluralFemaleNoun();
+    }
+
+    @Override
+    public Noun getRefinedMaleNoun() {
+        Noun noun = getRefinedNoun();
+        return noun.getGender() == Gender.MASCULINE && !noun.isPlural() ? noun : getRefinedMaleNoun();
+    }
+
+    @Override
+    public Noun getRefinedPluralMaleNoun() {
+        Noun noun = getRefinedPluralNoun();
+        return noun.getGender() == Gender.MASCULINE && noun.isPlural() ? noun : getRefinedPluralMaleNoun();
     }
 }

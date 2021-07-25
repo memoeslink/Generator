@@ -3,6 +3,7 @@ package english;
 import common.Database;
 import common.NounDefiner;
 import common.Randomizer;
+import common.Separator;
 import io.github.encryptorcode.pluralize.Pluralize;
 
 public final class NounGetter extends common.NounGetter implements NounDefiner {
@@ -47,5 +48,65 @@ public final class NounGetter extends common.NounGetter implements NounDefiner {
     @Override
     public String getPluralMaleNoun() {
         return getPluralNoun();
+    }
+
+    @Override
+    public String getNounWithArticle() {
+        return "the" + Separator.SPACE.getCharacter() + getNoun();
+    }
+
+    @Override
+    public String getPluralNounWithArticle() {
+        return "the" + Separator.SPACE.getCharacter() + getPluralNoun();
+    }
+
+    @Override
+    public String getFemaleNounWithArticle() {
+        return "the" + Separator.SPACE.getCharacter() + getFemaleNoun();
+    }
+
+    @Override
+    public String getPluralFemaleNounWithArticle() {
+        return "the" + Separator.SPACE.getCharacter() + getPluralFemaleNoun();
+    }
+
+    @Override
+    public String getMaleNounWithArticle() {
+        return "the" + Separator.SPACE.getCharacter() + getMaleNoun();
+    }
+
+    @Override
+    public String getPluralMaleNounWithArticle() {
+        return "the" + Separator.SPACE.getCharacter() + getPluralMaleNoun();
+    }
+
+    @Override
+    public String getNounWithIndefiniteArticle() {
+        return TextProcessor.adjustIndefiniteArticles("a/an" + Separator.SPACE.getCharacter() + getNoun());
+    }
+
+    @Override
+    public String getPluralNounWithIndefiniteArticle() {
+        return getPluralNoun();
+    }
+
+    @Override
+    public String getFemaleNounWithIndefiniteArticle() {
+        return TextProcessor.adjustIndefiniteArticles("a/an" + Separator.SPACE.getCharacter() + getFemaleNoun());
+    }
+
+    @Override
+    public String getPluralFemaleNounWithIndefiniteArticle() {
+        return getPluralFemaleNoun();
+    }
+
+    @Override
+    public String getMaleNounWithIndefiniteArticle() {
+        return TextProcessor.adjustIndefiniteArticles("a/an" + Separator.SPACE.getCharacter() + getMaleNoun());
+    }
+
+    @Override
+    public String getPluralMaleNounWithIndefiniteArticle() {
+        return getPluralMaleNoun();
     }
 }
