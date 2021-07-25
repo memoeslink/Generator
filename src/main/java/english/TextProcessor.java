@@ -10,7 +10,7 @@ public class TextProcessor extends common.TextProcessor {
     private static final String INDEFINITE_ARTICLE_REGEX = "(\\b[Aa]/an\\b)(\\s+)(\\b\\p{L}+\\b)";
     private static final Pattern INDEFINITE_ARTICLE_PATTERN = Pattern.compile(INDEFINITE_ARTICLE_REGEX);
 
-    public String adjustIndefiniteArticles(String s) {
+    public static String adjustIndefiniteArticles(String s) {
         if (StringHelper.isNotNullOrBlank(s)) {
             Matcher matcher = INDEFINITE_ARTICLE_PATTERN.matcher(s);
             StringBuffer sb = new StringBuffer();
