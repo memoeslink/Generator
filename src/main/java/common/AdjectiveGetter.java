@@ -44,4 +44,64 @@ public class AdjectiveGetter extends Getter implements AdjectiveDefiner {
     public String getPluralMaleAdjective() {
         return Database.DEFAULT_VALUE;
     }
+
+    @Override
+    public String getAdjectiveWithArticle() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getPluralAdjectiveWithArticle() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getFemaleAdjectiveWithArticle() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getPluralFemaleAdjectiveWithArticle() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getMaleAdjectiveWithArticle() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getPluralMaleAdjectiveWithArticle() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getAdjectiveWithIndefiniteArticle() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getPluralAdjectiveWithIndefiniteArticle() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getFemaleAdjectiveWithIndefiniteArticle() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getPluralFemaleAdjectiveWithIndefiniteArticle() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getMaleAdjectiveWithIndefiniteArticle() {
+        return Database.DEFAULT_VALUE;
+    }
+
+    @Override
+    public String getPluralMaleAdjectiveWithIndefiniteArticle() {
+        return Database.DEFAULT_VALUE;
+    }
 }

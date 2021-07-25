@@ -46,6 +46,66 @@ public final class AdjectiveGetter extends common.AdjectiveGetter implements Adj
     }
 
     @Override
+    public String getAdjectiveWithArticle() {
+        return getRefinedSingularAdjective().getBaseWithArticle();
+    }
+
+    @Override
+    public String getPluralAdjectiveWithArticle() {
+        return getRefinedPluralAdjective().getBaseWithArticle();
+    }
+
+    @Override
+    public String getFemaleAdjectiveWithArticle() {
+        return getRefinedFemaleAdjective().getBaseWithArticle();
+    }
+
+    @Override
+    public String getPluralFemaleAdjectiveWithArticle() {
+        return getRefinedPluralFemaleAdjective().getBaseWithArticle();
+    }
+
+    @Override
+    public String getMaleAdjectiveWithArticle() {
+        return getRefinedMaleAdjective().getBaseWithArticle();
+    }
+
+    @Override
+    public String getPluralMaleAdjectiveWithArticle() {
+        return getRefinedPluralMaleAdjective().getBaseWithArticle();
+    }
+
+    @Override
+    public String getAdjectiveWithIndefiniteArticle() {
+        return getRefinedSingularAdjective().getBaseWithIndefiniteArticle();
+    }
+
+    @Override
+    public String getPluralAdjectiveWithIndefiniteArticle() {
+        return getRefinedPluralAdjective().getBaseWithIndefiniteArticle();
+    }
+
+    @Override
+    public String getFemaleAdjectiveWithIndefiniteArticle() {
+        return getRefinedFemaleAdjective().getBaseWithIndefiniteArticle();
+    }
+
+    @Override
+    public String getPluralFemaleAdjectiveWithIndefiniteArticle() {
+        return getRefinedPluralFemaleAdjective().getBaseWithIndefiniteArticle();
+    }
+
+    @Override
+    public String getMaleAdjectiveWithIndefiniteArticle() {
+        return getRefinedMaleAdjective().getBaseWithIndefiniteArticle();
+    }
+
+    @Override
+    public String getPluralMaleAdjectiveWithIndefiniteArticle() {
+        return getRefinedPluralMaleAdjective().getBaseWithIndefiniteArticle();
+    }
+
+    @Override
     public Adjective getRefinedSingularAdjective() {
         Adjective adjective = getRefinedAdjective(Database.selectSpanishSingularAdjective(r.getInt(1, Database.countSpanishSingularAdjectives())));
         adjective.setPlural(false);
