@@ -29,4 +29,12 @@ public interface AdjectiveDefiner extends common.AdjectiveDefiner {
     public Adjective getRefinedSingularAdjective();
 
     public Adjective getRefinedPluralAdjective();
+
+    public Adjective getRefinedFemaleAdjective();
+
+    public Adjective getRefinedPluralFemaleAdjective();
+
+    public Adjective getRefinedMaleAdjective();
+
+    public Adjective getRefinedPluralMaleAdjective();
 }

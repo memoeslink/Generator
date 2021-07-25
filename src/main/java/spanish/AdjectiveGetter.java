@@ -17,38 +17,32 @@ public final class AdjectiveGetter extends common.AdjectiveGetter implements Adj
 
     @Override
     public String getAdjective() {
-        Adjective adjective = getRefinedSingularAdjective();
-        return !adjective.isPlural() ? adjective.getBase() : getAdjective();
+        return getRefinedSingularAdjective().getBase();
     }
 
     @Override
     public String getPluralAdjective() {
-        Adjective adjective = getRefinedPluralAdjective();
-        return adjective.isPlural() ? adjective.getBase() : getPluralAdjective();
+        return getRefinedPluralAdjective().getBase();
     }
 
     @Override
     public String getFemaleAdjective() {
-        Adjective adjective = getRefinedSingularAdjective();
-        return adjective.getGender() == Gender.FEMININE ? adjective.getBase() : getFemaleAdjective();
+        return getRefinedFemaleAdjective().getBase();
     }
 
     @Override
     public String getPluralFemaleAdjective() {
-        Adjective adjective = getRefinedPluralAdjective();
-        return adjective.getGender() == Gender.FEMININE ? adjective.getBase() : getPluralFemaleAdjective();
+        return getRefinedPluralFemaleAdjective().getBase();
     }
 
     @Override
     public String getMaleAdjective() {
-        Adjective adjective = getRefinedSingularAdjective();
-        return adjective.getGender() == Gender.MASCULINE ? adjective.getBase() : getMaleAdjective();
+        return getRefinedMaleAdjective().getBase();
     }
 
     @Override
     public String getPluralMaleAdjective() {
-        Adjective adjective = getRefinedPluralAdjective();
-        return adjective.getGender() == Gender.MASCULINE ? adjective.getBase() : getPluralMaleAdjective();
+        return getRefinedPluralMaleAdjective().getBase();
     }
 
     @Override
@@ -63,5 +57,29 @@ public final class AdjectiveGetter extends common.AdjectiveGetter implements Adj
         Adjective adjective = getRefinedAdjective(Database.selectSpanishPluralAdjective(r.getInt(1, Database.countSpanishPluralAdjectives())));
         adjective.setPlural(true);
         return adjective;
+    }
+
+    @Override
+    public Adjective getRefinedFemaleAdjective() {
+        Adjective adjective = getRefinedSingularAdjective();
+        return adjective.getGender() == Gender.FEMININE ? adjective : getRefinedFemaleAdjective();
+    }
+
+    @Override
+    public Adjective getRefinedPluralFemaleAdjective() {
+        Adjective adjective = getRefinedPluralAdjective();
+        return adjective.getGender() == Gender.FEMININE ? adjective : getRefinedPluralFemaleAdjective();
+    }
+
+    @Override
+    public Adjective getRefinedMaleAdjective() {
+        Adjective adjective = getRefinedSingularAdjective();
+        return adjective.getGender() == Gender.MASCULINE ? adjective : getRefinedMaleAdjective();
+    }
+
+    @Override
+    public Adjective getRefinedPluralMaleAdjective() {
+        Adjective adjective = getRefinedPluralAdjective();
+        return adjective.getGender() == Gender.MASCULINE ? adjective : getRefinedPluralMaleAdjective();
     }
 }
