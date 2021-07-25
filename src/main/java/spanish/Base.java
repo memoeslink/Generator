@@ -58,10 +58,10 @@ public class Base {
     }
 
     public String getBaseWithArticle() {
-        return StringHelper.prependIfNotBlank(article.getArticle() + Separator.SPACE.getCharacter(), base);
+        return StringHelper.prependIfNotBlank(base, article.getArticle() + Separator.SPACE.getCharacter());
     }
 
     public String getBaseWithIndefiniteArticle() {
-        return StringHelper.prependIfNotBlank(article.getIndefiniteArticle() + Separator.SPACE.getCharacter(), base);
+        return StringHelper.prependIfNotBlank(base, article.getIndefiniteArticle() + Separator.SPACE.getCharacter());
     }
 }
