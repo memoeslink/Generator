@@ -78,6 +78,7 @@ public class PersonGenerator extends Generator {
                 .setOccupation(occupation)
                 .setPostNominalLetters(postNominalLetters)
                 .setBirthdate(birthdate)
+                .setAttribute("generated")
                 .build();
     }
 
@@ -90,6 +91,8 @@ public class PersonGenerator extends Generator {
                 .setUsername(username)
                 .setGender(gender)
                 .setBirthdate(birthdate)
+                .setAttribute("generated")
+                .setAttribute("anonymous")
                 .build();
     }
 }

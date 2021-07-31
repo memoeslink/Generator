@@ -1,6 +1,8 @@
 package common;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Person {
     private long id;
@@ -18,11 +20,12 @@ public class Person {
     private String address;
     private String email;
     private LocalDate birthdate;
+    private List<String> attributes;
 
-    public Person() {
+    private Person() {
     }
 
-    private Person(long id, String fullName, String forename, String surname, NameType nameType, Gender gender, String nickname, String username, String generationalSuffix, String japaneseHonorific, String occupation, String postNominalLetters, String address, String email, LocalDate birthdate) {
+    private Person(long id, String fullName, String forename, String surname, NameType nameType, Gender gender, String nickname, String username, String generationalSuffix, String japaneseHonorific, String occupation, String postNominalLetters, String address, String email, LocalDate birthdate, List<String> attributes) {
         this.id = id;
         this.fullName = fullName;
         this.forename = forename;
@@ -38,6 +41,7 @@ public class Person {
         this.address = address;
         this.email = email;
         this.birthdate = birthdate;
+        this.attributes = attributes;
     }
 
     public static class PersonBuilder {
@@ -56,6 +60,7 @@ public class Person {
         private String address;
         private String email;
         private LocalDate birthdate;
+        private final List<String> attributes = new ArrayList<>();
 
         public PersonBuilder() {
         }
@@ -135,8 +140,13 @@ public class Person {
             return this;
         }
 
+        public PersonBuilder setAttribute(String attribute) {
+            this.attributes.add(attribute);
+            return this;
+        }
+
         public Person build() {
-            return new Person(id, fullName, forename, surname, nameType, gender, nickname, username, generationalSuffix, japaneseHonorific, occupation, postNominalLetters, address, email, birthdate);
+            return new Person(id, fullName, forename, surname, nameType, gender, nickname, username, generationalSuffix, japaneseHonorific, occupation, postNominalLetters, address, email, birthdate, attributes);
         }
     }
 
@@ -258,5 +268,18 @@ public class Person {
 
     public void setBirthdate(LocalDate birthdate) {
         this.birthdate = birthdate;
+    }
+
+    public void addAttribute(String s) {
+        if (StringHelper.isNotNullOrEmpty(s))
+            attributes.add(s);
+    }
+
+    public void removeAttribute(String s) {
+        attributes.remove(s);
+    }
+
+    public boolean hasAttribute(String s) {
+        return attributes.contains(s);
     }
 }
