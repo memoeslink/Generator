@@ -195,7 +195,7 @@ public class NameGenerator extends Generator {
 
     public String getNameOrRetry(NameType nameType) {
         String name;
-        boolean invalidName = false;
+        boolean invalidName;
         int tries = 9999;
 
         do {
