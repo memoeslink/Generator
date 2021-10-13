@@ -74,6 +74,26 @@ public final class OccupationGetter extends common.OccupationGetter implements O
     }
 
     @Override
+    public String getSimpleFantasyClass() {
+        return getAnyGetter().getSimpleFantasyClass();
+    }
+
+    @Override
+    public String getFemaleSimpleFantasyClass() {
+        return getAnyGetter().getFemaleSimpleFantasyClass();
+    }
+
+    @Override
+    public String getMaleSimpleFantasyClass() {
+        return getAnyGetter().getMaleSimpleFantasyClass();
+    }
+
+    @Override
+    public String getGenderlessSimpleFantasyClass() {
+        return getAnyGetter().getGenderlessSimpleFantasyClass();
+    }
+
+    @Override
     public String getFantasyClass() {
         return getAnyGetter().getFantasyClass();
     }

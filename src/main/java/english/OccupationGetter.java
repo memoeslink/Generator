@@ -3,6 +3,7 @@ package english;
 import common.*;
 
 public final class OccupationGetter extends common.OccupationGetter implements OccupationDefiner {
+    public static final String FANTASY_CLASS_FORMAT = "LVL %d %s";
 
     public OccupationGetter() {
         super();
@@ -75,30 +76,58 @@ public final class OccupationGetter extends common.OccupationGetter implements O
         return getJobTitle();
     }
 
+    public String getSimpleFantasyClass() {
+        String fantasyClass = ResourceGetter.with(r).getSplitString(Constant.CLASSES);
+        return StringHelper.capitalizeFirst(fantasyClass);
+    }
+
+    @Override
+    public String getFemaleSimpleFantasyClass() {
+        String fantasyClass = ResourceGetter.with(r).getSplitString(Constant.CLASSES);
+        fantasyClass = TextProcessor.genderify(fantasyClass, Gender.FEMININE);
+        return StringHelper.capitalizeFirst(fantasyClass);
+    }
+
+    @Override
+    public String getMaleSimpleFantasyClass() {
+        String fantasyClass = ResourceGetter.with(r).getSplitString(Constant.CLASSES);
+        fantasyClass = TextProcessor.genderify(fantasyClass, Gender.MASCULINE);
+        return StringHelper.capitalizeFirst(fantasyClass);
+    }
+
+    @Override
+    public String getGenderlessSimpleFantasyClass() {
+        String fantasyClass = ResourceGetter.with(r).getSplitString(Constant.CLASSES);
+        fantasyClass = TextProcessor.genderify(fantasyClass, Gender.UNDEFINED);
+        return StringHelper.capitalizeFirst(fantasyClass);
+    }
+
     @Override
     public String getFantasyClass() {
-        String fantasyClass = ResourceGetter.with(r).getSplitString(Constant.CLASSES);
-        fantasyClass = StringHelper.capitalizeFirst(fantasyClass);
+        String fantasyClass = getSimpleFantasyClass();
         int level = r.getInt(1, 99);
-        return String.format("LVL %d %s", level, fantasyClass);
+        return String.format(FANTASY_CLASS_FORMAT, level, fantasyClass);
     }
 
     @Override
     public String getFemaleFantasyClass() {
-        String fantasyClass = getFantasyClass();
-        return TextProcessor.genderify(fantasyClass, Gender.FEMININE);
+        String fantasyClass = getFemaleSimpleFantasyClass();
+        int level = r.getInt(1, 99);
+        return String.format(FANTASY_CLASS_FORMAT, level, fantasyClass);
     }
 
     @Override
     public String getMaleFantasyClass() {
-        String fantasyClass = getFantasyClass();
-        return TextProcessor.genderify(fantasyClass, Gender.MASCULINE);
+        String fantasyClass = getMaleSimpleFantasyClass();
+        int level = r.getInt(1, 99);
+        return String.format(FANTASY_CLASS_FORMAT, level, fantasyClass);
     }
 
     @Override
     public String getGenderlessFantasyClass() {
-        String fantasyClass = getFantasyClass();
-        return TextProcessor.genderify(fantasyClass, Gender.UNDEFINED);
+        String fantasyClass = getGenderlessSimpleFantasyClass();
+        int level = r.getInt(1, 99);
+        return String.format(FANTASY_CLASS_FORMAT, level, fantasyClass);
     }
 
     @Override
