@@ -1,12 +1,6 @@
 package common;
 
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.Period;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.time.format.TextStyle;
@@ -126,6 +120,8 @@ public class DateTimeHelper {
     }
 
     public static String getStrDatePlusDays(String strDate, int days) {
+        if (strDate == null)
+            strDate = getStrCurrentDate();
         return LocalDate.parse(strDate, DateTimeFormatter.ofPattern("yyyy/MM/dd")).plusDays(days).toString();
     }
 
