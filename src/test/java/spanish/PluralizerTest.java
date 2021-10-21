@@ -51,8 +51,13 @@ class PluralizerTest {
     }
 
     @Test
+    void pluralizeParoxytonesEndingWithN() throws Exception {
+        assertEquals("gravámenes", Pluralizer.pluralize("gravamen"));
+        assertEquals("cánones", Pluralizer.pluralize("canon"));
+    }
+
+    @Test
     void pluralizeProparoxytones() throws Exception {
-        assertEquals("déficit", Pluralizer.pluralize("déficit"));
         assertEquals("déficit", Pluralizer.pluralize("déficit"));
     }
 }
