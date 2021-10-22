@@ -107,11 +107,11 @@ public class StringHelper {
         return prependIfNotNull(s, String.valueOf(Separator.SPACE.getCharacter()));
     }
 
-    public static String prependSpaceIfNotEmpty(String s, String prefix) {
+    public static String prependSpaceIfNotEmpty(String s) {
         return prependIfNotEmpty(s, String.valueOf(Separator.SPACE.getCharacter()));
     }
 
-    public static String prependSpaceIfNotBlank(String s, String prefix) {
+    public static String prependSpaceIfNotBlank(String s) {
         return prependIfNotBlank(s, String.valueOf(Separator.SPACE.getCharacter()));
     }
 
