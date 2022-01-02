@@ -492,7 +492,7 @@ public class StringHelper {
     }
 
     public static String replace(String s, String occurrence, String replacement) {
-        if (isNullOrEmpty(s) || isNullOrEmpty(occurrence) || replacement == null)
+        if (isNullOrEmpty(s) || occurrence == null || replacement == null)
             return s;
         int i = 0;
 
