@@ -1,9 +1,6 @@
 package french;
 
-import common.Database;
-import common.Randomizer;
-import common.ResourceGetter;
-import common.Separator;
+import common.*;
 import international.Shaper;
 
 public class NameGetter extends common.NameGetter implements common.NameDefiner, NameDefiner {
@@ -22,25 +19,25 @@ public class NameGetter extends common.NameGetter implements common.NameDefiner,
     @Override
     public String getFemaleForename() {
         String name = r.getBoolean() ? ResourceGetter.with(r).getString(Constant.FEMALE_FORENAMES) :
-                ResourceGetter.with(r).getString(Constant.FEMALE_UNCOMMON_FORENAMES);
-        return !name.contains("-") ? name : getFemaleForename();
+                getFemaleForename(r.getInt(1, Database.countFrenchFemaleNames()));
+        return !StringHelper.containsAny(" ", "-") ? name : getFemaleForename();
     }
 
     @Override
     public String getFemaleForename(int id) {
-        return ResourceGetter.with(r).getString(Constant.MALE_FORENAMES, id);
+        return Database.selectFrenchFemaleName(id);
     }
 
     @Override
     public String getMaleForename() {
         String name = r.getBoolean() ? ResourceGetter.with(r).getString(Constant.MALE_FORENAMES) :
-                ResourceGetter.with(r).getString(Constant.MALE_UNCOMMON_FORENAMES);
-        return !name.contains("-") ? name : getMaleForename();
+                getMaleForename(r.getInt(1, Database.countFrenchMaleNames()));
+        return !StringHelper.containsAny(" ", "-") ? name : getMaleForename();
     }
 
     @Override
     public String getMaleForename(int id) {
-        return ResourceGetter.with(r).getString(Constant.MALE_FORENAMES, id);
+        return Database.selectFrenchMaleName(id);
     }
 
     @Override
