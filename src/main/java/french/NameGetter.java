@@ -20,7 +20,7 @@ public class NameGetter extends common.NameGetter implements common.NameDefiner,
     public String getFemaleForename() {
         String name = r.getBoolean() ? ResourceGetter.with(r).getString(Constant.FEMALE_FORENAMES) :
                 getFemaleForename(r.getInt(1, Database.countFrenchFemaleNames()));
-        return !StringHelper.containsAny(" ", "-") ? name : getFemaleForename();
+        return !StringHelper.containsAny(name, " ", "-") ? name : getFemaleForename();
     }
 
     @Override
@@ -32,7 +32,7 @@ public class NameGetter extends common.NameGetter implements common.NameDefiner,
     public String getMaleForename() {
         String name = r.getBoolean() ? ResourceGetter.with(r).getString(Constant.MALE_FORENAMES) :
                 getMaleForename(r.getInt(1, Database.countFrenchMaleNames()));
-        return !StringHelper.containsAny(" ", "-") ? name : getMaleForename();
+        return !StringHelper.containsAny(name, " ", "-") ? name : getMaleForename();
     }
 
     @Override
