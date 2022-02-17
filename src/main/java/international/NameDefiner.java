@@ -1,6 +1,12 @@
 package international;
 
-import common.*;
+import common.CharHelper;
+import common.IntegerHelper;
+import common.ResourceGetter;
+import common.StringHelper;
+
+import java.main.common.Randomizer;
+import java.main.common.WeightedChar;
 
 public interface NameDefiner extends common.NameDefiner {
 

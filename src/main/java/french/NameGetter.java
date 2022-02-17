@@ -1,7 +1,12 @@
 package french;
 
-import common.*;
+import common.Database;
+import common.ResourceGetter;
+import common.Separator;
+import common.StringHelper;
 import international.Shaper;
+
+import java.main.common.Randomizer;
 
 public class NameGetter extends common.NameGetter implements common.NameDefiner, NameDefiner {
     private final international.NameGetter nameGetter;

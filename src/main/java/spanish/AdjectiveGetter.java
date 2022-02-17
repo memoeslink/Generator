@@ -3,7 +3,8 @@ package spanish;
 import common.AdjectiveDefiner;
 import common.Database;
 import common.Gender;
-import common.Randomizer;
+
+import java.main.common.Randomizer;
 
 public final class AdjectiveGetter extends common.AdjectiveGetter implements AdjectiveDefiner, spanish.AdjectiveDefiner {
 

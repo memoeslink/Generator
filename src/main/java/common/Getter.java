@@ -1,5 +1,7 @@
 package common;
 
+import java.main.common.Randomizer;
+
 public abstract class Getter {
     protected Randomizer r;
 

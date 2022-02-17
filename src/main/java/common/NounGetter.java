@@ -1,5 +1,7 @@
 package common;
 
+import java.main.common.Randomizer;
+
 public class NounGetter extends Getter implements NounDefiner {
 
     public NounGetter() {

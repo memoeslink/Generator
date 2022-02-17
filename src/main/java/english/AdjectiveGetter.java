@@ -2,8 +2,9 @@ package english;
 
 import common.AdjectiveDefiner;
 import common.Database;
-import common.Randomizer;
 import common.Separator;
+
+import java.main.common.Randomizer;
 
 public final class AdjectiveGetter extends common.AdjectiveGetter implements AdjectiveDefiner {
 

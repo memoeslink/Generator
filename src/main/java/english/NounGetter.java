@@ -2,9 +2,10 @@ package english;
 
 import common.Database;
 import common.NounDefiner;
-import common.Randomizer;
 import common.Separator;
 import io.github.encryptorcode.pluralize.Pluralize;
+
+import java.main.common.Randomizer;
 
 public final class NounGetter extends common.NounGetter implements NounDefiner {
 

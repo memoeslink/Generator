@@ -1,7 +1,12 @@
 package english;
 
-import common.*;
+import common.Database;
+import common.ResourceGetter;
+import common.Separator;
+import common.StringHelper;
 import international.Shaper;
+
+import java.main.common.Randomizer;
 
 public final class NameGetter extends common.NameGetter implements common.NameDefiner, english.NameDefiner {
     private final NounGetter nounGetter;

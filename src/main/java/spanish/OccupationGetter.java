@@ -2,6 +2,8 @@ package spanish;
 
 import common.*;
 
+import java.main.common.Randomizer;
+
 public final class OccupationGetter extends common.OccupationGetter implements OccupationDefiner {
     public static final String FANTASY_CLASS_FORMAT = "%s de nivel %d";
 

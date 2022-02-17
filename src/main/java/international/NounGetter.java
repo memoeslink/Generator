@@ -1,7 +1,8 @@
 package international;
 
 import common.NounDefiner;
-import common.Randomizer;
+
+import java.main.common.Randomizer;
 
 public final class NounGetter extends common.NounGetter implements NounDefiner {
 

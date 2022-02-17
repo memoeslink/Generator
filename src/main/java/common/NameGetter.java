@@ -2,6 +2,8 @@ package common;
 
 import international.Shaper;
 
+import java.main.common.Randomizer;
+
 public class NameGetter extends Getter implements NameDefiner {
 
     public NameGetter() {

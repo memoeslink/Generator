@@ -1,7 +1,8 @@
 package international;
 
 import common.OccupationDefiner;
-import common.Randomizer;
+
+import java.main.common.Randomizer;
 
 public final class OccupationGetter extends common.OccupationGetter implements OccupationDefiner {
 

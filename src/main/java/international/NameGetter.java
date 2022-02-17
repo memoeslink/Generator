@@ -2,6 +2,8 @@ package international;
 
 import common.*;
 
+import java.main.common.Randomizer;
+
 public final class NameGetter extends common.NameGetter implements common.NameDefiner, international.NameDefiner {
 
     public NameGetter() {

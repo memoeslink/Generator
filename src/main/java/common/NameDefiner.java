@@ -2,6 +2,8 @@ package common;
 
 import international.Shaper;
 
+import java.main.common.Randomizer;
+
 public interface NameDefiner {
 
     public String getEmptyName();
