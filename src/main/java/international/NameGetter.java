@@ -34,6 +34,26 @@ public final class NameGetter extends common.NameGetter implements common.NameDe
     }
 
     @Override
+    public String getFemalePatronymic() {
+        return getAnyGetter().getFemalePatronymic();
+    }
+
+    @Override
+    public String getFemalePatronymic(int id) {
+        return getAnyGetter().getFemalePatronymic(id);
+    }
+
+    @Override
+    public String getMalePatronymic() {
+        return getAnyGetter().getMalePatronymic();
+    }
+
+    @Override
+    public String getMalePatronymic(int id) {
+        return getAnyGetter().getMalePatronymic(id);
+    }
+
+    @Override
     public String getDoubleBarrelledFemaleForename() {
         return getAnyGetter().getDoubleBarrelledFemaleForename();
     }
