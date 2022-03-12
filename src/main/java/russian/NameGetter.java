@@ -1,13 +1,12 @@
 package russian;
 
+import com.memoeslink.common.Randomizer;
 import common.Database;
 import common.ResourceGetter;
 import common.Separator;
 import international.Shaper;
 
-import java.main.common.Randomizer;
-
-public class NameGetter extends common.NameGetter implements common.NameDefiner {
+public class NameGetter extends common.NameGetter implements common.NameDefiner, NameDefiner {
     private final international.NameGetter nameGetter;
 
     public NameGetter() {
@@ -38,6 +37,30 @@ public class NameGetter extends common.NameGetter implements common.NameDefiner 
     @Override
     public String getMaleForename(int id) {
         return ResourceGetter.with(r).getString(Constant.MALE_FORENAMES, id);
+    }
+
+    @Override
+    public String getFemalePatronymic() {
+        String name = getMaleForename();
+        return getFemalePatronymic(name);
+    }
+
+    @Override
+    public String getFemalePatronymic(int id) {
+        String name = getMaleForename(id);
+        return getFemalePatronymic(name);
+    }
+
+    @Override
+    public String getMalePatronymic() {
+        String name = getMaleForename();
+        return getMalePatronymic(name);
+    }
+
+    @Override
+    public String getMalePatronymic(int id) {
+        String name = getMaleForename(id);
+        return getMalePatronymic(name);
     }
 
     @Override
@@ -142,12 +165,28 @@ public class NameGetter extends common.NameGetter implements common.NameDefiner 
 
     @Override
     public String getFemaleFullName() {
-        return getFemaleSimpleName();
+        switch (r.getInt(2)) {
+            case 1:
+                return getFemaleSimpleName();
+            case 0:
+            default:
+                return (getFemaleForename() + Separator.SPACE.getCharacter() +
+                        getFemalePatronymic() + Separator.SPACE.getCharacter() +
+                        getSurname());
+        }
     }
 
     @Override
     public String getMaleFullName() {
-        return getMaleSimpleName();
+        switch (r.getInt(2)) {
+            case 1:
+                return getMaleSimpleName();
+            case 0:
+            default:
+                return (getMaleForename() + Separator.SPACE.getCharacter() +
+                        getMalePatronymic() + Separator.SPACE.getCharacter() +
+                        getSurname());
+        }
     }
 
     @Override

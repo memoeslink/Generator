@@ -46,6 +46,6 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.codehaus.plexus:plexus-compiler-javac:2.8.4" level="project" />
     <orderEntry type="library" name="Maven: org.xerial:sqlite-jdbc:3.36.0.2" level="project" />
     <orderEntry type="library" name="Maven: io.github.encryptorcode:pluralize:1.0.0" level="project" />
-    <orderEntry type="library" name="Maven: io.github.memoeslink:randomizer:2021.0.0-release" level="project" />
+    <orderEntry type="library" name="Maven: io.github.memoeslink:randomizer:2022.0.0-release" level="project" />
   </component>
 </module>

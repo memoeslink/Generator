@@ -1,9 +1,8 @@
 package spanish;
 
+import com.memoeslink.common.Randomizer;
 import common.*;
 import international.Shaper;
-
-import java.main.common.Randomizer;
 
 public final class NameGetter extends common.NameGetter implements common.NameDefiner, spanish.NameDefiner {
     private final NounGetter nounGetter;

@@ -1,8 +1,7 @@
 package international;
 
+import com.memoeslink.common.Randomizer;
 import common.AdjectiveDefiner;
-
-import java.main.common.Randomizer;
 
 public final class AdjectiveGetter extends common.AdjectiveGetter implements AdjectiveDefiner {
 

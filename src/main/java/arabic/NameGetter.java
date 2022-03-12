@@ -1,11 +1,10 @@
 package arabic;
 
+import com.memoeslink.common.Randomizer;
 import common.Database;
 import common.ResourceGetter;
 import common.Separator;
 import international.Shaper;
-
-import java.main.common.Randomizer;
 
 public class NameGetter extends common.NameGetter implements common.NameDefiner {
     private final international.NameGetter nameGetter;

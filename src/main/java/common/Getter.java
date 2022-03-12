@@ -1,6 +1,6 @@
 package common;
 
-import java.main.common.Randomizer;
+import com.memoeslink.common.Randomizer;
 
 public abstract class Getter {
     protected Randomizer r;

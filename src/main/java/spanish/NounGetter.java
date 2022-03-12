@@ -1,9 +1,8 @@
 package spanish;
 
+import com.memoeslink.common.Randomizer;
 import common.NounDefiner;
 import common.*;
-
-import java.main.common.Randomizer;
 
 public final class NounGetter extends common.NounGetter implements NounDefiner, spanish.NounDefiner {
 

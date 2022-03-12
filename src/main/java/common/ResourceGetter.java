@@ -1,7 +1,8 @@
 package common;
 
+import com.memoeslink.common.Randomizer;
+
 import java.io.*;
-import java.main.common.Randomizer;
 import java.util.HashMap;
 
 public class ResourceGetter {
