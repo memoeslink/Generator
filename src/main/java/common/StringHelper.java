@@ -590,8 +590,8 @@ public class StringHelper {
 
     public static String replaceAnyStart(String s, String replacement, String... prefixes) {
         for (String prefix : prefixes) {
-            if (endsWith(s, prefix))
-                return replaceEnd(s, prefix, replacement);
+            if (startsWith(s, prefix))
+                return replaceStart(s, prefix, replacement);
         }
         return s;
     }
@@ -718,11 +718,11 @@ public class StringHelper {
     }
 
     public static String removeEnd(String s, String suffix) {
-        return replaceStart(s, suffix, EMPTY);
+        return replaceEnd(s, suffix, EMPTY);
     }
 
     public static String removeAnyEnd(String s, String... suffixes) {
-        return replaceAnyStart(s, EMPTY, suffixes);
+        return replaceAnyEnd(s, EMPTY, suffixes);
     }
 
     public static String removeBetweenChars(String s, char opening, char closing) {
