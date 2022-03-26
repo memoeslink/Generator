@@ -165,5 +165,4 @@ public class ResourceGetter {
     public static ResourceGetter without() {
         return with(null);
     }
-
 }
