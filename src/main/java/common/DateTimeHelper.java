@@ -2,6 +2,7 @@ package common;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 
@@ -17,6 +18,18 @@ public class DateTimeHelper {
 
     public static LocalTime getCurrentTime() {
         return LocalTime.now();
+    }
+
+    public static String getStrCurrentDateTime() {
+        return ZonedDateTime.now().format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT));
+    }
+
+    public static String getStrCurrentDate() {
+        return toIso8601(getCurrentDate());
+    }
+
+    public static String getStrCurrentTime() {
+        return ZonedDateTime.now().format(DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT));
     }
 
     public static long getDifferenceInDays(String firstDate, String secondDate) {
