@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: io.github.memoeslink:randomizer:2022.0.0-release">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/io/github/memoeslink/randomizer/2022.0.0-release/randomizer-2022.0.0-release.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/io/github/memoeslink/randomizer/2022.0.0-release/randomizer-2022.0.0-release-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/io/github/memoeslink/randomizer/2022.0.0-release/randomizer-2022.0.0-release-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
