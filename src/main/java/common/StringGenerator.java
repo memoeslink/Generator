@@ -17,8 +17,7 @@ public class StringGenerator extends Generator {
     }
 
     public String getDecimalPercentage() {
-        float percentage = r.getFloat(0.0F, 100.0F);
-        return String.format(locale, "%.2f%%", percentage);
+        return String.format(locale, "%.2f%%", r.getFloat(0.0F, 100.0F));
     }
 
     public String getStrColor(String s) {
