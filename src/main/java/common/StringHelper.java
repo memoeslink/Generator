@@ -342,6 +342,12 @@ public class StringHelper {
         return vowel ? (a + removeFirstChar(b)) : (removeLastChar(a) + b);
     }
 
+    public static String repeat(String s, int count) {
+        if (s == null)
+            return null;
+        return s.repeat(count);
+    }
+
     public static String trim(String s) {
         return s == null ? null : s.trim();
     }
