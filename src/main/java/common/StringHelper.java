@@ -1148,7 +1148,7 @@ public class StringHelper {
         } catch (java.security.NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-        return null;
+        return EMPTY;
     }
 
     public static String sha256(final String base) {
