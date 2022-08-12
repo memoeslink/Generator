@@ -12,6 +12,7 @@ import java.util.regex.Pattern;
 
 public class StringHelper {
     public static final String EMPTY = "";
+    public static final String DEFAULT_VALUE = "?";
 
     public static boolean isNullOrEmpty(String s) {
         return s == null || s.length() == 0;
@@ -48,7 +49,7 @@ public class StringHelper {
     }
 
     public static String defaultWhenNull(String s) {
-        return defaultIfNull(s, Database.DEFAULT_VALUE);
+        return defaultIfNull(s, DEFAULT_VALUE);
     }
 
     public static String defaultIfNull(String s) {
@@ -62,7 +63,7 @@ public class StringHelper {
     }
 
     public static String defaultWhenEmpty(String s) {
-        return defaultIfEmpty(s, Database.DEFAULT_VALUE);
+        return defaultIfEmpty(s, DEFAULT_VALUE);
     }
 
     public static String defaultIfEmpty(String s) {
@@ -76,7 +77,7 @@ public class StringHelper {
     }
 
     public static String defaultWhenBlank(String s) {
-        return defaultIfBlank(s, Database.DEFAULT_VALUE);
+        return defaultIfBlank(s, DEFAULT_VALUE);
     }
 
     public static String defaultIfBlank(String s) {
