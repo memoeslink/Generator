@@ -85,7 +85,7 @@ public class StringHelper {
     }
 
     public static String defaultIfBlank(String s, String defaultValue) {
-        if (s == null || s.isBlank())
+        if (isNullOrBlank(s))
             return defaultValue == null ? EMPTY : defaultValue;
         return s;
     }
@@ -118,6 +118,18 @@ public class StringHelper {
 
     public static String prependSpaceIfNotBlank(String s) {
         return prependIfNotBlank(s, String.valueOf(Separator.SPACE.getCharacter()));
+    }
+
+    public static String prependHyphenIfNotNull(String s) {
+        return prependIfNotNull(s, String.valueOf(Separator.HYPHEN.getCharacter()));
+    }
+
+    public static String prependHyphenIfNotEmpty(String s) {
+        return prependIfNotEmpty(s, String.valueOf(Separator.HYPHEN.getCharacter()));
+    }
+
+    public static String prependHyphenIfNotBlank(String s) {
+        return prependIfNotBlank(s, String.valueOf(Separator.HYPHEN.getCharacter()));
     }
 
     public static String prependLineBreakIfNotNull(String s) {
@@ -160,6 +172,18 @@ public class StringHelper {
 
     public static String appendSpaceIfNotBlank(String s) {
         return appendIfNotBlank(s, String.valueOf(Separator.SPACE.getCharacter()));
+    }
+
+    public static String appendHyphenIfNotNull(String s) {
+        return appendIfNotNull(s, String.valueOf(Separator.HYPHEN.getCharacter()));
+    }
+
+    public static String appendHyphenIfNotEmpty(String s) {
+        return appendIfNotEmpty(s, String.valueOf(Separator.HYPHEN.getCharacter()));
+    }
+
+    public static String appendHyphenIfNotBlank(String s) {
+        return appendIfNotBlank(s, String.valueOf(Separator.HYPHEN.getCharacter()));
     }
 
     public static String appendLineBreakIfNotNull(String s) {
@@ -207,6 +231,21 @@ public class StringHelper {
                 String.valueOf(Separator.SPACE.getCharacter()));
     }
 
+    public static String affixHyphensIfNotNull(String s) {
+        return affixIfNotNull(s, String.valueOf(Separator.HYPHEN.getCharacter()),
+                String.valueOf(Separator.HYPHEN.getCharacter()));
+    }
+
+    public static String affixHyphensIfNotEmpty(String s) {
+        return affixIfNotEmpty(s, String.valueOf(Separator.HYPHEN.getCharacter()),
+                String.valueOf(Separator.HYPHEN.getCharacter()));
+    }
+
+    public static String affixHyphensIfNotBlank(String s) {
+        return affixIfNotBlank(s, String.valueOf(Separator.HYPHEN.getCharacter()),
+                String.valueOf(Separator.HYPHEN.getCharacter()));
+    }
+
     public static String affixLineBreaksIfNotNull(String s) {
         return affixIfNotNull(s, System.getProperty("line.separator"),
                 System.getProperty("line.separator"));
@@ -223,6 +262,8 @@ public class StringHelper {
     }
 
     public static List<String> split(String s, char delimiter) {
+        if (s == null)
+            return new ArrayList<>();
         StringBuilder sb = new StringBuilder();
         ArrayList<String> parts = new ArrayList<>();
         parts.ensureCapacity(s.length() / 5);
@@ -241,12 +282,45 @@ public class StringHelper {
         return parts;
     }
 
+    public static List<String> split(String s, String delimiter) {
+        ArrayList<String> parts = new ArrayList<>();
+
+        if (s == null)
+            return parts;
+
+        if (delimiter == null || s.length() < delimiter.length()) {
+            parts.add(s);
+            return parts;
+        }
+        parts.ensureCapacity(s.length() / 5);
+        int index = s.indexOf(delimiter);
+        int startIndex = 0;
+        int endIndex = s.length() - 1;
+
+        while (index >= 0) {
+            endIndex = index;
+
+            if (startIndex < endIndex)
+                parts.add(s.substring(startIndex, endIndex));
+            startIndex = endIndex + delimiter.length();
+            index = s.indexOf(delimiter, index + 1);
+        }
+
+        if (startIndex < s.length() - 1)
+            parts.add(s.substring(startIndex));
+        return parts;
+    }
+
     public static List<String> splitBySpace(String s) {
         return split(s, Separator.SPACE.getCharacter());
     }
 
     public static List<String> splitByHyphen(String s) {
         return split(s, Separator.HYPHEN.getCharacter());
+    }
+
+    public static List<String> splitByLineBreak(String s) {
+        return split(s, System.getProperty("line.separator"));
     }
 
     public static String[] splitByParagraphMark(String s) {
@@ -282,6 +356,10 @@ public class StringHelper {
 
     public static String joinWithHyphen(String a, String b) {
         return join(String.valueOf(Separator.HYPHEN.getCharacter()), a, b);
+    }
+
+    public static String joinWithLineBreak(String a, String b) {
+        return join(System.getProperty("line.separator"), a, b);
     }
 
     public static String joinWithSlash(String a, String b) {
@@ -385,7 +463,7 @@ public class StringHelper {
     }
 
     public static String repeat(String s, int count) {
-        if (s == null)
+        if (s == null || count < 0)
             return null;
         return s.repeat(count);
     }
