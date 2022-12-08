@@ -23,6 +23,10 @@ public class PersonGenerator extends Generator {
         dateTimeGenerator = new DateTimeGenerator(locale, seed);
     }
 
+    public Person getPerson() {
+        return getPerson(r.getElement(Gender.values()));
+    }
+
     public Person getPerson(Gender gender) {
         gender = gender != null ? gender : Gender.UNDEFINED;
         String name;
