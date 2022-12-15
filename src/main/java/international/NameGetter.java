@@ -417,7 +417,7 @@ public final class NameGetter extends common.NameGetter implements common.NameDe
 
     @Override
     public String getSecretName() {
-        return getSecretName(r.getInt(1, 10), r);
+        return getSecretName(r.getInt(2, 9), r);
     }
 
     @Override
