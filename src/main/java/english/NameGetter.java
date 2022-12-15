@@ -457,7 +457,7 @@ public final class NameGetter extends common.NameGetter implements common.NameDe
 
     @Override
     public String getSecretName() {
-        return nameGetter.getMarkovFullName();
+        return nameGetter.getSecretName();
     }
 
     @Override
