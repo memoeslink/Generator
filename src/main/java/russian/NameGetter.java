@@ -418,6 +418,11 @@ public class NameGetter extends common.NameGetter implements common.NameDefiner,
     }
 
     @Override
+    public String getSecretName() {
+        return nameGetter.getMarkovFullName();
+    }
+
+    @Override
     public String getUsername() {
         return Database.selectUsername(r.getInt(1, Database.countUsernames()));
     }
