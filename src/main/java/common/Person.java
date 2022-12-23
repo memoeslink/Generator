@@ -321,7 +321,7 @@ public class Person {
             suffix = "｢" + gender.getValue() + "｣";
 
         return (StringHelper.defaultWhenBlank(getDescriptor()) +
-                StringHelper.appendSpaceIfNotBlank(suffix)
+                StringHelper.prependSpaceIfNotBlank(suffix)
         );
     }
 
