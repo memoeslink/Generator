@@ -118,7 +118,7 @@ public final class NameGetter extends common.NameGetter implements common.NameDe
 
     @Override
     public String getSurname() {
-        return getSurname(r.getInt(1, Database.countHispanicSurnames()));
+        return r.getInt(100) == 0 ? getSurnameFromName() : getSurname(r.getInt(1, Database.countHispanicSurnames()));
     }
 
     @Override
