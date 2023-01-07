@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.function.Supplier;
 
 public class Database {
     public static final int DEFAULT_INDEX = -1;
@@ -17,6 +18,7 @@ public class Database {
     public static final String TABLE_ENGLISH_OCCUPATIONS = "EnglishOccupations";
     public static final String TABLE_ENGLISH_PHONETICS = "EnglishPhonetics";
     public static final String TABLE_ENGLISH_SURNAMES = "EnglishSurnames";
+    public static final String TABLE_EMOJIS = "Emojis";
     public static final String TABLE_FORENAMES = "Forenames";
     public static final String TABLE_FRENCH_FEMALE_NAMES = "FrenchFemaleNames";
     public static final String TABLE_FRENCH_MALE_NAMES = "FrenchMaleNames";
@@ -36,6 +38,7 @@ public class Database {
     public static final String TABLE_SURNAMES = "Surnames";
     public static final String TABLE_USERNAMES = "Usernames";
     private static final HashMap<String, Integer> TABLE_COUNT_REGISTRY = new HashMap<>();
+    private static final HashMap<String, Supplier<String>> TABLE_MAPPING = new HashMap<>();
     private static Connection connection;
 
     static {
@@ -105,8 +108,47 @@ public class Database {
         return countRows(table);
     }
 
+    public String selectRecord(String table) {
+        if (StringHelper.isNullOrBlank(table))
+            return DEFAULT_VALUE;
+
+        if (TABLE_MAPPING.isEmpty()) {
+            TABLE_MAPPING.put(TABLE_ENGLISH_ADJECTIVES, Database::selectEnglishAdjective);
+            TABLE_MAPPING.put(TABLE_ENGLISH_FEMALE_NAMES, Database::selectEnglishFemaleName);
+            TABLE_MAPPING.put(TABLE_ENGLISH_MALE_NAMES, Database::selectEnglishMaleName);
+            TABLE_MAPPING.put(TABLE_ENGLISH_NOUNS, Database::selectEnglishNoun);
+            TABLE_MAPPING.put(TABLE_ENGLISH_OCCUPATIONS, Database::selectEnglishOccupation);
+            TABLE_MAPPING.put(TABLE_ENGLISH_PHONETICS, Database::selectEnglishPhoneticScript);
+            TABLE_MAPPING.put(TABLE_ENGLISH_SURNAMES, Database::selectEnglishSurname);
+            TABLE_MAPPING.put(TABLE_EMOJIS, Database::selectEmojis);
+            TABLE_MAPPING.put(TABLE_FORENAMES, Database::selectForename);
+            TABLE_MAPPING.put(TABLE_FRENCH_FEMALE_NAMES, Database::selectFrenchFemaleName);
+            TABLE_MAPPING.put(TABLE_FRENCH_MALE_NAMES, Database::selectFrenchMaleName);
+            TABLE_MAPPING.put(TABLE_RUSSIAN_FEMALE_NAMES, Database::selectRussianFemaleName);
+            TABLE_MAPPING.put(TABLE_RUSSIAN_MALE_NAMES, Database::selectRussianMaleName);
+            TABLE_MAPPING.put(TABLE_SPANISH_COMPOUND_SURNAMES, Database::selectHispanicCompoundSurname);
+            TABLE_MAPPING.put(TABLE_SPANISH_FEMALE_NAMES, Database::selectHispanicFemaleName);
+            TABLE_MAPPING.put(TABLE_SPANISH_MALE_NAMES, Database::selectHispanicMaleName);
+            TABLE_MAPPING.put(TABLE_SPANISH_NOUNS, Database::selectSpanishNoun);
+            TABLE_MAPPING.put(TABLE_SPANISH_OCCUPATIONS, Database::selectSpanishOccupation);
+            TABLE_MAPPING.put(TABLE_SPANISH_PLURAL_ADJECTIVES, Database::selectSpanishPluralAdjective);
+            TABLE_MAPPING.put(TABLE_SPANISH_SINGULAR_ADJECTIVES, Database::selectSpanishSingularAdjective);
+            TABLE_MAPPING.put(TABLE_SPANISH_SURNAMES, Database::selectHispanicSurname);
+            TABLE_MAPPING.put(TABLE_FAMILY_NAMES, Database::selectFamilyName);
+            TABLE_MAPPING.put(TABLE_NAMES, Database::selectName);
+            TABLE_MAPPING.put(TABLE_NOUNS, Database::selectCommonNoun);
+            TABLE_MAPPING.put(TABLE_SURNAMES, Database::selectSurname);
+            TABLE_MAPPING.put(TABLE_USERNAMES, Database::selectUsername);
+        }
+        return TABLE_MAPPING.getOrDefault(table, () -> DEFAULT_VALUE).get();
+    }
+
+    public static String selectFromTable(String table) {
+        return selectRow("SELECT * FROM " + table + " ORDER BY RANDOM() LIMIT 1", 2);
+    }
+
     public static String selectFromTable(String table, int id) {
-        return selectRow("SELECT * FROM " + table + " WHERE " + table + ID_PREFIX + " = ?", 2, id);
+        return selectRow("SELECT * FROM " + table + " WHERE " + table + ID_PREFIX + " = ?", 2, String.valueOf(id));
     }
 
     public static int countEnglishAdjectives() {
@@ -199,6 +241,26 @@ public class Database {
 
     public static String selectEnglishSurname(int id) {
         return selectRow("SELECT * FROM " + TABLE_ENGLISH_SURNAMES + " WHERE " + TABLE_ENGLISH_SURNAMES + ID_PREFIX + " = ?", 2, String.valueOf(id));
+    }
+
+    public static int countEmojis() {
+        return countRows(TABLE_EMOJIS);
+    }
+
+    public static String selectEmojis() {
+        return selectRow("SELECT CodePoints, Emoji FROM " + TABLE_EMOJIS + " ORDER BY RANDOM() LIMIT 1", 2);
+    }
+
+    public static String selectEmojis(int id) {
+        return selectRow("SELECT CodePoints, Emoji FROM " + TABLE_EMOJIS + " WHERE " + TABLE_EMOJIS + ID_PREFIX + " = ?", 2, String.valueOf(id));
+    }
+
+    public static String selectCodePoints() {
+        return selectRow("SELECT * FROM " + TABLE_EMOJIS + " ORDER BY RANDOM() LIMIT 1", 2);
+    }
+
+    public static String selectCodePoints(int id) {
+        return selectRow("SELECT * FROM " + TABLE_EMOJIS + " WHERE " + TABLE_EMOJIS + ID_PREFIX + " = ?", 2, String.valueOf(id));
     }
 
     public static int countForenames() {

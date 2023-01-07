@@ -157,8 +157,8 @@ public final class NameGetter extends common.NameGetter implements common.NameDe
     }
 
     @Override
-    public String getFullName() {
-        return r.getBoolean() ? getMaleFullName() : getFemaleFullName();
+    public String getSimpleName() {
+        return r.getBoolean() ? getMaleSimpleName() : getFemaleSimpleName();
     }
 
     @Override
@@ -189,6 +189,11 @@ public final class NameGetter extends common.NameGetter implements common.NameDe
             default:
                 return getMaleSimpleName();
         }
+    }
+
+    @Override
+    public String getFullName() {
+        return r.getBoolean() ? getMaleFullName() : getFemaleFullName();
     }
 
     @Override
