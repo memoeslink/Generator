@@ -13,53 +13,7 @@ public class NameGenerator extends Generator {
     }
 
     public String getName(NameType nameType) {
-        NameGetter getter;
-
-        if (StringHelper.isNullOrEmpty(locale.getLanguage()) ||
-                locale.getLanguage().equals("xx") || locale.getCountry().equals("XX"))
-            getter = new international.NameGetter(r);
-        else {
-            switch (locale.getLanguage()) {
-                case "ar":
-                    getter = new arabic.NameGetter(r);
-                    break;
-                case "de":
-                    getter = new german.NameGetter(r);
-                    break;
-                case "en":
-                    getter = new english.NameGetter(r);
-                    break;
-                case "es":
-                    if (locale.getCountry().equals("MX"))
-                        getter = new spanish.mexico.NameGetter(r);
-                    else
-                        getter = new spanish.NameGetter(r);
-                    break;
-                case "fr":
-                    getter = new french.NameGetter(r);
-                    break;
-                case "it":
-                    getter = new italian.NameGetter(r);
-                    break;
-                case "hi":
-                    getter = new hindi.NameGetter(r);
-                    break;
-                case "ja":
-                    getter = new japanese.NameGetter(r);
-                    break;
-                case "pt":
-                    getter = new portuguese.NameGetter(r);
-                    break;
-                case "ru":
-                    getter = new russian.NameGetter(r);
-                    break;
-                case "xx":
-                case StringHelper.EMPTY:
-                default:
-                    getter = new international.NameGetter(r);
-                    break;
-            }
-        }
+        NameGetter getter = getGetter();
         nameType = nameType != null ? nameType : NameType.EMPTY;
 
         switch (nameType) {
@@ -87,8 +41,6 @@ public class NameGenerator extends Generator {
                 return getter.getMaleGivenName();
             case FEMALE_GIVEN_NAME:
                 return getter.getFemaleGivenName();
-            case GIVEN_NAME:
-                return getter.getGivenName();
             case SURNAME:
                 return getter.getSurname();
             case DUAL_SURNAME:
@@ -101,8 +53,6 @@ public class NameGenerator extends Generator {
                 return getter.getMaleFullName();
             case FEMALE_FULL_NAME:
                 return getter.getFemaleFullName();
-            case FULL_NAME:
-                return getter.getFullName();
             case MALE_DEFINED_FORENAME:
                 return getter.getMaleDefinedForename();
             case FEMALE_DEFINED_FORENAME:
@@ -220,6 +170,18 @@ public class NameGenerator extends Generator {
         return name;
     }
 
+    public String getGivenName() {
+        return getGetter().getGivenName();
+    }
+
+    public String getSimpleName() {
+        return getGetter().getSimpleName();
+    }
+
+    public String getFullName() {
+        return getGetter().getFullName();
+    }
+
     public String getUsername() {
         switch (r.getInt(5)) {
             case 1:
@@ -238,5 +200,42 @@ public class NameGenerator extends Generator {
 
     public static String getDefaultName() {
         return Constant.DEFAULT_NAME;
+    }
+
+    private NameGetter getGetter() {
+        if (StringHelper.isNullOrEmpty(locale.getLanguage()) ||
+                locale.getLanguage().equals("xx") || locale.getCountry().equals("XX"))
+            return new international.NameGetter(r);
+        else {
+            switch (locale.getLanguage()) {
+                case "ar":
+                    return new arabic.NameGetter(r);
+                case "de":
+                    return new german.NameGetter(r);
+                case "en":
+                    return new english.NameGetter(r);
+                case "es":
+                    if (locale.getCountry().equals("MX"))
+                        return new spanish.mexico.NameGetter(r);
+                    else
+                        return new spanish.NameGetter(r);
+                case "fr":
+                    return new french.NameGetter(r);
+                case "it":
+                    return new italian.NameGetter(r);
+                case "hi":
+                    return new hindi.NameGetter(r);
+                case "ja":
+                    return new japanese.NameGetter(r);
+                case "pt":
+                    return new portuguese.NameGetter(r);
+                case "ru":
+                    return new russian.NameGetter(r);
+                case "xx":
+                case StringHelper.EMPTY:
+                default:
+                    return new international.NameGetter(r);
+            }
+        }
     }
 }
