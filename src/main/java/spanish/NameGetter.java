@@ -477,7 +477,7 @@ public final class NameGetter extends common.NameGetter implements common.NameDe
 
         switch (r.getInt(3)) {
             case 0:
-                adjective = adjectiveGetter.getAdjective();
+                adjective = adjectiveGetter.getCommonAdjective();
                 noun = nounGetter.getNoun();
                 break;
             case 1:
