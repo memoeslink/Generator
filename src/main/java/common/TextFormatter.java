@@ -225,12 +225,12 @@ public class TextFormatter {
     public static String formatDescriptor(Person person) {
         if (person == null || StringHelper.isNullOrBlank(person.getDescriptor()))
             return "";
-        String formattedDescriptor;
+        String formattedDescriptor = person.getDescriptor();
 
         if (person.hasAttribute("anonymous"))
-            formattedDescriptor = formatUsername(person.getUsername());
+            formattedDescriptor = formatUsername(formattedDescriptor);
         else
-            formattedDescriptor = String.format("<font color=\"%s\">%s</font>", Maker.getDefaultColor(person.getSummary()), formatName(person.getDescriptor()));
+            formattedDescriptor = formatName(formattedDescriptor);
 
         if (person.hasAttribute("requested"))
             formattedDescriptor = formatText(formattedDescriptor, "u");
