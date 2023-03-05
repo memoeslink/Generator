@@ -233,7 +233,7 @@ public class TextFormatter {
             formattedDescriptor = formatName(formattedDescriptor);
 
         if (person.hasAttribute("requested"))
-            formattedDescriptor = formatText(formattedDescriptor, "u");
+            formattedDescriptor = StringHelper.replaceEach(formattedDescriptor, new String[]{"<b>", "</b>"}, new String[]{"<b><u>", "</u></b>"});
         return formattedDescriptor;
     }
 
