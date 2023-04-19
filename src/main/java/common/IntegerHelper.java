@@ -14,19 +14,19 @@ public class IntegerHelper {
         return INITIAL_INDEX;
     }
 
-    public static int defaultMinInt(int n, int min) {
+    public static int defaultByMin(int n, int min) {
         if (min == Integer.MIN_VALUE || n < min)
             return min;
         return n;
     }
 
-    public static int defaultMaxInt(int n, int max) {
+    public static int defaultByMax(int n, int max) {
         if (max == Integer.MAX_VALUE || n > max)
             return max;
         return n;
     }
 
-    public static int defaultInt(int n, int min, int max) {
+    public static int defaultByRange(int n, int min, int max) {
         if (min > max)
             return 0;
 
@@ -43,11 +43,11 @@ public class IntegerHelper {
         }
     }
 
-    public static int parseIntOrZero(String s) {
+    public static int tryParseOrZero(String s) {
         return tryParseInt(s, 0);
     }
 
-    public static Integer parseIntOrNull(String s) {
+    public static Integer tryParseOrNull(String s) {
         try {
             return Integer.valueOf(s);
         } catch (NumberFormatException e) {

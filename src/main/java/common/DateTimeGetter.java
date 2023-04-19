@@ -52,7 +52,7 @@ public class DateTimeGetter {
     }
 
     public static String getCurrentDateTime(int type) {
-        type = IntegerHelper.defaultInt(type, 1, 6);
+        type = IntegerHelper.defaultByRange(type, 1, 6);
 
         switch (type) {
             case 1:
@@ -81,7 +81,7 @@ public class DateTimeGetter {
     }
 
     public static String getCurrentDate(int type) {
-        type = IntegerHelper.defaultInt(type, 1, 14);
+        type = IntegerHelper.defaultByRange(type, 1, 14);
 
         switch (type) {
             case 1:
@@ -131,7 +131,7 @@ public class DateTimeGetter {
     }
 
     public static String getCurrentTime(int type) {
-        type = IntegerHelper.defaultInt(type, 1, 11);
+        type = IntegerHelper.defaultByRange(type, 1, 11);
 
         switch (type) {
             case 1:
