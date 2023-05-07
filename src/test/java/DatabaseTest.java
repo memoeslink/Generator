@@ -1,262 +1,260 @@
 import common.Database;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-
-class DatabaseTest {
+public class DatabaseTest {
 
     @Test
-    void countTableRows() {
+    public void countTableRows() throws Exception {
         int count = Database.countTableRows(Database.TABLE_NAMES);
-        assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
     }
 
     @Test
-    void selectFromTable() {
+    public void selectFromTable() throws Exception {
         String value = Database.selectFromTable(Database.TABLE_NAMES, 1);
-        assertNotEquals(Database.DEFAULT_VALUE, value);
-        assertEquals("Aaren", value);
+        Assertions.assertNotEquals(Database.DEFAULT_VALUE, value);
+        Assertions.assertEquals("Aaren", value);
     }
 
     @Test
-    void countEnglishAdjectives() {
+    public void countEnglishAdjectives() throws Exception {
         int count = Database.countEnglishAdjectives();
-        assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
     }
 
     @Test
-    void selectEnglishAdjective() {
+    public void selectEnglishAdjective() throws Exception {
         String value = Database.selectFromTable(Database.TABLE_ENGLISH_ADJECTIVES, 1);
-        assertNotEquals(Database.DEFAULT_VALUE, value);
-        assertEquals("able", value);
+        Assertions.assertNotEquals(Database.DEFAULT_VALUE, value);
+        Assertions.assertEquals("able", value);
     }
 
     @Test
-    void countEnglishFemaleNames() {
+    public void countEnglishFemaleNames() throws Exception {
         int count = Database.countEnglishFemaleNames();
-        assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
     }
 
     @Test
-    void selectEnglishFemaleName() {
+    public void selectEnglishFemaleName() throws Exception {
         String value = Database.selectFromTable(Database.TABLE_ENGLISH_FEMALE_NAMES, 1);
-        assertNotEquals(Database.DEFAULT_VALUE, value);
-        assertEquals("Aaron", value);
+        Assertions.assertNotEquals(Database.DEFAULT_VALUE, value);
+        Assertions.assertEquals("Aaron", value);
     }
 
     @Test
-    void countEnglishMaleNames() {
+    public void countEnglishMaleNames() throws Exception {
         int count = Database.countEnglishMaleNames();
-        assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
     }
 
     @Test
-    void selectEnglishMaleName() {
+    public void selectEnglishMaleName() throws Exception {
         String value = Database.selectFromTable(Database.TABLE_ENGLISH_MALE_NAMES, 1);
-        assertNotEquals(Database.DEFAULT_VALUE, value);
-        assertEquals("Aaron", value);
+        Assertions.assertNotEquals(Database.DEFAULT_VALUE, value);
+        Assertions.assertEquals("Aaron", value);
     }
 
     @Test
-    void countEnglishNouns() {
+    public void countEnglishNouns() throws Exception {
         int count = Database.countEnglishNouns();
-        assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
     }
 
     @Test
-    void selectEnglishNoun() {
+    public void selectEnglishNoun() throws Exception {
         String value = Database.selectFromTable(Database.TABLE_ENGLISH_NOUNS, 1);
-        assertNotEquals(Database.DEFAULT_VALUE, value);
-        assertEquals("people", value);
+        Assertions.assertNotEquals(Database.DEFAULT_VALUE, value);
+        Assertions.assertEquals("people", value);
     }
 
     @Test
-    void countEnglishOccupations() {
+    public void countEnglishOccupations() throws Exception {
         int count = Database.countEnglishOccupations();
-        assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
     }
 
     @Test
-    void selectEnglishOccupation() {
+    public void selectEnglishOccupation() throws Exception {
         String value = Database.selectFromTable(Database.TABLE_ENGLISH_OCCUPATIONS, 1);
-        assertNotEquals(Database.DEFAULT_VALUE, value);
-        assertEquals("Lawyer", value);
+        Assertions.assertNotEquals(Database.DEFAULT_VALUE, value);
+        Assertions.assertEquals("Lawyer", value);
     }
 
     @Test
-    void countEnglishPhonetics() {
+    public void countEnglishPhonetics() throws Exception {
         int count = Database.countEnglishPhonetics();
-        assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
     }
 
     @Test
-    void selectEnglishWord() {
+    public void selectEnglishWord() throws Exception {
         String value = Database.selectEnglishWord(1);
-        assertNotEquals(Database.DEFAULT_VALUE, value);
-        assertEquals("!EXCLAMATION-POINT", value);
+        Assertions.assertNotEquals(Database.DEFAULT_VALUE, value);
+        Assertions.assertEquals("!EXCLAMATION-POINT", value);
     }
 
     @Test
-    void selectEnglishPhoneticScript() {
+    public void selectEnglishPhoneticScript() throws Exception {
         String value = Database.selectEnglishPhoneticScript("!EXCLAMATION-POINT");
-        assertNotEquals(Database.DEFAULT_VALUE, value);
-        assertEquals("ˌɛkskləˈmeɪʃənˌpɔɪnt", value);
+        Assertions.assertNotEquals(Database.DEFAULT_VALUE, value);
+        Assertions.assertEquals("ˌɛkskləˈmeɪʃənˌpɔɪnt", value);
     }
 
     @Test
-    void countEnglishSurnames() {
+    public void countEnglishSurnames() throws Exception {
         int count = Database.countEnglishSurnames();
-        assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
     }
 
     @Test
-    void selectEnglishSurname() {
+    public void selectEnglishSurname() throws Exception {
         String value = Database.selectFromTable(Database.TABLE_ENGLISH_SURNAMES, 1);
-        assertNotEquals(Database.DEFAULT_VALUE, value);
-        assertEquals("Aaron", value);
+        Assertions.assertNotEquals(Database.DEFAULT_VALUE, value);
+        Assertions.assertEquals("Aaron", value);
     }
 
     @Test
-    void countHispanicFemaleNames() {
+    public void countHispanicFemaleNames() throws Exception {
         int count = Database.countHispanicFemaleNames();
-        assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
     }
 
     @Test
-    void selectHispanicFemaleName() {
+    public void selectHispanicFemaleName() throws Exception {
         String value = Database.selectFromTable(Database.TABLE_SPANISH_FEMALE_NAMES, 1);
-        assertNotEquals(Database.DEFAULT_VALUE, value);
-        assertEquals("Abby", value);
+        Assertions.assertNotEquals(Database.DEFAULT_VALUE, value);
+        Assertions.assertEquals("Abby", value);
     }
 
     @Test
-    void countHispanicMaleNames() {
+    public void countHispanicMaleNames() throws Exception {
         int count = Database.countHispanicMaleNames();
-        assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
     }
 
     @Test
-    void selectHispanicMaleName() {
+    public void selectHispanicMaleName() throws Exception {
         String value = Database.selectFromTable(Database.TABLE_SPANISH_MALE_NAMES, 1);
-        assertNotEquals(Database.DEFAULT_VALUE, value);
-        assertEquals("Aarón", value);
+        Assertions.assertNotEquals(Database.DEFAULT_VALUE, value);
+        Assertions.assertEquals("Aarón", value);
     }
 
     @Test
-    void countSpanishNouns() {
+    public void countSpanishNouns() throws Exception {
         int count = Database.countSpanishNouns();
-        assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
     }
 
     @Test
-    void selectSpanishNoun() {
+    public void selectSpanishNoun() throws Exception {
         String value = Database.selectFromTable(Database.TABLE_SPANISH_NOUNS, 1);
-        assertNotEquals(Database.DEFAULT_VALUE, value);
-        assertEquals("el pueblo", value);
+        Assertions.assertNotEquals(Database.DEFAULT_VALUE, value);
+        Assertions.assertEquals("el pueblo", value);
     }
 
     @Test
-    void countSpanishOccupations() {
+    public void countSpanishOccupations() throws Exception {
         int count = Database.countSpanishOccupations();
-        assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
     }
 
     @Test
-    void selectSpanishOccupation() {
+    public void selectSpanishOccupation() throws Exception {
         String value = Database.selectFromTable(Database.TABLE_SPANISH_OCCUPATIONS, 1);
-        assertNotEquals(Database.DEFAULT_VALUE, value);
-        assertEquals("Abogado[a]", value);
+        Assertions.assertNotEquals(Database.DEFAULT_VALUE, value);
+        Assertions.assertEquals("Abogado[a]", value);
     }
 
     @Test
-    void countSpanishPluralAdjectives() {
+    public void countSpanishPluralAdjectives() throws Exception {
         int count = Database.countSpanishPluralAdjectives();
-        assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
     }
 
     @Test
-    void selectSpanishPluralAdjective() {
+    public void selectSpanishPluralAdjective() throws Exception {
         String value = Database.selectFromTable(Database.TABLE_SPANISH_PLURAL_ADJECTIVES, 1);
-        assertNotEquals(Database.DEFAULT_VALUE, value);
-        assertEquals("abaciales AQ0CP0", value);
+        Assertions.assertNotEquals(Database.DEFAULT_VALUE, value);
+        Assertions.assertEquals("abaciales AQ0CP0", value);
     }
 
     @Test
-    void countSpanishSingularAdjectives() {
+    public void countSpanishSingularAdjectives() throws Exception {
         int count = Database.countSpanishSingularAdjectives();
-        assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
     }
 
     @Test
-    void selectSpanishSingularAdjective() {
+    public void selectSpanishSingularAdjective() throws Exception {
         String value = Database.selectFromTable(Database.TABLE_SPANISH_SINGULAR_ADJECTIVES, 1);
-        assertNotEquals(Database.DEFAULT_VALUE, value);
-        assertEquals("abacial AQ0CS0", value);
+        Assertions.assertNotEquals(Database.DEFAULT_VALUE, value);
+        Assertions.assertEquals("abacial AQ0CS0", value);
     }
 
     @Test
-    void countHispanicSurnames() {
+    public void countHispanicSurnames() throws Exception {
         int count = Database.countHispanicSurnames();
-        assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
     }
 
     @Test
-    void selectHispanicSurname() {
+    public void selectHispanicSurname() throws Exception {
         String value = Database.selectFromTable(Database.TABLE_SPANISH_SURNAMES, 1);
-        assertNotEquals(Database.DEFAULT_VALUE, value);
-        assertEquals("Aanda", value);
+        Assertions.assertNotEquals(Database.DEFAULT_VALUE, value);
+        Assertions.assertEquals("Aanda", value);
     }
 
     @Test
-    void countFamilyNames() {
+    public void countFamilyNames() throws Exception {
         int count = Database.countFamilyNames();
-        assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
     }
 
     @Test
-    void selectFamilyName() {
+    public void selectFamilyName() throws Exception {
         String value = Database.selectFromTable(Database.TABLE_FAMILY_NAMES, 1);
-        assertNotEquals(Database.DEFAULT_VALUE, value);
-        assertEquals("Aaberg", value);
+        Assertions.assertNotEquals(Database.DEFAULT_VALUE, value);
+        Assertions.assertEquals("Aaberg", value);
     }
 
     @Test
-    void countNames() {
+    public void countNames() throws Exception {
         int count = Database.countNames();
-        assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
     }
 
     @Test
-    void selectName() {
+    public void selectName() throws Exception {
         String value = Database.selectFromTable(Database.TABLE_NAMES, 1);
-        assertNotEquals(Database.DEFAULT_VALUE, value);
-        assertEquals("Aaren", value);
+        Assertions.assertNotEquals(Database.DEFAULT_VALUE, value);
+        Assertions.assertEquals("Aaren", value);
     }
 
     @Test
-    void countCommonNouns() {
+    public void countCommonNouns() throws Exception {
         int count = Database.countCommonNouns();
-        assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
     }
 
     @Test
-    void selectCommonNoun() {
+    public void selectCommonNoun() throws Exception {
         String value = Database.selectFromTable(Database.TABLE_NOUNS, 1);
-        assertNotEquals(Database.DEFAULT_VALUE, value);
-        assertEquals("aardvark", value);
+        Assertions.assertNotEquals(Database.DEFAULT_VALUE, value);
+        Assertions.assertEquals("aardvark", value);
     }
 
     @Test
-    void countUsernames() {
+    public void countUsernames() throws Exception {
         int count = Database.countUsernames();
-        assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
     }
 
     @Test
-    void selectUsername() {
+    public void selectUsername() throws Exception {
         String value = Database.selectFromTable(Database.TABLE_USERNAMES, 1);
-        assertNotEquals(Database.DEFAULT_VALUE, value);
-        assertEquals("!@#webmaster", value);
+        Assertions.assertNotEquals(Database.DEFAULT_VALUE, value);
+        Assertions.assertEquals("!@#webmaster", value);
     }
 }

@@ -198,7 +198,7 @@ public class NameGenerator extends Generator {
         }
     }
 
-    public static String getDefaultName() {
+    public String getDefaultName() {
         return Constant.DEFAULT_NAME;
     }
 
