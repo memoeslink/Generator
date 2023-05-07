@@ -144,12 +144,10 @@ public final class OccupationGetter extends common.OccupationGetter implements O
     }
 
     public common.OccupationGetter getAnyGetter() {
-        switch (r.getInt(2)) {
-            case 0:
-                return new english.OccupationGetter(r);
-            case 1:
-                return new spanish.OccupationGetter(r);
-        }
-        return new common.OccupationGetter(r);
+        return switch (r.getInt(2)) {
+            case 0 -> new english.OccupationGetter(r);
+            case 1 -> new spanish.OccupationGetter(r);
+            default -> new common.OccupationGetter(r);
+        };
     }
 }

@@ -104,12 +104,10 @@ public final class AdjectiveGetter extends common.AdjectiveGetter implements Adj
     }
 
     public common.AdjectiveGetter getAnyGetter() {
-        switch (r.getInt(2)) {
-            case 0:
-                return new english.AdjectiveGetter(r);
-            case 1:
-                return new spanish.AdjectiveGetter(r);
-        }
-        return new common.AdjectiveGetter(r);
+        return switch (r.getInt(2)) {
+            case 0 -> new english.AdjectiveGetter(r);
+            case 1 -> new spanish.AdjectiveGetter(r);
+            default -> new common.AdjectiveGetter(r);
+        };
     }
 }

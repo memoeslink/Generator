@@ -19,12 +19,10 @@ public class PhraseGetter extends common.PhraseGetter implements PhraseDefiner {
     }
 
     public common.PhraseGetter getAnyGetter() {
-        switch (r.getInt(2)) {
-            case 0:
-                return new english.PhraseGetter(r);
-            case 1:
-                return new spanish.PhraseGetter(r);
-        }
-        return new common.PhraseGetter(r);
+        return switch (r.getInt(2)) {
+            case 0 -> new english.PhraseGetter(r);
+            case 1 -> new spanish.PhraseGetter(r);
+            default -> new common.PhraseGetter(r);
+        };
     }
 }

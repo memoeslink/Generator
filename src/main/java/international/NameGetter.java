@@ -165,19 +165,14 @@ public final class NameGetter extends common.NameGetter implements common.NameDe
 
     @Override
     public String getFullName() {
-        switch (r.getInt(4)) {
-            case 1:
-                return getFemaleFullName();
-            case 2:
-                return getMaleFullName();
-            case 3:
-                return Database.selectForename(r.getInt(1, Database.countForenames())) + Separator.SPACE.getCharacter() +
-                        Database.selectSurname(r.getInt(1, Database.countSurnames()));
-            case 0:
-            default:
-                return Database.selectName(r.getInt(1, Database.countNames())) + Separator.SPACE.getCharacter() +
-                        Database.selectFamilyName(r.getInt(1, Database.countFamilyNames()));
-        }
+        return switch (r.getInt(4)) {
+            case 1 -> getFemaleFullName();
+            case 2 -> getMaleFullName();
+            case 3 -> Database.selectForename(r.getInt(1, Database.countForenames())) + Separator.SPACE.getCharacter() +
+                    Database.selectSurname(r.getInt(1, Database.countSurnames()));
+            default -> Database.selectName(r.getInt(1, Database.countNames())) + Separator.SPACE.getCharacter() +
+                    Database.selectFamilyName(r.getInt(1, Database.countFamilyNames()));
+        };
     }
 
     @Override
@@ -454,30 +449,19 @@ public final class NameGetter extends common.NameGetter implements common.NameDe
     }
 
     public common.NameGetter getAnyGetter() {
-        switch (ResourceGetter.with(r).getString(common.Constant.SUPPORTED_LOCALES)) {
-            case "ar":
-                return new arabic.NameGetter(r);
-            case "de":
-                return new german.NameGetter(r);
-            case "en":
-                return new english.NameGetter(r);
-            case "es":
-                return new spanish.NameGetter(r);
-            case "es_MX":
-                return new spanish.mexico.NameGetter(r);
-            case "fr":
-                return new french.NameGetter(r);
-            case "it":
-                return new italian.NameGetter(r);
-            case "hi":
-                return new hindi.NameGetter(r);
-            case "ja":
-                return new japanese.NameGetter(r);
-            case "pt":
-                return new portuguese.NameGetter(r);
-            case "ru":
-                return new russian.NameGetter(r);
-        }
-        return new common.NameGetter(r);
+        return switch (ResourceGetter.with(r).getString(common.Constant.SUPPORTED_LOCALES)) {
+            case "ar" -> new arabic.NameGetter(r);
+            case "de" -> new german.NameGetter(r);
+            case "en" -> new english.NameGetter(r);
+            case "es" -> new spanish.NameGetter(r);
+            case "es_MX" -> new spanish.mexico.NameGetter(r);
+            case "fr" -> new french.NameGetter(r);
+            case "it" -> new italian.NameGetter(r);
+            case "hi" -> new hindi.NameGetter(r);
+            case "ja" -> new japanese.NameGetter(r);
+            case "pt" -> new portuguese.NameGetter(r);
+            case "ru" -> new russian.NameGetter(r);
+            default -> new common.NameGetter(r);
+        };
     }
 }

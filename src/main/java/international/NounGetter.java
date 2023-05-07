@@ -104,12 +104,10 @@ public final class NounGetter extends common.NounGetter implements NounDefiner {
     }
 
     public common.NounGetter getAnyGetter() {
-        switch (r.getInt(2)) {
-            case 0:
-                return new english.NounGetter(r);
-            case 1:
-                return new spanish.NounGetter(r);
-        }
-        return new common.NounGetter(r);
+        return switch (r.getInt(2)) {
+            case 0 -> new english.NounGetter(r);
+            case 1 -> new spanish.NounGetter(r);
+            default -> new common.NounGetter(r);
+        };
     }
 }

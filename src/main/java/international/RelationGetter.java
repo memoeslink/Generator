@@ -67,12 +67,10 @@ public final class RelationGetter extends common.RelationGetter implements Relat
     }
 
     public common.RelationGetter getAnyGetter() {
-        switch (r.getInt(2)) {
-            case 0:
-                return new english.RelationGetter(r);
-            case 1:
-                return new spanish.RelationGetter(r);
-        }
-        return new common.RelationGetter(r);
+        return switch (r.getInt(2)) {
+            case 0 -> new english.RelationGetter(r);
+            case 1 -> new spanish.RelationGetter(r);
+            default -> new common.RelationGetter(r);
+        };
     }
 }
