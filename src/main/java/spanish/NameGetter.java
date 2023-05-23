@@ -4,7 +4,7 @@ import com.memoeslink.common.Randomizer;
 import common.*;
 import international.Shaper;
 
-public final class NameGetter extends common.NameGetter implements common.NameDefiner, spanish.NameDefiner {
+public class NameGetter extends common.NameGetter implements common.NameDefiner, spanish.NameDefiner {
     private final NounGetter nounGetter;
     private final AdjectiveGetter adjectiveGetter;
     private final international.NameGetter nameGetter;

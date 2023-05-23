@@ -7,7 +7,7 @@ import common.Separator;
 import common.StringHelper;
 import international.Shaper;
 
-public final class NameGetter extends common.NameGetter implements common.NameDefiner, english.NameDefiner {
+public class NameGetter extends common.NameGetter implements common.NameDefiner, english.NameDefiner {
     private final NounGetter nounGetter;
     private final AdjectiveGetter adjectiveGetter;
     private final international.NameGetter nameGetter;
