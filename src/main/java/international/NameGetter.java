@@ -3,7 +3,7 @@ package international;
 import com.memoeslink.common.Randomizer;
 import common.*;
 
-public class NameGetter extends common.NameGetter implements common.NameDefiner, international.NameDefiner {
+public class NameGetter extends common.NameGetter implements international.NameDefiner {
 
     public NameGetter() {
         super();
