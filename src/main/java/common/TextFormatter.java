@@ -312,6 +312,6 @@ public class TextFormatter {
     }
 
     public static String quote(String s) {
-        return ("“" + StringHelper.defaultIfBlank(s) + "”");
+        return "“" + StringHelper.defaultIfBlank(s) + "”";
     }
 }
