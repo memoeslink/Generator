@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 
 public class CharHelper {
     public static final char NULL_CHAR = '\0';
+    public static final char EMPTY_CHAR = '\u0000';
 
     public static boolean isNull(char c) {
         return c == NULL_CHAR;

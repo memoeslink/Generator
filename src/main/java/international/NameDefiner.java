@@ -49,7 +49,7 @@ public interface NameDefiner extends common.NameDefiner {
 
     default String getPatternName(Randomizer r) {
         r = r != null ? r : new Randomizer();
-        String namePattern = Constant.NAME_PATTERNS[r.getInt(0, Constant.NAME_PATTERNS.length)];
+        String namePattern = r.getElement(Constant.NAME_PATTERNS);
         StringBuilder sb = new StringBuilder();
 
         if (r.getBoolean())
