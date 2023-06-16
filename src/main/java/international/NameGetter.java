@@ -348,7 +348,7 @@ public class NameGetter extends common.NameGetter implements international.NameD
 
     @Override
     public String getMalePreformedForename() {
-        Shaper shaper = Shaper.values()[r.getInt(Shaper.values().length)];
+        Shaper shaper = r.getElement(Shaper.values());
         return getMalePreformedForename(shaper);
     }
 
@@ -360,7 +360,7 @@ public class NameGetter extends common.NameGetter implements international.NameD
 
     @Override
     public String getPreformedFamilyName() {
-        Shaper shaper = Shaper.values()[r.getInt(Shaper.values().length)];
+        Shaper shaper = r.getElement(Shaper.values());
         return getPreformedFamilyName(shaper);
     }
 
@@ -372,13 +372,13 @@ public class NameGetter extends common.NameGetter implements international.NameD
 
     @Override
     public String getFemalePreformedFullName() {
-        Shaper shaper = Shaper.values()[r.getInt(Shaper.values().length)];
+        Shaper shaper = r.getElement(Shaper.values());
         return getFemalePreformedForename(shaper) + Separator.SPACE.getCharacter() + getPreformedFamilyName(shaper);
     }
 
     @Override
     public String getMalePreformedFullName() {
-        Shaper shaper = Shaper.values()[r.getInt(Shaper.values().length)];
+        Shaper shaper = r.getElement(Shaper.values());
         return getMalePreformedForename(shaper) + Separator.SPACE.getCharacter() + getPreformedFamilyName(shaper);
     }
 
@@ -436,6 +436,11 @@ public class NameGetter extends common.NameGetter implements international.NameD
     @Override
     public String getDerivedUsername() {
         return getAnyGetter().getDerivedUsername();
+    }
+
+    @Override
+    public String getPatternUsername() {
+        return getAnyGetter().getPatternUsername();
     }
 
     @Override

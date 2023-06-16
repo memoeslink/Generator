@@ -4,7 +4,7 @@ import com.memoeslink.common.Randomizer;
 
 import java.io.*;
 import java.util.HashMap;
-import java.util.List;
+import java.util.Locale;
 
 public class ResourceGetter {
     private static Randomizer r;
@@ -45,7 +45,7 @@ public class ResourceGetter {
             index = IntegerHelper.defaultIndex(index, chars.length);
             return chars[index];
         }
-        return CharHelper.NULL_CHAR;
+        return CharHelper.EMPTY_CHAR;
     }
 
     public static char getChar(String s) {
@@ -57,7 +57,7 @@ public class ResourceGetter {
             index = IntegerHelper.defaultIndex(index, s.length());
             return s.charAt(index);
         }
-        return CharHelper.NULL_CHAR;
+        return CharHelper.EMPTY_CHAR;
     }
 
     public static String getString(String s) {
@@ -73,7 +73,7 @@ public class ResourceGetter {
     }
 
     public static String getString(String[] strings, int index) {
-        if (StringHelper.isNotNullOrEmpty(strings)) {
+        if (ArrayHelper.isNotNullOrEmpty(strings)) {
             index = IntegerHelper.defaultIndex(index, strings.length);
             return strings[index];
         }
@@ -81,21 +81,13 @@ public class ResourceGetter {
     }
 
     public static String getSplitString(String s) {
-        List<String> parts = StringHelper.splitByParagraphMark(s);
-
-        if (parts.size() > 0)
-            return r.getItem(parts);
-        return StringHelper.EMPTY;
+        String[] parts = StringHelper.splitByParagraphMark(s);
+        return getString(parts);
     }
 
     public static String getSplitString(String s, int index) {
-        List<String> parts = StringHelper.splitByParagraphMark(s);
-
-        if (parts.size() > 0) {
-            index = IntegerHelper.defaultIndex(index, parts.size());
-            return parts.get(index);
-        }
-        return StringHelper.EMPTY;
+        String[] parts = StringHelper.splitByParagraphMark(s);
+        return getString(parts, index);
     }
 
     public static String getLineFromFile(String filename) {
@@ -143,6 +135,19 @@ public class ResourceGetter {
             }
             br = null;
             lnr = null;
+        }
+        return s;
+    }
+
+    public String getStrFromResBundle(Locale locale, String key) {
+        if (StringHelper.isNullOrBlank(key))
+            return StringHelper.EMPTY;
+        StringLocalization localization = new StringLocalization(locale);
+        String s = localization.getString(key);
+
+        if (StringHelper.contains(s, "\t")) {
+            String[] parts = StringHelper.splitByTab(s);
+            return getString(parts);
         }
         return s;
     }

@@ -5,6 +5,7 @@ import common.Separator;
 import common.StringHelper;
 
 import java.text.Normalizer;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -196,7 +197,7 @@ public class SyllableSeparator {
 
     public List<String> getSyllables() {
         if (syllables == null)
-            syllables = StringHelper.splitByHyphen(getSyllableBySyllable());
+            syllables = Arrays.asList(StringHelper.splitByHyphen(getSyllableBySyllable()));
         return syllables;
     }
 

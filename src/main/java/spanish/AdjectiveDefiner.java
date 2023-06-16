@@ -20,7 +20,7 @@ public interface AdjectiveDefiner extends common.AdjectiveDefiner {
     default Adjective getRefinedAdjective(String s) {
         Adjective adjective = new Adjective();
 
-        if (s.contains("AQ0C"))
+        if (StringHelper.contains(s, "AQ0C"))
             adjective.setGender(Gender.NEUTRAL);
         else if (StringHelper.containsAny(s, "AQ0M", "AO0M", "AQSM"))
             adjective.setGender(Gender.MASCULINE);

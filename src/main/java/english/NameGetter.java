@@ -6,6 +6,8 @@ import common.ResourceGetter;
 import common.Separator;
 import common.StringHelper;
 
+import java.util.Locale;
+
 public class NameGetter extends international.NameGetter implements NameDefiner {
     private final NounGetter nounGetter;
     private final AdjectiveGetter adjectiveGetter;
@@ -213,6 +215,11 @@ public class NameGetter extends international.NameGetter implements NameDefiner 
     @Override
     public String getDerivedUsername() {
         return getDerivedUsername(Database.selectFamilyName(r.getInt(1, Database.countFamilyNames())), r);
+    }
+
+    @Override
+    public String getPatternUsername() {
+        return getPatternUsername(r.getBoolean() ? getMaleForename() : getFemaleForename(), getSurname(), Locale.ENGLISH, r);
     }
 
     @Override
