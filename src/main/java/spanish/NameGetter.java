@@ -23,7 +23,7 @@ public class NameGetter extends international.NameGetter implements NameDefiner 
 
     @Override
     public String getFemaleForename() {
-        return getFemaleForename(r.getInt(1, Database.countHispanicFemaleNames()));
+        return getFemaleForename(r.getIntInRange(1, Database.countHispanicFemaleNames()));
     }
 
     @Override
@@ -34,7 +34,7 @@ public class NameGetter extends international.NameGetter implements NameDefiner 
 
     @Override
     public String getMaleForename() {
-        return getMaleForename(r.getInt(1, Database.countHispanicMaleNames()));
+        return getMaleForename(r.getIntInRange(1, Database.countHispanicMaleNames()));
     }
 
     @Override
@@ -108,7 +108,7 @@ public class NameGetter extends international.NameGetter implements NameDefiner 
 
     @Override
     public String getSurname() {
-        return r.getInt(100) == 0 ? getSurnameFromName() : getSurname(r.getInt(1, Database.countHispanicSurnames()));
+        return r.getInt(100) == 0 ? getSurnameFromName() : getSurname(r.getIntInRange(1, Database.countHispanicSurnames()));
     }
 
     @Override
@@ -178,7 +178,7 @@ public class NameGetter extends international.NameGetter implements NameDefiner 
 
     @Override
     public String getUsername() {
-        return Database.selectUsername(r.getInt(1, Database.countUsernames()));
+        return Database.selectUsername(r.getIntInRange(1, Database.countUsernames()));
     }
 
     @Override
@@ -217,7 +217,7 @@ public class NameGetter extends international.NameGetter implements NameDefiner 
 
     @Override
     public String getDerivedUsername() {
-        return getDerivedUsername(Database.selectFamilyName(r.getInt(1, Database.countFamilyNames())), r);
+        return getDerivedUsername(Database.selectFamilyName(r.getIntInRange(1, Database.countFamilyNames())), r);
     }
 
     @Override
@@ -296,7 +296,7 @@ public class NameGetter extends international.NameGetter implements NameDefiner 
 
     @Override
     public String getCompoundSurname() {
-        return getCompoundSurname(r.getInt(1, Database.countHispanicCompoundSurnames()));
+        return getCompoundSurname(r.getIntInRange(1, Database.countHispanicCompoundSurnames()));
     }
 
     @Override

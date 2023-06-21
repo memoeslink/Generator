@@ -155,9 +155,4 @@ public class NameGetter extends spanish.NameGetter {
     public String getFullName() {
         return r.getBoolean() ? getMaleFullName() : getFemaleFullName();
     }
-
-    @Override
-    public String getUsername() {
-        return Database.selectUsername(r.getInt(1, Database.countUsernames()));
-    }
 }

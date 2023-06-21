@@ -108,7 +108,7 @@ public final class NounGetter extends common.NounGetter implements NounDefiner, 
 
     @Override
     public Noun getRefinedNoun() {
-        String noun = Database.selectSpanishNoun(r.getInt(1, Database.countSpanishNouns()));
+        String noun = Database.selectSpanishNoun(r.getIntInRange(1, Database.countSpanishNouns()));
 
         for (Article article : Article.values()) {
             if (StringHelper.startsWith(noun, article.getArticle() + Separator.SPACE.getCharacter())) {

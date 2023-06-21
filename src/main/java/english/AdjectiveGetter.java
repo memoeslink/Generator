@@ -17,7 +17,7 @@ public final class AdjectiveGetter extends common.AdjectiveGetter implements Adj
 
     @Override
     public String getAdjective() {
-        return Database.selectEnglishAdjective(r.getInt(1, Database.countEnglishAdjectives()));
+        return Database.selectEnglishAdjective(r.getIntInRange(1, Database.countEnglishAdjectives()));
     }
 
     @Override

@@ -18,7 +18,7 @@ public final class NounGetter extends common.NounGetter implements NounDefiner {
 
     @Override
     public String getNoun() {
-        return Database.selectEnglishNoun(r.getInt(1, Database.countEnglishNouns()));
+        return Database.selectEnglishNoun(r.getIntInRange(1, Database.countEnglishNouns()));
     }
 
     @Override

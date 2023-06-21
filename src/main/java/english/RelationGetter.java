@@ -15,7 +15,7 @@ public class RelationGetter extends common.RelationGetter implements RelationDef
 
     @Override
     public TextComponent getRelationship(Person person) {
-        int type = r.getInt(2, Constant.RELATIONSHIP.length - 1);
+        int type = r.getInt(2, Constant.RELATIONSHIP.length);
         return getRelationship(person, type);
     }
 
@@ -52,7 +52,7 @@ public class RelationGetter extends common.RelationGetter implements RelationDef
 
     @Override
     public TextComponent getUnspecificRelationship() {
-        int type = r.getInt(2, Constant.RELATIONSHIP.length - 1);
+        int type = r.getInt(2, Constant.RELATIONSHIP.length);
         return getUnspecificRelationship(type);
     }
 
