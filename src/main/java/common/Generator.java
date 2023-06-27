@@ -17,8 +17,7 @@ public class Generator {
     }
 
     protected Generator(Locale locale, Long seed) {
-        this.locale = locale != null ? locale : new Locale
-                ("xx");
+        this.locale = locale != null ? locale : Locale.of("xx");
         this.r = new Randomizer(seed);
     }
 

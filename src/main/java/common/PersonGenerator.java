@@ -10,9 +10,9 @@ public class PersonGenerator extends Generator {
 
     public PersonGenerator() {
         super();
-        nameGenerator = new NameGenerator(new Locale("xx"), null);
-        occupationGenerator = new OccupationGenerator(new Locale("xx"), null);
-        dateTimeGenerator = new DateTimeGenerator(new Locale("xx"), null);
+        nameGenerator = new NameGenerator(Locale.of("xx"), null);
+        occupationGenerator = new OccupationGenerator(Locale.of("xx"), null);
+        dateTimeGenerator = new DateTimeGenerator(Locale.of("xx"), null);
     }
 
     public PersonGenerator(Locale locale, Long seed) {

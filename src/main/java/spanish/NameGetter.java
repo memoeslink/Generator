@@ -222,7 +222,7 @@ public class NameGetter extends international.NameGetter implements NameDefiner 
 
     @Override
     public String getPatternUsername() {
-        return getPatternUsername(r.getBoolean() ? getMaleForename() : getFemaleForename(), getSurname(), new Locale("es"), r);
+        return getPatternUsername(r.getBoolean() ? getMaleForename() : getFemaleForename(), getSurname(), Locale.of("es"), r);
     }
 
     @Override
