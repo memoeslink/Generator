@@ -40,13 +40,13 @@ public class CharHelper {
         if (c == NULL_CHAR)
             return false;
         String s = StringHelper.stripAccents(String.valueOf(c));
-        return english.Constant.VOWELS.contains(s);
+        return base.Constant.VOWELS.contains(s);
     }
 
     public static boolean isUnaccentedVowel(char c) {
         if (c == NULL_CHAR)
             return false;
-        return english.Constant.VOWELS.indexOf(c) != -1;
+        return base.Constant.VOWELS.indexOf(c) != -1;
     }
 
     public static boolean isRegisteredVowel(char c) {
@@ -59,7 +59,7 @@ public class CharHelper {
         if (c == NULL_CHAR)
             return false;
         String s = StringHelper.stripAccents(String.valueOf(c));
-        return english.Constant.CONSONANTS.contains(s);
+        return base.Constant.CONSONANTS.contains(s);
     }
 
     public static boolean isAccentedConsonant(char c) {
@@ -67,7 +67,7 @@ public class CharHelper {
             return false;
         String originalChar = String.valueOf(c);
         String modifiedChar = StringHelper.stripAccents(originalChar);
-        return english.Constant.CONSONANTS.contains(modifiedChar) && !originalChar.equals(modifiedChar);
+        return base.Constant.CONSONANTS.contains(modifiedChar) && !originalChar.equals(modifiedChar);
     }
 
     public static boolean isNonClusterConsonant(char c) {

@@ -22,7 +22,7 @@ public interface NameDefiner extends base.NameDefiner {
     default String getGenerationalSuffix(Randomizer r) {
         r = r != null ? r : new Randomizer();
         return r.getBoolean() ? ResourceGetter.with(r).getString(common.Constant.ROMAN_NUMERALS) :
-                ResourceGetter.with(r).getString(english.Constant.GENERATIONAL_SUFFIX);
+                ResourceGetter.with(r).getString(Constant.GENERATIONAL_SUFFIX);
     }
 
     public String getFemaleName();

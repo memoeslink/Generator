@@ -38,7 +38,7 @@ public interface NameDefiner extends common.NameDefiner {
                 sb.append(ResourceGetter.with(r).getString(Constant.MIDDLE_CONSONANTS));
             else if (probability <= 1.0F)
                 sb.append(ResourceGetter.with(r).getString(Constant.CONSONANT_PAIRS));
-            sb.append(ResourceGetter.with(r).getChar(english.Constant.LOWERCASE_VOWELS));
+            sb.append(ResourceGetter.with(r).getChar(Constant.LOWERCASE_VOWELS));
             probability = r.getFloat();
         }
 
@@ -61,20 +61,20 @@ public interface NameDefiner extends common.NameDefiner {
 
         for (char c : namePattern.toCharArray()) {
             switch (c) {
-                case 'c' -> sb.append(ResourceGetter.with(r).getChar(english.Constant.LOWERCASE_CONSONANTS));
+                case 'c' -> sb.append(ResourceGetter.with(r).getChar(Constant.LOWERCASE_CONSONANTS));
                 case 'e' -> sb.append(ResourceGetter.with(r).getChar(Constant.LOWERCASE_ENDING_CONSONANTS));
                 case 'ɘ' -> sb.append(ResourceGetter.with(r).getString(Constant.ENDING_CONSONANTS));
                 case 'k' -> sb.append(ResourceGetter.with(r).getString(Constant.CONSONANT_PAIRS));
                 case 'ɔ' -> sb.append(ResourceGetter.with(r).getString(Constant.EXTENDED_CONSONANT_PAIRS));
                 case 'm' -> sb.append(ResourceGetter.with(r).getString(Constant.MIDDLE_CONSONANTS));
                 case 'q' -> sb.append(ResourceGetter.with(r).getString(Constant.STARTING_CONSONANTS));
-                case 'v' -> sb.append(ResourceGetter.with(r).getChar(english.Constant.LOWERCASE_VOWELS));
+                case 'v' -> sb.append(ResourceGetter.with(r).getChar(Constant.LOWERCASE_VOWELS));
                 case 'w' -> sb.append(ResourceGetter.with(r).getString(Constant.VOWEL_PAIRS));
                 case '?' -> {
                     if (r.getBoolean())
-                        sb.append(ResourceGetter.with(r).getChar(english.Constant.LOWERCASE_CONSONANTS));
+                        sb.append(ResourceGetter.with(r).getChar(Constant.LOWERCASE_CONSONANTS));
                     else
-                        sb.append(ResourceGetter.with(r).getChar(english.Constant.LOWERCASE_VOWELS));
+                        sb.append(ResourceGetter.with(r).getChar(Constant.LOWERCASE_VOWELS));
                 }
                 case ' ' -> sb.append(' ');
             }
@@ -165,7 +165,7 @@ public interface NameDefiner extends common.NameDefiner {
         return name;
     }
 
-    default String getMarkovName(int minLength, int maxLength, Randomizer r) {
+    default String getMarkovianName(int minLength, int maxLength, Randomizer r) {
         minLength = IntegerHelper.defaultByMin(minLength, 1);
         maxLength = IntegerHelper.defaultByRange(maxLength, minLength, 9999);
         r = r != null ? r : new Randomizer();
@@ -186,9 +186,9 @@ public interface NameDefiner extends common.NameDefiner {
 
         for (int i = 0; i < length; i++) {
             if (i % 2 == 0 ^ on)
-                sb.append(ResourceGetter.with(r).getChar(english.Constant.LOWERCASE_VOWELS));
+                sb.append(ResourceGetter.with(r).getChar(Constant.LOWERCASE_VOWELS));
             else
-                sb.append(ResourceGetter.with(r).getChar(english.Constant.LOWERCASE_CONSONANTS));
+                sb.append(ResourceGetter.with(r).getChar(Constant.LOWERCASE_CONSONANTS));
         }
         return StringHelper.capitalizeFirst(sb.toString());
     }
@@ -244,7 +244,7 @@ public interface NameDefiner extends common.NameDefiner {
 
         if (username.length() > 4)
             username = username.substring(0, 5);
-        username = ResourceGetter.with(r).getChar(english.Constant.UPPERCASE_ALPHABET) + username;
+        username = ResourceGetter.with(r).getChar(Constant.UPPERCASE_ALPHABET) + username;
         username += r.getInt(101);
         return username;
     }
@@ -262,7 +262,7 @@ public interface NameDefiner extends common.NameDefiner {
                 .arg("second", b)
                 .arg("job", StringHelper.normalize(ResourceGetter.with(r).getStrFromResBundle(locale, "job.position")).toLowerCase())
                 .arg("denominator", StringHelper.normalize(ResourceGetter.with(r).getStrFromResBundle(locale, "organization.denominator")).toLowerCase())
-                .arg("letter", ResourceGetter.with(r).getChar(english.Constant.UPPERCASE_ALPHABET))
+                .arg("letter", ResourceGetter.with(r).getChar(Constant.UPPERCASE_ALPHABET))
                 .arg("number", r.getInt(1, 10))
                 .arg("year", common.Constant.STARTING_YEAR + r.getInt(-100, 101))
                 .fmt();
