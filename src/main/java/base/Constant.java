@@ -1,4 +1,4 @@
-package international;
+package base;
 
 import com.memoeslink.common.WeightedChar;
 

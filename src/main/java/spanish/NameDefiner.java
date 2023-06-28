@@ -5,7 +5,7 @@ import common.Gender;
 import common.Separator;
 import common.StringHelper;
 
-public interface NameDefiner extends common.NameDefiner {
+public interface NameDefiner extends base.NameDefiner {
 
     default String getForename(Gender gender) {
         gender = gender != null ? gender : Gender.UNDEFINED;

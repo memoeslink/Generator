@@ -75,7 +75,7 @@ public class CharHelper {
             return false;
         c = Character.toLowerCase(c);
 
-        for (char consonant : international.Constant.LOWERCASE_NON_CLUSTER_CONSONANTS) {
+        for (char consonant : base.Constant.LOWERCASE_NON_CLUSTER_CONSONANTS) {
             if (c == consonant) return true;
         }
         return false;

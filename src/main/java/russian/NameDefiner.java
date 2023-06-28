@@ -4,7 +4,7 @@ import common.CharHelper;
 import common.Gender;
 import common.StringHelper;
 
-public interface NameDefiner extends common.NameDefiner {
+public interface NameDefiner extends base.NameDefiner {
 
     default String getPatronymic(String name, Gender gender) {
         gender = gender != null ? gender : Gender.UNDEFINED;

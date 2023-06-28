@@ -8,7 +8,7 @@ import common.StringHelper;
 
 import java.util.Locale;
 
-public class NameGetter extends international.NameGetter implements NameDefiner {
+public class NameGetter extends base.NameGetter implements NameDefiner {
     private final NounGetter nounGetter;
     private final AdjectiveGetter adjectiveGetter;
 

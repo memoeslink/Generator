@@ -5,7 +5,7 @@ import common.Database;
 import common.ResourceGetter;
 import common.Separator;
 
-public class NameGetter extends international.NameGetter {
+public class NameGetter extends base.NameGetter {
 
     public NameGetter() {
         super();

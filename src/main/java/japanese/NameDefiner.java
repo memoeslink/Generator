@@ -1,6 +1,6 @@
 package japanese;
 
-public interface NameDefiner extends common.NameDefiner {
+public interface NameDefiner extends base.NameDefiner {
 
     public String getFemaleForenameSuffix();
 

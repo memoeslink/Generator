@@ -3,7 +3,7 @@ package english;
 import com.memoeslink.common.Randomizer;
 import common.ResourceGetter;
 
-public interface NameDefiner extends common.NameDefiner {
+public interface NameDefiner extends base.NameDefiner {
 
     public String getFemaleMiddleName();
 
