@@ -1,8 +1,8 @@
 package spanish;
 
-import common.CharHelper;
-import common.Separator;
-import common.StringHelper;
+import org.memoeslink.CharHelper;
+import org.memoeslink.Separator;
+import org.memoeslink.StringHelper;
 
 import java.text.Normalizer;
 import java.util.ArrayList;

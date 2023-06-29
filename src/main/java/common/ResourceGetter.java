@@ -1,6 +1,10 @@
 package common;
 
 import com.memoeslink.common.Randomizer;
+import org.memoeslink.ArrayHelper;
+import org.memoeslink.CharHelper;
+import org.memoeslink.IntegerHelper;
+import org.memoeslink.StringHelper;
 
 import java.io.*;
 import java.util.HashMap;

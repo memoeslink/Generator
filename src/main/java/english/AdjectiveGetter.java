@@ -3,7 +3,7 @@ package english;
 import com.memoeslink.common.Randomizer;
 import common.AdjectiveDefiner;
 import common.Database;
-import common.Separator;
+import org.memoeslink.Separator;
 
 public final class AdjectiveGetter extends common.AdjectiveGetter implements AdjectiveDefiner {
 

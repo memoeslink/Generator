@@ -1,6 +1,6 @@
 package english;
 
-import common.StringHelper;
+import org.memoeslink.StringHelper;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

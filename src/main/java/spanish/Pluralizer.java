@@ -1,7 +1,7 @@
 package spanish;
 
-import common.Separator;
-import common.StringHelper;
+import org.memoeslink.Separator;
+import org.memoeslink.StringHelper;
 
 import java.util.Arrays;
 import java.util.List;

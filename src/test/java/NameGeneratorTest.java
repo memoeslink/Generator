@@ -1,9 +1,9 @@
 import common.Constant;
 import common.NameGenerator;
 import common.NameType;
-import common.StringHelper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.memoeslink.StringHelper;
 
 public class NameGeneratorTest {
 

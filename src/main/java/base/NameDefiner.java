@@ -2,9 +2,14 @@ package base;
 
 import com.memoeslink.common.Randomizer;
 import com.memoeslink.common.WeightedChar;
-import common.*;
+import common.ResourceGetter;
+import common.UsernameSeparator;
 import international.NameGen;
 import net.andreinc.aleph.AlephFormatter;
+import org.memoeslink.CharHelper;
+import org.memoeslink.IntegerHelper;
+import org.memoeslink.Separator;
+import org.memoeslink.StringHelper;
 
 import java.util.Locale;
 

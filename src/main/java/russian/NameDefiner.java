@@ -1,8 +1,8 @@
 package russian;
 
-import common.CharHelper;
 import common.Gender;
-import common.StringHelper;
+import org.memoeslink.CharHelper;
+import org.memoeslink.StringHelper;
 
 public interface NameDefiner extends base.NameDefiner {
 

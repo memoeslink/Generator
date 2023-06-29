@@ -1,6 +1,6 @@
 package spanish;
 
-import common.StringHelper;
+import org.memoeslink.StringHelper;
 
 import java.util.regex.Pattern;
 

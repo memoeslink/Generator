@@ -1,7 +1,11 @@
 package spanish;
 
 import com.memoeslink.common.Randomizer;
-import common.*;
+import common.Database;
+import common.Gender;
+import common.ResourceGetter;
+import org.memoeslink.Separator;
+import org.memoeslink.StringHelper;
 
 import java.util.Locale;
 

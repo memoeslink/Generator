@@ -1,7 +1,7 @@
 package spanish;
 
 import common.Gender;
-import common.StringHelper;
+import org.memoeslink.StringHelper;
 
 public interface AdjectiveDefiner extends common.AdjectiveDefiner {
 

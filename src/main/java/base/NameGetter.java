@@ -1,8 +1,12 @@
 package base;
 
 import com.memoeslink.common.Randomizer;
-import common.*;
+import common.ResourceGetter;
+import common.TextProcessor;
 import international.Shaper;
+import org.memoeslink.IntegerHelper;
+import org.memoeslink.Separator;
+import org.memoeslink.StringHelper;
 
 public class NameGetter extends common.NameGetter implements NameDefiner {
 

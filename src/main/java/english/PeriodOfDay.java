@@ -1,6 +1,6 @@
 package english;
 
-import common.IntegerHelper;
+import org.memoeslink.IntegerHelper;
 
 import java.time.LocalTime;
 

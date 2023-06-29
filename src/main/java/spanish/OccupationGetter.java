@@ -1,7 +1,12 @@
 package spanish;
 
 import com.memoeslink.common.Randomizer;
-import common.*;
+import common.Database;
+import common.Gender;
+import common.OccupationDefiner;
+import common.ResourceGetter;
+import org.memoeslink.Separator;
+import org.memoeslink.StringHelper;
 
 public final class OccupationGetter extends common.OccupationGetter implements OccupationDefiner {
     public static final String FANTASY_CLASS_FORMAT = "%s de nivel %d";

@@ -1,5 +1,7 @@
 package common;
 
+import org.memoeslink.StringHelper;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

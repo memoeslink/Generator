@@ -2,8 +2,8 @@ package spanish;
 
 import common.Database;
 import common.Gender;
-import common.Separator;
-import common.StringHelper;
+import org.memoeslink.Separator;
+import org.memoeslink.StringHelper;
 
 public interface NameDefiner extends base.NameDefiner {
 

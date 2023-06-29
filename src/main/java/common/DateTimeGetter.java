@@ -1,6 +1,7 @@
 package common;
 
 import com.memoeslink.common.Randomizer;
+import org.memoeslink.IntegerHelper;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;

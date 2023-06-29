@@ -1,5 +1,7 @@
 package common;
 
+import org.memoeslink.StringHelper;
+
 import java.util.Locale;
 
 public class NounGenerator extends Generator {

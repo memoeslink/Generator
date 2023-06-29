@@ -3,8 +3,8 @@ package french;
 import com.memoeslink.common.Randomizer;
 import common.Database;
 import common.ResourceGetter;
-import common.Separator;
-import common.StringHelper;
+import org.memoeslink.Separator;
+import org.memoeslink.StringHelper;
 
 public class NameGetter extends base.NameGetter implements NameDefiner {
 

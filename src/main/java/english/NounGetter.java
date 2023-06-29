@@ -3,8 +3,8 @@ package english;
 import com.memoeslink.common.Randomizer;
 import common.Database;
 import common.NounDefiner;
-import common.Separator;
 import io.github.encryptorcode.pluralize.Pluralize;
+import org.memoeslink.Separator;
 
 public final class NounGetter extends common.NounGetter implements NounDefiner {
 

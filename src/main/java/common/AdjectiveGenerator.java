@@ -1,5 +1,7 @@
 package common;
 
+import org.memoeslink.StringHelper;
+
 import java.util.Locale;
 
 public class AdjectiveGenerator extends Generator {

@@ -1,5 +1,8 @@
 package common;
 
+import org.memoeslink.CharHelper;
+import org.memoeslink.StringHelper;
+
 public class Word {
     private String word;
     private String neutralForm;

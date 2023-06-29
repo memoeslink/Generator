@@ -1,8 +1,11 @@
 package spanish;
 
 import com.memoeslink.common.Randomizer;
+import common.Database;
+import common.Gender;
 import common.NounDefiner;
-import common.*;
+import org.memoeslink.Separator;
+import org.memoeslink.StringHelper;
 
 public final class NounGetter extends common.NounGetter implements NounDefiner, spanish.NounDefiner {
 

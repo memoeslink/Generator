@@ -3,7 +3,7 @@ package japanese;
 import com.memoeslink.common.Randomizer;
 import common.Database;
 import common.ResourceGetter;
-import common.Separator;
+import org.memoeslink.Separator;
 
 public class NameGetter extends base.NameGetter implements NameDefiner {
 

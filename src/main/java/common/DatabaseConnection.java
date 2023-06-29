@@ -1,5 +1,6 @@
 package common;
 
+import org.memoeslink.StringHelper;
 import org.sqlite.SQLiteConfig;
 
 import java.sql.Connection;

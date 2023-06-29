@@ -2,6 +2,7 @@ package common;
 
 import com.memoeslink.common.Randomizer;
 import international.Shaper;
+import org.memoeslink.StringHelper;
 
 public class NameGetter extends Getter implements NameDefiner {
 

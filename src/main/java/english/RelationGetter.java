@@ -2,6 +2,7 @@ package english;
 
 import com.memoeslink.common.Randomizer;
 import common.*;
+import org.memoeslink.StringHelper;
 
 public class RelationGetter extends common.RelationGetter implements RelationDefiner {
 
