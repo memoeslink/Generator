@@ -143,7 +143,7 @@ public class TextProcessor {
     public static String genderify(String s, Gender gender, WordCombination combination) {
         if (StringHelper.isNullOrBlank(s))
             return s;
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         gender = gender != null ? gender : Gender.UNDEFINED;
         combination = combination != null ? combination : WordCombination.SLASH_AND_SQUARE_BRACKETS;
         Matcher matcher = COMBINED_WORDS_PATTERN.matcher(s);
@@ -180,7 +180,7 @@ public class TextProcessor {
         TextComponent component = new TextComponent();
         component.setText(s);
         Matcher matcher = EXTENDED_WORD_PATTERN.matcher(s);
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         while (matcher.find()) {
             String replacement;

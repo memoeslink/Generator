@@ -12,7 +12,7 @@ public class TextProcessor extends common.TextProcessor {
     public static String adjustIndefiniteArticles(String s) {
         if (StringHelper.isNotNullOrBlank(s)) {
             Matcher matcher = INDEFINITE_ARTICLE_PATTERN.matcher(s);
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
 
             while (matcher.find()) {
                 String article = IndefiniteArticle.search(matcher.group("word"));
