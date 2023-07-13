@@ -37,7 +37,7 @@ public class RelationGetter extends common.RelationGetter implements RelationDef
                     StringHelper.getFirstNonEmptyElseDefault(person.getDescription(), person.getFullName()));
         }
         TextComponent textComponent = new TextComponent(relationship);
-        textComponent.setHegemonicGender(gender);
+        textComponent.addGender(gender);
         return textComponent;
     }
 
@@ -66,7 +66,7 @@ public class RelationGetter extends common.RelationGetter implements RelationDef
     public TextComponent getUnspecificRelationship(int type, Gender gender) {
         String relationship = ResourceGetter.with(r).getString(Constant.UNSPECIFIC_RELATIONSHIP, type);
         TextComponent textComponent = new TextComponent(relationship);
-        textComponent.setHegemonicGender(gender);
+        textComponent.addGender(gender);
         return textComponent;
     }
 
