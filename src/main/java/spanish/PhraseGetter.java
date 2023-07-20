@@ -19,37 +19,37 @@ public class PhraseGetter extends common.PhraseGetter implements PhraseDefiner {
 
     @Override
     public String getAgreement() {
-        return ResourceGetter.with(r).getStrFromResBundle(new Locale("es"), "phrase.common.agreement");
+        return ResourceGetter.with(r).getStrFromResBundle(Locale.of("es"), "phrase.common.agreement");
     }
 
     @Override
     public String getAmazement() {
-        return ResourceGetter.with(r).getStrFromResBundle(new Locale("es"), "phrase.common.amazement");
+        return ResourceGetter.with(r).getStrFromResBundle(Locale.of("es"), "phrase.common.amazement");
     }
 
     @Override
     public String getApology() {
-        return ResourceGetter.with(r).getStrFromResBundle(new Locale("es"), "phrase.common.apology");
+        return ResourceGetter.with(r).getStrFromResBundle(Locale.of("es"), "phrase.common.apology");
     }
 
     @Override
     public String getAppreciation() {
-        return ResourceGetter.with(r).getStrFromResBundle(new Locale("es"), "phrase.common.appreciation");
+        return ResourceGetter.with(r).getStrFromResBundle(Locale.of("es"), "phrase.common.appreciation");
     }
 
     @Override
     public String getCongratulation() {
-        return ResourceGetter.with(r).getStrFromResBundle(new Locale("es"), "phrase.common.congratulation");
+        return ResourceGetter.with(r).getStrFromResBundle(Locale.of("es"), "phrase.common.congratulation");
     }
 
     @Override
     public String getDisagreement() {
-        return ResourceGetter.with(r).getStrFromResBundle(new Locale("es"), "phrase.common.disagreement");
+        return ResourceGetter.with(r).getStrFromResBundle(Locale.of("es"), "phrase.common.disagreement");
     }
 
     @Override
     public String getFarewell() {
-        return ResourceGetter.with(r).getStrFromResBundle(new Locale("es"), "phrase.common.farewell");
+        return ResourceGetter.with(r).getStrFromResBundle(Locale.of("es"), "phrase.common.farewell");
     }
 
     @Override
@@ -60,21 +60,21 @@ public class PhraseGetter extends common.PhraseGetter implements PhraseDefiner {
 
     @Override
     public String getPetition() {
-        return ResourceGetter.with(r).getStrFromResBundle(new Locale("es"), "phrase.common.petition");
+        return ResourceGetter.with(r).getStrFromResBundle(Locale.of("es"), "phrase.common.petition");
     }
 
     @Override
     public String getInitiationQuestion() {
-        return ResourceGetter.with(r).getStrFromResBundle(new Locale("es"), "phrase.common.question.initiation");
+        return ResourceGetter.with(r).getStrFromResBundle(Locale.of("es"), "phrase.common.question.initiation");
     }
 
     @Override
     public String getInquiryQuestion() {
-        return ResourceGetter.with(r).getStrFromResBundle(new Locale("es"), "phrase.common.question.inquiry");
+        return ResourceGetter.with(r).getStrFromResBundle(Locale.of("es"), "phrase.common.question.inquiry");
     }
 
     @Override
     public String getShortAnswer() {
-        return ResourceGetter.with(r).getStrFromResBundle(new Locale("es"), "phrase.common.short.answer");
+        return ResourceGetter.with(r).getStrFromResBundle(Locale.of("es"), "phrase.common.short.answer");
     }
 }
