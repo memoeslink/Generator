@@ -44,6 +44,11 @@ public class PhraseGetter extends common.PhraseGetter implements PhraseDefiner {
     }
 
     @Override
+    public String getDoubt() {
+        return getAnyGetter().getDoubt();
+    }
+
+    @Override
     public String getFarewell() {
         return getAnyGetter().getFarewell();
     }
@@ -71,6 +76,11 @@ public class PhraseGetter extends common.PhraseGetter implements PhraseDefiner {
     @Override
     public String getShortAnswer() {
         return getAnyGetter().getShortAnswer();
+    }
+
+    @Override
+    public String getWelcome() {
+        return getAnyGetter().getWelcome();
     }
 
     public common.PhraseGetter getAnyGetter() {

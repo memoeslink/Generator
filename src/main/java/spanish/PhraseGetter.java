@@ -48,6 +48,11 @@ public class PhraseGetter extends common.PhraseGetter implements PhraseDefiner {
     }
 
     @Override
+    public String getDoubt() {
+        return ResourceGetter.with(r).getStrFromResBundle(Locale.of("es"), "phrase.common.doubt");
+    }
+
+    @Override
     public String getFarewell() {
         return ResourceGetter.with(r).getStrFromResBundle(Locale.of("es"), "phrase.common.farewell");
     }
@@ -76,5 +81,10 @@ public class PhraseGetter extends common.PhraseGetter implements PhraseDefiner {
     @Override
     public String getShortAnswer() {
         return ResourceGetter.with(r).getStrFromResBundle(Locale.of("es"), "phrase.common.short.answer");
+    }
+
+    @Override
+    public String getWelcome() {
+        return ResourceGetter.with(r).getStrFromResBundle(Locale.of("es"), "phrase.common.welcome");
     }
 }
