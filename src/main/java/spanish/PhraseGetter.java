@@ -59,8 +59,17 @@ public class PhraseGetter extends common.PhraseGetter implements PhraseDefiner {
 
     @Override
     public String getGreeting() {
-        String greeting = PeriodOfDay.get(LocalTime.now()).getGreeting();
-        return r.getBoolean() ? greeting : Pluralizer.pluralizeAll(greeting);
+        String greeting;
+
+        switch (r.getInt(3)) {
+            case 1 -> greeting = PeriodOfDay.get(LocalTime.now()).getGreeting();
+            case 2 -> {
+                greeting = PeriodOfDay.get(LocalTime.now()).getGreeting();
+                greeting = Pluralizer.pluralize(greeting);
+            }
+            default -> greeting = ResourceGetter.with(r).getStrFromResBundle(Locale.of("es"), "phrase.common.greeting");
+        }
+        return greeting;
     }
 
     @Override
