@@ -61,10 +61,10 @@ public class PhraseGetter extends common.PhraseGetter implements PhraseDefiner {
     public String getGreeting() {
         if (r.getBoolean()) {
             return switch (PeriodOfDay.get(LocalTime.now())) {
-                case MORNING -> "Good morning";
-                case AFTERNOON -> "Good afternoon";
-                case EVENING -> "Good evening";
-                case NIGHT -> "Good night";
+                case MORNING -> "Good morning.";
+                case AFTERNOON -> "Good afternoon.";
+                case EVENING -> "Good evening.";
+                case NIGHT -> "Good night.";
             };
         } else
             return ResourceGetter.with(r).getStrFromResBundle(Locale.ENGLISH, "phrase.common.greeting");

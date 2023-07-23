@@ -60,12 +60,14 @@ public class PhraseGetter extends common.PhraseGetter implements PhraseDefiner {
     @Override
     public String getGreeting() {
         if (r.getBoolean()) {
-            String greeting = switch (PeriodOfDay.get(LocalTime.now())) {
-                case MORNING -> "Buen día";
-                case AFTERNOON -> "Buena tarde";
-                case NIGHT -> "Buena noche";
+            return switch (PeriodOfDay.get(LocalTime.now())) {
+                case MORNING ->
+                        ResourceGetter.with(r).getStrFromResBundle(Locale.of("es"), "phrase.common.greeting.morning");
+                case AFTERNOON ->
+                        ResourceGetter.with(r).getStrFromResBundle(Locale.of("es"), "phrase.common.greeting.afternoon");
+                case NIGHT ->
+                        ResourceGetter.with(r).getStrFromResBundle(Locale.of("es"), "phrase.common.greeting.night");
             };
-            return r.getBoolean() ? greeting : Pluralizer.pluralize(greeting);
         } else
             return ResourceGetter.with(r).getStrFromResBundle(Locale.of("es"), "phrase.common.greeting");
     }
