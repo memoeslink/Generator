@@ -52,21 +52,13 @@ public class Database {
     }
 
     private static int countRows(String table, String query) {
-        int count = getIntValue(table);
+        int count = TABLE_COUNT_REGISTRY.getOrDefault(table, DEFAULT_INDEX);
 
         if (count != DEFAULT_INDEX)
             return count;
         count = Integer.parseInt(selectRow(query, 1));
         TABLE_COUNT_REGISTRY.put(table, count);
         return count;
-    }
-
-    private static int getIntValue(String key) {
-        Integer value = TABLE_COUNT_REGISTRY.get(key);
-
-        if (value != null)
-            return value;
-        return DEFAULT_INDEX;
     }
 
     private static String selectRow(String query, int column, Object... parameters) {
