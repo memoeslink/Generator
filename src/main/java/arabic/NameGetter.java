@@ -146,11 +146,6 @@ public class NameGetter extends base.NameGetter {
     }
 
     @Override
-    public String getFullName() {
-        return r.getBoolean() ? getMaleFullName() : getFemaleFullName();
-    }
-
-    @Override
     public String getUsername() {
         return Database.selectUsername(r.getIntInRange(1, Database.countUsernames()));
     }

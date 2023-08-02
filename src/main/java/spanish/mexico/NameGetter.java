@@ -150,9 +150,4 @@ public class NameGetter extends spanish.NameGetter {
             default -> getMaleSimpleName();
         };
     }
-
-    @Override
-    public String getFullName() {
-        return r.getBoolean() ? getMaleFullName() : getFemaleFullName();
-    }
 }
