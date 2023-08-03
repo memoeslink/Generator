@@ -1,6 +1,6 @@
 package spanish.mexico;
 
-public class Constant {
+public final class Constant {
     public static final String[] FEMALE_FORENAMES = {
             "Abigail",
             "Abril",

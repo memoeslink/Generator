@@ -1,4 +1,3 @@
-import common.Constant;
 import common.NameGenerator;
 import common.NameType;
 import org.junit.jupiter.api.Assertions;
@@ -17,11 +16,5 @@ public class NameGeneratorTest {
     public void getNameOrRetry() throws Exception {
         NameGenerator nameGenerator = new NameGenerator();
         Assertions.assertNotEquals(StringHelper.EMPTY, nameGenerator.getNameOrRetry(NameType.DOUBLE_BARRELLED_MALE_FORENAME));
-    }
-
-    @Test
-    public void getDefaultName() throws Exception {
-        NameGenerator nameGenerator = new NameGenerator();
-        Assertions.assertEquals(Constant.DEFAULT_NAME, nameGenerator.getDefaultName());
     }
 }

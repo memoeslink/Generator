@@ -146,11 +146,6 @@ public class NameGetter extends base.NameGetter implements NameDefiner {
     }
 
     @Override
-    public String getUsername() {
-        return Database.selectUsername(r.getIntInRange(1, Database.countUsernames()));
-    }
-
-    @Override
     public String getFemaleForenameSuffix() {
         return Separator.HYPHEN.getCharacter() +
                 ResourceGetter.with(r).getString(Constant.FEMALE_FORENAME_SUFFIXES);

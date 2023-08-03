@@ -173,11 +173,6 @@ public class NameGetter extends base.NameGetter implements NameDefiner {
     }
 
     @Override
-    public String getUsername() {
-        return Database.selectUsername(r.getIntInRange(1, Database.countUsernames()));
-    }
-
-    @Override
     public String getDualFemaleForename() {
         return switch (r.getInt(2)) {
             case 1 -> getDoubleBarrelledFemaleForename();

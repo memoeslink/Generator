@@ -1,0 +1,12 @@
+package common;
+
+public enum UsernameType {
+    EMPTY,
+    COMMON_USERNAME,
+    COMPOSITE_USERNAME,
+    DERIVED_USERNAME,
+    PATTERN_USERNAME,
+    ADMIN_USERNAME,
+    ANONYMOUS_NAME,
+    ANONYMOUS_ANIMAL
+}

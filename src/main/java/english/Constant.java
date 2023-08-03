@@ -1,6 +1,6 @@
 package english;
 
-public class Constant {
+public final class Constant {
     public static final String ALPHABET = "abcdefghijklmnopqrstuvwxyz";
     public static final String LOWERCASE_ALPHABET = "abcdefghijklmnopqrstuvwxyz";
     public static final String UPPERCASE_ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
