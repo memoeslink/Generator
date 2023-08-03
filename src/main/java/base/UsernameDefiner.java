@@ -81,7 +81,7 @@ public interface UsernameDefiner extends common.UsernameDefiner {
         b = StringHelper.normalizeAlpha(b).toLowerCase();
         String pattern = ResourceGetter.with(r).getString(Constant.USERNAME_PATTERNS);
         Matcher matcher = COMPONENT_PATTERN.matcher(pattern);
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         while (matcher.find()) {
             String replacement = Database.DEFAULT_VALUE;
