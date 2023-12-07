@@ -2,7 +2,8 @@ package international;
 
 import com.memoeslink.common.Randomizer;
 import common.Database;
-import common.ResourceGetter;
+import common.NameGetterFactory;
+import common.NameMapper;
 import org.memoeslink.Separator;
 
 public class NameGetter extends base.NameGetter {
@@ -17,137 +18,137 @@ public class NameGetter extends base.NameGetter {
 
     @Override
     public String getFemaleForename() {
-        return getAnyGetter().getFemaleForename();
+        return getAnyGetter(new Exception().getStackTrace()[0].getMethodName()).getFemaleForename();
     }
 
     @Override
     public String getFemaleForename(int id) {
-        return getAnyGetter().getFemaleForename(id);
+        return getAnyGetter(new Exception().getStackTrace()[0].getMethodName()).getFemaleForename(id);
     }
 
     @Override
     public String getMaleForename() {
-        return getAnyGetter().getMaleForename();
+        return getAnyGetter(new Exception().getStackTrace()[0].getMethodName()).getMaleForename();
     }
 
     @Override
     public String getMaleForename(int id) {
-        return getAnyGetter().getMaleForename(id);
+        return getAnyGetter(new Exception().getStackTrace()[0].getMethodName()).getMaleForename(id);
     }
 
     @Override
     public String getFemalePatronymic() {
-        return getAnyGetter().getFemalePatronymic();
+        return getAnyGetter(new Exception().getStackTrace()[0].getMethodName()).getFemalePatronymic();
     }
 
     @Override
     public String getFemalePatronymic(int id) {
-        return getAnyGetter().getFemalePatronymic(id);
+        return getAnyGetter(new Exception().getStackTrace()[0].getMethodName()).getFemalePatronymic(id);
     }
 
     @Override
     public String getMalePatronymic() {
-        return getAnyGetter().getMalePatronymic();
+        return getAnyGetter(new Exception().getStackTrace()[0].getMethodName()).getMalePatronymic();
     }
 
     @Override
     public String getMalePatronymic(int id) {
-        return getAnyGetter().getMalePatronymic(id);
+        return getAnyGetter(new Exception().getStackTrace()[0].getMethodName()).getMalePatronymic(id);
     }
 
     @Override
-    public String getDoubleBarrelledFemaleForename() {
-        return getAnyGetter().getDoubleBarrelledFemaleForename();
+    public String getFemaleDoubleBarrelledForename() {
+        return getAnyGetter(new Exception().getStackTrace()[0].getMethodName()).getFemaleDoubleBarrelledForename();
     }
 
     @Override
-    public String getDoubleBarrelledFemaleForename(int startId, int endId) {
-        return getAnyGetter().getDoubleBarrelledFemaleForename(startId, endId);
+    public String getFemaleDoubleBarrelledForename(int startId, int endId) {
+        return getAnyGetter(new Exception().getStackTrace()[0].getMethodName()).getFemaleDoubleBarrelledForename(startId, endId);
     }
 
     @Override
-    public String getDoubleBarrelledMaleForename() {
-        return getAnyGetter().getDoubleBarrelledMaleForename();
+    public String getMaleDoubleBarrelledForename() {
+        return getAnyGetter(new Exception().getStackTrace()[0].getMethodName()).getMaleDoubleBarrelledForename();
     }
 
     @Override
-    public String getDoubleBarrelledMaleForename(int startId, int endId) {
-        return getAnyGetter().getDoubleBarrelledMaleForename(startId, endId);
+    public String getMaleDoubleBarrelledForename(int startId, int endId) {
+        return getAnyGetter(new Exception().getStackTrace()[0].getMethodName()).getMaleDoubleBarrelledForename(startId, endId);
     }
 
     @Override
-    public String getDoubleFemaleForename() {
-        return getAnyGetter().getDoubleFemaleForename();
+    public String getFemaleDoubleForename() {
+        return getAnyGetter(new Exception().getStackTrace()[0].getMethodName()).getFemaleDoubleForename();
     }
 
     @Override
-    public String getDoubleFemaleForename(int startId, int endId) {
-        return getAnyGetter().getDoubleFemaleForename(startId, endId);
+    public String getFemaleDoubleForename(int startId, int endId) {
+        return getAnyGetter(new Exception().getStackTrace()[0].getMethodName()).getFemaleDoubleForename(startId, endId);
     }
 
     @Override
-    public String getDoubleMaleForename() {
-        return getAnyGetter().getDoubleMaleForename();
+    public String getMaleDoubleForename() {
+        return getAnyGetter(new Exception().getStackTrace()[0].getMethodName()).getMaleDoubleForename();
     }
 
     @Override
-    public String getDoubleMaleForename(int startId, int endId) {
-        return getAnyGetter().getDoubleMaleForename(startId, endId);
+    public String getMaleDoubleForename(int startId, int endId) {
+        return getAnyGetter(new Exception().getStackTrace()[0].getMethodName()).getMaleDoubleForename(startId, endId);
     }
 
     @Override
     public String getGivenName() {
-        return getAnyGetter().getGivenName();
+        return getAnyGetter(new Exception().getStackTrace()[0].getMethodName()).getGivenName();
     }
 
     @Override
     public String getFemaleGivenName() {
-        return getAnyGetter().getFemaleGivenName();
+        return getAnyGetter(new Exception().getStackTrace()[0].getMethodName()).getFemaleGivenName();
     }
 
     @Override
     public String getMaleGivenName() {
-        return getAnyGetter().getMaleGivenName();
+        return getAnyGetter(new Exception().getStackTrace()[0].getMethodName()).getMaleGivenName();
     }
 
     @Override
     public String getSurname() {
-        return getAnyGetter().getSurname();
+        return getAnyGetter(new Exception().getStackTrace()[0].getMethodName()).getSurname();
     }
 
     @Override
     public String getSurname(int id) {
-        return getAnyGetter().getSurname(id);
+        return getAnyGetter(new Exception().getStackTrace()[0].getMethodName()).getSurname(id);
     }
 
     @Override
     public String getDualSurname() {
-        return getAnyGetter().getDualSurname();
+        return getAnyGetter(new Exception().getStackTrace()[0].getMethodName()).getDualSurname();
     }
 
     @Override
     public String getDualSurname(int startId, int endId) {
-        return getAnyGetter().getDualSurname(startId, endId);
+        return getAnyGetter(new Exception().getStackTrace()[0].getMethodName()).getDualSurname(startId, endId);
     }
 
     @Override
     public String getFemaleSimpleName() {
-        return getAnyGetter().getFemaleSimpleName();
+        return getAnyGetter(new Exception().getStackTrace()[0].getMethodName()).getFemaleSimpleName();
     }
 
     @Override
     public String getFemaleSimpleName(int forenameId, int surnameId) {
-        return getAnyGetter().getFemaleSimpleName(forenameId, surnameId);
+        return getAnyGetter(new Exception().getStackTrace()[0].getMethodName()).getFemaleSimpleName(forenameId, surnameId);
     }
 
     @Override
     public String getMaleSimpleName() {
-        return getAnyGetter().getMaleSimpleName();
+        return getAnyGetter(new Exception().getStackTrace()[0].getMethodName()).getMaleSimpleName();
     }
 
     @Override
     public String getMaleSimpleName(int forenameId, int surnameId) {
-        return getAnyGetter().getMaleSimpleName(forenameId, surnameId);
+        return getAnyGetter(new Exception().getStackTrace()[0].getMethodName()).getMaleSimpleName(forenameId, surnameId);
     }
 
     @Override
@@ -157,12 +158,12 @@ public class NameGetter extends base.NameGetter {
 
     @Override
     public String getFemaleFullName() {
-        return getAnyGetter().getFemaleFullName();
+        return getAnyGetter(new Exception().getStackTrace()[0].getMethodName()).getFemaleFullName();
     }
 
     @Override
     public String getMaleFullName() {
-        return getAnyGetter().getMaleFullName();
+        return getAnyGetter(new Exception().getStackTrace()[0].getMethodName()).getMaleFullName();
     }
 
     @Override
@@ -178,20 +179,8 @@ public class NameGetter extends base.NameGetter {
         };
     }
 
-    public common.NameGetter getAnyGetter() {
-        return switch (ResourceGetter.with(r).getString(common.Constant.SUPPORTED_LOCALES)) {
-            case "ar" -> new arabic.NameGetter(r);
-            case "de" -> new german.NameGetter(r);
-            case "en" -> new english.NameGetter(r);
-            case "es" -> new spanish.NameGetter(r);
-            case "es_MX" -> new spanish.mexico.NameGetter(r);
-            case "fr" -> new french.NameGetter(r);
-            case "it" -> new italian.NameGetter(r);
-            case "hi" -> new hindi.NameGetter(r);
-            case "ja" -> new japanese.NameGetter(r);
-            case "pt" -> new portuguese.NameGetter(r);
-            case "ru" -> new russian.NameGetter(r);
-            default -> new common.NameGetter(r);
-        };
+    public common.NameGetter getAnyGetter(String methodName) {
+        String locale = r.getElement(NameMapper.getNameMapping().get(methodName));
+        return NameGetterFactory.getNameGetter(locale);
     }
 }

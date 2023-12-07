@@ -41,42 +41,42 @@ public class NameGetter extends base.NameGetter implements NameDefiner {
     }
 
     @Override
-    public String getDoubleBarrelledFemaleForename() {
+    public String getFemaleDoubleBarrelledForename() {
         return getFemaleForename() + Separator.HYPHEN.getCharacter() + getFemaleForename();
     }
 
     @Override
-    public String getDoubleBarrelledFemaleForename(int startId, int endId) {
+    public String getFemaleDoubleBarrelledForename(int startId, int endId) {
         return getFemaleForename(startId) + Separator.HYPHEN.getCharacter() + getFemaleForename(endId);
     }
 
     @Override
-    public String getDoubleBarrelledMaleForename() {
+    public String getMaleDoubleBarrelledForename() {
         return getMaleForename() + Separator.HYPHEN.getCharacter() + getMaleForename();
     }
 
     @Override
-    public String getDoubleBarrelledMaleForename(int startId, int endId) {
+    public String getMaleDoubleBarrelledForename(int startId, int endId) {
         return getMaleForename(startId) + Separator.HYPHEN.getCharacter() + getMaleForename(endId);
     }
 
     @Override
-    public String getDoubleFemaleForename() {
+    public String getFemaleDoubleForename() {
         return getFemaleForename() + Separator.SPACE.getCharacter() + getFemaleForename();
     }
 
     @Override
-    public String getDoubleFemaleForename(int startId, int endId) {
+    public String getFemaleDoubleForename(int startId, int endId) {
         return getFemaleForename(startId) + Separator.SPACE.getCharacter() + getFemaleForename(endId);
     }
 
     @Override
-    public String getDoubleMaleForename() {
+    public String getMaleDoubleForename() {
         return getMaleForename() + Separator.SPACE.getCharacter() + getMaleForename();
     }
 
     @Override
-    public String getDoubleMaleForename(int startId, int endId) {
+    public String getMaleDoubleForename(int startId, int endId) {
         return getMaleForename(startId) + Separator.SPACE.getCharacter() + getMaleForename(endId);
     }
 
@@ -88,8 +88,8 @@ public class NameGetter extends base.NameGetter implements NameDefiner {
     @Override
     public String getFemaleGivenName() {
         return switch (r.getInt(3)) {
-            case 1 -> getDoubleBarrelledFemaleForename();
-            case 2 -> getDoubleFemaleForename();
+            case 1 -> getFemaleDoubleBarrelledForename();
+            case 2 -> getFemaleDoubleForename();
             default -> getFemaleForename();
         };
     }
@@ -97,8 +97,8 @@ public class NameGetter extends base.NameGetter implements NameDefiner {
     @Override
     public String getMaleGivenName() {
         return switch (r.getInt(3)) {
-            case 1 -> getDoubleBarrelledMaleForename();
-            case 2 -> getDoubleMaleForename();
+            case 1 -> this.getMaleDoubleBarrelledForename();
+            case 2 -> this.getMaleDoubleForename();
             default -> getMaleForename();
         };
     }
@@ -175,32 +175,32 @@ public class NameGetter extends base.NameGetter implements NameDefiner {
     @Override
     public String getDualFemaleForename() {
         return switch (r.getInt(2)) {
-            case 1 -> getDoubleBarrelledFemaleForename();
-            default -> getDoubleFemaleForename();
+            case 1 -> getFemaleDoubleBarrelledForename();
+            default -> getFemaleDoubleForename();
         };
     }
 
     @Override
     public String getDualFemaleForename(int startId, int endInd) {
         return switch (r.getInt(2)) {
-            case 1 -> getDoubleBarrelledFemaleForename(startId, endInd);
-            default -> getDoubleFemaleForename(startId, endInd);
+            case 1 -> getFemaleDoubleBarrelledForename(startId, endInd);
+            default -> getFemaleDoubleForename(startId, endInd);
         };
     }
 
     @Override
     public String getDualMaleForename() {
         return switch (r.getInt(2)) {
-            case 1 -> getDoubleBarrelledMaleForename();
-            default -> getDoubleMaleForename();
+            case 1 -> this.getMaleDoubleBarrelledForename();
+            default -> this.getMaleDoubleForename();
         };
     }
 
     @Override
     public String getDualMaleForename(int startId, int endInd) {
         return switch (r.getInt(2)) {
-            case 1 -> getDoubleBarrelledMaleForename(startId, endInd);
-            default -> getDoubleMaleForename(startId, endInd);
+            case 1 -> getMaleDoubleBarrelledForename(startId, endInd);
+            default -> getMaleDoubleForename(startId, endInd);
         };
     }
 
