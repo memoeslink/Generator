@@ -258,12 +258,12 @@ public class NameGetter extends common.NameGetter implements NameDefiner {
 
     @Override
     public String getMaleMarkovianFullName() {
-        return this.getMaleMarkovianForename() + Separator.SPACE.getCharacter() + getMarkovianFamilyName();
+        return getMaleMarkovianForename() + Separator.SPACE.getCharacter() + getMarkovianFamilyName();
     }
 
     @Override
     public String getMarkovianFullName() {
-        return r.getBoolean() ? this.getMaleMarkovianFullName() : getFemaleMarkovianFullName();
+        return r.getBoolean() ? getMaleMarkovianFullName() : getFemaleMarkovianFullName();
     }
 
     @Override

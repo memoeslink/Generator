@@ -153,7 +153,7 @@ public class NameGetter extends base.NameGetter {
 
     @Override
     public String getSimpleName() {
-        return r.getBoolean() ? getMaleSimpleName() : getFemaleSimpleName();
+        return getAnyGetter(new Exception().getStackTrace()[0].getMethodName()).getSimpleName();
     }
 
     @Override
@@ -181,6 +181,6 @@ public class NameGetter extends base.NameGetter {
 
     public common.NameGetter getAnyGetter(String methodName) {
         String locale = r.getElement(NameMapper.getNameMapping().get(methodName));
-        return NameGetterFactory.getNameGetter(locale);
+        return NameGetterFactory.getNameGetter(locale, r);
     }
 }

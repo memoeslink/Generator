@@ -104,6 +104,7 @@ public final class OccupationGetter extends common.OccupationGetter implements O
         return getJobPosition();
     }
 
+    @Override
     public String getSimpleFantasyClass() {
         String fantasyClass = ResourceGetter.with(r).getSplitString(Constant.CLASSES);
         return StringHelper.capitalizeFirst(fantasyClass);

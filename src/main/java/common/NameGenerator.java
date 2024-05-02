@@ -1,7 +1,5 @@
 package common;
 
-import org.memoeslink.StringHelper;
-
 import java.util.Locale;
 
 public class NameGenerator extends Generator {
@@ -15,7 +13,7 @@ public class NameGenerator extends Generator {
     }
 
     public String getName(NameType nameType) {
-        NameGetter getter = getGetter();
+        NameGetter getter = NameGetterFactory.getNameGetter(locale, r);
         nameType = nameType != null ? nameType : NameType.EMPTY;
 
         return switch (nameType) {
@@ -77,36 +75,14 @@ public class NameGenerator extends Generator {
     }
 
     public String getGivenName() {
-        return getGetter().getGivenName();
+        return NameGetterFactory.getNameGetter(locale, r).getGivenName();
     }
 
     public String getSimpleName() {
-        return getGetter().getSimpleName();
+        return NameGetterFactory.getNameGetter(locale, r).getSimpleName();
     }
 
     public String getFullName() {
-        return getGetter().getFullName();
-    }
-
-    private NameGetter getGetter() {
-        if (StringHelper.isNullOrEmpty(locale.getLanguage()) ||
-                locale.getLanguage().equals("xx") || locale.getCountry().equals("XX"))
-            return new international.NameGetter(r);
-        else {
-            return switch (locale.getLanguage()) {
-                case "ar" -> new arabic.NameGetter(r);
-                case "de" -> new german.NameGetter(r);
-                case "en" -> new english.NameGetter(r);
-                case "es" -> locale.getCountry().equals("MX") ? new spanish.mexico.NameGetter(r) :
-                        new spanish.NameGetter(r);
-                case "fr" -> new french.NameGetter(r);
-                case "it" -> new italian.NameGetter(r);
-                case "hi" -> new hindi.NameGetter(r);
-                case "ja" -> new japanese.NameGetter(r);
-                case "pt" -> new portuguese.NameGetter(r);
-                case "ru" -> new russian.NameGetter(r);
-                default -> new international.NameGetter(r);
-            };
-        }
+        return NameGetterFactory.getNameGetter(locale, r).getFullName();
     }
 }

@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.function.Supplier;
 
 public class Database {
-    public static final int DEFAULT_INDEX = -1;
     public static final String DEFAULT_VALUE = "?";
     public static final String ID_PREFIX = "ID";
     public static final String TABLE_ENGLISH_ADJECTIVES = "EnglishAdjectives";
@@ -52,9 +51,9 @@ public class Database {
     }
 
     private static int countRows(String table, String query) {
-        int count = TABLE_COUNT_REGISTRY.getOrDefault(table, DEFAULT_INDEX);
+        int count = TABLE_COUNT_REGISTRY.getOrDefault(table, -1);
 
-        if (count != DEFAULT_INDEX)
+        if (count != -1)
             return count;
         count = Integer.parseInt(selectRow(query, 1));
         TABLE_COUNT_REGISTRY.put(table, count);

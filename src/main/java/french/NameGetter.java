@@ -20,7 +20,7 @@ public class NameGetter extends base.NameGetter implements NameDefiner {
     public String getFemaleForename() {
         String name = r.getBoolean() ? ResourceGetter.with(r).getString(Constant.FEMALE_FORENAMES) :
                 getFemaleForename(r.getIntInRange(1, Database.countFrenchFemaleNames()));
-        return !StringHelper.containsAny(name, " ", "-") ? name : getFemaleForename();
+        return !StringHelper.hasAny(name, " ", "-") ? name : getFemaleForename();
     }
 
     @Override
@@ -32,7 +32,7 @@ public class NameGetter extends base.NameGetter implements NameDefiner {
     public String getMaleForename() {
         String name = r.getBoolean() ? ResourceGetter.with(r).getString(Constant.MALE_FORENAMES) :
                 getMaleForename(r.getIntInRange(1, Database.countFrenchMaleNames()));
-        return !StringHelper.containsAny(name, " ", "-") ? name : getMaleForename();
+        return !StringHelper.hasAny(name, " ", "-") ? name : getMaleForename();
     }
 
     @Override
@@ -97,8 +97,8 @@ public class NameGetter extends base.NameGetter implements NameDefiner {
     @Override
     public String getMaleGivenName() {
         return switch (r.getInt(3)) {
-            case 1 -> this.getMaleDoubleBarrelledForename();
-            case 2 -> this.getMaleDoubleForename();
+            case 1 -> getMaleDoubleBarrelledForename();
+            case 2 -> getMaleDoubleForename();
             default -> getMaleForename();
         };
     }
@@ -191,8 +191,8 @@ public class NameGetter extends base.NameGetter implements NameDefiner {
     @Override
     public String getDualMaleForename() {
         return switch (r.getInt(2)) {
-            case 1 -> this.getMaleDoubleBarrelledForename();
-            default -> this.getMaleDoubleForename();
+            case 1 -> getMaleDoubleBarrelledForename();
+            default -> getMaleDoubleForename();
         };
     }
 

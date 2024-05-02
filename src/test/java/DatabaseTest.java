@@ -7,7 +7,7 @@ public class DatabaseTest {
     @Test
     public void countTableRows() throws Exception {
         int count = Database.countTableRows(Database.TABLE_NAMES);
-        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(-1, count);
     }
 
     @Test
@@ -20,7 +20,7 @@ public class DatabaseTest {
     @Test
     public void countEnglishAdjectives() throws Exception {
         int count = Database.countEnglishAdjectives();
-        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(-1, count);
     }
 
     @Test
@@ -33,7 +33,7 @@ public class DatabaseTest {
     @Test
     public void countEnglishFemaleNames() throws Exception {
         int count = Database.countEnglishFemaleNames();
-        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(-1, count);
     }
 
     @Test
@@ -46,7 +46,7 @@ public class DatabaseTest {
     @Test
     public void countEnglishMaleNames() throws Exception {
         int count = Database.countEnglishMaleNames();
-        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(-1, count);
     }
 
     @Test
@@ -59,7 +59,7 @@ public class DatabaseTest {
     @Test
     public void countEnglishNouns() throws Exception {
         int count = Database.countEnglishNouns();
-        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(-1, count);
     }
 
     @Test
@@ -72,7 +72,7 @@ public class DatabaseTest {
     @Test
     public void countEnglishOccupations() throws Exception {
         int count = Database.countEnglishOccupations();
-        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(-1, count);
     }
 
     @Test
@@ -85,7 +85,7 @@ public class DatabaseTest {
     @Test
     public void countEnglishPhonetics() throws Exception {
         int count = Database.countEnglishPhonetics();
-        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(-1, count);
     }
 
     @Test
@@ -105,7 +105,7 @@ public class DatabaseTest {
     @Test
     public void countEnglishSurnames() throws Exception {
         int count = Database.countEnglishSurnames();
-        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(-1, count);
     }
 
     @Test
@@ -118,7 +118,7 @@ public class DatabaseTest {
     @Test
     public void countHispanicFemaleNames() throws Exception {
         int count = Database.countHispanicFemaleNames();
-        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(-1, count);
     }
 
     @Test
@@ -131,7 +131,7 @@ public class DatabaseTest {
     @Test
     public void countHispanicMaleNames() throws Exception {
         int count = Database.countHispanicMaleNames();
-        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(-1, count);
     }
 
     @Test
@@ -144,7 +144,7 @@ public class DatabaseTest {
     @Test
     public void countSpanishNouns() throws Exception {
         int count = Database.countSpanishNouns();
-        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(-1, count);
     }
 
     @Test
@@ -157,7 +157,7 @@ public class DatabaseTest {
     @Test
     public void countSpanishOccupations() throws Exception {
         int count = Database.countSpanishOccupations();
-        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(-1, count);
     }
 
     @Test
@@ -170,7 +170,7 @@ public class DatabaseTest {
     @Test
     public void countSpanishPluralAdjectives() throws Exception {
         int count = Database.countSpanishPluralAdjectives();
-        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(-1, count);
     }
 
     @Test
@@ -183,7 +183,7 @@ public class DatabaseTest {
     @Test
     public void countSpanishSingularAdjectives() throws Exception {
         int count = Database.countSpanishSingularAdjectives();
-        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(-1, count);
     }
 
     @Test
@@ -196,7 +196,7 @@ public class DatabaseTest {
     @Test
     public void countHispanicSurnames() throws Exception {
         int count = Database.countHispanicSurnames();
-        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(-1, count);
     }
 
     @Test
@@ -209,7 +209,7 @@ public class DatabaseTest {
     @Test
     public void countFamilyNames() throws Exception {
         int count = Database.countFamilyNames();
-        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(-1, count);
     }
 
     @Test
@@ -222,7 +222,7 @@ public class DatabaseTest {
     @Test
     public void countNames() throws Exception {
         int count = Database.countNames();
-        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(-1, count);
     }
 
     @Test
@@ -235,7 +235,7 @@ public class DatabaseTest {
     @Test
     public void countCommonNouns() throws Exception {
         int count = Database.countCommonNouns();
-        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(-1, count);
     }
 
     @Test
@@ -248,7 +248,7 @@ public class DatabaseTest {
     @Test
     public void countUsernames() throws Exception {
         int count = Database.countUsernames();
-        Assertions.assertNotEquals(Database.DEFAULT_INDEX, count);
+        Assertions.assertNotEquals(-1, count);
     }
 
     @Test

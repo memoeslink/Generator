@@ -100,7 +100,7 @@ public class NameGetter extends base.NameGetter implements NameDefiner {
     @Override
     public String getMaleGivenName() {
         return switch (r.getInt(4)) {
-            case 1 -> this.getMaleDoubleBarrelledForename();
+            case 1 -> getMaleDoubleBarrelledForename();
             case 2 -> getMaleForename() + Separator.SPACE.getCharacter() + getMaleMiddleName();
             case 3 -> getMaleForename() + Separator.SPACE.getCharacter() + getMiddleNameInitial();
             default -> getMaleForename();
@@ -179,7 +179,7 @@ public class NameGetter extends base.NameGetter implements NameDefiner {
     public String getMaleFullName() {
         return switch (r.getInt(8)) {
             case 1 -> getMaleForename() + Separator.SPACE.getCharacter() + getDualSurname();
-            case 2 -> (this.getMaleDoubleBarrelledForename() + Separator.SPACE.getCharacter() +
+            case 2 -> (getMaleDoubleBarrelledForename() + Separator.SPACE.getCharacter() +
                     getSurname());
             case 3 -> (getMaleForename() + Separator.SPACE.getCharacter() +
                     getMaleMiddleName() + Separator.SPACE.getCharacter() +

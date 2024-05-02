@@ -80,6 +80,10 @@ public class PersonGenerator extends Generator {
                 .build();
     }
 
+    public Person getAnonymousPerson() {
+        return getAnonymousPerson(r.getElement(Gender.values()));
+    }
+
     public Person getAnonymousPerson(Gender gender) {
         gender = gender != null ? gender : Gender.UNDEFINED;
         String username;
