@@ -7,6 +7,8 @@ import org.memoeslink.Separator;
 import org.memoeslink.StringHelper;
 
 import java.util.Locale;
+import java.util.Map;
+import java.util.function.Supplier;
 
 public class UsernameGetter extends international.UsernameGetter {
     private final NameGetter nameGetter;
@@ -68,7 +70,32 @@ public class UsernameGetter extends international.UsernameGetter {
 
     @Override
     public String getPatternUsername() {
-        return getPatternUsername(r.getBoolean() ? nameGetter.getMaleForename() : nameGetter.getFemaleForename(), nameGetter.getSurname(), Locale.of("es"), r);
+        Map<String, Supplier<String>> patternMapping = Map.of(
+                "forename", () -> nameGetter.getForename().toLowerCase(),
+                "surname", () -> nameGetter.getSurname().toLowerCase(),
+                "job", () -> {
+                    String job = ResourceGetter.with(r).getStrFromResBundle(Locale.of("es"), "job.position");
+                    return StringHelper.normalize(job).toLowerCase();
+                },
+                "denominator", () -> {
+                    String denominator = ResourceGetter.with(r).getStrFromResBundle(Locale.of("es"), "organization.denominator");
+                    return StringHelper.normalize(denominator).toLowerCase();
+                },
+                "letter", () -> String.valueOf(ResourceGetter.with(r).getChar(base.Constant.UPPERCASE_ALPHABET)),
+                "number", () -> String.valueOf(r.getInt(1, 10)),
+                "year", () -> {
+                    int year = common.Constant.STARTING_YEAR + r.getInt(-100, 101);
+                    return String.valueOf(year);
+                }
+        );
+        return getPatternUsername(ResourceGetter.with(r).getString(base.Constant.USERNAME_PATTERNS), patternMapping);
+    }
+
+    @Override
+    public String getWordBasedUsername() {
+        String start = Database.selectSpanishWord(r.getIntInRange(1, Database.countSpanishWords()));
+        String end = r.getBoolean() ? Database.selectSpanishWord(r.getIntInRange(1, Database.countSpanishWords())) : "";
+        return getWordBasedUsername(r, start, end);
     }
 
     @Override

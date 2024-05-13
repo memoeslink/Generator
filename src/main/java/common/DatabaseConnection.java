@@ -19,8 +19,7 @@ public class DatabaseConnection {
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection("jdbc:sqlite::resource:" + DATABASE_NAME, config.toProperties());
             System.out.println("Database " + StringHelper.defaultOnBlank(DATABASE_NAME) + " was successfully connected.");
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
+        } catch (ClassNotFoundException | SQLException ignored) {
         }
         return connection;
     }

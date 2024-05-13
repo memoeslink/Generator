@@ -24,17 +24,27 @@
         <dependency>
             <groupId>io.github.memoeslink</groupId>
             <artifactId>randomizer</artifactId>
-            <version>2023.1.5</version>
+            <version>2024.0.0</version>
         </dependency>
         <dependency>
             <groupId>io.github.memoeslink</groupId>
             <artifactId>helper</artifactId>
-            <version>1.2.0</version>
+            <version>1.2.2</version>
         </dependency>
         <dependency>
             <groupId>net.andreinc</groupId>
             <artifactId>aleph</artifactId>
             <version>0.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.13</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>2.0.13</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>

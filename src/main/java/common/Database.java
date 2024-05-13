@@ -1,5 +1,6 @@
 package common;
 
+import org.memoeslink.IntegerHelper;
 import org.memoeslink.StringHelper;
 
 import java.sql.Connection;
@@ -19,10 +20,13 @@ public class Database {
     public static final String TABLE_ENGLISH_OCCUPATIONS = "EnglishOccupations";
     public static final String TABLE_ENGLISH_PHONETICS = "EnglishPhonetics";
     public static final String TABLE_ENGLISH_SURNAMES = "EnglishSurnames";
+    public static final String TABLE_ENGLISH_WORDS = "EnglishWords";
     public static final String TABLE_EMOJIS = "Emojis";
     public static final String TABLE_FORENAMES = "Forenames";
     public static final String TABLE_FRENCH_FEMALE_NAMES = "FrenchFemaleNames";
     public static final String TABLE_FRENCH_MALE_NAMES = "FrenchMaleNames";
+    public static final String TABLE_FRENCH_WORDS = "FrenchWords";
+    public static final String TABLE_GERMAN_WORDS = "GermanWords";
     public static final String TABLE_RUSSIAN_FEMALE_NAMES = "RussianFemaleNames";
     public static final String TABLE_RUSSIAN_MALE_NAMES = "RussianMaleNames";
     public static final String TABLE_SPANISH_COMPOUND_SURNAMES = "SpanishCompoundSurnames";
@@ -33,6 +37,7 @@ public class Database {
     public static final String TABLE_SPANISH_PLURAL_ADJECTIVES = "SpanishPluralAdjectives";
     public static final String TABLE_SPANISH_SINGULAR_ADJECTIVES = "SpanishSingularAdjectives";
     public static final String TABLE_SPANISH_SURNAMES = "SpanishSurnames";
+    public static final String TABLE_SPANISH_WORDS = "SpanishWords";
     public static final String TABLE_FAMILY_NAMES = "FamilyNames";
     public static final String TABLE_NAMES = "Names";
     public static final String TABLE_NOUNS = "Nouns";
@@ -47,20 +52,17 @@ public class Database {
     }
 
     private static int countRows(String table) {
-        return countRows(table, "SELECT COUNT(*) FROM " + table);
-    }
-
-    private static int countRows(String table, String query) {
         int count = TABLE_COUNT_REGISTRY.getOrDefault(table, -1);
 
-        if (count != -1)
-            return count;
-        count = Integer.parseInt(selectRow(query, 1));
+        if (count != -1) return count;
+        count = IntegerHelper.tryParse(selectRow("SELECT COUNT(*) FROM " + table, 1), -1);
         TABLE_COUNT_REGISTRY.put(table, count);
         return count;
     }
 
     private static String selectRow(String query, int column, Object... parameters) {
+        if (StringHelper.isNullOrEmpty(query)) return DEFAULT_VALUE;
+
         if (connection == null) connection = DatabaseConnection.connect();
         PreparedStatement statement = null;
         ResultSet r = null;
@@ -70,28 +72,21 @@ public class Database {
             int n = 1;
 
             for (Object parameter : parameters) {
-                if (parameter == null)
-                    statement.setNull(n, 0);
-                else if (parameter instanceof Integer)
-                    statement.setInt(n, (Integer) parameter);
-                else if (parameter instanceof String)
-                    statement.setString(n, (String) parameter);
-                else if (parameter instanceof Boolean)
-                    statement.setBoolean(n, (Boolean) parameter);
-                else
-                    statement.setNull(n, 0);
+                if (parameter == null) statement.setNull(n, 0);
+                else if (parameter instanceof Integer) statement.setInt(n, (Integer) parameter);
+                else if (parameter instanceof String) statement.setString(n, (String) parameter);
+                else if (parameter instanceof Boolean) statement.setBoolean(n, (Boolean) parameter);
+                else statement.setNull(n, 0);
                 n++;
             }
             r = statement.executeQuery();
             return r.getString(column);
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException ignored) {
         } finally {
             try {
                 if (r != null) r.close();
                 if (statement != null) statement.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
+            } catch (SQLException ignored) {
             }
         }
         return DEFAULT_VALUE;
@@ -102,8 +97,7 @@ public class Database {
     }
 
     public String selectRecord(String table) {
-        if (StringHelper.isNullOrBlank(table))
-            return DEFAULT_VALUE;
+        if (StringHelper.isNullOrBlank(table)) return DEFAULT_VALUE;
 
         if (TABLE_MAPPING.isEmpty()) {
             TABLE_MAPPING.put(TABLE_ENGLISH_ADJECTIVES, Database::selectEnglishAdjective);
@@ -113,10 +107,13 @@ public class Database {
             TABLE_MAPPING.put(TABLE_ENGLISH_OCCUPATIONS, Database::selectEnglishOccupation);
             TABLE_MAPPING.put(TABLE_ENGLISH_PHONETICS, Database::selectEnglishPhoneticScript);
             TABLE_MAPPING.put(TABLE_ENGLISH_SURNAMES, Database::selectEnglishSurname);
-            TABLE_MAPPING.put(TABLE_EMOJIS, Database::selectEmojis);
+            TABLE_MAPPING.put(TABLE_ENGLISH_WORDS, Database::selectEnglishWord);
+            TABLE_MAPPING.put(TABLE_EMOJIS, Database::selectEmoji);
             TABLE_MAPPING.put(TABLE_FORENAMES, Database::selectForename);
             TABLE_MAPPING.put(TABLE_FRENCH_FEMALE_NAMES, Database::selectFrenchFemaleName);
             TABLE_MAPPING.put(TABLE_FRENCH_MALE_NAMES, Database::selectFrenchMaleName);
+            TABLE_MAPPING.put(TABLE_FRENCH_WORDS, Database::selectFrenchWord);
+            TABLE_MAPPING.put(TABLE_GERMAN_WORDS, Database::selectGermanWord);
             TABLE_MAPPING.put(TABLE_RUSSIAN_FEMALE_NAMES, Database::selectRussianFemaleName);
             TABLE_MAPPING.put(TABLE_RUSSIAN_MALE_NAMES, Database::selectRussianMaleName);
             TABLE_MAPPING.put(TABLE_SPANISH_COMPOUND_SURNAMES, Database::selectHispanicCompoundSurname);
@@ -127,6 +124,7 @@ public class Database {
             TABLE_MAPPING.put(TABLE_SPANISH_PLURAL_ADJECTIVES, Database::selectSpanishPluralAdjective);
             TABLE_MAPPING.put(TABLE_SPANISH_SINGULAR_ADJECTIVES, Database::selectSpanishSingularAdjective);
             TABLE_MAPPING.put(TABLE_SPANISH_SURNAMES, Database::selectHispanicSurname);
+            TABLE_MAPPING.put(TABLE_SPANISH_WORDS, Database::selectSpanishWord);
             TABLE_MAPPING.put(TABLE_FAMILY_NAMES, Database::selectFamilyName);
             TABLE_MAPPING.put(TABLE_NAMES, Database::selectName);
             TABLE_MAPPING.put(TABLE_NOUNS, Database::selectCommonNoun);
@@ -208,11 +206,11 @@ public class Database {
         return countRows(TABLE_ENGLISH_PHONETICS);
     }
 
-    public static String selectEnglishWord() {
+    public static String selectEnglishPhoneticWord() {
         return selectRow("SELECT * FROM " + TABLE_ENGLISH_PHONETICS + " ORDER BY RANDOM() LIMIT 1", 2);
     }
 
-    public static String selectEnglishWord(int id) {
+    public static String selectEnglishPhoneticWord(int id) {
         return selectRow("SELECT * FROM " + TABLE_ENGLISH_PHONETICS + " WHERE " + TABLE_ENGLISH_PHONETICS + ID_PREFIX + " = ?", 2, String.valueOf(id));
     }
 
@@ -221,7 +219,7 @@ public class Database {
     }
 
     public static String selectEnglishPhoneticScript(String word) {
-        return selectRow("SELECT Word, Phonetics FROM " + TABLE_ENGLISH_PHONETICS + " WHERE Word = ?", 2, word);
+        return selectRow("SELECT Word, Phonetics FROM " + TABLE_ENGLISH_PHONETICS + " WHERE Word = ? COLLATE NOCASE", 2, word);
     }
 
     public static int countEnglishSurnames() {
@@ -236,15 +234,27 @@ public class Database {
         return selectRow("SELECT * FROM " + TABLE_ENGLISH_SURNAMES + " WHERE " + TABLE_ENGLISH_SURNAMES + ID_PREFIX + " = ?", 2, String.valueOf(id));
     }
 
+    public static int countEnglishWords() {
+        return countRows(TABLE_ENGLISH_WORDS);
+    }
+
+    public static String selectEnglishWord() {
+        return selectRow("SELECT * FROM " + TABLE_ENGLISH_WORDS + " ORDER BY RANDOM() LIMIT 1", 2);
+    }
+
+    public static String selectEnglishWord(int id) {
+        return selectRow("SELECT * FROM " + TABLE_ENGLISH_WORDS + " WHERE " + TABLE_ENGLISH_WORDS + ID_PREFIX + " = ?", 2, String.valueOf(id));
+    }
+
     public static int countEmojis() {
         return countRows(TABLE_EMOJIS);
     }
 
-    public static String selectEmojis() {
+    public static String selectEmoji() {
         return selectRow("SELECT CodePoints, Emoji FROM " + TABLE_EMOJIS + " ORDER BY RANDOM() LIMIT 1", 2);
     }
 
-    public static String selectEmojis(int id) {
+    public static String selectEmoji(int id) {
         return selectRow("SELECT CodePoints, Emoji FROM " + TABLE_EMOJIS + " WHERE " + TABLE_EMOJIS + ID_PREFIX + " = ?", 2, String.valueOf(id));
     }
 
@@ -290,6 +300,30 @@ public class Database {
 
     public static String selectFrenchMaleName(int id) {
         return selectRow("SELECT * FROM " + TABLE_FRENCH_MALE_NAMES + " WHERE " + TABLE_FRENCH_MALE_NAMES + ID_PREFIX + " = ?", 2, String.valueOf(id));
+    }
+
+    public static int countFrenchWords() {
+        return countRows(TABLE_FRENCH_WORDS);
+    }
+
+    public static String selectFrenchWord() {
+        return selectRow("SELECT * FROM " + TABLE_FRENCH_WORDS + " ORDER BY RANDOM() LIMIT 1", 2);
+    }
+
+    public static String selectFrenchWord(int id) {
+        return selectRow("SELECT * FROM " + TABLE_FRENCH_WORDS + " WHERE " + TABLE_FRENCH_WORDS + ID_PREFIX + " = ?", 2, String.valueOf(id));
+    }
+
+    public static int countGermanWords() {
+        return countRows(TABLE_GERMAN_WORDS);
+    }
+
+    public static String selectGermanWord() {
+        return selectRow("SELECT * FROM " + TABLE_GERMAN_WORDS + " ORDER BY RANDOM() LIMIT 1", 2);
+    }
+
+    public static String selectGermanWord(int id) {
+        return selectRow("SELECT * FROM " + TABLE_GERMAN_WORDS + " WHERE " + TABLE_GERMAN_WORDS + ID_PREFIX + " = ?", 2, String.valueOf(id));
     }
 
     public static int countRussianFemaleNames() {
@@ -410,6 +444,18 @@ public class Database {
 
     public static String selectHispanicSurname(int id) {
         return selectRow("SELECT * FROM " + TABLE_SPANISH_SURNAMES + " WHERE " + TABLE_SPANISH_SURNAMES + ID_PREFIX + " = ?", 2, String.valueOf(id));
+    }
+
+    public static int countSpanishWords() {
+        return countRows(TABLE_SPANISH_WORDS);
+    }
+
+    public static String selectSpanishWord() {
+        return selectRow("SELECT * FROM " + TABLE_SPANISH_WORDS + " ORDER BY RANDOM() LIMIT 1", 2);
+    }
+
+    public static String selectSpanishWord(int id) {
+        return selectRow("SELECT * FROM " + TABLE_SPANISH_WORDS + " WHERE " + TABLE_SPANISH_WORDS + ID_PREFIX + " = ?", 2, String.valueOf(id));
     }
 
     public static int countFamilyNames() {

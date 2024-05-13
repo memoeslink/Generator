@@ -19,6 +19,11 @@ public class NameGetter extends common.NameGetter implements NameDefiner {
     }
 
     @Override
+    public String getForename() {
+        return r.getBoolean() ? getMaleForename() : getFemaleForename();
+    }
+
+    @Override
     public String getFullName() {
         return r.getBoolean() ? getMaleFullName() : getFemaleFullName();
     }

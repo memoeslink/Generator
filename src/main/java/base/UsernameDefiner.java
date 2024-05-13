@@ -1,20 +1,18 @@
 package base;
 
 import com.memoeslink.common.Randomizer;
-import common.Database;
 import common.ResourceGetter;
 import common.UsernameSeparator;
+import net.andreinc.aleph.AlephFormatter;
+import org.memoeslink.CaseStyle;
 import org.memoeslink.IntegerHelper;
 import org.memoeslink.Separator;
 import org.memoeslink.StringHelper;
 
-import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Map;
+import java.util.function.Supplier;
 
 public interface UsernameDefiner extends common.UsernameDefiner {
-    static final String COMPONENT_REGEX = "#\\{(\\w+)\\}";
-    static final Pattern COMPONENT_PATTERN = Pattern.compile(COMPONENT_REGEX);
 
     default String getCompositeUsername(String a, String b, Randomizer r) {
         r = r != null ? r : new Randomizer();
@@ -72,42 +70,29 @@ public interface UsernameDefiner extends common.UsernameDefiner {
         return username;
     }
 
-    default String getPatternUsername(String a, String b, Locale locale, Randomizer r) {
-        r = r != null ? r : new Randomizer();
-
-        if (StringHelper.isNullOrBlank(a) || StringHelper.isNullOrBlank(b))
+    default String getPatternUsername(String pattern, Map<String, Supplier<String>> parameters) {
+        if (StringHelper.isNullOrEmpty(pattern) || parameters == null || parameters.isEmpty())
             return common.Constant.DEFAULT_USERNAME;
-        a = StringHelper.normalizeAlpha(a).toLowerCase();
-        b = StringHelper.normalizeAlpha(b).toLowerCase();
-        String pattern = ResourceGetter.with(r).getString(Constant.USERNAME_PATTERNS);
-        Matcher matcher = COMPONENT_PATTERN.matcher(pattern);
-        StringBuilder sb = new StringBuilder();
+        AlephFormatter formatter = AlephFormatter.str(pattern);
 
-        while (matcher.find()) {
-            String replacement = Database.DEFAULT_VALUE;
-
-            switch (matcher.group(1)) {
-                case "first" -> replacement = a;
-                case "second" -> replacement = b;
-                case "job" -> {
-                    replacement = ResourceGetter.with(r).getStrFromResBundle(locale, "job.position");
-                    replacement = StringHelper.normalize(replacement).toLowerCase();
-                }
-                case "denominator" -> {
-                    replacement = ResourceGetter.with(r).getStrFromResBundle(locale, "organization.denominator");
-                    replacement = StringHelper.normalize(replacement).toLowerCase();
-                }
-                case "letter" ->
-                        replacement = String.valueOf(ResourceGetter.with(r).getChar(Constant.UPPERCASE_ALPHABET));
-                case "number" -> replacement = String.valueOf(r.getInt(1, 10));
-                case "year" -> {
-                    int year = common.Constant.STARTING_YEAR + r.getInt(-100, 101);
-                    replacement = String.valueOf(year);
-                }
-            }
-            matcher.appendReplacement(sb, replacement);
+        for (Map.Entry<String, Supplier<String>> entry : parameters.entrySet()) {
+            formatter.arg(entry.getKey(), entry.getValue().get());
         }
-        matcher.appendTail(sb);
-        return sb.toString();
+        return formatter.fmt();
+    }
+
+    default String getWordBasedUsername(Randomizer r, String... words) {
+        if (words == null || words.length == 0)
+            return common.Constant.DEFAULT_USERNAME;
+
+        if (r.getBoolean()) {
+            String username = StringHelper.joinWithSpace(words);
+            username = StringHelper.replace(username, "-", " ");
+            return StringHelper.convertCase(username, r.getElement(CaseStyle.values()));
+        } else {
+            String username = StringHelper.joinWithoutSeparator(words);
+            username = StringHelper.removeEach(username, "-", " ");
+            return StringHelper.randomCase(username);
+        }
     }
 }
