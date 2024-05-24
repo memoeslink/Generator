@@ -152,10 +152,10 @@ public class NameGetter extends base.NameGetter implements NameDefiner {
     public String getFemaleFullName() {
         return switch (r.getInt(4)) {
             case 1 -> getFemaleForename() + Separator.SPACE.getCharacter() + getDualSurname();
-            case 2 -> (getDualFemaleForename() + Separator.SPACE.getCharacter() +
-                    getSurname());
-            case 3 -> (getDualFemaleForename() + Separator.SPACE.getCharacter() +
-                    getDualSurname());
+            case 2 -> getDualFemaleForename() + Separator.SPACE.getCharacter() +
+                    getSurname();
+            case 3 -> getDualFemaleForename() + Separator.SPACE.getCharacter() +
+                    getDualSurname();
             default -> getFemaleSimpleName();
         };
     }
@@ -164,10 +164,10 @@ public class NameGetter extends base.NameGetter implements NameDefiner {
     public String getMaleFullName() {
         return switch (r.getInt(4)) {
             case 1 -> getMaleForename() + Separator.SPACE.getCharacter() + getDualSurname();
-            case 2 -> (getDualMaleForename() + Separator.SPACE.getCharacter() +
-                    getSurname());
-            case 3 -> (getDualMaleForename() + Separator.SPACE.getCharacter() +
-                    getDualSurname());
+            case 2 -> getDualMaleForename() + Separator.SPACE.getCharacter() +
+                    getSurname();
+            case 3 -> getDualMaleForename() + Separator.SPACE.getCharacter() +
+                    getDualSurname();
             default -> getMaleSimpleName();
         };
     }

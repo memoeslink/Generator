@@ -236,25 +236,6 @@ public class DatabaseTest {
     }
 
     @Test
-    public void countEmojis_returnsCorrectCount() {
-        Assertions.assertNotEquals(-1, Database.countEmojis());
-    }
-
-    @Test
-    public void selectEmoji_returnsValidEmoji() {
-        String value = Database.selectEmoji();
-        Assertions.assertNotNull(value);
-        Assertions.assertNotEquals(Database.DEFAULT_VALUE, value);
-    }
-
-    @Test
-    public void selectEmojiWithId_returnsValidEmoji() {
-        String value = Database.selectEmoji(1);
-        Assertions.assertNotNull(value);
-        Assertions.assertNotEquals(Database.DEFAULT_VALUE, value);
-    }
-
-    @Test
     public void selectCodePoints_returnsValidCodePoints() {
         String value = Database.selectCodePoints();
         Assertions.assertNotNull(value);
@@ -264,25 +245,6 @@ public class DatabaseTest {
     @Test
     public void selectCodePointsWithId_returnsValidCodePoints() {
         String value = Database.selectCodePoints(1);
-        Assertions.assertNotNull(value);
-        Assertions.assertNotEquals(Database.DEFAULT_VALUE, value);
-    }
-
-    @Test
-    public void countForenames_returnsCorrectCount() {
-        Assertions.assertNotEquals(-1, Database.countForenames());
-    }
-
-    @Test
-    public void selectForename_returnsValidForename() {
-        String value = Database.selectForename();
-        Assertions.assertNotNull(value);
-        Assertions.assertNotEquals(Database.DEFAULT_VALUE, value);
-    }
-
-    @Test
-    public void selectForenameWithId_returnsValidForename() {
-        String value = Database.selectForename(1);
         Assertions.assertNotNull(value);
         Assertions.assertNotEquals(Database.DEFAULT_VALUE, value);
     }
@@ -573,6 +535,25 @@ public class DatabaseTest {
     }
 
     @Test
+    public void countEmojis_returnsCorrectCount() {
+        Assertions.assertNotEquals(-1, Database.countEmojis());
+    }
+
+    @Test
+    public void selectEmoji_returnsValidEmoji() {
+        String value = Database.selectEmoji();
+        Assertions.assertNotNull(value);
+        Assertions.assertNotEquals(Database.DEFAULT_VALUE, value);
+    }
+
+    @Test
+    public void selectEmojiWithId_returnsValidEmoji() {
+        String value = Database.selectEmoji(1);
+        Assertions.assertNotNull(value);
+        Assertions.assertNotEquals(Database.DEFAULT_VALUE, value);
+    }
+
+    @Test
     public void countFamilyNames_returnsCorrectCount() {
         Assertions.assertNotEquals(-1, Database.countFamilyNames());
     }
@@ -587,6 +568,63 @@ public class DatabaseTest {
     @Test
     public void selectFamilyNameWithId_returnsValidName() {
         String value = Database.selectFamilyName(1);
+        Assertions.assertNotNull(value);
+        Assertions.assertNotEquals(Database.DEFAULT_VALUE, value);
+    }
+
+    @Test
+    public void countFemaleNames_returnsCorrectCount() {
+        Assertions.assertNotEquals(-1, Database.countFemaleNames());
+    }
+
+    @Test
+    public void selectFemaleName_returnsValidName() {
+        String value = Database.selectFemaleName();
+        Assertions.assertNotNull(value);
+        Assertions.assertNotEquals(Database.DEFAULT_VALUE, value);
+    }
+
+    @Test
+    public void selectFemaleNameWithId_returnsValidName() {
+        String value = Database.selectFemaleName(1);
+        Assertions.assertNotNull(value);
+        Assertions.assertNotEquals(Database.DEFAULT_VALUE, value);
+    }
+
+    @Test
+    public void countForenames_returnsCorrectCount() {
+        Assertions.assertNotEquals(-1, Database.countForenames());
+    }
+
+    @Test
+    public void selectForename_returnsValidForename() {
+        String value = Database.selectForename();
+        Assertions.assertNotNull(value);
+        Assertions.assertNotEquals(Database.DEFAULT_VALUE, value);
+    }
+
+    @Test
+    public void selectForenameWithId_returnsValidForename() {
+        String value = Database.selectForename(1);
+        Assertions.assertNotNull(value);
+        Assertions.assertNotEquals(Database.DEFAULT_VALUE, value);
+    }
+
+    @Test
+    public void countMaleNames_returnsCorrectCount() {
+        Assertions.assertNotEquals(-1, Database.countMaleNames());
+    }
+
+    @Test
+    public void selectMaleName_returnsValidName() {
+        String value = Database.selectMaleName();
+        Assertions.assertNotNull(value);
+        Assertions.assertNotEquals(Database.DEFAULT_VALUE, value);
+    }
+
+    @Test
+    public void selectMaleNameWithId_returnsValidName() {
+        String value = Database.selectMaleName(1);
         Assertions.assertNotNull(value);
         Assertions.assertNotEquals(Database.DEFAULT_VALUE, value);
     }
