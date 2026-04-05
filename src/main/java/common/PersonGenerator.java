@@ -1,6 +1,5 @@
 package common;
 
-import org.memoeslink.Separator;
 import org.memoeslink.StringHelper;
 
 import java.time.LocalDate;
@@ -45,7 +44,7 @@ public class PersonGenerator extends Generator {
         String japaneseHonorific = StringHelper.EMPTY;
 
         if (StringHelper.endsWithAny(name, "-chan", "-kun", "-sama", "-san")) {
-            String[] parts = StringHelper.split(name, Separator.HYPHEN.getCharacter());
+            String[] parts = StringHelper.splitByHyphen(name);
             name = parts[0];
             japaneseHonorific = parts[1];
         }

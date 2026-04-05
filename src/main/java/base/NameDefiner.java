@@ -1,7 +1,7 @@
 package base;
 
 import com.memoeslink.common.Randomizer;
-import com.memoeslink.common.WeightedChar;
+import com.memoeslink.common.WeightedItem;
 import common.ResourceGetter;
 import international.NameGen;
 import org.memoeslink.CharHelper;
@@ -34,7 +34,7 @@ public interface NameDefiner extends common.NameDefiner {
         // Add consonants with vowel
         for (int i = 1; i <= iterations; i++) {
             if (probability <= 0.7F)
-                sb.append(r.getCharBasedOnWeight(Constant.WEIGHTED_CONSONANTS));
+                sb.append(r.getElementBasedOnWeight(Constant.WEIGHTED_CONSONANTS));
             else if (probability <= 0.85F)
                 sb.append(ResourceGetter.with(r).getString(Constant.MIDDLE_CONSONANTS));
             else if (probability <= 1.0F)
@@ -83,12 +83,13 @@ public interface NameDefiner extends common.NameDefiner {
         return StringHelper.capitalize(sb.toString());
     }
 
-    default String getFrequencyName(WeightedChar[] letters, int length, Randomizer r) {
+    @SuppressWarnings("unchecked")
+    default String getFrequencyName(WeightedItem<Character>[] letters, int length, Randomizer r) {
         length = IntegerHelper.defaultByRange(length, 1, 9999);
         r = r != null ? r : new Randomizer();
         String s;
         StringBuilder sb = new StringBuilder();
-        char previousChar = r.getCharBasedOnWeight(letters);
+        char previousChar = (char) r.getElementBasedOnWeight(letters);
         char currentChar;
         boolean sameType = false;
         boolean allowed;
@@ -103,7 +104,7 @@ public interface NameDefiner extends common.NameDefiner {
         for (int n = 0; n < length; n++) {
             if (sameType) {
                 do {
-                    currentChar = r.getCharBasedOnWeight(letters);
+                    currentChar = (char) r.getElementBasedOnWeight(letters);
                     allowed = true;
 
                     if (previousChar == currentChar) {
@@ -117,7 +118,7 @@ public interface NameDefiner extends common.NameDefiner {
                         (equal && CharHelper.isNonClusterConsonant(currentChar)) || !allowed);
             } else {
                 do {
-                    currentChar = r.getCharBasedOnWeight(letters);
+                    currentChar = (char) r.getElementBasedOnWeight(letters);
                 }
                 while ((vowel = CharHelper.isUnaccentedVowel(previousChar)) == (anotherVowel = CharHelper.isUnaccentedVowel(currentChar)) ||
                         ((!vowel || n == length - 1) && CharHelper.isAccentedConsonant(currentChar)) ||

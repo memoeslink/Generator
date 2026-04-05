@@ -203,7 +203,7 @@ public class SyllableSeparator {
     }
 
     public boolean isOxytone() {
-        if (getSyllables().size() == 0)
+        if (getSyllables().isEmpty())
             return false;
         return StringHelper.hasAny(syllables.get(syllables.size() - 1), 'á', 'é', 'í', 'ó', 'ú') ==
                 StringHelper.endsWithAny(syllables.get(syllables.size() - 1), 'n', 's');

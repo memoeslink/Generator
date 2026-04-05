@@ -77,8 +77,11 @@ public class Pluralizer {
                     {"caries", "caries"}
             }).collect(Collectors.toMap(arr -> arr[0], arr -> arr[1]));
 
+    private Pluralizer() {
+    }
+
     public static String pluralize(String s) {
-        String[] words = s.split("\\s+");
+        String[] words = StringHelper.split(s, "\\s+");
         String word = words[0];
         words[0] = convert(word);
         return String.join(String.valueOf(Separator.SPACE.getCharacter()), words);
@@ -128,7 +131,7 @@ public class Pluralizer {
     }
 
     public static String pluralizeAll(String s) {
-        String[] words = s.split("\\s+");
+        String[] words = StringHelper.split(s, "\\s+");
 
         for (int n = 0; n < words.length; n++) {
             words[n] = convert(words[n]);
